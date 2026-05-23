@@ -5596,7 +5596,7 @@ footer {
     }
 }
 
-/* --- SECCIÓN TECH STACK CAROUSEL --- */
+/* --- SECCIÓN TECH STACK MARQUEE DINÁMICO --- */
 .tech-stack-section {
     padding: 80px 24px;
     background: linear-gradient(135deg, rgba(var(--rgb-card), 0.5) 0%, rgba(30, 58, 138, 0.2) 100%);
@@ -5612,173 +5612,222 @@ footer {
 }
 
 .tech-carousel-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 24px;
     position: relative;
-}
-
-.carousel-nav {
-    width: 48px;
-    height: 48px;
-    border: 1px solid rgba(var(--rgb-contrast), 0.1);
-    background: rgba(var(--rgb-contrast), 0.05);
-    border-radius: 12px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-orange);
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-}
-
-.carousel-nav:hover {
-    background: rgba(var(--rgb-contrast), 0.1);
-    border-color: var(--accent-orange);
-    transform: scale(1.05);
-}
-
-.carousel-prev {
-    order: -1;
-}
-
-.tech-carousel-container {
-    flex: 1;
     overflow: hidden;
     border-radius: 16px;
+    padding: 24px 0;
 }
 
+/* Canvas de partículas */
+.tech-particles-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+/* Fade edges para efecto marquee premium */
+.tech-carousel-wrapper::before,
+.tech-carousel-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.tech-carousel-wrapper::before {
+    left: 0;
+    background: linear-gradient(90deg, rgba(var(--rgb-card), 0.9) 0%, transparent 100%);
+}
+
+.tech-carousel-wrapper::after {
+    right: 0;
+    background: linear-gradient(-90deg, rgba(var(--rgb-card), 0.9) 0%, transparent 100%);
+}
+
+/* Track del marquee */
 .tech-carousel {
     display: flex;
     gap: 24px;
-    padding: 20px 0;
+    padding: 16px 0;
+    position: relative;
+    z-index: 1;
+    width: max-content;
+    animation: marquee-scroll 40s linear infinite;
 }
 
-.tech-carousel-container:hover .tech-carousel {
-    /* pausa controlada por JS */
+.tech-carousel.paused {
+    animation-play-state: paused;
 }
 
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Items individuales */
 .tech-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    min-width: 110px;
-    padding: 20px 16px;
+    min-width: 120px;
+    padding: 22px 18px;
     background: rgba(var(--rgb-contrast), 0.02);
-    border: 1px solid rgba(var(--rgb-contrast), 0.05);
-    border-radius: 12px;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(var(--rgb-contrast), 0.06);
+    border-radius: 14px;
     cursor: pointer;
-    opacity: 0;
-    transform: translateY(30px);
+    position: relative;
+    transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: tech-float 5s ease-in-out infinite;
 }
 
-.tech-stack-section.visible .tech-item {
-    animation: techItemIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.tech-item:nth-child(1) { animation-delay: 0.05s; }
-.tech-item:nth-child(2) { animation-delay: 0.11s; }
-.tech-item:nth-child(3) { animation-delay: 0.17s; }
-.tech-item:nth-child(4) { animation-delay: 0.23s; }
-.tech-item:nth-child(5) { animation-delay: 0.29s; }
-.tech-item:nth-child(6) { animation-delay: 0.35s; }
-.tech-item:nth-child(7) { animation-delay: 0.41s; }
-.tech-item:nth-child(8) { animation-delay: 0.47s; }
-.tech-item:nth-child(9) { animation-delay: 0.53s; }
-.tech-item:nth-child(10) { animation-delay: 0.59s; }
-.tech-item:nth-child(11) { animation-delay: 0.65s; }
-.tech-item:nth-child(12) { animation-delay: 0.71s; }
-.tech-item:nth-child(13) { animation-delay: 0.77s; }
-.tech-item:nth-child(14) { animation-delay: 0.83s; }
-.tech-item:nth-child(15) { animation-delay: 0.89s; }
-.tech-item:nth-child(16) { animation-delay: 0.95s; }
-.tech-item:nth-child(17) { animation-delay: 1.01s; }
-.tech-item:nth-child(18) { animation-delay: 1.07s; }
-.tech-item:nth-child(19) { animation-delay: 1.13s; }
-.tech-item:nth-child(20) { animation-delay: 1.19s; }
-.tech-item:nth-child(21) { animation-delay: 1.25s; }
-.tech-item:nth-child(22) { animation-delay: 1.31s; }
-.tech-item:nth-child(23) { animation-delay: 1.37s; }
-.tech-item:nth-child(24) { animation-delay: 1.43s; }
-
-@keyframes techItemIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+@keyframes tech-float {
+    0%, 100% {
+        transform: translateY(0px);
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    50% {
+        transform: translateY(-5px);
     }
 }
 
+/* Delays de flotación escalonados */
+.tech-item:nth-child(1) { animation-delay: 0s; }
+.tech-item:nth-child(2) { animation-delay: 0.4s; }
+.tech-item:nth-child(3) { animation-delay: 0.8s; }
+.tech-item:nth-child(4) { animation-delay: 1.2s; }
+.tech-item:nth-child(5) { animation-delay: 1.6s; }
+.tech-item:nth-child(6) { animation-delay: 2.0s; }
+.tech-item:nth-child(7) { animation-delay: 2.4s; }
+.tech-item:nth-child(8) { animation-delay: 2.8s; }
+.tech-item:nth-child(9) { animation-delay: 3.2s; }
+.tech-item:nth-child(10) { animation-delay: 3.6s; }
+.tech-item:nth-child(11) { animation-delay: 4.0s; }
+.tech-item:nth-child(12) { animation-delay: 4.4s; }
+
+/* Hover con glow de color de marca */
 .tech-item:hover {
     background: rgba(var(--rgb-contrast), 0.08);
-    border-color: var(--accent-orange);
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 12px 30px rgba(var(--accent-orange-rgb), 0.15);
+    border-color: var(--tech-glow, var(--accent-orange));
+    transform: translateY(-10px) scale(1.08);
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.3),
+        0 0 25px var(--tech-glow-soft, rgba(var(--accent-orange-rgb), 0.2)),
+        inset 0 1px 0 rgba(var(--tech-glow-rgb, var(--accent-orange-rgb)), 0.15);
+    animation-play-state: paused;
 }
 
 .tech-item:hover .tech-logo {
-    transform: scale(1.1);
+    transform: scale(1.15) rotate(-3deg);
+    border-color: var(--tech-glow, var(--accent-orange));
+    background: rgba(var(--tech-glow-rgb, var(--accent-orange-rgb)), 0.08);
 }
 
 .tech-item:hover .tech-logo svg {
+    filter: drop-shadow(0 0 8px var(--tech-glow, var(--accent-orange)));
     transform: scale(1.05);
 }
 
+.tech-item:hover .tech-name {
+    color: var(--tech-glow, var(--accent-orange));
+}
+
+/* Logo container */
 .tech-logo {
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 12px;
     background: rgba(var(--rgb-contrast), 0.03);
     border: 1px solid rgba(var(--rgb-contrast), 0.1);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tech-logo svg {
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Nombre de tecnología */
 .tech-name {
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 600;
     color: var(--text-white);
     text-align: center;
     white-space: nowrap;
+    transition: color 0.4s ease;
 }
 
-/* Duplicar items para loop infinito */
-.tech-carousel::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-}
+/* Colores de marca por tecnología */
+.tech-item[data-tech="html"] { --tech-glow: #E34C26; --tech-glow-rgb: 227, 76, 38; }
+.tech-item[data-tech="css"] { --tech-glow: #1572B6; --tech-glow-rgb: 21, 114, 182; }
+.tech-item[data-tech="javascript"] { --tech-glow: #F7DF1E; --tech-glow-rgb: 247, 223, 30; }
+.tech-item[data-tech="react"] { --tech-glow: #61DAFB; --tech-glow-rgb: 97, 218, 251; }
+.tech-item[data-tech="python"] { --tech-glow: #3776AB; --tech-glow-rgb: 55, 118, 171; }
+.tech-item[data-tech="java"] { --tech-glow: #ED8936; --tech-glow-rgb: 237, 137, 54; }
+.tech-item[data-tech="github"] { --tech-glow: #8b949e; --tech-glow-rgb: 139, 148, 158; }
+.tech-item[data-tech="postgresql"] { --tech-glow: #336791; --tech-glow-rgb: 51, 103, 145; }
+.tech-item[data-tech="nodejs"] { --tech-glow: #68A063; --tech-glow-rgb: 104, 160, 99; }
+.tech-item[data-tech="typescript"] { --tech-glow: #3178C6; --tech-glow-rgb: 49, 120, 198; }
+.tech-item[data-tech="mongodb"] { --tech-glow: #00ED64; --tech-glow-rgb: 0, 237, 100; }
+.tech-item[data-tech="docker"] { --tech-glow: #2496ED; --tech-glow-rgb: 36, 150, 237; }
 
+/* Responsive */
 @media (max-width: 768px) {
-    .tech-carousel-wrapper {
-        gap: 12px;
+    .tech-stack-section {
+        padding: 60px 16px;
     }
 
-    .carousel-nav {
-        width: 40px;
-        height: 40px;
-    }
-
-    .tech-item {
-        min-width: 90px;
-        padding: 16px 12px;
+    .tech-carousel-wrapper::before,
+    .tech-carousel-wrapper::after {
+        width: 60px;
     }
 
     .tech-carousel {
         gap: 16px;
+        animation-duration: 30s;
+    }
+
+    .tech-item {
+        min-width: 100px;
+        padding: 18px 14px;
+    }
+
+    .tech-logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .tech-name {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-carousel {
+        gap: 12px;
+        animation-duration: 25s;
+    }
+
+    .tech-item {
+        min-width: 88px;
+        padding: 14px 10px;
+    }
+
+    .tech-logo {
+        width: 40px;
+        height: 40px;
     }
 }
 
@@ -7076,26 +7125,36 @@ footer {
 
 /* --- Tech Stack en Light --- */
 [data-theme="light"] .tech-stack-section {
-    background: rgba(0, 0, 0, 0.02);
+    background: rgba(0, 0, 0, 0.015);
     border-top: 1px solid rgba(0, 0, 0, 0.06);
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
+[data-theme="light"] .tech-carousel-wrapper::before {
+    background: linear-gradient(90deg, rgba(248, 250, 252, 0.95) 0%, transparent 100%);
+}
+
+[data-theme="light"] .tech-carousel-wrapper::after {
+    background: linear-gradient(-90deg, rgba(248, 250, 252, 0.95) 0%, transparent 100%);
+}
+
 [data-theme="light"] .tech-item {
     background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 [data-theme="light"] .tech-item:hover {
     background: #FFFFFF;
-    border-color: var(--accent-orange);
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    border-color: var(--tech-glow, var(--accent-orange));
+    transform: translateY(-10px) scale(1.08);
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.08),
+        0 0 20px var(--tech-glow-soft, rgba(var(--accent-orange-rgb), 0.15));
 }
 
 [data-theme="light"] .tech-logo {
-    background: rgba(0, 0, 0, 0.03);
+    background: rgba(0, 0, 0, 0.02);
     border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
@@ -7103,15 +7162,8 @@ footer {
     color: #0F172A;
 }
 
-[data-theme="light"] .carousel-nav {
-    background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-[data-theme="light"] .carousel-nav:hover {
-    background: #FFFFFF;
-    border-color: var(--accent-orange);
+[data-theme="light"] .tech-item:hover .tech-name {
+    color: var(--tech-glow, var(--accent-orange));
 }
 
 /* --- Contact Form en Light --- */
@@ -7296,11 +7348,6 @@ footer {
 /* --- Services Section Background en Light --- */
 [data-theme="light"] .services-section {
     background-color: rgba(0, 0, 0, 0.015);
-}
-
-/* --- Tech Stack Section Background en Light --- */
-[data-theme="light"] .tech-stack-section {
-    background: rgba(0, 0, 0, 0.015);
 }
 
 /* --- Cyber Grid en Light --- */

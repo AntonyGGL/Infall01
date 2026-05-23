@@ -399,77 +399,110 @@ window.addEventListener('load', () => {
 })();
 
 // ============================================================
-// 8. Tech Stack Carousel — Scroll Automático (solo JS)
+// 8. Tech Stack Marquee Dinámico + Partículas
 // ============================================================
 (function () {
     const carousel = document.getElementById('tech-carousel');
-    const prevBtn = document.getElementById('tech-prev');
-    const nextBtn = document.getElementById('tech-next');
+    const wrapper = document.getElementById('tech-carousel-wrapper');
+    const canvas = document.getElementById('tech-particles-canvas');
 
-    if (!carousel) return;
+    if (!carousel || !wrapper) return;
 
-    // Clonar items para loop infinito
-    const items = carousel.querySelectorAll('.tech-item');
-    items.forEach(item => carousel.appendChild(item.cloneNode(true)));
+    // Clonar items para marquee infinito (duplicar set completo)
+    const originalItems = Array.from(carousel.querySelectorAll('.tech-item'));
+    originalItems.forEach(item => carousel.appendChild(item.cloneNode(true)));
+    originalItems.forEach(item => carousel.appendChild(item.cloneNode(true)));
 
-    let scrollPos = 0;
-    const scrollSpeed = prefersReducedMotion ? 0.5 : 2;
-    let autoScrollId;
-
-    function scrollTo(pos) {
-        scrollPos = pos;
-        carousel.style.transform = 'translateX(' + (-scrollPos) + 'px)';
+    // Pausar marquee en hover
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+        wrapper.addEventListener('mouseenter', () => carousel.classList.add('paused'));
+        wrapper.addEventListener('mouseleave', () => carousel.classList.remove('paused'));
     }
 
-    function autoScroll() {
-        scrollPos += scrollSpeed;
-        scrollTo(scrollPos);
+    // Sistema de partículas
+    if (!canvas || prefersReducedMotion) return;
 
-        const maxScroll = carousel.scrollWidth / 2;
-        if (scrollPos >= maxScroll) {
-            scrollPos = 0;
-            carousel.style.transition = 'none';
-            carousel.style.transform = 'translateX(0)';
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    carousel.style.transition = 'transform 0.3s ease';
-                });
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animationId;
+
+    function resizeCanvas() {
+        const rect = wrapper.getBoundingClientRect();
+        canvas.width = rect.width * window.devicePixelRatio;
+        canvas.height = rect.height * window.devicePixelRatio;
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+
+    function createParticles() {
+        particles = [];
+        const count = Math.floor(wrapper.getBoundingClientRect().width / 80);
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x: Math.random() * wrapper.getBoundingClientRect().width,
+                y: Math.random() * wrapper.getBoundingClientRect().height,
+                size: Math.random() * 1.5 + 0.5,
+                speedX: (Math.random() - 0.5) * 0.3,
+                speedY: (Math.random() - 0.5) * 0.15,
+                opacity: Math.random() * 0.3 + 0.05,
+                pulse: Math.random() * Math.PI * 2
             });
         }
-
-        autoScrollId = requestAnimationFrame(autoScroll);
     }
 
-    function stopAutoScroll() {
-        cancelAnimationFrame(autoScrollId);
+    function drawParticles() {
+        const w = wrapper.getBoundingClientRect().width;
+        const h = wrapper.getBoundingClientRect().height;
+        ctx.clearRect(0, 0, w, h);
+
+        particles.forEach((p, i) => {
+            p.x += p.speedX;
+            p.y += p.speedY;
+            p.pulse += 0.02;
+
+            if (p.x < 0) p.x = w;
+            if (p.x > w) p.x = 0;
+            if (p.y < 0) p.y = h;
+            if (p.y > h) p.y = 0;
+
+            const currentOpacity = p.opacity * (0.7 + Math.sin(p.pulse) * 0.3);
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 140, 0, ${currentOpacity})`;
+            ctx.fill();
+
+            // Líneas de conexión entre partículas cercanas
+            for (let j = i + 1; j < particles.length; j++) {
+                const p2 = particles[j];
+                const dx = p.x - p2.x;
+                const dy = p.y - p2.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 100) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.strokeStyle = `rgba(255, 140, 0, ${0.04 * (1 - dist / 100)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        });
+
+        animationId = requestAnimationFrame(drawParticles);
     }
 
-    function startAutoScroll() {
-        stopAutoScroll();
-        autoScrollId = requestAnimationFrame(autoScroll);
-    }
+    resizeCanvas();
+    createParticles();
+    drawParticles();
 
-    prevBtn.addEventListener('click', () => {
-        stopAutoScroll();
-        scrollPos = Math.max(0, scrollPos - 150);
-        scrollTo(scrollPos);
-        setTimeout(startAutoScroll, 2000);
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        createParticles();
     });
-
-    nextBtn.addEventListener('click', () => {
-        stopAutoScroll();
-        scrollPos += 150;
-        const maxScroll = carousel.scrollWidth / 2;
-        if (scrollPos >= maxScroll) scrollPos = 0;
-        scrollTo(scrollPos);
-        setTimeout(startAutoScroll, 2000);
-    });
-
-    carousel.parentElement.addEventListener('mouseenter', stopAutoScroll);
-    carousel.parentElement.addEventListener('mouseleave', startAutoScroll);
-
-    carousel.style.transition = 'transform 0.3s ease';
-    startAutoScroll();
 })();
 
 // ============================================================
