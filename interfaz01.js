@@ -473,7 +473,88 @@ window.addEventListener('load', () => {
 })();
 
 // ============================================================
-// 8. Flip Cards — Soporte táctil
+// 8b. Projects Carousel — Navegación Manual con Dots
+// ============================================================
+(function () {
+    const track = document.getElementById('projects-track');
+    const prevBtn = document.getElementById('projects-prev');
+    const nextBtn = document.getElementById('projects-next');
+    const dotsContainer = document.getElementById('projects-dots');
+
+    if (!track || !prevBtn || !nextBtn) return;
+
+    const slides = track.querySelectorAll('.project-slide');
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+    let slidesPerView = 3;
+
+    // Calcular slides visibles según viewport
+    function updateSlidesPerView() {
+        if (window.innerWidth <= 768) {
+            slidesPerView = 1;
+        } else if (window.innerWidth <= 1024) {
+            slidesPerView = 2;
+        } else {
+            slidesPerView = 3;
+        }
+    }
+
+    // Crear dots
+    function createDots() {
+        dotsContainer.innerHTML = '';
+        const totalDots = Math.ceil(totalSlides / slidesPerView);
+        for (let i = 0; i < totalDots; i++) {
+            const dot = document.createElement('button');
+            dot.classList.add('project-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.setAttribute('aria-label', `Ir al grupo ${i + 1}`);
+            dot.addEventListener('click', () => goToSlide(i * slidesPerView));
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    // Actualizar dots activos
+    function updateDots() {
+        const dots = dotsContainer.querySelectorAll('.project-dot');
+        const activeDotIndex = Math.floor(currentIndex / slidesPerView);
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === activeDotIndex);
+        });
+    }
+
+    // Ir a slide específico
+    function goToSlide(index) {
+        const maxIndex = totalSlides - slidesPerView;
+        currentIndex = Math.max(0, Math.min(index, maxIndex));
+        const slideWidth = slides[0].offsetWidth + 30; // gap de 30px
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        updateDots();
+    }
+
+    // Event listeners
+    prevBtn.addEventListener('click', () => {
+        goToSlide(currentIndex - slidesPerView);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        goToSlide(currentIndex + slidesPerView);
+    });
+
+    // Inicializar
+    updateSlidesPerView();
+    createDots();
+    goToSlide(0);
+
+    // Actualizar en resize
+    window.addEventListener('resize', () => {
+        updateSlidesPerView();
+        createDots();
+        goToSlide(Math.min(currentIndex, totalSlides - slidesPerView));
+    });
+})();
+
+// ============================================================
+// 9. Flip Cards — Soporte táctil
 // ============================================================
 document.querySelectorAll('.flip-card').forEach(card => {
     card.addEventListener('click', (e) => {
