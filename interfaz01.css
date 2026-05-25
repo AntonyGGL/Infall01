@@ -5840,18 +5840,21 @@ footer {
 }
 
 /* Delays de flotación escalonados */
-.tech-item:nth-child(1) { animation-delay: 0s; }
-.tech-item:nth-child(2) { animation-delay: 0.4s; }
-.tech-item:nth-child(3) { animation-delay: 0.8s; }
-.tech-item:nth-child(4) { animation-delay: 1.2s; }
-.tech-item:nth-child(5) { animation-delay: 1.6s; }
-.tech-item:nth-child(6) { animation-delay: 2.0s; }
-.tech-item:nth-child(7) { animation-delay: 2.4s; }
-.tech-item:nth-child(8) { animation-delay: 2.8s; }
-.tech-item:nth-child(9) { animation-delay: 3.2s; }
+.tech-item:nth-child(1)  { animation-delay: 0s; }
+.tech-item:nth-child(2)  { animation-delay: 0.4s; }
+.tech-item:nth-child(3)  { animation-delay: 0.8s; }
+.tech-item:nth-child(4)  { animation-delay: 1.2s; }
+.tech-item:nth-child(5)  { animation-delay: 1.6s; }
+.tech-item:nth-child(6)  { animation-delay: 2.0s; }
+.tech-item:nth-child(7)  { animation-delay: 2.4s; }
+.tech-item:nth-child(8)  { animation-delay: 2.8s; }
+.tech-item:nth-child(9)  { animation-delay: 3.2s; }
 .tech-item:nth-child(10) { animation-delay: 3.6s; }
 .tech-item:nth-child(11) { animation-delay: 4.0s; }
 .tech-item:nth-child(12) { animation-delay: 4.4s; }
+.tech-item:nth-child(13) { animation-delay: 4.8s; }
+.tech-item:nth-child(14) { animation-delay: 5.2s; }
+.tech-item:nth-child(15) { animation-delay: 5.6s; }
 
 /* Hover con glow de color de marca */
 .tech-item:hover {
@@ -5871,9 +5874,18 @@ footer {
     background: rgba(var(--tech-glow-rgb, var(--accent-orange-rgb)), 0.08);
 }
 
-.tech-item:hover .tech-logo svg {
+.tech-item:hover .tech-logo svg,
+.tech-item:hover .tech-logo img {
     filter: drop-shadow(0 0 8px var(--tech-glow, var(--accent-orange)));
     transform: scale(1.05);
+}
+
+.tech-item:hover .tech-logo-invert img {
+    filter: brightness(0) invert(1) drop-shadow(0 0 8px var(--tech-glow, #fff));
+}
+
+[data-theme="light"] .tech-item:hover .tech-logo-invert img {
+    filter: drop-shadow(0 0 8px var(--tech-glow, var(--accent-orange)));
 }
 
 .tech-item:hover .tech-name {
@@ -5893,8 +5905,25 @@ footer {
     transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.tech-logo svg {
+.tech-logo svg,
+.tech-logo img {
     transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-logo img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Logos con fondo oscuro (GitHub, Next.js) — se invierten en modo oscuro */
+.tech-logo-invert img {
+    filter: brightness(0) invert(1);
+}
+
+[data-theme="light"] .tech-logo-invert img {
+    filter: none;
 }
 
 /* Nombre de tecnología */
@@ -5908,18 +5937,21 @@ footer {
 }
 
 /* Colores de marca por tecnología */
-.tech-item[data-tech="html"] { --tech-glow: #E34C26; --tech-glow-rgb: 227, 76, 38; }
-.tech-item[data-tech="css"] { --tech-glow: #1572B6; --tech-glow-rgb: 21, 114, 182; }
-.tech-item[data-tech="javascript"] { --tech-glow: #F7DF1E; --tech-glow-rgb: 247, 223, 30; }
-.tech-item[data-tech="react"] { --tech-glow: #61DAFB; --tech-glow-rgb: 97, 218, 251; }
-.tech-item[data-tech="python"] { --tech-glow: #3776AB; --tech-glow-rgb: 55, 118, 171; }
-.tech-item[data-tech="java"] { --tech-glow: #ED8936; --tech-glow-rgb: 237, 137, 54; }
-.tech-item[data-tech="github"] { --tech-glow: #8b949e; --tech-glow-rgb: 139, 148, 158; }
-.tech-item[data-tech="postgresql"] { --tech-glow: #336791; --tech-glow-rgb: 51, 103, 145; }
-.tech-item[data-tech="nodejs"] { --tech-glow: #68A063; --tech-glow-rgb: 104, 160, 99; }
-.tech-item[data-tech="typescript"] { --tech-glow: #3178C6; --tech-glow-rgb: 49, 120, 198; }
-.tech-item[data-tech="mongodb"] { --tech-glow: #00ED64; --tech-glow-rgb: 0, 237, 100; }
-.tech-item[data-tech="docker"] { --tech-glow: #2496ED; --tech-glow-rgb: 36, 150, 237; }
+.tech-item[data-tech="html5"]       { --tech-glow: #E34C26; --tech-glow-rgb: 227, 76, 38; }
+.tech-item[data-tech="css3"]        { --tech-glow: #1572B6; --tech-glow-rgb: 21, 114, 182; }
+.tech-item[data-tech="javascript"]  { --tech-glow: #F7DF1E; --tech-glow-rgb: 247, 223, 30; }
+.tech-item[data-tech="typescript"]  { --tech-glow: #3178C6; --tech-glow-rgb: 49, 120, 198; }
+.tech-item[data-tech="react"]       { --tech-glow: #61DAFB; --tech-glow-rgb: 97, 218, 251; }
+.tech-item[data-tech="nextjs"]      { --tech-glow: #e0e0e0; --tech-glow-rgb: 224, 224, 224; }
+.tech-item[data-tech="nodejs"]      { --tech-glow: #68A063; --tech-glow-rgb: 104, 160, 99; }
+.tech-item[data-tech="php"]         { --tech-glow: #777BB3; --tech-glow-rgb: 119, 123, 179; }
+.tech-item[data-tech="mysql"]       { --tech-glow: #4479A1; --tech-glow-rgb: 68, 121, 161; }
+.tech-item[data-tech="postgresql"]  { --tech-glow: #336791; --tech-glow-rgb: 51, 103, 145; }
+.tech-item[data-tech="mongodb"]     { --tech-glow: #00ED64; --tech-glow-rgb: 0, 237, 100; }
+.tech-item[data-tech="tailwind"]    { --tech-glow: #06B6D4; --tech-glow-rgb: 6, 182, 212; }
+.tech-item[data-tech="git"]         { --tech-glow: #F05032; --tech-glow-rgb: 240, 80, 50; }
+.tech-item[data-tech="github"]      { --tech-glow: #c0c0c0; --tech-glow-rgb: 192, 192, 192; }
+.tech-item[data-tech="figma"]       { --tech-glow: #F24E1E; --tech-glow-rgb: 242, 78, 30; }
 
 /* Responsive */
 @media (max-width: 768px) {
