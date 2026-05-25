@@ -1,4 +1,4 @@
-﻿// ============================================================
+// ============================================================
 // INFALL Systems Engineering — Configuración
 // ============================================================
 const CONFIG = {
@@ -744,3 +744,187 @@ document.querySelectorAll('.flip-card').forEach(card => {
         });
     });
 })();
+
+// ============================================================
+// 12. Typewriter Effect — Hero H1
+// ============================================================
+(function initTypewriter() {
+    const el = document.getElementById('hero-typewriter');
+    if (!el || prefersReducedMotion) return;
+
+    const text = el.textContent;
+    el.textContent = '';
+    el.classList.add('typing');
+
+    let i = 0;
+    const speed = 65;
+
+    function type() {
+        if (i < text.length) {
+            el.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        } else {
+            // Finish — stop cursor blink after 2s
+            setTimeout(() => el.closest('.typewriter-wrap') && el.closest('.typewriter-wrap').classList.add('done'), 2000);
+        }
+    }
+
+    // Delay start slightly so page paints first
+    setTimeout(type, 400);
+})();
+
+// ============================================================
+// 13. Contadores Animados — IntersectionObserver
+// ============================================================
+(function initCounters() {
+    const counters = document.querySelectorAll('.stat-counter-num[data-target]');
+    if (!counters.length) return;
+
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+    function animateCounter(el) {
+        const target = parseInt(el.getAttribute('data-target'), 10);
+        const suffix = el.getAttribute('data-suffix') || '';
+        const duration = prefersReducedMotion ? 0 : 1400;
+        let start = null;
+
+        function step(timestamp) {
+            if (!start) start = timestamp;
+            const elapsed = timestamp - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const value = Math.floor(easeOut(progress) * target);
+            el.textContent = value + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+            else el.textContent = target + suffix;
+        }
+        requestAnimationFrame(step);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(el => observer.observe(el));
+})();
+
+// ============================================================
+// 14. Ripple Effect en Botones Primarios
+// ============================================================
+(function initRipple() {
+    document.querySelectorAll('.btn-primary, .btn-pricing-primary').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            const rect = btn.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height) * 2;
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple-wave';
+            ripple.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px`;
+            btn.appendChild(ripple);
+            ripple.addEventListener('animationend', () => ripple.remove());
+        });
+    });
+})();
+
+// ============================================================
+// 15. Cursor — Glow Spotlight que sigue el puntero
+// ============================================================
+(function initCursor() {
+    if (window.innerWidth <= 968) return;
+    const dot = document.getElementById('cursor-dot');
+    const glow = document.getElementById('cursor-glow');
+    if (!dot || !glow) return;
+
+    let glowX = window.innerWidth / 2;
+    let glowY = window.innerHeight / 2;
+    let targetX = glowX;
+    let targetY = glowY;
+
+    // Dot sigue exactamente
+    document.addEventListener('mousemove', (e) => {
+        targetX = e.clientX;
+        targetY = e.clientY;
+        dot.style.left = e.clientX + 'px';
+        dot.style.top = e.clientY + 'px';
+    });
+
+    // Glow sigue con lag suave (lerp)
+    function animateGlow() {
+        glowX += (targetX - glowX) * 0.08;
+        glowY += (targetY - glowY) * 0.08;
+        glow.style.left = glowX + 'px';
+        glow.style.top = glowY + 'px';
+        requestAnimationFrame(animateGlow);
+    }
+    animateGlow();
+
+    // Mostrar al entrar en ventana
+    document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; glow.classList.add('active'); });
+    document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; glow.classList.remove('active'); });
+    setTimeout(() => glow.classList.add('active'), 800);
+
+    // Cambio de color glow al pasar por cards y botones
+    const cardTargets = '.why-us-card, .testimonial-card, .pricing-card, .portfolio-card';
+    document.querySelectorAll(cardTargets).forEach(el => {
+        el.addEventListener('mouseenter', () => { glow.classList.add('on-card'); dot.style.background = 'var(--accent-cyan)'; });
+        el.addEventListener('mouseleave', () => { glow.classList.remove('on-card'); dot.style.background = 'var(--accent-orange)'; });
+    });
+
+    // Dot: escala grande al pasar por links/botones
+    const hoverTargets = 'a, button, .why-us-card, .testimonial-card, .pricing-card';
+    document.querySelectorAll(hoverTargets).forEach(el => {
+        el.addEventListener('mouseenter', () => dot.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => dot.classList.remove('hovering'));
+    });
+})();
+
+// ============================================================
+// 17. Why-Us Cards — Mobile tap para flip
+// ============================================================
+(function initMobileFlip() {
+    if (window.innerWidth > 768) return;
+    document.querySelectorAll('.why-us-card').forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('flipped');
+        });
+    });
+})();
+
+
+// ============================================================
+// 16. Scroll Reveal — Variantes de dirección (left / right)
+// ============================================================
+(function initDirectionalReveal() {
+    const leftEls = document.querySelectorAll('.reveal-left');
+    const rightEls = document.querySelectorAll('.reveal-right');
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    leftEls.forEach(el => observer.observe(el));
+    rightEls.forEach(el => observer.observe(el));
+
+    // Trigger for elements already in viewport on load
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            [...leftEls, ...rightEls].forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight) el.classList.add('visible');
+            });
+        }, 100);
+    });
+})();
+
