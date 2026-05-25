@@ -8337,7 +8337,7 @@ footer {
     border: none !important;
     box-shadow: none !important;
     backdrop-filter: none !important;
-    min-height: 320px;
+    min-height: 400px;
     cursor: pointer;
 }
 .why-us-card::before { display: none !important; }
@@ -8347,7 +8347,7 @@ footer {
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 320px;
+    min-height: 400px;
     transform-style: preserve-3d;
     transition: transform 0.72s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
@@ -8435,6 +8435,48 @@ footer {
     margin-top: auto;
     font-family: var(--font-tech);
     text-transform: uppercase;
+}
+
+/* --- ILUSTRACIONES MINIMALISTAS PARA WHY-US --- */
+.why-us-illustration {
+    width: 100%;
+    height: 120px;
+    margin: 8px 0 16px 0;
+    display: block;
+    transition: var(--transition-smooth);
+}
+
+/* Hover Animations inside SVGs */
+.why-us-card:hover .why-us-illustration {
+    transform: scale(1.04);
+}
+
+.why-us-card:hover .bracket-glow {
+    filter: drop-shadow(0 0 8px rgba(255, 140, 0, 0.7));
+    transition: var(--transition-smooth);
+}
+
+.why-us-card:hover .lock-graphic {
+    transform: translateY(-2px);
+    transition: var(--transition-smooth);
+}
+
+@keyframes lockPulse {
+    0%, 100% { filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.25)); }
+    50% { filter: drop-shadow(0 0 12px rgba(0, 229, 255, 0.65)); }
+}
+
+.why-us-card:hover .lock-graphic rect {
+    animation: lockPulse 2s infinite ease-in-out;
+}
+
+@keyframes cdnPulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+
+.why-us-card:hover .cdn-node.active circle:first-child {
+    animation: cdnPulse 1.5s infinite ease-in-out;
 }
 
 [data-theme="light"] .why-us-card-front {
