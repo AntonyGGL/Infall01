@@ -8938,4 +8938,533 @@ footer {
 }
 @media (max-width: 968px) { .cursor-glow { display: none !important; } }
 
+/* ============================================================
+   OPTIMIZACIÓN MOBILE COMPACTA — Reducir scroll excesivo
+   ============================================================ */
+
+/* --- Mobile general: reducir spacing --- */
+@media (max-width: 768px) {
+    /* Hero más compacto */
+    .hero-section {
+        padding: 40px 18px 50px;
+        gap: 30px;
+    }
+    h1 {
+        font-size: 32px;
+        margin-bottom: 16px;
+        line-height: 1.2;
+    }
+    .description {
+        font-size: 15px;
+        margin-bottom: 24px;
+        line-height: 1.5;
+    }
+    .tagline-badge {
+        font-size: 11px;
+        padding: 6px 12px;
+        margin-bottom: 16px;
+    }
+    .btn-primary {
+        padding: 14px 24px;
+        font-size: 14px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Browser mockup más pequeño */
+    .browser-mockup {
+        max-width: 100%;
+        animation: none;
+    }
+    .browser-bar {
+        padding: 8px 12px;
+    }
+    .browser-bar .browser-url {
+        font-size: 10px;
+    }
+    .browser-badge-speed {
+        width: 60px;
+        height: 60px;
+        bottom: -14px;
+        right: -10px;
+    }
+    .badge-score {
+        font-size: 18px;
+    }
+    .badge-label {
+        font-size: 7px;
+    }
+    .browser-badge-delivery {
+        font-size: 10px;
+        padding: 6px 10px 6px 8px;
+        top: 44px;
+        left: -10px;
+    }
+    .browser-badge-delivery svg {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* Slider más compacto */
+    .slider-section {
+        margin-top: 64px;
+    }
+    .slider-wrapper {
+        min-height: 320px;
+    }
+    .slide-content {
+        bottom: 44px;
+        left: 16px;
+        right: 16px;
+        max-width: 100%;
+    }
+    .slide-title {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    .slide-desc {
+        font-size: 12px;
+        margin-bottom: 14px;
+        line-height: 1.4;
+    }
+    .slide-tag {
+        font-size: 9px;
+        padding: 4px 8px;
+        margin-bottom: 10px;
+    }
+    .btn-slide-cta {
+        padding: 10px 18px;
+        font-size: 12px;
+    }
+    .cta-slide-group {
+        gap: 10px;
+    }
+
+    /* Tech stack: simplificar */
+    .tech-stack-section {
+        padding: 40px 0;
+    }
+    .tech-stack-section .section-title {
+        font-size: 22px;
+        margin-bottom: 30px;
+        padding: 0 18px;
+    }
+    .tech-item {
+        min-width: 80px !important;
+    }
+    .tech-logo img {
+        width: 28px !important;
+        height: 28px !important;
+    }
+    .tech-name {
+        font-size: 10px;
+    }
+
+    /* Projects carousel compacto */
+    .projects-carousel-section {
+        padding: 30px 12px;
+    }
+    .projects-carousel-container {
+        padding: 24px 16px;
+        border-radius: 16px;
+    }
+    .projects-carousel-header {
+        margin-bottom: 24px;
+    }
+    .section-title {
+        font-size: 24px;
+    }
+    .projects-carousel-desc {
+        font-size: 13px;
+    }
+    .section-tag {
+        font-size: 11px;
+    }
+    .carousel-arrow {
+        width: 36px;
+        height: 36px;
+    }
+    .laptop-mockup {
+        max-width: 200px;
+    }
+    .project-slide {
+        gap: 12px;
+    }
+    .btn-visitar-project {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    .projects-carousel-cta {
+        margin-top: 20px;
+    }
+    .btn-asesoria {
+        padding: 12px 24px;
+        font-size: 13px;
+    }
+
+    /* ========================================
+       WHY-US: HORIZONTAL COVER FLOW CAROUSEL
+       ======================================== */
+    .why-us-section {
+        padding: 30px 0 40px;
+        overflow: hidden;
+    }
+    .why-us-section .section-header {
+        margin-bottom: 20px;
+        padding: 0 18px;
+    }
+    .why-us-grid {
+        display: flex;
+        flex-direction: row;
+        gap: 0;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 10px 0 20px;
+        /* Ocultar scrollbar */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .why-us-grid::-webkit-scrollbar {
+        display: none;
+    }
+    .why-us-card {
+        flex: 0 0 78%;
+        max-width: 78%;
+        scroll-snap-align: center;
+        min-height: 320px;
+        margin: 0 8px;
+        opacity: 0.45;
+        transform: scale(0.88);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        filter: blur(1px);
+    }
+    .why-us-card.active {
+        opacity: 1;
+        transform: scale(1);
+        filter: none;
+    }
+    .why-us-card-inner {
+        min-height: 320px;
+    }
+    .why-us-card-front,
+    .why-us-card-back {
+        padding: 22px 20px;
+    }
+    .why-us-card-front h3 {
+        font-size: 16px;
+        margin-top: 6px;
+    }
+    .why-us-card-front p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    .why-us-card-num {
+        font-size: 13px;
+    }
+    .why-us-illustration {
+        max-height: 70px;
+        margin: 4px 0 10px 0;
+    }
+    .why-us-card-hint {
+        font-size: 9px;
+    }
+    .why-us-back-stat {
+        font-size: 32px;
+    }
+    .why-us-card-back h3 {
+        font-size: 15px;
+    }
+    .why-us-card-back p {
+        font-size: 12px;
+    }
+    .why-us-back-cta {
+        font-size: 12px;
+        padding: 8px 14px;
+    }
+    /* Indicador de dots para why-us */
+    .why-us-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 12px;
+    }
+    .why-us-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(var(--rgb-contrast), 0.15);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .why-us-dot.active {
+        background: var(--accent-orange);
+        box-shadow: 0 0 8px rgba(var(--accent-orange-rgb), 0.5);
+        transform: scale(1.2);
+    }
+
+    /* Stats más compactos */
+    .stats-section {
+        padding: 24px 18px;
+    }
+    .stat-counter-num {
+        font-size: 36px;
+    }
+    .stat-counter-label {
+        font-size: 12px;
+    }
+
+    /* Testimonios compactos */
+    .testimonials-section {
+        padding: 40px 18px;
+    }
+    .testimonials-section .section-header {
+        margin-bottom: 30px;
+    }
+    .testimonials-grid {
+        gap: 16px;
+    }
+    .testimonial-card {
+        padding: 20px;
+    }
+    .testimonial-text {
+        font-size: 13px;
+        line-height: 1.5;
+        margin-bottom: 14px;
+        /* Truncar texto largo */
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .testimonial-name {
+        font-size: 13px;
+    }
+    .testimonial-company {
+        font-size: 11px;
+    }
+    .testimonial-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 13px;
+    }
+
+    /* ========================================
+       PRICING: HORIZONTAL COVER FLOW CAROUSEL
+       ======================================== */
+    .pricing-section {
+        padding: 30px 0 40px;
+        overflow: hidden;
+    }
+    .pricing-section .section-header {
+        margin-bottom: 16px;
+        padding: 0 18px;
+    }
+    .section-subtitle {
+        font-size: 13px;
+        margin-bottom: 20px !important;
+        padding: 0 18px;
+    }
+    .pricing-grid {
+        display: flex;
+        flex-direction: row;
+        gap: 0;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 10px 0 20px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .pricing-grid::-webkit-scrollbar {
+        display: none;
+    }
+    .pricing-card {
+        flex: 0 0 78%;
+        max-width: 78%;
+        scroll-snap-align: center;
+        margin: 0 8px;
+        padding: 22px 18px;
+        opacity: 0.45;
+        transform: scale(0.88);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        filter: blur(1px);
+    }
+    .pricing-card.active {
+        opacity: 1;
+        transform: scale(1);
+        filter: none;
+    }
+    .pricing-card.featured {
+        border-color: rgba(var(--accent-orange-rgb), 0.4);
+    }
+    .pricing-card.featured.active {
+        border-color: rgba(var(--accent-orange-rgb), 0.6);
+        box-shadow: 0 0 40px rgba(var(--accent-orange-rgb), 0.15);
+    }
+    .pricing-header h3 {
+        font-size: 18px;
+    }
+    .pricing-header p {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+    .pricing-amount {
+        font-size: 36px;
+    }
+    .pricing-currency {
+        font-size: 18px;
+    }
+    .pricing-from {
+        font-size: 11px;
+    }
+    .pricing-features {
+        gap: 6px;
+    }
+    .pricing-features li {
+        font-size: 12px;
+        padding: 3px 0;
+    }
+    .pf-icon svg {
+        width: 12px;
+        height: 12px;
+    }
+    .pricing-cta .btn-pricing-outline,
+    .pricing-cta .btn-pricing-primary {
+        padding: 12px 18px;
+        font-size: 13px;
+    }
+    .pricing-featured-badge {
+        font-size: 11px;
+        padding: 4px 12px;
+    }
+    /* Indicador de dots para pricing */
+    .pricing-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 14px;
+    }
+    .pricing-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(var(--rgb-contrast), 0.15);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .pricing-dot.active {
+        background: var(--accent-orange);
+        box-shadow: 0 0 8px rgba(var(--accent-orange-rgb), 0.5);
+        transform: scale(1.2);
+    }
+
+    /* Footer más compacto */
+    .footer-section {
+        padding: 40px 18px 20px;
+    }
+    .footer-grid {
+        gap: 24px;
+    }
+    .footer-col h4 {
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+    .footer-col a,
+    .footer-col p {
+        font-size: 12px;
+    }
+    .footer-bottom {
+        padding-top: 16px;
+        font-size: 11px;
+    }
+}
+
+/* --- Mobile pequeño: ultra compacto --- */
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 30px 14px 36px;
+        gap: 24px;
+    }
+    h1 {
+        font-size: 26px;
+    }
+    .description {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    /* Slider mínimo */
+    .slider-wrapper {
+        min-height: 280px;
+    }
+    .slide-content {
+        bottom: 36px;
+        left: 14px;
+        right: 14px;
+    }
+    .slide-title {
+        font-size: 20px;
+    }
+    .slide-desc {
+        font-size: 11px;
+        margin-bottom: 12px;
+    }
+    .btn-slide-ghost {
+        display: none;
+    }
+
+    /* Laptop mockups más pequeños */
+    .laptop-mockup {
+        max-width: 170px;
+    }
+
+    /* Why-us: cards más compactas */
+    .why-us-card-inner {
+        min-height: 280px;
+    }
+    .why-us-card {
+        flex: 0 0 82%;
+        max-width: 82%;
+    }
+    .why-us-illustration {
+        max-height: 55px;
+    }
+
+    /* Testimonios: truncar más */
+    .testimonial-text {
+        -webkit-line-clamp: 3;
+    }
+
+    /* Pricing: cards más compactas */
+    .pricing-card {
+        flex: 0 0 82%;
+        max-width: 82%;
+    }
+
+    /* WhatsApp widget más pequeño */
+    .whatsapp-widget {
+        right: 12px;
+        bottom: 12px;
+    }
+    .whatsapp-button {
+        width: 52px;
+        height: 52px;
+    }
+    .whatsapp-icon svg,
+    .whatsapp-icon img {
+        width: 28px;
+        height: 28px;
+    }
+    .whatsapp-toast {
+        max-width: 180px;
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+}
+
 

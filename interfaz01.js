@@ -408,6 +408,9 @@ window.addEventListener('load', () => {
 
     if (!carousel || !wrapper) return;
 
+    // Desactivar partículas en mobile para mejor rendimiento
+    const isMobile = window.innerWidth <= 768;
+
     // Clonar items para marquee infinito (duplicar set completo)
     const originalItems = Array.from(carousel.querySelectorAll('.tech-item'));
     originalItems.forEach(item => carousel.appendChild(item.cloneNode(true)));
@@ -415,13 +418,16 @@ window.addEventListener('load', () => {
 
     // Pausar marquee en hover
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!prefersReducedMotion) {
+    if (!prefersReducedMotion && !isMobile) {
         wrapper.addEventListener('mouseenter', () => carousel.classList.add('paused'));
         wrapper.addEventListener('mouseleave', () => carousel.classList.remove('paused'));
     }
 
-    // Sistema de partículas
-    if (!canvas || prefersReducedMotion) return;
+    // Sistema de partículas — desactivado en mobile
+    if (!canvas || prefersReducedMotion || isMobile) {
+        if (canvas) canvas.style.display = 'none';
+        return;
+    }
 
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -926,5 +932,178 @@ document.querySelectorAll('.flip-card').forEach(card => {
             });
         }, 100);
     });
+})();
+
+// ============================================================
+// 18. Mobile Optimizations — Desactivar efectos pesados
+// ============================================================
+(function initMobileOptimizations() {
+    const isMobile = window.innerWidth <= 768;
+    if (!isMobile) return;
+
+    // Desactivar animación de float en el browser mockup
+    const browserMockup = document.querySelector('.browser-mockup');
+    if (browserMockup) {
+        browserMockup.style.animation = 'none';
+    }
+
+    // Reducir duración del slider en mobile
+    const sliderWrapper = document.getElementById('slider-wrapper');
+    if (sliderWrapper) {
+        // El slider ya tiene touch support, solo aseguramos que funcione bien
+    }
+
+    // Desactivar ripple effect en mobile (innecesario sin hover)
+    document.querySelectorAll('.ripple-wave').forEach(el => el.remove());
+})();
+
+// ============================================================
+// 19. Mobile Cover Flow Carousel — Why Us + Pricing
+// ============================================================
+(function initMobileCoverFlow() {
+    const isMobile = window.innerWidth <= 768;
+    if (!isMobile) return;
+
+    // --- WHY-US CAROUSEL ---
+    const whyUsGrid = document.querySelector('.why-us-grid');
+    if (whyUsGrid) {
+        const whyUsCards = whyUsGrid.querySelectorAll('.why-us-card');
+
+        // Crear dots de navegación
+        const dotsContainer = document.createElement('div');
+        dotsContainer.className = 'why-us-dots';
+        whyUsCards.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'why-us-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Ir a tarjeta ' + (i + 1));
+            dot.addEventListener('click', () => {
+                const cardWidth = whyUsCards[0].offsetWidth + 16; // gap
+                whyUsGrid.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
+            });
+            dotsContainer.appendChild(dot);
+        });
+        whyUsGrid.parentNode.insertBefore(dotsContainer, whyUsGrid.nextSibling);
+
+        // Centrar primera card al inicio
+        requestAnimationFrame(() => {
+            const firstCard = whyUsCards[0];
+            if (firstCard) {
+                const scrollLeft = firstCard.offsetLeft - (whyUsGrid.offsetWidth - firstCard.offsetWidth) / 2;
+                whyUsGrid.scrollLeft = Math.max(0, scrollLeft);
+            }
+        });
+
+        // Detectar card activa al hacer scroll
+        let scrollTimer;
+        whyUsGrid.addEventListener('scroll', () => {
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(() => updateActiveCard(whyUsGrid, whyUsCards, dotsContainer, 'why-us-dot'), 50);
+        });
+
+        // Click en card: flip si ya está activa, centrar si no
+        whyUsCards.forEach((card) => {
+            card.addEventListener('click', (e) => {
+                // Si es un link dentro del card, no hacer flip
+                if (e.target.closest('a')) return;
+
+                if (!card.classList.contains('active')) {
+                    // Centrar la card
+                    const cardWidth = card.offsetWidth + 16;
+                    const index = Array.from(whyUsCards).indexOf(card);
+                    whyUsGrid.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+                } else {
+                    // Flip
+                    card.classList.toggle('flipped');
+                }
+            });
+        });
+
+        // Inicializar
+        updateActiveCard(whyUsGrid, whyUsCards, dotsContainer, 'why-us-dot');
+    }
+
+    // --- PRICING CAROUSEL ---
+    const pricingGrid = document.querySelector('.pricing-grid');
+    if (pricingGrid) {
+        const pricingCards = pricingGrid.querySelectorAll('.pricing-card');
+
+        // Crear dots de navegación
+        const dotsContainer = document.createElement('div');
+        dotsContainer.className = 'pricing-dots';
+        pricingCards.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'pricing-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Ir a plan ' + (i + 1));
+            dot.addEventListener('click', () => {
+                const cardWidth = pricingCards[0].offsetWidth + 16;
+                pricingGrid.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
+            });
+            dotsContainer.appendChild(dot);
+        });
+        pricingGrid.parentNode.insertBefore(dotsContainer, pricingGrid.nextSibling);
+
+        // Centrar primera card al inicio
+        requestAnimationFrame(() => {
+            const firstCard = pricingCards[0];
+            if (firstCard) {
+                const scrollLeft = firstCard.offsetLeft - (pricingGrid.offsetWidth - firstCard.offsetWidth) / 2;
+                pricingGrid.scrollLeft = Math.max(0, scrollLeft);
+            }
+        });
+
+        // Detectar card activa al hacer scroll
+        let scrollTimer;
+        pricingGrid.addEventListener('scroll', () => {
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(() => updateActiveCard(pricingGrid, pricingCards, dotsContainer, 'pricing-dot'), 50);
+        });
+
+        // Click en card: flip si ya está activa, centrar si no
+        pricingCards.forEach((card) => {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('a')) return;
+
+                if (!card.classList.contains('active')) {
+                    const index = Array.from(pricingCards).indexOf(card);
+                    const cardWidth = card.offsetWidth + 16;
+                    pricingGrid.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+                } else {
+                    card.classList.toggle('flipped');
+                }
+            });
+        });
+
+        // Inicializar
+        updateActiveCard(pricingGrid, pricingCards, dotsContainer, 'pricing-dot');
+    }
+
+    // --- FUNCIÓN AUXILIAR: Detectar card activa ---
+    function updateActiveCard(container, cards, dotsContainer, dotClass) {
+        const containerCenter = container.scrollLeft + container.offsetWidth / 2;
+        let closestCard = null;
+        let closestDist = Infinity;
+        let closestIndex = 0;
+
+        cards.forEach((card, i) => {
+            const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+            const dist = Math.abs(containerCenter - cardCenter);
+            if (dist < closestDist) {
+                closestDist = dist;
+                closestCard = card;
+                closestIndex = i;
+            }
+        });
+
+        // Actualizar clases active
+        cards.forEach((card, i) => {
+            card.classList.toggle('active', card === closestCard);
+        });
+
+        // Actualizar dots
+        const dots = dotsContainer.querySelectorAll('.' + dotClass);
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === closestIndex);
+        });
+    }
 })();
 
