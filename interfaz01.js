@@ -6,11 +6,7 @@ const CONFIG = {
         number: '51908536493',
         message: 'Hola INFALL, estoy interesado en una consulta gratis para un proyecto web profesional.'
     },
-    emailJS: {
-        publicKey: 'tu_public_key',       // ← Reemplazar con tu Public Key de EmailJS
-        serviceID: 'tu_service_id',       // ← Reemplazar con tu Service ID
-        templateID: 'tu_template_id'      // ← Reemplazar con tu Template ID
-    }
+    email: 'ghtoxis@gmail.com'
 };
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -627,18 +623,13 @@ document.querySelectorAll('.flip-card').forEach(card => {
 })();
 
 // ============================================================
-// 10. Formulario de Cotización con EmailJS
+// 10. Formulario de Cotización con FormSubmit
 // ============================================================
 (function () {
     const form = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
 
     if (!form) return;
-
-    // Inicializar EmailJS con tu Public Key
-    if (typeof emailjs !== 'undefined' && CONFIG.emailJS.publicKey !== 'tu_public_key') {
-        emailjs.init(CONFIG.emailJS.publicKey);
-    }
 
     function validateEmail(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -651,7 +642,7 @@ document.querySelectorAll('.flip-card').forEach(card => {
         formMessage.style.display = 'block';
         setTimeout(() => {
             formMessage.style.display = 'none';
-        }, 6000);
+        }, 8000);
     }
 
     form.addEventListener('submit', function (e) {
@@ -663,6 +654,7 @@ document.querySelectorAll('.flip-card').forEach(card => {
         const tipoProyecto = form.querySelector('#tipo_proyecto').value;
         const descripcion = form.querySelector('#descripcion').value.trim();
         const presupuesto = form.querySelector('#presupuesto').value;
+        const botcheck = form.querySelector('input[name="botcheck"]');
 
         if (!nombre || !email || !tipoProyecto || !descripcion) {
             showMessage('Por favor completa todos los campos obligatorios.', 'error');
@@ -674,43 +666,66 @@ document.querySelectorAll('.flip-card').forEach(card => {
             return;
         }
 
+        // Honeypot spam check
+        if (botcheck && botcheck.checked) {
+            showMessage('✅ Cotización enviada con éxito. Te contactaremos en menos de 24 horas.', 'success');
+            form.reset();
+            return;
+        }
+
         const submitBtn = form.querySelector('.btn-submit');
         const originalHTML = submitBtn.innerHTML;
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span class="btn-loading"></span> Enviando...';
 
-        const templateParams = {
-            nombre: nombre,
-            email: email,
-            telefono: telefono || 'No especificado',
-            tipo_proyecto: tipoProyecto,
-            descripcion: descripcion,
-            presupuesto: presupuesto || 'No especificado'
+        // Enviar con FormSubmit (AJAX JSON endpoint)
+        const payload = {
+            Nombre: nombre,
+            Email: email,
+            Teléfono: telefono || 'No especificado',
+            'Tipo de Proyecto': tipoProyecto,
+            Descripción: descripcion,
+            Presupuesto: presupuesto || 'No especificado',
+            _subject: '🔔 Nueva Cotización — ' + tipoProyecto + ' | INFALL',
+            _captcha: 'false'
         };
 
-        if (typeof emailjs === 'undefined' || CONFIG.emailJS.publicKey === 'tu_public_key') {
-            // Modo simulación — EmailJS no configurado
-            setTimeout(() => {
-                showMessage('Cotización simulada. Configura tus credenciales EmailJS en CONFIG.emailJS.', 'success');
-                form.reset();
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalHTML;
-            }, 800);
-            return;
-        }
+        fetch('https://formsubmit.co/ajax/' + CONFIG.email, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error de servidor');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const messageText = (data.message || '').toLowerCase();
+            const isActivationPending = messageText.includes('activate') || messageText.includes('activación') || messageText.includes('activation');
 
-        emailjs.send(CONFIG.emailJS.serviceID, CONFIG.emailJS.templateID, templateParams)
-            .then(() => {
-                showMessage('Cotización enviada con éxito. Te contactaremos en menos de 24 horas.', 'success');
+            if (data.success === 'true' || data.success === true || isActivationPending) {
+                if (isActivationPending) {
+                    showMessage('📧 ¡Casi listo! Por favor revisa tu bandeja de entrada en ghtoxis@gmail.com y haz clic en "Activate Form" para activar el envío de correos.', 'success');
+                } else {
+                    showMessage('✅ Cotización enviada con éxito. Te contactaremos en menos de 24 horas.', 'success');
+                }
                 form.reset();
-            })
-            .catch(() => {
-                showMessage('Ocurrió un error al enviar. Intenta de nuevo o escríbenos por WhatsApp.', 'error');
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalHTML;
-            });
+            } else {
+                showMessage('Ocurrió un error al enviar: ' + (data.message || 'Intenta de nuevo.'), 'error');
+            }
+        })
+        .catch(() => {
+            showMessage('Ocurrió un error de conexión. Intenta de nuevo o escríbenos por WhatsApp.', 'error');
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalHTML;
+        });
     });
 })();
 
