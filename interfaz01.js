@@ -1122,3 +1122,687 @@ document.querySelectorAll('.flip-card').forEach(card => {
     }
 })();
 
+// ============================================================
+// 14. SISTEMA DE ACCESIBILIDAD GLOBAL
+// ============================================================
+(function () {
+    const htmlEl = document.documentElement;
+    
+    // Diccionario de traducción para el menú y navegación
+    const dictionary = {
+        es: {
+            title: "Menú de accesibilidad",
+            langLabel: "Idioma: Español",
+            profileLabel: "Perfil de accesibilidad",
+            profileDefault: "Seleccionar perfil...",
+            profileVisual: "Discapacidad Visual",
+            profileAdhd: "TDAH (Enfoque)",
+            profileCognitive: "Cognitivo / Dislexia",
+            profileMotor: "Motor / Teclado",
+            profileCustom: "Personalizado",
+            cardTextSize: "Tamaño de texto",
+            cardContrast: "Contrastes",
+            cardCursor: "Cursor",
+            cardReadingMask: "Máscara de lectura",
+            cardDyslexia: "Dislexia amigable",
+            cardLineHeight: "Interlineado",
+            reset: "Restablecer"
+        },
+        en: {
+            title: "Accessibility Menu",
+            langLabel: "Language: English",
+            profileLabel: "Accessibility Profile",
+            profileDefault: "Select profile...",
+            profileVisual: "Visual Impairment",
+            profileAdhd: "ADHD (Reading focus)",
+            profileCognitive: "Cognitive / Dyslexia",
+            profileMotor: "Motor / Keyboard",
+            profileCustom: "Custom",
+            cardTextSize: "Text Size",
+            cardContrast: "Contrast",
+            cardCursor: "Cursor Size",
+            cardReadingMask: "Reading Mask",
+            cardDyslexia: "Dyslexia Friendly",
+            cardLineHeight: "Line Spacing",
+            reset: "Reset All"
+        }
+    };
+
+    // Configuración de perfiles predefinidos
+    const profiles = {
+        none: {},
+        visual: {
+            fontSize: 2,
+            contrast: 1,
+            cursor: 1,
+            readingMask: 0,
+            dyslexia: 0,
+            lineHeight: 0,
+            focusHighlight: 0
+        },
+        adhd: {
+            fontSize: 0,
+            contrast: 0,
+            cursor: 0,
+            readingMask: 1,
+            dyslexia: 0,
+            lineHeight: 0,
+            focusHighlight: 0
+        },
+        cognitive: {
+            fontSize: 1,
+            contrast: 0,
+            cursor: 0,
+            readingMask: 0,
+            dyslexia: 1,
+            lineHeight: 1,
+            focusHighlight: 0
+        },
+        motor: {
+            fontSize: 0,
+            contrast: 0,
+            cursor: 0,
+            readingMask: 0,
+            dyslexia: 0,
+            lineHeight: 0,
+            focusHighlight: 1
+        },
+        custom: {}
+    };
+
+    // Estado por defecto
+    let accessibilityState = {
+        lang: 'es',
+        profile: 'none',
+        fontSize: 0,       // 0 a 3
+        contrast: 0,       // 0 a 3
+        cursor: 0,         // 0 a 2
+        readingMask: 0,    // 0 a 1
+        dyslexia: 0,       // 0 a 1
+        lineHeight: 0,      // 0 a 2
+        focusHighlight: 0   // 0 a 1
+    };
+
+    // Selectores fallback para el escalado de fuentes (CORS)
+    const fontScaleFallbackSelectors = [
+        'body', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'a', 'li', 'button', 'input', 'label',
+        '.description', '.logo-text', 'nav a', '.btn-nav', '.btn-slide-cta', '.btn-slide-ghost',
+        '.slide-title', '.slide-desc', '.service-card h3', '.service-card p', '.about-text p',
+        '.stat-counter-num', '.portfolio-card-body h3', '.portfolio-card-body p',
+        '.footer-col h4', '.footer-col a', '.footer-col p', '.whatsapp-toast', '.why-us-card h3', '.why-us-card p',
+        '.pricing-header h3', '.pricing-header p', '.pricing-price', '.pricing-features li'
+    ];
+
+    // Cargar estado guardado
+    function loadState() {
+        const saved = localStorage.getItem('accessibility_settings');
+        if (saved) {
+            try {
+                accessibilityState = JSON.parse(saved);
+            } catch (e) {
+                console.error("No se pudo cargar el estado de accesibilidad:", e);
+            }
+        }
+    }
+
+    // Guardar estado en localStorage
+    function saveState() {
+        localStorage.setItem('accessibility_settings', JSON.stringify(accessibilityState));
+    }
+
+    // Inyectar la estructura del Widget en el DOM
+    function injectWidget() {
+        // Crear FAB (Botón flotante)
+        const fab = document.createElement('button');
+        fab.className = 'accessibility-fab';
+        fab.id = 'accessibility-fab';
+        fab.setAttribute('aria-label', 'Abrir menú de accesibilidad');
+        fab.setAttribute('title', 'Menú de accesibilidad');
+        fab.innerHTML = `<svg viewBox="0 0 24 24"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/></svg>`;
+        document.body.appendChild(fab);
+
+        // Crear Backdrop Overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'accessibility-overlay';
+        overlay.id = 'accessibility-overlay';
+        document.body.appendChild(overlay);
+
+        // Crear Sidebar Drawer
+        const drawer = document.createElement('div');
+        drawer.className = 'accessibility-drawer';
+        drawer.id = 'accessibility-drawer';
+        drawer.setAttribute('aria-hidden', 'true');
+        drawer.setAttribute('role', 'dialog');
+        drawer.setAttribute('aria-modal', 'true');
+        drawer.innerHTML = `
+            <div class="accessibility-header">
+                <div class="accessibility-header-title">
+                    <svg viewBox="0 0 24 24"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/></svg>
+                    <span id="acc-title-text">Menú de accesibilidad</span>
+                </div>
+                <button class="accessibility-close" id="accessibility-close" aria-label="Cerrar menú de accesibilidad">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div class="accessibility-body">
+                <div class="accessibility-select-group">
+                    <label class="accessibility-select-label" id="acc-lang-label" for="acc-lang-select">Idioma: Español</label>
+                    <div class="accessibility-select-wrapper">
+                        <select class="accessibility-select" id="acc-lang-select">
+                            <option value="es">Español</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="accessibility-select-group">
+                    <label class="accessibility-select-label" id="acc-profile-label" for="acc-profile-select">Perfil de accesibilidad</label>
+                    <div class="accessibility-select-wrapper">
+                        <select class="accessibility-select" id="acc-profile-select">
+                            <option value="none" id="acc-profile-default">Seleccionar perfil...</option>
+                            <option value="visual" id="acc-profile-visual">Discapacidad Visual</option>
+                            <option value="adhd" id="acc-profile-adhd">TDAH (Enfoque de lectura)</option>
+                            <option value="cognitive" id="acc-profile-cognitive">Cognitivo / Dislexia</option>
+                            <option value="motor" id="acc-profile-motor">Motor / Teclado</option>
+                            <option value="custom" id="acc-profile-custom">Personalizado</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="accessibility-grid">
+                    <div class="accessibility-card" id="acc-card-size" data-type="fontSize">
+                        <div class="accessibility-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M9 4v3h5v12h3V7h5V4H9zm-6 8h3v7h3v-7h3V9H3v3z"/></svg>
+                        </div>
+                        <span class="accessibility-card-label" id="acc-label-size">Tamaño de texto</span>
+                        <div class="accessibility-bar" data-segments="3">
+                            <div class="accessibility-segment"></div>
+                            <div class="accessibility-segment"></div>
+                            <div class="accessibility-segment"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="accessibility-card" id="acc-card-contrast" data-type="contrast">
+                        <div class="accessibility-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8v16z"/></svg>
+                        </div>
+                        <span class="accessibility-card-label" id="acc-label-contrast">Contrastes</span>
+                        <div class="accessibility-bar" data-segments="3">
+                            <div class="accessibility-segment"></div>
+                            <div class="accessibility-segment"></div>
+                            <div class="accessibility-segment"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="accessibility-card" id="acc-card-cursor" data-type="cursor">
+                        <div class="accessibility-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M5.92 3.11a1 1 0 0 1 1.63-.44l13.12 11.23a1 1 0 0 1-.5 1.76h-5.92l4.88 7.32a1 1 0 0 1-1.66 1.11l-4.88-7.32-3.88 3.88a1 1 0 0 1-1.7-.71V3.11z"/></svg>
+                        </div>
+                        <span class="accessibility-card-label" id="acc-label-cursor">Cursor</span>
+                        <div class="accessibility-bar" data-segments="2">
+                            <div class="accessibility-segment"></div>
+                            <div class="accessibility-segment"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="accessibility-card" id="acc-card-mask" data-type="readingMask">
+                        <div class="accessibility-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"/></svg>
+                        </div>
+                        <span class="accessibility-card-label" id="acc-label-mask">Máscara de lectura</span>
+                        <div class="accessibility-bar" data-segments="1">
+                            <div class="accessibility-segment"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="accessibility-card" id="acc-card-dyslexia" data-type="dyslexia">
+                        <div class="accessibility-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M9.62 5.5h2.76L16 16h-2.3l-1.07-3.07H7.36L6.3 16H4L7.62 5.5zm.77 1.83L8.03 11.2h3.94l-1.58-3.87zM16 13h5.5l-4.5 4.5h4.5v1.5H16l4.5-4.5H16V13z"/></svg>
+                        </div>
+                        <span class="accessibility-card-label" id="acc-label-dyslexia">Dislexia amigable</span>
+                        <div class="accessibility-bar" data-segments="1">
+                            <div class="accessibility-segment"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="accessibility-card" id="acc-card-spacing" data-type="lineHeight">
+                        <div class="accessibility-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M10 5h11v2H10V5zm0 12h11v2H10v-2zm0-6h11v2H10v-2zM3 5.5l3.5-3.5L10 5.5H7v13h3l-3.5 3.5L3 18.5h3v-13H3z"/></svg>
+                        </div>
+                        <span class="accessibility-card-label" id="acc-label-spacing">Interlineado</span>
+                        <div class="accessibility-bar" data-segments="2">
+                            <div class="accessibility-segment"></div>
+                            <div class="accessibility-segment"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accessibility-footer">
+                <button class="accessibility-reset" id="accessibility-reset">
+                    <svg viewBox="0 0 24 24"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                    <span id="acc-reset-text">Restablecer</span>
+                </button>
+            </div>
+        `;
+        document.body.appendChild(drawer);
+    }
+
+    // Actualizar la máscara de lectura con la posición Y del puntero
+    function updateMaskPosition(e) {
+        htmlEl.style.setProperty('--mask-y', e.clientY + 'px');
+    }
+
+    // Algoritmo avanzado para escalar tamaños de fuente leyendo stylesheets
+    function applyFontScaling(level) {
+        const scaleMap = [1.0, 1.15, 1.30, 1.45];
+        const multiplier = scaleMap[level];
+        
+        let styleTag = document.getElementById('accessibility-text-scale');
+        if (styleTag) styleTag.remove();
+        
+        if (level === 0) {
+            htmlEl.style.zoom = '';
+            const drawer = document.getElementById('accessibility-drawer');
+            const fab = document.getElementById('accessibility-fab');
+            if (drawer) drawer.style.zoom = '';
+            if (fab) fab.style.zoom = '';
+            return;
+        }
+        
+        let cssRulesApplied = false;
+        let css = '';
+        
+        try {
+            for (let i = 0; i < document.styleSheets.length; i++) {
+                let sheet = document.styleSheets[i];
+                if (sheet.href && !sheet.href.includes(window.location.host) && !sheet.href.startsWith('/') && !sheet.href.startsWith(window.location.origin)) {
+                    continue;
+                }
+                
+                let rules;
+                try {
+                    rules = sheet.cssRules || sheet.rules;
+                } catch (e) {
+                    continue; // CORS block
+                }
+                
+                if (!rules) continue;
+                
+                function parseRulesList(ruleList) {
+                    let tempCss = '';
+                    for (let j = 0; j < ruleList.length; j++) {
+                        let rule = ruleList[j];
+                        if (rule.type === CSSRule.MEDIA_RULE) {
+                            let mediaRules = parseRulesList(rule.cssRules);
+                            if (mediaRules) {
+                                tempCss += `@media ${rule.media.mediaText} {\n${mediaRules}\n}\n`;
+                            }
+                        } else if (rule.style && rule.style.fontSize) {
+                            let selector = rule.selectorText;
+                            let fontSize = rule.style.fontSize;
+                            
+                            if (selector && (selector.includes('accessibility') || selector.includes('acc-') || selector.includes('.accessibility-'))) {
+                                continue;
+                            }
+                            
+                            if (fontSize.endsWith('px')) {
+                                let px = parseFloat(fontSize);
+                                tempCss += `${selector} { font-size: ${(px * multiplier).toFixed(1)}px !important; }\n`;
+                            } else if (fontSize.endsWith('rem')) {
+                                let rem = parseFloat(fontSize);
+                                tempCss += `${selector} { font-size: ${(rem * multiplier).toFixed(2)}rem !important; }\n`;
+                            } else if (fontSize.endsWith('em')) {
+                                let em = parseFloat(fontSize);
+                                tempCss += `${selector} { font-size: ${(em * multiplier).toFixed(2)}em !important; }\n`;
+                            }
+                        }
+                    }
+                    return tempCss;
+                }
+                
+                css += parseRulesList(rules);
+            }
+            
+            if (css.trim().length > 0) {
+                styleTag = document.createElement('style');
+                styleTag.id = 'accessibility-text-scale';
+                styleTag.innerHTML = css;
+                document.head.appendChild(styleTag);
+                cssRulesApplied = true;
+            }
+        } catch (error) {
+            console.warn("Error leyendo hojas de estilo, usando fallback zoom:", error);
+        }
+        
+        if (!cssRulesApplied) {
+            htmlEl.style.zoom = multiplier;
+            const drawer = document.getElementById('accessibility-drawer');
+            const fab = document.getElementById('accessibility-fab');
+            if (drawer) drawer.style.zoom = (1 / multiplier).toFixed(3);
+            if (fab) fab.style.zoom = (1 / multiplier).toFixed(3);
+        }
+    }
+
+    // Traducir los enlaces de navegación del sitio web
+    function applySiteTranslation(lang) {
+        const navMenu = document.getElementById('nav-menu');
+        if (navMenu) {
+            const links = navMenu.querySelectorAll('a:not(.dropdown-trigger)');
+            const triggers = navMenu.querySelectorAll('.dropdown-trigger');
+            
+            const translations = {
+                es: {
+                    inicio: "Inicio",
+                    quienes: "Quiénes Somos",
+                    portafolio: "Portafolio",
+                    servicios: "Servicios"
+                },
+                en: {
+                    inicio: "Home",
+                    quienes: "About Us",
+                    portafolio: "Portfolio",
+                    servicios: "Services"
+                }
+            };
+            
+            const t = translations[lang];
+            links.forEach(link => {
+                const href = link.getAttribute('href');
+                if (!href) return;
+                if (href.includes('index.html') || href === '#' || href === 'index.html') {
+                    link.textContent = t.inicio;
+                } else if (href.includes('quienes-somos.html')) {
+                    link.textContent = t.quienes;
+                } else if (href.includes('portfolio.html')) {
+                    link.textContent = t.portafolio;
+                }
+            });
+            
+            triggers.forEach(trigger => {
+                const href = trigger.getAttribute('href');
+                if (href && href.includes('servicios.html')) {
+                    trigger.textContent = t.servicios;
+                }
+            });
+        }
+        
+        // Traducir el botón de cotización en el header
+        const ctaNavBtn = document.querySelector('.nav-actions .btn-nav');
+        if (ctaNavBtn) {
+            const svg = ctaNavBtn.querySelector('svg');
+            ctaNavBtn.innerHTML = '';
+            if (svg) ctaNavBtn.appendChild(svg);
+            ctaNavBtn.appendChild(document.createTextNode(lang === 'es' ? ' Cotizar Proyecto' : ' Get a Quote'));
+        }
+    }
+
+    // Traducir las etiquetas del menú de accesibilidad
+    function updateTranslations(lang) {
+        const t = dictionary[lang];
+        if (!t) return;
+        
+        document.getElementById('acc-title-text').textContent = t.title;
+        document.getElementById('acc-lang-label').textContent = t.langLabel;
+        document.getElementById('acc-profile-label').textContent = t.profileLabel;
+        document.getElementById('acc-profile-default').textContent = t.profileDefault;
+        document.getElementById('acc-profile-visual').textContent = t.profileVisual;
+        document.getElementById('acc-profile-adhd').textContent = t.profileAdhd;
+        document.getElementById('acc-profile-cognitive').textContent = t.profileCognitive;
+        document.getElementById('acc-profile-motor').textContent = t.profileMotor;
+        document.getElementById('acc-profile-custom').textContent = t.profileCustom;
+        document.getElementById('acc-label-size').textContent = t.cardTextSize;
+        document.getElementById('acc-label-contrast').textContent = t.cardContrast;
+        document.getElementById('acc-label-cursor').textContent = t.cardCursor;
+        document.getElementById('acc-label-mask').textContent = t.cardReadingMask;
+        document.getElementById('acc-label-dyslexia').textContent = t.cardDyslexia;
+        document.getElementById('acc-label-spacing').textContent = t.cardLineHeight;
+        document.getElementById('acc-reset-text').textContent = t.reset;
+    }
+
+    // Actualizar visualmente los elementos en el Drawer
+    function updateUIElements() {
+        const profileSelect = document.getElementById('acc-profile-select');
+        if (profileSelect) profileSelect.value = accessibilityState.profile;
+        
+        const langSelect = document.getElementById('acc-lang-select');
+        if (langSelect) langSelect.value = accessibilityState.lang;
+        
+        const cards = document.querySelectorAll('.accessibility-card');
+        cards.forEach(card => {
+            const type = card.getAttribute('data-type');
+            const level = accessibilityState[type];
+            
+            card.classList.toggle('active', level > 0);
+            
+            const segments = card.querySelectorAll('.accessibility-segment');
+            segments.forEach((seg, i) => {
+                seg.classList.toggle('active', i < level);
+            });
+        });
+    }
+
+    // Aplicar los ajustes guardados al DOM
+    function applySettings() {
+        // 1. Tamaño de texto
+        applyFontScaling(accessibilityState.fontSize);
+        
+        // 2. Contrastes
+        htmlEl.classList.remove('acc-contrast-high', 'acc-monochrome', 'acc-inverted');
+        if (accessibilityState.contrast === 1) {
+            htmlEl.classList.add('acc-contrast-high');
+        } else if (accessibilityState.contrast === 2) {
+            htmlEl.classList.add('acc-monochrome');
+        } else if (accessibilityState.contrast === 3) {
+            htmlEl.classList.add('acc-inverted');
+        }
+        
+        // 3. Cursore gigante
+        htmlEl.classList.remove('acc-cursor-1', 'acc-cursor-2');
+        if (accessibilityState.cursor === 1) {
+            htmlEl.classList.add('acc-cursor-1');
+        } else if (accessibilityState.cursor === 2) {
+            htmlEl.classList.add('acc-cursor-2');
+        }
+        
+        // 4. Máscara de lectura
+        let mask = document.getElementById('accessibility-reading-mask');
+        if (!mask) {
+            mask = document.createElement('div');
+            mask.id = 'accessibility-reading-mask';
+            mask.className = 'accessibility-reading-mask';
+            document.body.appendChild(mask);
+        }
+        if (accessibilityState.readingMask === 1) {
+            mask.style.display = 'block';
+            window.addEventListener('mousemove', updateMaskPosition);
+        } else {
+            mask.style.display = 'none';
+            window.removeEventListener('mousemove', updateMaskPosition);
+        }
+        
+        // 5. Dislexia amigable
+        htmlEl.classList.remove('acc-dyslexia');
+        if (accessibilityState.dyslexia === 1) {
+            htmlEl.classList.add('acc-dyslexia');
+            let fontLink = document.getElementById('dyslexia-font-link');
+            if (!fontLink) {
+                fontLink = document.createElement('link');
+                fontLink.id = 'dyslexia-font-link';
+                fontLink.rel = 'stylesheet';
+                fontLink.href = 'https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic.css';
+                document.head.appendChild(fontLink);
+            }
+        }
+        
+        // 6. Line height / Interlineado
+        htmlEl.classList.remove('acc-line-height-1', 'acc-line-height-2');
+        if (accessibilityState.lineHeight === 1) {
+            htmlEl.classList.add('acc-line-height-1');
+        } else if (accessibilityState.lineHeight === 2) {
+            htmlEl.classList.add('acc-line-height-2');
+        }
+        
+        // 7. Navegación por teclado focus highlight
+        htmlEl.classList.remove('acc-focus-highlight');
+        if (accessibilityState.focusHighlight === 1) {
+            htmlEl.classList.add('acc-focus-highlight');
+        }
+        
+        // 8. Actualizar interfaces
+        updateUIElements();
+        updateTranslations(accessibilityState.lang);
+        applySiteTranslation(accessibilityState.lang);
+    }
+
+    // Cerrar y abrir el Drawer
+    function openDrawer() {
+        const drawer = document.getElementById('accessibility-drawer');
+        const overlay = document.getElementById('accessibility-overlay');
+        drawer.classList.add('open');
+        overlay.classList.add('open');
+        drawer.setAttribute('aria-hidden', 'false');
+        
+        window.lastActiveElement = document.activeElement;
+        const closeBtn = document.getElementById('accessibility-close');
+        if (closeBtn) closeBtn.focus();
+        
+        document.addEventListener('keydown', handleKeyPress);
+    }
+
+    function closeDrawer() {
+        const drawer = document.getElementById('accessibility-drawer');
+        const overlay = document.getElementById('accessibility-overlay');
+        drawer.classList.remove('open');
+        overlay.classList.remove('open');
+        drawer.setAttribute('aria-hidden', 'true');
+        
+        if (window.lastActiveElement) {
+            window.lastActiveElement.focus();
+        }
+        
+        document.removeEventListener('keydown', handleKeyPress);
+    }
+
+    // Atrapar el foco en el menú (WCAG)
+    function handleKeyPress(e) {
+        const drawer = document.getElementById('accessibility-drawer');
+        if (e.key === 'Escape') {
+            closeDrawer();
+            return;
+        }
+        
+        if (e.key === 'Tab') {
+            const focusables = drawer.querySelectorAll('select, button, a, [tabindex="0"]');
+            if (focusables.length === 0) return;
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+            
+            if (e.shiftKey) {
+                if (document.activeElement === first) {
+                    last.focus();
+                    e.preventDefault();
+                }
+            } else {
+                if (document.activeElement === last) {
+                    first.focus();
+                    e.preventDefault();
+                }
+            }
+        }
+    }
+
+    // Resetear a valores iniciales
+    function resetToDefault() {
+        accessibilityState = {
+            lang: accessibilityState.lang, // preservar idioma
+            profile: 'none',
+            fontSize: 0,
+            contrast: 0,
+            cursor: 0,
+            readingMask: 0,
+            dyslexia: 0,
+            lineHeight: 0,
+            focusHighlight: 0
+        };
+        applySettings();
+        saveState();
+    }
+
+    // Inicialización del Widget al cargar la página
+    function init() {
+        loadState();
+        injectWidget();
+        applySettings();
+        
+        // Agregar manejadores de eventos
+        const fab = document.getElementById('accessibility-fab');
+        const closeBtn = document.getElementById('accessibility-close');
+        const overlay = document.getElementById('accessibility-overlay');
+        const langSelect = document.getElementById('acc-lang-select');
+        const profileSelect = document.getElementById('acc-profile-select');
+        const resetBtn = document.getElementById('accessibility-reset');
+        
+        fab.addEventListener('click', openDrawer);
+        closeBtn.addEventListener('click', closeDrawer);
+        overlay.addEventListener('click', closeDrawer);
+        
+        langSelect.addEventListener('change', function () {
+            accessibilityState.lang = this.value;
+            applySettings();
+            saveState();
+        });
+        
+        profileSelect.addEventListener('change', function () {
+            const selectedProfile = this.value;
+            if (selectedProfile !== 'none' && selectedProfile !== 'custom') {
+                const pSettings = profiles[selectedProfile];
+                for (let key in pSettings) {
+                    accessibilityState[key] = pSettings[key];
+                }
+                accessibilityState.profile = selectedProfile;
+            } else if (selectedProfile === 'none') {
+                resetToDefault();
+                return;
+            } else if (selectedProfile === 'custom') {
+                accessibilityState.profile = 'custom';
+            }
+            applySettings();
+            saveState();
+        });
+        
+        // Manejador de clics en las tarjetas
+        const cards = document.querySelectorAll('.accessibility-card');
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const type = card.getAttribute('data-type');
+                const current = accessibilityState[type];
+                const segments = parseInt(card.querySelector('.accessibility-bar').getAttribute('data-segments'), 10);
+                const next = (current + 1) % (segments + 1);
+                
+                accessibilityState[type] = next;
+                accessibilityState.profile = 'custom';
+                applySettings();
+                saveState();
+            });
+            
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+        });
+        
+        resetBtn.addEventListener('click', resetToDefault);
+    }
+    
+    // Iniciar el script
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+
