@@ -428,9 +428,14 @@ window.addEventListener('load', () => {
     const ctx = canvas.getContext('2d');
     let particles = [];
     let animationId;
+    let canvasWidth = 0;
+    let canvasHeight = 0;
+    let isVisible = false;
 
     function resizeCanvas() {
         const rect = wrapper.getBoundingClientRect();
+        canvasWidth = rect.width;
+        canvasHeight = rect.height;
         canvas.width = rect.width * window.devicePixelRatio;
         canvas.height = rect.height * window.devicePixelRatio;
         canvas.style.width = rect.width + 'px';
@@ -440,11 +445,11 @@ window.addEventListener('load', () => {
 
     function createParticles() {
         particles = [];
-        const count = Math.floor(wrapper.getBoundingClientRect().width / 80);
+        const count = Math.floor(canvasWidth / 80);
         for (let i = 0; i < count; i++) {
             particles.push({
-                x: Math.random() * wrapper.getBoundingClientRect().width,
-                y: Math.random() * wrapper.getBoundingClientRect().height,
+                x: Math.random() * canvasWidth,
+                y: Math.random() * canvasHeight,
                 size: Math.random() * 1.5 + 0.5,
                 speedX: (Math.random() - 0.5) * 0.3,
                 speedY: (Math.random() - 0.5) * 0.15,
@@ -455,19 +460,19 @@ window.addEventListener('load', () => {
     }
 
     function drawParticles() {
-        const w = wrapper.getBoundingClientRect().width;
-        const h = wrapper.getBoundingClientRect().height;
-        ctx.clearRect(0, 0, w, h);
+        if (!isVisible) return; // Pause drawing if not visible
+
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
         particles.forEach((p, i) => {
             p.x += p.speedX;
             p.y += p.speedY;
             p.pulse += 0.02;
 
-            if (p.x < 0) p.x = w;
-            if (p.x > w) p.x = 0;
-            if (p.y < 0) p.y = h;
-            if (p.y > h) p.y = 0;
+            if (p.x < 0) p.x = canvasWidth;
+            if (p.x > canvasWidth) p.x = 0;
+            if (p.y < 0) p.y = canvasHeight;
+            if (p.y > canvasHeight) p.y = 0;
 
             const currentOpacity = p.opacity * (0.7 + Math.sin(p.pulse) * 0.3);
 
@@ -499,7 +504,19 @@ window.addEventListener('load', () => {
 
     resizeCanvas();
     createParticles();
-    drawParticles();
+
+    // IntersectionObserver to pause/resume animation based on visibility
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            isVisible = entry.isIntersecting;
+            if (isVisible) {
+                cancelAnimationFrame(animationId);
+                drawParticles();
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    observer.observe(wrapper);
 
     window.addEventListener('resize', () => {
         resizeCanvas();
