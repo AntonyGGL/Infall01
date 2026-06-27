@@ -1,0 +1,23 @@
+# Environment Variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Netlify local files
+.netlify/
+netlify-cli/
+
+# Dependencies
+node_modules/
+
+# OS/Editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Local Dev logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

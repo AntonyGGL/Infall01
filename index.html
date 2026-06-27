@@ -44,6 +44,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Space+Grotesk:wght@500;700&display=swap"
         rel="stylesheet">
@@ -164,6 +165,7 @@
                         </a>
                     </div>
                 </div>
+                <a href="dominios.html">Dominios</a>
                 <a href="portfolio.html">Portafolio</a>
             </nav>
             <div class="nav-actions">
@@ -1007,12 +1009,9 @@
                             </svg></span>E-commerce integrado</li>
                 </ul>
                 <div class="pricing-cta">
-                    <a href="cotizacion.html" class="btn-pricing-outline">Cotizar Landing Page<svg width="16"
-                            height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                            <polyline points="12 5 19 12 12 19" />
-                        </svg></a>
+                    <button class="btn-pricing-outline open-domain-prompt" data-plan-price="390" data-plan-name="Landing Page">
+                        Añadir al Carrito <i class="ri-shopping-cart-2-line"></i>
+                    </button>
                 </div>
             </div>
             <!-- Plan Profesional -->
@@ -1061,12 +1060,9 @@
                             </svg></span>E-commerce con carrito</li>
                 </ul>
                 <div class="pricing-cta">
-                    <a href="cotizacion.html" class="btn-pricing-primary">Cotizar Ahora<svg width="16" height="16"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                            <polyline points="12 5 19 12 12 19" />
-                        </svg></a>
+                    <button class="btn-pricing-primary open-domain-prompt" data-plan-price="990" data-plan-name="Web Profesional">
+                        Añadir al Carrito <i class="ri-shopping-cart-2-fill"></i>
+                    </button>
                     <p class="pricing-note"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="10" />
@@ -1119,12 +1115,9 @@
                             </svg></span>Soporte post-lanzamiento</li>
                 </ul>
                 <div class="pricing-cta">
-                    <a href="cotizacion.html" class="btn-pricing-outline">Cotizar Web App<svg width="16" height="16"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                            <polyline points="12 5 19 12 12 19" />
-                        </svg></a>
+                    <button class="btn-pricing-outline open-domain-prompt" data-plan-price="2490" data-plan-name="Web App a Medida">
+                        Añadir al Carrito <i class="ri-shopping-cart-2-line"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -1216,10 +1209,49 @@
             </p>
         </div>
     </footer>
-    <!-- Cursor personalizado glow -->
+
+    <!-- Modal ¿Desea Dominio? (Golden Ratio Design) -->
+    <div id="domainPromptModal" class="modal hidden">
+        <div class="modal-content golden-modal">
+            <button class="modal-close" id="closeDomainPrompt"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+            
+            <!-- Left Side: 61.8% (Golden Ratio) -->
+            <div class="golden-left">
+                <div class="golden-icon-wrapper">
+                    <i class="ri-earth-line"></i>
+                </div>
+                <h3 class="golden-title">Complementa tu <span class="text-gradient-orange">Plan Web</span></h3>
+                <p class="golden-desc">
+                    Estás a punto de solicitar el plan <strong id="promptPlanName" style="color: #fff;"></strong>.<br>
+                    Para que tu sitio web funcione en internet, necesitas una dirección única (como <i>minegocio.com</i>).
+                </p>
+                <div class="golden-features">
+                    <span><i class="ri-check-line text-yellow"></i> Presencia profesional inmediata</span>
+                    <span><i class="ri-check-line text-yellow"></i> Integración 100% garantizada</span>
+                </div>
+            </div>
+
+            <!-- Right Side: 38.2% (Golden Ratio) -->
+            <div class="golden-right">
+                <h4 class="golden-action-title">¿Deseas buscar tu dominio ahora?</h4>
+                <div class="golden-actions">
+                    <button id="btnYesDomain" class="btn-primary golden-btn-main">
+                        <i class="ri-search-line"></i> Sí, buscar mi dominio ideal
+                    </button>
+                    <div class="golden-divider"><span>O continuar sin dominio</span></div>
+                    <button id="btnNoDomain" class="btn-outline golden-btn-alt">
+                        Solo quiero el diseño web <i class="ri-whatsapp-line"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-glow" id="cursor-glow"></div>
-    <script src="interfaz01.js?v=6" defer></script>
+    <script src="cart.js"></script>
+    <script src="interfaz01.js?v=7" defer></script>
 </body>
 
 </html>

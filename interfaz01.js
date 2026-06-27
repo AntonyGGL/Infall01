@@ -1815,6 +1815,63 @@ document.querySelectorAll('.flip-card').forEach(card => {
         resetBtn.addEventListener('click', resetToDefault);
     }
     
+// ==========================================
+// Integración Carrito Dominios (Pricing)
+// ==========================================
+const pricingBtns = document.querySelectorAll('.open-domain-prompt');
+const domainModal = document.getElementById('domainPromptModal');
+const closeDomainModal = document.getElementById('closeDomainPrompt');
+const btnYesDomain = document.getElementById('btnYesDomain');
+const btnNoDomain = document.getElementById('btnNoDomain');
+const promptPlanName = document.getElementById('promptPlanName');
+
+let pendingPlanPrice = 0;
+let pendingPlanName = "";
+
+if (pricingBtns.length > 0 && domainModal) {
+    pricingBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            pendingPlanPrice = btn.getAttribute('data-plan-price');
+            pendingPlanName = btn.getAttribute('data-plan-name');
+
+            // Save to cart immediately so badge updates
+            if (window.InfallCart) {
+                window.InfallCart.setPlan(pendingPlanName, pendingPlanPrice);
+            }
+
+            promptPlanName.textContent = pendingPlanName;
+            domainModal.classList.remove('hidden');
+        });
+    });
+
+    closeDomainModal.addEventListener('click', () => {
+        domainModal.classList.add('hidden');
+    });
+
+    domainModal.addEventListener('click', (e) => {
+        if (e.target === domainModal) domainModal.classList.add('hidden');
+    });
+
+    btnYesDomain.addEventListener('click', () => {
+        // Plan is already in localStorage. Navigate to dominios page.
+        window.location.href = `dominios.html?fromPlan=1`;
+    });
+
+    btnNoDomain.addEventListener('click', () => {
+        // Send to WhatsApp with just the plan, no domain
+        if (window.InfallCart) {
+            // Temporarily remove domain to send plan-only message
+            const cart = window.InfallCart.get();
+            const savedDomain = cart.domain;
+            cart.domain = null;
+            const message = `Hola INFALL, me gustaría cotizar el plan web: ${pendingPlanName} (S/ ${pendingPlanPrice}) sin dominio personalizado.`;
+            window.open(`https://wa.me/${window.InfallCart.WHATSAPP}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+        domainModal.classList.add('hidden');
+    });
+}
+    
     // Iniciar el script
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Dominios | INFALL</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div class="domain-search-section">
+        <div class="container">
+            <div class="search-header">
+                <span class="badge">NUEVO SERVICIO</span>
+                <h2>Encuentra el dominio perfecto para tu negocio</h2>
+                <p>Busca tu dominio y asegúralo hoy mismo. Extensiones .com, .net, .org y más.</p>
+            </div>
+
+            <div class="search-container">
+                <form id="domainSearchForm" class="search-box">
+                    <div class="input-wrapper">
+                        <i class="ri-global-line"></i>
+                        <input type="text" id="domainInput" placeholder="Ejemplo: minegocio.com" required autocomplete="off">
+                    </div>
+                    <button type="submit" id="searchBtn">
+                        <span class="btn-text">Buscar</span>
+                        <div class="spinner hidden" id="searchSpinner"></div>
+                    </button>
+                </form>
+                <div id="errorMsg" class="error-msg hidden"></div>
+            </div>
+
+            <div id="resultCard" class="result-card hidden">
+                <div class="result-content">
+                    <div class="domain-info">
+                        <i id="resultIcon" class="ri-check-line"></i>
+                        <div>
+                            <h3 id="resultDomain">midominio.com</h3>
+                            <p id="resultStatus">¡Está disponible!</p>
+                        </div>
+                    </div>
+                    <div class="action-area">
+                        <div class="price-box" id="priceBox">
+                            <span class="currency">S/</span>
+                            <span class="amount">149</span>
+                            <span class="period">/año</span>
+                        </div>
+                        <a href="#" id="whatsappBtn" class="whatsapp-btn">
+                            <i class="ri-whatsapp-line"></i> Comprar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <i class="ri-shield-check-line"></i>
+                    <span>Protección de privacidad incluida</span>
+                </div>
+                <div class="feature">
+                    <i class="ri-rocket-line"></i>
+                    <span>Activación inmediata</span>
+                </div>
+                <div class="feature">
+                    <i class="ri-customer-service-2-line"></i>
+                    <span>Soporte 24/7 en español</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

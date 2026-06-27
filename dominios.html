@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    
+    <title>Registro de Dominios | INFALL Systems Engineering</title>
+    <meta name="description" content="Busca y registra tu dominio ideal para tu negocio en Perú y el mundo.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="interfaz01.css?v=15">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="domain-searcher/styles.css">
+    <script>
+        (function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+    </script>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <div class="cyber-grid"></div>
+    <div class="cyber-glows">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+
+    <header id="main-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-text">INFALL <span class="logo-dot"></span></div>
+                <span class="sub">SYSTEMS ENGINEERING</span>
+            </a>
+            <nav id="nav-menu">
+                <a href="index.html">Inicio</a>
+                <a href="quienes-somos.html">Quiénes Somos</a>
+                <div class="nav-dropdown">
+                    <a href="servicios.html" class="dropdown-trigger active" aria-current="page">Servicios</a>
+                    <div class="dropdown-menu">
+                        <a href="servicios.html#landing-pages" class="dropdown-item">
+                            <span class="service-icon"></span>
+                            <span>Landing Pages</span>
+                        </a>
+                        <a href="servicios.html#ecommerce" class="dropdown-item">
+                            <span class="service-icon"></span>
+                            <span>Catálogos y E-commerce</span>
+                        </a>
+                        <a href="servicios.html#web-corporativa" class="dropdown-item">
+                            <span class="service-icon"></span>
+                            <span>Web Corporativa</span>
+                        </a>
+                        <a href="servicios.html#web-apps" class="dropdown-item">
+                            <span class="service-icon"></span>
+                            <span>Web Apps a Medida</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="dominios.html" class="active" aria-current="page">Dominios</a>
+                <a href="portfolio.html">Portafolio</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar modo claro/oscuro">
+                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="cart-toggle" id="navCartBtn" aria-label="Ver Carrito">
+                    <i class="ri-shopping-cart-2-line"></i>
+                    <span class="cart-badge hidden" id="navCartBadge">0</span>
+                </button>
+                <a href="cotizacion.html" class="btn-nav">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Cotizar Proyecto
+                </a>
+            </div>
+            <button class="menu-toggle" id="menu-toggle-btn" aria-label="Abrir Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===================== HERO DE DOMINIOS ===================== -->
+    <section class="srv-hero" id="main-content">
+        <div class="srv-hero-bg"></div>
+        <div class="srv-hero-content">
+            <span class="section-tag">Tu Presencia en la Web</span>
+            <h1 class="srv-hero-title">Asegura el<br><span class="text-gradient-orange">Nombre de tu Negocio</span></h1>
+            <p class="srv-hero-desc">Busca, encuentra y registra tu dominio con nosotros de forma rápida y segura.</p>
+        </div>
+        <div class="srv-hero-scroll">
+            <span>Scroll</span>
+            <div class="srv-scroll-line"></div>
+        </div>
+    </section>
+
+
+
+    <!-- ===================== SERVICIO 5: VENTA DE DOMINIOS ===================== -->
+    <section class="domain-search-section srv-detail-section" id="venta-dominios">
+        <div class="container">
+            <div class="search-header reveal">
+                <span class="badge">NUEVO SERVICIO</span>
+                <h2 style="font-family: 'Sora', sans-serif; font-size: 2.5rem; margin-bottom: 1rem; font-weight: 700; background: linear-gradient(to right, #fff, #9CA3AF); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Encuentra el dominio perfecto para tu negocio</h2>
+                <p style="color: var(--text-muted); font-size: 1.125rem;">Busca tu dominio y asegúralo hoy mismo. Extensiones .com, .net, .org y más.</p>
+            </div>
+
+            <div class="search-container reveal">
+                <form id="domainSearchForm" class="search-box">
+                    <div class="input-wrapper">
+                        <i class="ri-global-line"></i>
+                        <input type="text" id="domainInput" placeholder="Ejemplo: minegocio" required autocomplete="off">
+                        <select id="domainExt" class="ext-select">
+                            <option value=".com">.com</option>
+                            <option value=".pe">.pe</option>
+                            <option value=".com.pe">.com.pe</option>
+                            <option value=".net">.net</option>
+                            <option value=".org">.org</option>
+                            <option value=".es">.es</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="searchBtn">
+                        <span class="btn-text">Buscar</span>
+                        <div class="spinner hidden" id="searchSpinner"></div>
+                    </button>
+                </form>
+                <div id="errorMsg" class="error-msg hidden"></div>
+            </div>
+
+            <div id="resultCard" class="result-card hidden reveal">
+                <div class="result-content">
+                    <div class="domain-info-container">
+                        <div class="domain-info">
+                            <i id="resultIcon" class="ri-check-line"></i>
+                            <div>
+                                <h3 id="resultDomain">midominio.com</h3>
+                                <p id="resultStatus">¡Está disponible!</p>
+                            </div>
+                        </div>
+                        <div class="year-selector hidden" id="yearSelector">
+                            <div class="year-pill active" data-years="1" data-discount="0">
+                                <span class="yr-num">1 año</span>
+                            </div>
+                            <div class="year-pill" data-years="2" data-discount="0.05">
+                                <span class="yr-num">2 años</span>
+                                <span class="yr-discount">-5%</span>
+                            </div>
+                            <div class="year-pill" data-years="3" data-discount="0.10">
+                                <span class="yr-num">3 años</span>
+                                <span class="yr-discount">-10%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-area">
+                        <div class="price-box" id="priceBox">
+                            <span class="currency">S/</span>
+                            <span class="amount">149</span>
+                            <span class="period">/año</span>
+                        </div>
+                        <button id="whatsappBtn" class="whatsapp-btn">
+                            Continuar <i class="ri-arrow-right-line"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features reveal">
+                <div class="feature">
+                    <i class="ri-shield-check-line"></i>
+                    <span>Protección de privacidad incluida</span>
+                </div>
+                <div class="feature">
+                    <i class="ri-rocket-line"></i>
+                    <span>Activación inmediata</span>
+                </div>
+                <div class="feature">
+                    <i class="ri-customer-service-2-line"></i>
+                    <span>Soporte 24/7 en español</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CTA FINAL ===================== -->
+    <section class="srv-final-cta">
+        <div class="srv-cta-container">
+            <div class="srv-cta-glow"></div>
+            <span class="section-tag">¿Listo para comenzar?</span>
+            <h2 class="srv-cta-title">Tu próximo proyecto digital <br><span class="text-gradient-orange">empieza aquí</span></h2>
+            <p class="srv-cta-desc">Cuéntanos tu idea. En menos de 24 horas tienes una propuesta técnica y económica personalizada, sin compromisos.</p>
+            <div class="srv-cta-actions">
+                <a href="cotizacion.html" class="btn-primary">
+                    Cotizar Mi Proyecto
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <a href="https://wa.me/51908536493?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web" target="_blank" class="btn-secondary srv-wa-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    Hablar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer role="contentinfo">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <div class="logo-text">INFALL <span class="logo-dot"></span></div>
+                    <span class="sub" style="font-size: 8px;">SYSTEMS ENGINEERING</span>
+                </a>
+                <p style="margin-top: 15px;">
+                    Transformamos ideas y necesidades complejas en arquitecturas y plataformas digitales de alta velocidad, seguras y optimizadas para Google a nivel global.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="footer-title">Navegación</h4>
+                <div class="footer-links">
+                    <a href="index.html">Inicio</a>
+                    <a href="quienes-somos.html">Quiénes Somos</a>
+                    <a href="servicios.html">Servicios</a>
+                    <a href="portfolio.html">Portafolio</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="footer-title">Contacto Directo</h4>
+                <div class="footer-contact-info">
+                    <a href="mailto:infallcm@gmail.com" class="contact-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        infallcm@gmail.com
+                    </a>
+                    <a href="https://wa.me/51908536493?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web%20profesional" target="_blank" class="contact-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        +51 908 536 493
+                    </a>
+                    <a href="https://wa.me/51922996170?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web" target="_blank" class="contact-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        +51 922 996 170
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-legal">
+                <h4 class="footer-legal-title">Legal</h4>
+                <div class="footer-legal-links">
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Políticas de Privacidad</a>
+                </div>
+                <a href="#" class="footer-reclamaciones-block" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                    <span>Libro de<br>Reclamaciones</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 INFALL Systems Engineering. Todos los derechos reservados a nivel global.</p>
+            <p style="font-size: 12px; color: var(--text-muted);">
+                Desarrollado con precisión arquitectónica
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal Carrito -->
+    <div id="cartModal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModalBtn"><i class="ri-close-line"></i></button>
+            <h3 class="modal-title">Tu carrito</h3>
+            
+            <div class="cart-item">
+                <div class="cart-item-header">
+                    <h4>Dominio <span id="cartDomainName">midominio.com</span></h4>
+                </div>
+                <div class="cart-item-details">
+                    <span class="cart-pill" id="cartYearPill">1 año</span>
+                    <span class="cart-price">S/ <span id="cartDomainPrice">59</span></span>
+                </div>
+            </div>
+
+            <!-- Resumen del plan pre-seleccionado -->
+            <div class="cart-item hidden" id="cartPlanSummary" style="margin-top: 1rem;">
+                <div class="cart-item-header">
+                    <h4>Plan Web <span id="cartPlanSummaryName" style="color: var(--text-white);"></span></h4>
+                </div>
+                <div class="cart-item-details">
+                    <span class="cart-price">S/ <span id="cartPlanSummaryPrice"></span></span>
+                </div>
+            </div>
+
+            <div class="cart-step" id="planSelectionStep">
+                <h4>Paso 2 &middot; Agrega tu plan web</h4>
+                <p>Elige un plan para publicar tu sitio:</p>
+                
+                <div class="plan-options">
+                    <label class="plan-option">
+                        <input type="radio" name="webPlan" value="0" checked data-name="Ninguno (Solo Dominio)">
+                        <div class="plan-box">
+                            <div class="plan-info">
+                                <div class="plan-icon"><i class="ri-link-unlink-m"></i></div>
+                                <span class="plan-name">Solo dominio</span>
+                            </div>
+                            <span class="plan-price">S/ 0</span>
+                        </div>
+                    </label>
+                    <label class="plan-option">
+                        <input type="radio" name="webPlan" value="390" data-name="Landing Page">
+                        <div class="plan-box">
+                            <div class="plan-info">
+                                <div class="plan-icon"><i class="ri-pages-line"></i></div>
+                                <div class="plan-text">
+                                    <span class="plan-name">Landing Page</span>
+                                    <span class="plan-desc">Diseño 100% personalizado</span>
+                                </div>
+                            </div>
+                            <span class="plan-price">S/ 390</span>
+                        </div>
+                    </label>
+                    <label class="plan-option">
+                        <input type="radio" name="webPlan" value="990" data-name="Web Profesional">
+                        <div class="plan-box">
+                            <div class="plan-info">
+                                <div class="plan-icon"><i class="ri-layout-masonry-line"></i></div>
+                                <div class="plan-text">
+                                    <span class="plan-name">Web Profesional</span>
+                                    <span class="plan-desc">Múltiples páginas</span>
+                                </div>
+                            </div>
+                            <span class="plan-price">S/ 990</span>
+                        </div>
+                    </label>
+                    <label class="plan-option">
+                        <input type="radio" name="webPlan" value="2490" data-name="Web App a Medida">
+                        <div class="plan-box premium-box">
+                            <div class="plan-info">
+                                <div class="plan-icon"><i class="ri-store-2-line"></i></div>
+                                <div class="plan-text">
+                                    <span class="plan-name">Web App <i class="ri-star-fill" style="color:#FBBF24;font-size:12px;"></i></span>
+                                    <span class="plan-desc">Sistemas complejos</span>
+                                </div>
+                            </div>
+                            <span class="plan-price">S/ 2,490</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total</span>
+                    <span class="total-price">S/ <span id="cartTotalPrice">59</span></span>
+                </div>
+                <a href="#" id="finalWhatsappBtn" class="whatsapp-btn full-width">
+                    Continuar al pedido &rarr;
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="interfaz01.js?v=6" defer></script>
+    <script>
+        // Activar pill de nav según scroll
+        (function () {
+            const pills = document.querySelectorAll('.srv-pill');
+            const sections = document.querySelectorAll('.srv-detail-section[id]');
+            if (!pills.length || !sections.length) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        pills.forEach(p => p.classList.remove('active'));
+                        const id = entry.target.getAttribute('id');
+                        const activePill = document.querySelector('.srv-pill[href="#' + id + '"]');
+                        if (activePill) activePill.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.4 });
+
+            sections.forEach(s => observer.observe(s));
+        })();
+    </script>
+</body>
+    <script src="cart.js"></script>
+    <script src="domain-searcher/script.js" defer></script>
+</html>
