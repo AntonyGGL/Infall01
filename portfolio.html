@@ -65,6 +65,7 @@
                         </a>
                     </div>
                 </div>
+                <a href="dominios.html">Dominios</a>
                 <a href="portfolio.html" class="active" aria-current="page">Portafolio</a>
             </nav>
             <div class="nav-actions">
@@ -426,6 +427,34 @@
     </footer>
     <script src="cart.js"></script>
     <script src="interfaz01.js?v=7" defer></script>
+
+    <!-- WIDGET LATERAL: PROPUESTA A TU MEDIDA -->
+    <div class="sidebar-widget" id="sidebar-budget-widget" role="complementary" aria-label="Cotizador rápido">
+        <div class="sw-tab" id="sw-tab" aria-label="Abrir cotizador">
+            <span class="sw-tab-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+            <span class="sw-tab-label">Cotizar</span>
+        </div>
+        <div class="sw-panel" id="sw-panel">
+            <div class="sw-panel-header">
+                <div class="sw-panel-title"><div class="sw-panel-dot"></div>Propuesta a tu Medida</div>
+                <button class="sw-close" id="sw-close" aria-label="Cerrar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+            </div>
+            <p class="sw-panel-desc">Cuéntanos tu idea y te contactamos en menos de 24h.</p>
+            <form class="sw-form" id="sw-form" novalidate>
+                <div class="sw-group"><label for="sw-nombre">Tu nombre</label><input type="text" id="sw-nombre" placeholder="Ej: María García" autocomplete="name" required></div>
+                <div class="sw-group">
+                    <label for="sw-budget">Presupuesto ideal</label>
+                    <div class="sw-slider-wrap"><input type="range" id="sw-budget" min="200" max="5000" step="50" value="500" class="sw-range"><div class="sw-budget-display"><span class="sw-currency">S/</span><span class="sw-amount" id="sw-amount-display">500</span></div></div>
+                    <div class="sw-range-labels"><span>S/ 200</span><span>S/ 5,000+</span></div>
+                </div>
+                <div class="sw-group"><label for="sw-proyecto">¿Qué necesitas?</label><textarea id="sw-proyecto" rows="2" placeholder="Ej: Tienda online para vender ropa..." required></textarea></div>
+                <button type="submit" class="sw-submit" id="sw-submit"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.85 11.85 0 0012.04.03c-6.56 0-11.9 5.34-11.9 11.93 0 2.1.56 4.14 1.63 5.92L.99 23.64l5.95-1.56A11.82 11.82 0 0012.04 24c6.56 0 11.9-5.34 11.9-11.93 0-3.19-1.24-6.18-3.47-8.25z"/></svg> Enviar por WhatsApp</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        (function(){const W='51908536493',w=document.getElementById('sidebar-budget-widget'),cb=document.getElementById('sw-close'),r=document.getElementById('sw-budget'),a=document.getElementById('sw-amount-display'),f=document.getElementById('sw-form');if(!w)return;let o=false,t;function op(){o=true;w.classList.add('sw-open');}function cl(){o=false;w.classList.remove('sw-open');}w.addEventListener('mouseenter',()=>{clearTimeout(t);op();});w.addEventListener('mouseleave',()=>{t=setTimeout(()=>{if(o)cl();},300);});if(cb)cb.addEventListener('click',e=>{e.stopPropagation();cl();});if(r&&a){const ip=((r.value-r.min)/(r.max-r.min))*100;r.style.setProperty('--range-pct',ip+'%');r.addEventListener('input',function(){const n=parseInt(this.value);a.textContent=n>=5000?'5,000+':n.toLocaleString('es-PE');const p=((this.value-this.min)/(this.max-this.min))*100;this.style.setProperty('--range-pct',p+'%');});}if(f){f.addEventListener('submit',function(e){e.preventDefault();const n=document.getElementById('sw-nombre').value.trim(),b=r?r.value:'500',p=document.getElementById('sw-proyecto').value.trim();if(!n||!p){const el=!n?document.getElementById('sw-nombre'):document.getElementById('sw-proyecto');el.focus();el.classList.add('pbf-error');el.addEventListener('input',()=>el.classList.remove('pbf-error'),{once:true});return;}const bl=parseInt(b)>=5000?'S/ 5,000 o más':'S/ '+parseInt(b).toLocaleString('es-PE');const msg=`Hola INFALL 👋, soy *${n}*.\n\nTengo un presupuesto de *${bl}* y me gustaría cotizar lo siguiente:\n\n📋 _${p}_\n\n¿Me pueden dar una propuesta personalizada?`;const btn=document.getElementById('sw-submit');btn.classList.add('pbf-sending');btn.textContent='✓ Enviando...';setTimeout(()=>{window.open('https://wa.me/'+W+'?text='+encodeURIComponent(msg),'_blank');btn.classList.remove('pbf-sending');btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.85 11.85 0 0012.04.03c-6.56 0-11.9 5.34-11.9 11.93 0 2.1.56 4.14 1.63 5.92L.99 23.64l5.95-1.56A11.82 11.82 0 0012.04 24c6.56 0 11.9-5.34 11.9-11.93 0-3.19-1.24-6.18-3.47-8.25z"/></svg> Enviar por WhatsApp';f.reset();if(a)a.textContent='500';if(r){r.value=500;r.style.setProperty('--range-pct','15%');}},500);});}})();
+    </script>
 </body>
 
 </html>

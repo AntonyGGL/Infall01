@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+
+/* --- TRIGGER BUTTON --- */
+.acc-trigger {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #004d99; /* Azul de accesibilidad */
+    border: 2px solid #ffffff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 1250;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.acc-trigger:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 77, 153, 0.4), 0 0 0 4px rgba(0, 77, 153, 0.2);
+}
+
+.acc-trigger svg {
+    width: 32px;
+    height: 32px;
+    fill: #ffffff;
+}
+
+/* --- ACCESSIBILITY MODAL PANEL --- */
+.acc-panel {
+    position: fixed;
+    bottom: 90px;
+    left: 24px;
+    width: 380px;
+    background-color: #f8fafc;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    z-index: 1250;
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                visibility 0.3s;
+}
+
+.acc-panel.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Header */
+.acc-header {
+    background-color: #003666; /* Azul profundo */
+    color: #ffffff;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #004d99;
+}
+
+.acc-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.acc-header-title svg {
+    width: 24px;
+    height: 24px;
+    fill: #ffffff;
+}
+
+.acc-close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.acc-close:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.acc-close svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Body */
+.acc-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+/* Selectors Group */
+.acc-select-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.acc-select-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    margin: 0;
+}
+
+.acc-select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.acc-select {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    color: #0f172a;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+    font-weight: 500;
+}
+
+.acc-select:focus {
+    border-color: #004d99;
+    box-shadow: 0 0 0 3px rgba(0, 77, 153, 0.15);
+}
+
+.acc-select-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #64748b;
+    pointer-events: none;
+}
+
+/* Grid of Cards */
+.acc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.acc-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    user-select: none;
+}
+
+.acc-card:hover {
+    border-color: #004d99;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
+
+.acc-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0f172a;
+    height: 32px;
+}
+
+.acc-card-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+}
+
+.acc-card-icon.fill svg {
+    fill: currentColor;
+    stroke: none;
+}
+
+.acc-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Level Indicator Bars */
+.acc-indicator {
+    display: flex;
+    gap: 3px;
+    width: 50px;
+    height: 5px;
+    margin-top: 4px;
+}
+
+.acc-bar {
+    flex: 1;
+    height: 100%;
+    background-color: #e2e8f0;
+    border-radius: 10px;
+    transition: background-color 0.2s ease;
+}
+
+/* Active Bar States (scaled from 0 to 4 active bars) */
+.acc-card[data-level="1"] .acc-bar:nth-child(1) { background-color: #64748b; }
+.acc-card[data-level="2"] .acc-bar:nth-child(-n+2) { background-color: #64748b; }
+.acc-card[data-level="3"] .acc-bar:nth-child(-n+3) { background-color: #64748b; }
+.acc-card[data-level="4"] .acc-bar:nth-child(-n+4) { background-color: #64748b; }
+
+/* Special color for indicators when widget options are active */
+.acc-card.active {
+    border-color: #004d99;
+    background-color: #f0f7ff;
+}
+.acc-card.active .acc-card-icon {
+    color: #004d99;
+}
+.acc-card.active[data-level="1"] .acc-bar:nth-child(1) { background-color: #004d99; }
+.acc-card.active[data-level="2"] .acc-bar:nth-child(-n+2) { background-color: #004d99; }
+.acc-card.active[data-level="3"] .acc-bar:nth-child(-n+3) { background-color: #004d99; }
+.acc-card.active[data-level="4"] .acc-bar:nth-child(-n+4) { background-color: #004d99; }
+
+/* Footer */
+.acc-footer {
+    padding: 14px 20px;
+    background-color: #f1f5f9;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: center;
+}
+
+.acc-reset {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    color: #004d99;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.acc-reset:hover {
+    background-color: rgba(0, 77, 153, 0.08);
+}
+
+.acc-reset svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    transition: transform 0.4s ease;
+}
+
+.acc-reset:hover svg {
+    transform: rotate(-180deg);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+    .acc-panel {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+        max-height: 85vh;
+    }
+    .acc-trigger {
+        bottom: 16px;
+        left: 16px;
+        width: 50px;
+        height: 50px;
+    }
+    .acc-trigger svg {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+
+/* --- ACCESSIBILITY FUNCTIONALITY STYLE OVERRIDES --- */
+
+/* 1. TEXT SIZE SCALING (REM-based fluid overrides) */
+html.accessible-text-1 { font-size: 112% !important; }
+html.accessible-text-2 { font-size: 125% !important; }
+html.accessible-text-3 { font-size: 138% !important; }
+
+/* Dynamic application of scaling to avoid pixel-based lockups in the main content stylesheets */
+html[class*="accessible-text-"] body p,
+html[class*="accessible-text-"] body li,
+html[class*="accessible-text-"] body label,
+html[class*="accessible-text-"] body input,
+html[class*="accessible-text-"] body button:not(.acc-close):not(.acc-reset),
+html[class*="accessible-text-"] body textarea,
+html[class*="accessible-text-"] body select,
+html[class*="accessible-text-"] body td,
+html[class*="accessible-text-"] body th,
+html[class*="accessible-text-"] body a:not(.logo) {
+    font-size: 1rem !important;
+}
+
+html[class*="accessible-text-"] body span:not(.logo-dot):not(.window-dot):not(.badge-score):not(.counter-current):not(.counter-total):not(.why-us-card-num) {
+    font-size: 1rem !important;
+}
+
+html[class*="accessible-text-"] body h1 { font-size: 2.6rem !important; }
+html[class*="accessible-text-"] body h2 { font-size: 2.1rem !important; }
+html[class*="accessible-text-"] body h3 { font-size: 1.6rem !important; }
+html[class*="accessible-text-"] body h4 { font-size: 1.35rem !important; }
+html[class*="accessible-text-"] body h5 { font-size: 1.15rem !important; }
+html[class*="accessible-text-"] body h6 { font-size: 1.05rem !important; }
+
+
+/* 2. DYSLEXIA FRIENDLY MODE */
+body.accessible-dyslexic,
+body.accessible-dyslexic * {
+    font-family: 'Lexend', sans-serif !important;
+    letter-spacing: 0.05em !important;
+    word-spacing: 0.1em !important;
+}
+
+
+/* 3. CONTRAST STYLES */
+
+/* High Contrast: Dark / Yellow / Cyan */
+body.accessible-contrast-high {
+    background-color: #000000 !important;
+    background-image: none !important;
+    color: #ffffff !important;
+}
+
+body.accessible-contrast-high *:not(.acc-widget):not(.acc-widget *):not(.acc-panel):not(.acc-panel *) {
+    background-color: #000000 !important;
+    background-image: none !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    opacity: 1 !important;
+}
+
+body.accessible-contrast-high a:not(.acc-widget):not(.acc-widget *),
+body.accessible-contrast-high button:not(.acc-widget):not(.acc-widget *):not(.menu-toggle):not(.theme-toggle) {
+    color: #ffff00 !important;
+    text-decoration: underline !important;
+    border: 1px solid #ffff00 !important;
+}
+
+body.accessible-contrast-high h1:not(.acc-widget):not(.acc-widget *),
+body.accessible-contrast-high h2:not(.acc-widget):not(.acc-widget *),
+body.accessible-contrast-high h3:not(.acc-widget):not(.acc-widget *),
+body.accessible-contrast-high h4:not(.acc-widget):not(.acc-widget *),
+body.accessible-contrast-high h5:not(.acc-widget):not(.acc-widget *),
+body.accessible-contrast-high h6:not(.acc-widget):not(.acc-widget *),
+body.accessible-contrast-high strong:not(.acc-widget):not(.acc-widget *) {
+    color: #00ffff !important;
+}
+
+body.accessible-contrast-high img, 
+body.accessible-contrast-high video,
+body.accessible-contrast-high svg:not(.acc-widget svg) {
+    filter: contrast(1.4) !important;
+}
+
+/* Grayscale / Monochrome */
+html.accessible-contrast-mono {
+    filter: grayscale(100%) !important;
+}
+
+/* Invert Contrast */
+html.accessible-contrast-invert {
+    filter: invert(100%) hue-rotate(180deg) !important;
+}
+
+html.accessible-contrast-invert img,
+html.accessible-contrast-invert video,
+html.accessible-contrast-invert iframe,
+html.accessible-contrast-invert .browser-screen img,
+html.accessible-contrast-invert .laptop-screen img,
+html.accessible-contrast-invert svg:not(.acc-widget svg) {
+    filter: invert(100%) hue-rotate(180deg) !important;
+}
+
+
+/* 4. CURSOR OVERRIDES */
+
+/* Large Cursor */
+body.accessible-cursor-large,
+body.accessible-cursor-large * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cpath d='M0 0 L40 24 L24 28 L36 48 L28 52 L16 32 L8 40 Z' fill='black' stroke='white' stroke-width='3.5'/%3E%3C/svg%3E"), auto !important;
+}
+
+/* Contrast/Cyan Cursor */
+body.accessible-cursor-contrast,
+body.accessible-cursor-contrast * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cpath d='M0 0 L40 24 L24 28 L36 48 L28 52 L16 32 L8 40 Z' fill='%2300FFFF' stroke='black' stroke-width='3.5'/%3E%3C/svg%3E"), auto !important;
+}
+
+
+/* 5. LINE HEIGHT / SPACING */
+body.accessible-line-1,
+body.accessible-line-1 p,
+body.accessible-line-1 li {
+    line-height: 1.95 !important;
+}
+body.accessible-line-2,
+body.accessible-line-2 p,
+body.accessible-line-2 li {
+    line-height: 2.3 !important;
+}
+body.accessible-line-3,
+body.accessible-line-3 p,
+body.accessible-line-3 li {
+    line-height: 2.65 !important;
+}
+
+
+/* 6. READING MASK OVERLAY */
+.acc-reading-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: rgba(255, 140, 0, 0.15);
+    border-top: 3px solid #ff8c00;
+    border-bottom: 3px solid #ff8c00;
+    box-shadow: 0 0 25px rgba(255, 140, 0, 0.35);
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: 99999;
+    transform: translateY(-50%);
+    display: none;
+    transition: top 0.08s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Cyan color for high contrast mode or dynamic look */
+body.accessible-contrast-high .acc-reading-mask {
+    background: rgba(0, 255, 255, 0.15);
+    border-top-color: #00ffff;
+    border-bottom-color: #00ffff;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.35);
+}
+
+
+/* 7. FOCUS HIGHLIGHT OVERRIDES FOR MOTOR Presets */
+body.accessible-keyboard-highlight *:focus {
+    outline: 3px solid #ff8c00 !important;
+    outline-offset: 4px !important;
+    box-shadow: 0 0 15px rgba(255, 140, 0, 0.7) !important;
+}
+
+body.accessible-contrast-high.accessible-keyboard-highlight *:focus {
+    outline: 4px solid #00ffff !important;
+    outline-offset: 4px !important;
+}
+
+
+/* 8. COGNITIVE / ANIMATION STOPPER */
+body.accessible-no-motion,
+body.accessible-no-motion * {
+    animation: none !important;
+    transition: none !important;
+    animation-play-state: paused !important;
+}
