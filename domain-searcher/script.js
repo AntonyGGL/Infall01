@@ -46,8 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Show a welcome banner noting the pre-selected plan
         const banner = document.createElement("div");
         banner.id = "planBanner";
-        banner.style.cssText = "background:rgba(79,70,229,0.12);border:1px solid rgba(79,70,229,0.35);border-radius:12px;padding:0.75rem 1.25rem;margin-bottom:1.5rem;color:#e0e7ff;font-size:0.95rem;display:flex;align-items:center;gap:0.6rem;";
-        banner.innerHTML = "<i class=\"ri-shopping-cart-2-fill\" style=\"color:#818cf8;font-size:1.2rem;\"></i> Plan <strong style=\"color:#fff;\">" + savedCart.plan.name + " (S/ " + savedCart.plan.price + ")</strong>&nbsp;agregado. Ahora busca tu dominio ideal.";
+        banner.style.cssText = "background:rgba(255,140,0,0.10);border:1px solid rgba(255,140,0,0.32);border-radius:14px;padding:0.85rem 1.25rem;margin-bottom:1.5rem;color:#F1F5F9;font-size:0.95rem;display:flex;align-items:center;gap:0.6rem;";
+        banner.innerHTML = "<i class=\"ri-shopping-cart-2-fill\" style=\"color:#FF8C00;font-size:1.2rem;\"></i> Plan <strong style=\"color:#fff;\">" + savedCart.plan.name + " (S/ " + savedCart.plan.price + ")</strong>&nbsp;agregado. Ahora busca tu dominio ideal.";
         const container = document.querySelector(".search-container") || document.querySelector(".container");
         if (container) container.insertBefore(banner, container.firstChild);
 
@@ -73,8 +73,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             const response = await fetch("/.netlify/functions/check-domain?domain=" + encodeURIComponent(domain));
-            const data = await response.json();
-            if (!response.ok) throw new Error(data.error || "Error al consultar el dominio");
+
+            // Si el servidor no devuelve JSON (p. ej. una página 404 de Live Server),
+            // mostramos un mensaje claro en lugar del error técnico de parseo.
+            let data;
+            try {
+                data = await response.json();
+            } catch (parseError) {
+                throw new Error("El servicio de búsqueda no está disponible en este momento. Vuelve a intentarlo en unos minutos.");
+            }
+
+            if (!response.ok) throw new Error(data.error || "No pudimos verificar ese dominio. Inténtalo de nuevo.");
 
             const exchangeRate = 3.85;
             let priceUSD = data.price || 15.32;

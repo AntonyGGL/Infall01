@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="interfaz01.css?v=14">
+    <link rel="stylesheet" href="interfaz01.css?v=41">
     <link rel="stylesheet" href="domain-searcher/styles.css">
     <script>
         (function () { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); })();
@@ -31,6 +31,7 @@
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <div class="cyber-grid"></div>
+    <canvas class="page-particles-canvas" id="page-particles-canvas"></canvas>
     <div class="cyber-glows">
         <div class="glow-orb orb-1"></div>
         <div class="glow-orb orb-2"></div>
@@ -432,7 +433,7 @@
         </div>
     </footer>
     <script src="cart.js"></script>
-    <script src="interfaz01.js?v=7" defer></script>
+    <script src="interfaz01.js?v=9" defer></script>
 
     <!-- Modal ¿Desea Dominio? (Golden Ratio Design) -->
     <div id="domainPromptModal" class="modal hidden">
@@ -523,7 +524,7 @@
                     <textarea id="sw-proyecto" rows="2" placeholder="Ej: Tienda online para vender ropa..." required></textarea>
                 </div>
 
-                <button type="submit" class="sw-submit" id="sw-submit" style="background: transparent; color: var(--accent-orange); border: 1px solid var(--accent-orange);">
+                <button type="submit" class="sw-submit" id="sw-submit">
                     Añadir al Carrito <i class="ri-shopping-cart-2-line"></i>
                 </button>
             </form>

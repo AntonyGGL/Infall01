@@ -8,7 +8,7 @@
 
     <title>Quiénes Somos | INFALL Systems Engineering - Ingeniería Web desde Lima, Perú</title>
     <meta name="description"
-        content="Somos un equipo de desarrolladores web con más de 3 años de experiencia. Creamos páginas web modernas, rápidas y optimizadas para motores de búsqueda desde Perú para el mundo.">
+        content="Ingeniería web liderada por un desarrollador Full Stack con más de 4 años de experiencia en sistemas reales en producción. Páginas web modernas, rápidas y optimizadas para motores de búsqueda desde Perú para el mundo.">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="interfaz01.css?v=15">
+    <link rel="stylesheet" href="interfaz01.css?v=41">
     <link rel="stylesheet" href="domain-searcher/styles.css">
     <script>
         (function () { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); })();
@@ -31,6 +31,7 @@
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <div class="cyber-grid"></div>
+    <canvas class="page-particles-canvas" id="page-particles-canvas"></canvas>
     <div class="cyber-glows">
         <div class="glow-orb orb-1"></div>
         <div class="glow-orb orb-2"></div>
@@ -121,14 +122,15 @@
                 </div>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>Somos un pequeño equipo de desarrolladores web con más de 3 años de experiencia creando
-                            páginas web modernas, rápidas y optimizadas para motores de búsqueda.</p>
+                        <p>Somos la consultoría de ingeniería web que convierte tu negocio en una presencia digital
+                            sólida: páginas rápidas, seguras y optimizadas para que te encuentren en Google y
+                            conviertan visitas en clientes.</p>
                         <p>No usamos plantillas genéricas ni constructores lentos. Diseñamos cada proyecto desde cero
                             con código limpio y la infraestructura exacta que cada negocio necesita para destacar en
                             Google y captar clientes sin fronteras.</p>
                         <div class="about-stats">
                             <div class="stat-item">
-                                <span class="stat-number stat-counter-num" data-target="3" data-suffix="+">3+</span>
+                                <span class="stat-number stat-counter-num" data-target="4" data-suffix="+">4+</span>
                                 <span class="stat-label">Años de Experiencia</span>
                             </div>
                             <div class="stat-item">
@@ -182,178 +184,281 @@
             </div>
         </section>
 
-        <!-- Sección Pilares Técnicos -->
-        <section class="core-section reveal">
-            <div class="section-header">
-                <span class="section-tag">Nuestros Pilares Técnicos</span>
-                <h2 class="section-title" style="color: var(--text-white);">Ingeniería Diseñada para Ganar Clientes</h2>
+        <!-- Sección Fundador -->
+        <section class="founder-section reveal">
+            <div class="founder-photo-stage">
+                <div class="founder-waves" aria-hidden="true">
+                    <span class="founder-wave-ring"></span>
+                    <span class="founder-wave-ring"></span>
+                    <span class="founder-wave-ring"></span>
+                </div>
+                <div class="founder-fireflies" aria-hidden="true">
+                    <span class="firefly"></span>
+                    <span class="firefly"></span>
+                    <span class="firefly"></span>
+                    <span class="firefly"></span>
+                    <span class="firefly"></span>
+                    <span class="firefly"></span>
+                    <span class="firefly"></span>
+                    <span class="firefly"></span>
+                </div>
+                <div class="founder-photo-banner">
+                    <img src="nosotros_images/yeiser.jpg" alt="Yeiser Avila, Ingeniero de Sistemas y fundador de INFALL Systems Engineering" class="founder-photo" loading="lazy">
+                    <div class="founder-photo-scrim"></div>
+                    <div class="founder-photo-sheen" aria-hidden="true"></div>
+                    <div class="founder-photo-tag">
+                        <i class="ri-graduation-cap-fill"></i>
+                        <span>Ing. de Sistemas</span>
+                    </div>
+                    <div class="founder-photo-badge">
+                        <i class="ri-user-star-line"></i>
+                        <span>Fundador &amp; Líder Técnico</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="core-grid vertical-stack">
-                <div class="stack-item">
-                    <div class="stack-image" aria-hidden="false">
-                        <svg role="img" aria-label="Carga en Milisegundos" viewBox="0 0 320 220"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="g1" x1="0" x2="1">
-                                    <stop offset="0%" stop-color="#0ea5a4" />
-                                    <stop offset="100%" stop-color="#06b6d4" />
-                                </linearGradient>
-                            </defs>
-                            <rect width="320" height="220" rx="12" fill="url(#g1)" />
-                            <g transform="translate(32,38)" fill="#fff" font-family="sans-serif">
-                                <text x="0" y="24" font-size="20" font-weight="700">Carga en</text>
-                                <text x="0" y="54" font-size="32" font-weight="800">Milisegundos</text>
-                            </g>
-                        </svg>
-                    </div>
-
-                    <div class="flip-card" tabindex="0">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front info-card">
-                                <div class="card-icon-container">
-                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                                    </svg>
-                                </div>
-                                <h3>Carga en Milisegundos</h3>
-                                <p>Landing pages y plataformas optimizadas al extremo absoluto a nivel de código para
-                                    captar clientes potenciales de forma masiva sin esperas.</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <h4>Optimización técnica</h4>
-                                <p>Auditoría de performance, optimización de imágenes, lazy-loading, critical CSS y
-                                    configuración de CDN para máxima velocidad.</p>
-                            </div>
+            <div class="founder-body">
+                <div class="founder-info-col">
+                    <span class="section-tag">Quién Lidera tu Proyecto</span>
+                    <h2 class="section-title" style="color: var(--text-white);">Ing. Yeiser Avila, <span class="gradient-text">Desarrollador Full Stack</span></h2>
+                    <p class="founder-bio">
+                        Más de 4 años creando soluciones digitales para negocios reales: sistemas de gestión,
+                        plataformas con inteligencia artificial y aplicaciones web y móvil que ya funcionan hoy en
+                        empresas de transporte, comercio e instituciones educativas. Desde 2022 lidero cada proyecto
+                        de principio a fin diseño, desarrollo y puesta en marcha y pongo esa misma dedicación en
+                        cada cliente que confía en mí. 
+                    </p>
+                    <p class="founder-trust-line">
+                        <i class="ri-shield-check-fill"></i>
+                        Sin intermediarios ni equipos genéricos: trabajas con el mismo ingeniero que construyó y
+                        mantuvo en producción un ERP completo para una empresa de transporte durante casi 3 años.
+                    </p>
+                </div>
+                <div class="founder-credentials">
+                    <div class="founder-credential">
+                        <div class="founder-credential-icon">
+                            <i class="ri-code-s-slash-line"></i>
+                        </div>
+                        <div>
+                            <h4>Full Stack Real</h4>
+                            <p>React, Next.js, Node.js, TypeScript y PostgreSQL en sistemas que ya están en producción</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="stack-item reverse">
-                    <div class="stack-image">
-                        <svg role="img" aria-label="Ingeniería a Medida" viewBox="0 0 320 220"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="g2" x1="0" x2="1">
-                                    <stop offset="0%" stop-color="#f59e0b" />
-                                    <stop offset="100%" stop-color="#ef4444" />
-                                </linearGradient>
-                            </defs>
-                            <rect width="320" height="220" rx="12" fill="url(#g2)" />
-                            <g transform="translate(24,38)" fill="#0b1220" font-family="sans-serif">
-                                <text x="0" y="28" font-size="22" font-weight="700">Ingeniería</text>
-                                <text x="0" y="58" font-size="28" font-weight="700">a Medida</text>
-                            </g>
-                        </svg>
-                    </div>
-
-                    <div class="flip-card" tabindex="0">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front info-card">
-                                <div class="card-icon-container">
-                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                    </svg>
-                                </div>
-                                <h3>Ingeniería a Medida</h3>
-                                <p>No usamos plantillas genéricas o builders lentos. Diseñamos la infraestructura exacta
-                                    y limpia que tu negocio necesita para escalar.</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <h4>Arquitectura escalable</h4>
-                                <p>Microservicios, deploy automatizado y pipelines CI/CD para despliegues seguros y
-                                    repetibles.</p>
-                            </div>
+                    <div class="founder-credential">
+                        <div class="founder-credential-icon">
+                            <i class="ri-building-2-line"></i>
+                        </div>
+                        <div>
+                            <h4>+4 Años en Producción</h4>
+                            <p>ERP, automatización y plataformas con IA usados activamente por empresas reales</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="stack-item">
-                    <div class="stack-image">
-                        <svg role="img" aria-label="Alcance Global y SEO" viewBox="0 0 320 220"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="g3" x1="0" x2="1">
-                                    <stop offset="0%" stop-color="#6366f1" />
-                                    <stop offset="100%" stop-color="#8b5cf6" />
-                                </linearGradient>
-                            </defs>
-                            <rect width="320" height="220" rx="12" fill="url(#g3)" />
-                            <g transform="translate(18,36)" fill="#fff" font-family="sans-serif">
-                                <text x="0" y="28" font-size="20" font-weight="700">Alcance Global</text>
-                                <text x="0" y="56" font-size="20" font-weight="700">y SEO</text>
-                            </g>
-                        </svg>
-                    </div>
-
-                    <div class="flip-card" tabindex="0">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front info-card">
-                                <div class="card-icon-container">
-                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <line x1="18" y1="20" x2="18" y2="10"></line>
-                                        <line x1="12" y1="20" x2="12" y2="4"></line>
-                                        <line x1="6" y1="20" x2="6" y2="14"></line>
-                                    </svg>
-                                </div>
-                                <h3>Alcance Global y SEO</h3>
-                                <p>Estructuras persuasivas y semánticas, construidas de forma nativa para destacar en
-                                    motores de búsqueda y mercados internacionales.</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <h4>SEO y posicionamiento</h4>
-                                <p>Optimización on-page, estructura semántica, datos estructurados y estrategia de
-                                    contenido para mejorar visibilidad orgánica.</p>
-                            </div>
+                    <div class="founder-credential">
+                        <div class="founder-credential-icon">
+                            <i class="ri-robot-2-line"></i>
+                        </div>
+                        <div>
+                            <h4>IA en el Flujo de Desarrollo</h4>
+                            <p>Claude Code, OpenAI y herramientas modernas para construir más rápido sin perder calidad</p>
                         </div>
                     </div>
-                </div>
-
-                <div class="stack-item reverse">
-                    <div class="stack-image">
-                        <svg role="img" aria-label="Asesoría y Promoción Web" viewBox="0 0 320 220"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="g4" x1="0" x2="1">
-                                    <stop offset="0%" stop-color="#10b981" />
-                                    <stop offset="100%" stop-color="#06b6d4" />
-                                </linearGradient>
-                            </defs>
-                            <rect width="320" height="220" rx="12" fill="url(#g4)" />
-                            <g transform="translate(20,44)" fill="#fff" font-family="sans-serif">
-                                <text x="0" y="24" font-size="20" font-weight="700">Asesoría y</text>
-                                <text x="0" y="52" font-size="24" font-weight="800">Promoción Web</text>
-                            </g>
-                        </svg>
-                    </div>
-
-                    <div class="flip-card" tabindex="0">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front info-card">
-                                <div class="card-icon-container">
-                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"></path>
-                                    </svg>
-                                </div>
-                                <h3>Asesoría y Promoción</h3>
-                                <p>Además de la web, brindamos asesoría para promocionar tu sitio y atraer clientes
-                                    mediante campañas y tácticas probadas.</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <h4>Promoción y soporte</h4>
-                                <p>Campañas en redes, optimización de conversiones, integración con WhatsApp y
-                                    seguimiento analítico para mejorar ROI.</p>
-                            </div>
+                    <div class="founder-credential">
+                        <div class="founder-credential-icon">
+                            <i class="ri-graduation-cap-line"></i>
+                        </div>
+                        <div>
+                            <h4>Ingeniería de Sistemas (UPeU)</h4>
+                            <p>Último año, con investigación en machine learning aplicado a finanzas</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Features / Beneficios (Carrusel Intermedio) -->
+        <section class="benefits-banner-section reveal">
+            <div class="benefits-carousel-wrapper">
+                <div class="benefits-track">
+                    <!-- Grupo 1 -->
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-cyan">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                                <circle cx="12" cy="12" r="10" opacity="0.1" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h4>Carga en Milisegundos</h4>
+                        <p>Infraestructura veloz optimizada para retener usuarios y el máximo rendimiento.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-blue">
+                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <path d="M8 13h2" />
+                                <path d="M8 17h2" />
+                                <path d="M14 13h2" />
+                                <path d="M14 17h2" />
+                            </svg>
+                        </div>
+                        <h4>Ingeniería a Medida</h4>
+                        <p>Sistemas construidos desde cero adaptados exactamente a tu negocio.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-purple">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                <path d="M2 12h20" />
+                            </svg>
+                        </div>
+                        <h4>Alcance Global y SEO</h4>
+                        <p>Arquitectura pensada para dominar los motores de búsqueda y captar tráfico.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-orange">
+                                <polygon points="11 19 2 12 11 5 11 19" />
+                                <path d="M22 12A10 10 0 0 0 12 2v20a10 10 0 0 0 10-10z" />
+                            </svg>
+                        </div>
+                        <h4>Asesoría y Promoción</h4>
+                        <p>Estrategias digitales probadas para asegurar resultados y crecimiento real.</p>
+                    </div>
+
+                    <!-- Grupo 2 (Duplicado para animación infinita) -->
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-cyan">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                                <circle cx="12" cy="12" r="10" opacity="0.1" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h4>Carga en Milisegundos</h4>
+                        <p>Infraestructura veloz optimizada para retener usuarios y el máximo rendimiento.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-blue">
+                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <path d="M8 13h2" />
+                                <path d="M8 17h2" />
+                                <path d="M14 13h2" />
+                                <path d="M14 17h2" />
+                            </svg>
+                        </div>
+                        <h4>Ingeniería a Medida</h4>
+                        <p>Sistemas construidos desde cero adaptados exactamente a tu negocio.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-purple">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                <path d="M2 12h20" />
+                            </svg>
+                        </div>
+                        <h4>Alcance Global y SEO</h4>
+                        <p>Arquitectura pensada para dominar los motores de búsqueda y captar tráfico.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-orange">
+                                <polygon points="11 19 2 12 11 5 11 19" />
+                                <path d="M22 12A10 10 0 0 0 12 2v20a10 10 0 0 0 10-10z" />
+                            </svg>
+                        </div>
+                        <h4>Asesoría y Promoción</h4>
+                        <p>Estrategias digitales probadas para asegurar resultados y crecimiento real.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PLANTILLA SOCIO: reemplaza la foto, el nombre, la bio y las credenciales con los datos reales ===== -->
+        <section class="founder-section reveal">
+            <div class="founder-photo-stage">
+                <div class="founder-waves" aria-hidden="true">
+                    <span class="founder-wave-ring"></span>
+                    <span class="founder-wave-ring"></span>
+                    <span class="founder-wave-ring"></span>
+                </div>
+                <div class="founder-fireflies" aria-hidden="true">
+                    <span class="firefly"></span>
+                    <span class="firefly"></span>
+                    <span class="firefly"></span>
+                    <span class="firefly"></span>
+                    <span class="firefly"></span>
+                    <span class="firefly"></span>
+                    <span class="firefly"></span>
+                    <span class="firefly"></span>
+                </div>
+                <!-- Cuando tengas la foto, reemplaza este bloque por:
+                <img src="nosotros_images/SOCIO.jpg" alt="Nombre Apellido, Ingeniería de Sistemas y co-fundador de INFALL Systems Engineering" class="founder-photo" loading="lazy"> -->
+                <div class="founder-photo-banner founder-photo-banner--placeholder">
+                    <div class="founder-photo-placeholder">
+                        <i class="ri-image-add-line"></i>
+                        <span>Agrega aquí la foto de tu socio</span>
+                    </div>
+                    <div class="founder-photo-scrim"></div>
+                    <div class="founder-photo-tag">
+                        <i class="ri-graduation-cap-fill"></i>
+                        <span>Ing. de Sistemas</span>
+                    </div>
+                    <div class="founder-photo-badge">
+                        <i class="ri-user-star-line"></i>
+                        <span>Co-Fundador</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="founder-body">
+                <div class="founder-info-col">
+                    <span class="section-tag">Parte del Equipo</span>
+                    <h2 class="section-title" style="color: var(--text-white);">[Nombre Apellido], <span class="gradient-text">[Rol o Especialidad]</span></h2>
+                    <p class="founder-bio">
+                        [Describe aquí a tu socio en 3-4 líneas: su experiencia, qué aporta al equipo y por qué un
+                        cliente puede confiar en su trabajo. Usa un lenguaje simple, como en la bio de arriba.]
+                    </p>
+                    <p class="founder-trust-line">
+                        <i class="ri-shield-check-fill"></i>
+                        [Frase corta que genere confianza: un logro, un proyecto destacado o un compromiso con el cliente.]
+                    </p>
+                </div>
+                <div class="founder-credentials">
+                    <div class="founder-credential">
+                        <div class="founder-credential-icon">
+                            <i class="ri-code-s-slash-line"></i>
+                        </div>
+                        <div>
+                            <h4>[Habilidad o Stack Principal]</h4>
+                            <p>[Detalle breve de esa habilidad o tecnología]</p>
+                        </div>
+                    </div>
+                    <div class="founder-credential">
+                        <div class="founder-credential-icon">
+                            <i class="ri-graduation-cap-line"></i>
+                        </div>
+                        <div>
+                            <h4>Ingeniería de Sistemas (UPeU)</h4>
+                            <p>[Año que cursa / línea de investigación o especialización]</p>
+                        </div>
+                    </div>
+                    <div class="founder-credential">
+                        <div class="founder-credential-icon">
+                            <i class="ri-puzzle-line"></i>
+                        </div>
+                        <div>
+                            <h4>[Otra Credencial]</h4>
+                            <p>[Detalle breve de esa credencial o experiencia]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
     </main>
 
     <footer role="contentinfo">
@@ -528,7 +633,7 @@
                     <textarea id="sw-proyecto" rows="2" placeholder="Ej: Tienda online para vender ropa..." required></textarea>
                 </div>
 
-                <button type="submit" class="sw-submit" id="sw-submit" style="background: transparent; color: var(--accent-orange); border: 1px solid var(--accent-orange);">
+                <button type="submit" class="sw-submit" id="sw-submit">
                     Añadir al Carrito <i class="ri-shopping-cart-2-line"></i>
                 </button>
             </form>
@@ -629,7 +734,7 @@
         })();
     </script>
     <script src="cart.js"></script>
-    <script src="interfaz01.js?v=7" defer></script>
+    <script src="interfaz01.js?v=9" defer></script>
 </body>
 
 </html>

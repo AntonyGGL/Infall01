@@ -525,6 +525,234 @@ window.addEventListener('load', () => {
 })();
 
 // ============================================================
+// 8a. Partículas de Fondo — Toda la Página
+// ============================================================
+(function () {
+    const canvas = document.getElementById('page-particles-canvas');
+    if (!canvas) return;
+
+    const isMobile = window.innerWidth <= 768;
+
+    if (prefersReducedMotion || isMobile) {
+        canvas.style.display = 'none';
+        return;
+    }
+
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animationId;
+    let canvasWidth = 0;
+    let canvasHeight = 0;
+    let isPageVisible = true;
+
+    function resizeCanvas() {
+        canvasWidth = window.innerWidth;
+        canvasHeight = window.innerHeight;
+        canvas.width = canvasWidth * window.devicePixelRatio;
+        canvas.height = canvasHeight * window.devicePixelRatio;
+        canvas.style.width = canvasWidth + 'px';
+        canvas.style.height = canvasHeight + 'px';
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+
+    function createParticles() {
+        particles = [];
+        const count = Math.min(90, Math.floor((canvasWidth * canvasHeight) / 32000));
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x: Math.random() * canvasWidth,
+                y: Math.random() * canvasHeight,
+                size: Math.random() * 1.4 + 0.5,
+                speedX: (Math.random() - 0.5) * 0.15,
+                speedY: (Math.random() - 0.5) * 0.1,
+                opacity: Math.random() * 0.25 + 0.05,
+                pulse: Math.random() * Math.PI * 2,
+                color: Math.random() < 0.35 ? '0, 229, 255' : '255, 140, 0'
+            });
+        }
+    }
+
+    function drawParticles() {
+        if (!isPageVisible) return;
+
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+        particles.forEach((p, i) => {
+            p.x += p.speedX;
+            p.y += p.speedY;
+            p.pulse += 0.015;
+
+            if (p.x < 0) p.x = canvasWidth;
+            if (p.x > canvasWidth) p.x = 0;
+            if (p.y < 0) p.y = canvasHeight;
+            if (p.y > canvasHeight) p.y = 0;
+
+            const currentOpacity = p.opacity * (0.7 + Math.sin(p.pulse) * 0.3);
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${p.color}, ${currentOpacity})`;
+            ctx.fill();
+
+            for (let j = i + 1; j < particles.length; j++) {
+                const p2 = particles[j];
+                const dx = p.x - p2.x;
+                const dy = p.y - p2.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 110) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.strokeStyle = `rgba(255, 140, 0, ${0.035 * (1 - dist / 110)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        });
+
+        animationId = requestAnimationFrame(drawParticles);
+    }
+
+    resizeCanvas();
+    createParticles();
+    drawParticles();
+
+    document.addEventListener('visibilitychange', () => {
+        isPageVisible = !document.hidden;
+        if (isPageVisible) {
+            cancelAnimationFrame(animationId);
+            drawParticles();
+        }
+    });
+
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            resizeCanvas();
+            createParticles();
+        }, 200);
+    });
+})();
+
+// ============================================================
+// 8a-bis. Partículas — Sección Buscador de Dominios
+// ============================================================
+(function () {
+    const section = document.querySelector('.domain-search-section');
+    const canvas = document.getElementById('domain-particles-canvas');
+
+    if (!section || !canvas) return;
+
+    const isMobile = window.innerWidth <= 768;
+
+    if (prefersReducedMotion || isMobile) {
+        canvas.style.display = 'none';
+        return;
+    }
+
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animationId;
+    let canvasWidth = 0;
+    let canvasHeight = 0;
+    let isVisible = false;
+
+    function resizeCanvas() {
+        const rect = section.getBoundingClientRect();
+        canvasWidth = rect.width;
+        canvasHeight = rect.height;
+        canvas.width = canvasWidth * window.devicePixelRatio;
+        canvas.height = canvasHeight * window.devicePixelRatio;
+        canvas.style.width = canvasWidth + 'px';
+        canvas.style.height = canvasHeight + 'px';
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+
+    function createParticles() {
+        particles = [];
+        const count = Math.min(80, Math.floor((canvasWidth * canvasHeight) / 15000));
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x: Math.random() * canvasWidth,
+                y: Math.random() * canvasHeight,
+                size: Math.random() * 1.6 + 0.5,
+                speedX: (Math.random() - 0.5) * 0.18,
+                speedY: (Math.random() - 0.5) * 0.12,
+                opacity: Math.random() * 0.35 + 0.08,
+                pulse: Math.random() * Math.PI * 2,
+                color: Math.random() < 0.3 ? '34, 211, 238' : '255, 140, 0'
+            });
+        }
+    }
+
+    function drawParticles() {
+        if (!isVisible) return;
+
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+        particles.forEach((p, i) => {
+            p.x += p.speedX;
+            p.y += p.speedY;
+            p.pulse += 0.015;
+
+            if (p.x < 0) p.x = canvasWidth;
+            if (p.x > canvasWidth) p.x = 0;
+            if (p.y < 0) p.y = canvasHeight;
+            if (p.y > canvasHeight) p.y = 0;
+
+            const currentOpacity = p.opacity * (0.7 + Math.sin(p.pulse) * 0.3);
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${p.color}, ${currentOpacity})`;
+            ctx.fill();
+
+            for (let j = i + 1; j < particles.length; j++) {
+                const p2 = particles[j];
+                const dx = p.x - p2.x;
+                const dy = p.y - p2.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 110) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.strokeStyle = `rgba(255, 140, 0, ${0.05 * (1 - dist / 110)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        });
+
+        animationId = requestAnimationFrame(drawParticles);
+    }
+
+    resizeCanvas();
+    createParticles();
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            isVisible = entry.isIntersecting;
+            if (isVisible) {
+                cancelAnimationFrame(animationId);
+                drawParticles();
+            }
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(section);
+
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        createParticles();
+    });
+})();
+
+// ============================================================
 // 8b. Projects Carousel — Navegación Manual con Dots
 // ============================================================
 (function () {

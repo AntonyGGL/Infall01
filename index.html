@@ -48,7 +48,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Space+Grotesk:wght@500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="interfaz01.css?v=15">
+    <link rel="stylesheet" href="interfaz01.css?v=41">
     <link rel="stylesheet" href="domain-searcher/styles.css">
     <script>
         (function () { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); })();
@@ -123,12 +123,13 @@
     </script>
 </head>
 
-<body>
+<body class="page-home">
 
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <!-- Redes y partículas de fondo -->
     <div class="cyber-grid"></div>
+    <canvas class="page-particles-canvas" id="page-particles-canvas"></canvas>
     <div class="cyber-glows">
         <div class="glow-orb orb-1"></div>
         <div class="glow-orb orb-2"></div>
@@ -215,16 +216,16 @@
             <div class="slides-container" id="slides-container">
                 <div class="slide active" data-index="0">
                     <div class="slide-bg">
-                        <img src="dashboard-images/slide1.webp" alt="Consultoría Web Profesional - INFALL"
+                        <img src="dashboard-images/img1.jpg" alt="Oficina de INFALL Systems Engineering con equipo de desarrollo trabajando"
                             loading="eager">
                     </div>
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
-                        <span class="slide-tag">Desarrollo a Medida</span>
-                        <h2 class="slide-title">Código Limpio, <br><span class="text-gradient-orange">Resultados
-                                Reales</span></h2>
-                        <p class="slide-desc">Creamos páginas web y aplicaciones desde cero con la mejor ingeniería de
-                            software. Sin plantillas, sin límites.</p>
+                        <span class="slide-tag">Ingeniería de Software a Medida</span>
+                        <h2 class="slide-title">Tu Web No Es una Plantilla, <br>Es <span class="text-gradient-orange">Ingeniería
+                                de Verdad</span></h2>
+                        <p class="slide-desc">Construimos tu sitio desde cero, sin plantillas genéricas ni atajos. Cada
+                            línea de código está pensada para generarte más clientes, no solo para verse bonita.</p>
                         <div class="cta-slide-group">
                             <a href="https://wa.me/51908536493?text=Hola%20INFALL%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20profesional.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F"
                                 target="_blank" rel="noopener" class="btn-slide-cta">
@@ -247,16 +248,47 @@
                 </div>
                 <div class="slide" data-index="1">
                     <div class="slide-bg">
-                        <img src="dashboard-images/slide2.webp" alt="Infraestructura Web de Alto Rendimiento - INFALL"
+                        <img src="dashboard-images/img2.jpg" alt="Infraestructura Web de Alto Rendimiento - INFALL"
                             loading="lazy">
                     </div>
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
-                        <span class="slide-tag">Velocidad Extrema</span>
-                        <h2 class="slide-title">Infraestructura que <br><span class="text-gradient-orange">Escala sin
-                                Límites</span></h2>
-                        <p class="slide-desc">Hosting de alto rendimiento, CDN global y código optimizado al milisegundo
-                            para que tu web cargue al instante en cualquier parte del mundo.</p>
+                        <span class="slide-tag">Rendimiento que Vende</span>
+                        <h2 class="slide-title">3 Segundos de Carga Pueden <br>Costarte un <span class="text-gradient-orange">Cliente</span></h2>
+                        <p class="slide-desc">Hosting de alto rendimiento, CDN global y código optimizado al milisegundo.
+                            Tu web carga al instante en cualquier parte del mundo, y eso se traduce en ventas.</p>
+                        <div class="cta-slide-group">
+                            <a href="https://wa.me/51908536493?text=Hola%20INFALL%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20profesional.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F"
+                                target="_blank" rel="noopener" class="btn-slide-cta">
+                                Cotiza tu Proyecto
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </a>
+                            <a href="portfolio.html" class="btn-slide-ghost">
+                                Ver Portafolio
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide" data-index="2">
+                    <div class="slide-bg">
+                        <img src="dashboard-images/img3.jpg" alt="Equipo de Ingeniería de Software de INFALL Systems Engineering"
+                            loading="lazy">
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="slide-tag">Equipo de Ingeniería Propio</span>
+                        <h2 class="slide-title">No Somos Freelancers, <br>Somos tu <span class="text-gradient-orange">Equipo
+                                de Ingeniería</span></h2>
+                        <p class="slide-desc">Arquitectura, diseño y desarrollo bajo un mismo techo. Un equipo dedicado
+                            a tu proyecto, con la seriedad y el respaldo de una consultoría establecida.</p>
                         <div class="cta-slide-group">
                             <a href="https://wa.me/51908536493?text=Hola%20INFALL%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20profesional.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F"
                                 target="_blank" rel="noopener" class="btn-slide-cta">
@@ -286,7 +318,7 @@
             <div class="slider-counter" id="slider-counter">
                 <span class="counter-current" id="counter-current">01</span>
                 <span class="counter-separator"></span>
-                <span class="counter-total" id="counter-total">02</span>
+                <span class="counter-total" id="counter-total">03</span>
             </div>
 
             <button class="slider-arrow arrow-prev" id="slider-prev" aria-label="Slide anterior">
@@ -309,7 +341,7 @@
     <!-- Sección Stack Tecnológico -->
     <section class="tech-stack-section reveal">
         <div class="tech-stack-container">
-            <h2 class="section-title" style="color: var(--text-white); text-align: center; margin-bottom: 60px;">Tech
+            <h2 class="section-title" style="color: var(--text-white); text-align: center; margin-bottom: 24px;">Tech
                 Stack que Utilizamos</h2>
 
             <div class="tech-carousel-wrapper" id="tech-carousel-wrapper">
@@ -1172,7 +1204,7 @@
                         <textarea id="pbf-proyecto" name="pbf-proyecto" rows="2" placeholder="Ej: Quiero una tienda online para vender ropa..." required></textarea>
                     </div>
 
-                    <button type="submit" class="btn-pricing-outline" id="btn-budget-submit" style="width: 100%; justify-content: center;">
+                    <button type="submit" class="btn-pricing-primary" id="btn-budget-submit" style="width: 100%; justify-content: center;">
                         Añadir al Carrito <i class="ri-shopping-cart-2-line"></i>
                     </button>
                 </form>
@@ -1310,7 +1342,7 @@
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-glow" id="cursor-glow"></div>
     <script src="cart.js"></script>
-    <script src="interfaz01.js?v=7" defer></script>
+    <script src="interfaz01.js?v=9" defer></script>
     <script>
         // ============================================================
         // FORMULARIO DE PRESUPUESTO PERSONALIZADO → WhatsApp

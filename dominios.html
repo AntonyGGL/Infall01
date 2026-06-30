@@ -16,9 +16,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="interfaz01.css?v=15">
+    <link rel="stylesheet" href="interfaz01.css?v=41">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="domain-searcher/styles.css">
+    <link rel="stylesheet" href="domain-searcher/styles.css?v=6">
     <script>
         (function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
     </script>
@@ -28,6 +28,7 @@
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <div class="cyber-grid"></div>
+    <canvas class="page-particles-canvas" id="page-particles-canvas"></canvas>
     <div class="cyber-glows">
         <div class="glow-orb orb-1"></div>
         <div class="glow-orb orb-2"></div>
@@ -89,61 +90,73 @@
         </div>
     </header>
 
-    <!-- ===================== HERO / BUSCADOR DE DOMINIOS ===================== -->
-    <section class="domain-search-section srv-detail-section" id="venta-dominios" style="padding-top: 10rem; min-height: 100vh;">
+    <!-- ===================== BUSCADOR DE DOMINIOS (primera pantalla) ===================== -->
+    <section class="domain-search-section srv-detail-section" id="main-content">
+        <canvas class="domain-particles-canvas" id="domain-particles-canvas"></canvas>
+        <div class="ambient-orb ambient-orb-1"></div>
+        <div class="ambient-orb ambient-orb-2"></div>
+        <div class="ambient-orb ambient-orb-3"></div>
         <div class="container">
-            <div class="search-header reveal" style="margin-bottom: 3.5rem;">
-                <span class="badge" style="border-color: #f59e0b; color: #f59e0b; background: rgba(245,158,11,0.1); letter-spacing: 2px; font-weight: 700; text-transform: uppercase;">Tu Presencia en la Web</span>
-                <h1 style="font-family: 'Sora', sans-serif; font-size: 3.5rem; margin-bottom: 1.25rem; font-weight: 800; color: #fff; line-height: 1.1;">
-                    Asegura el <br><span style="color: #f59e0b;">Nombre de tu Negocio</span>
-                </h1>
-                <p style="color: var(--text-muted); font-size: 1.125rem; max-width: 600px; margin: 0 auto;">Busca, encuentra y registra tu dominio con nosotros de forma rápida y segura.</p>
+            <div class="search-header reveal">
+                <span class="badge"><span class="badge-dot" aria-hidden="true"></span>Tu presencia en la web</span>
+                <h1 class="search-title">Asegura el nombre de tu negocio</h1>
+                <p class="search-subtitle">Busca, encuentra y registra tu dominio de forma rápida y segura. Extensiones .com, .pe, .net, .org y más.</p>
             </div>
 
             <div class="search-container reveal">
-                <form id="domainSearchForm" class="search-box">
-                    <div class="input-wrapper">
-                        <i class="ri-global-line"></i>
-                        <input type="text" id="domainInput" placeholder="Ejemplo: minegocio" required autocomplete="off">
-                        <select id="domainExt" class="ext-select">
-                            <option value=".com">.com</option>
-                            <option value=".pe">.pe</option>
-                            <option value=".com.pe">.com.pe</option>
-                            <option value=".net">.net</option>
-                            <option value=".org">.org</option>
-                            <option value=".es">.es</option>
-                        </select>
+                <form id="domainSearchForm" class="search-form" novalidate>
+                    <div class="field-head">
+                        <label for="domainInput" class="field-label">Nombre del dominio</label>
+                        <span class="field-hint" id="domainHint">Solo letras, números y guiones — sin espacios</span>
                     </div>
-                    <button type="submit" id="searchBtn">
-                        <span class="btn-text">Buscar</span>
-                        <div class="spinner hidden" id="searchSpinner"></div>
-                    </button>
+                    <div class="search-box">
+                        <div class="input-wrapper">
+                            <i class="ri-global-line" aria-hidden="true"></i>
+                            <input type="text" id="domainInput" name="domain" class="domain-input"
+                                   placeholder="minegocio" required autocomplete="off"
+                                   autocapitalize="off" spellcheck="false" inputmode="url"
+                                   aria-describedby="domainHint">
+                            <label for="domainExt" class="visually-hidden">Extensión del dominio</label>
+                            <select id="domainExt" class="ext-select">
+                                <option value=".com">.com</option>
+                                <option value=".pe">.pe</option>
+                                <option value=".com.pe">.com.pe</option>
+                                <option value=".net">.net</option>
+                                <option value=".org">.org</option>
+                                <option value=".es">.es</option>
+                            </select>
+                        </div>
+                        <button type="submit" id="searchBtn" class="search-submit">
+                            <span class="btn-text">Buscar</span>
+                            <span class="spinner hidden" id="searchSpinner" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <p id="errorMsg" class="error-msg hidden" role="alert" aria-live="assertive"></p>
                 </form>
-                <div id="errorMsg" class="error-msg hidden"></div>
             </div>
 
             <div id="resultCard" class="result-card hidden reveal">
                 <div class="result-content">
                     <div class="domain-info-container">
                         <div class="domain-info">
-                            <i id="resultIcon" class="ri-check-line"></i>
+                            <i id="resultIcon" class="ri-check-line" aria-hidden="true"></i>
                             <div>
                                 <h3 id="resultDomain">midominio.com</h3>
                                 <p id="resultStatus">¡Está disponible!</p>
                             </div>
                         </div>
-                        <div class="year-selector hidden" id="yearSelector">
-                            <div class="year-pill active" data-years="1" data-discount="0">
+                        <div class="year-selector hidden" id="yearSelector" role="group" aria-label="Duración del registro del dominio">
+                            <button type="button" class="year-pill active" data-years="1" data-discount="0" aria-pressed="true">
                                 <span class="yr-num">1 año</span>
-                            </div>
-                            <div class="year-pill" data-years="2" data-discount="0.05">
+                            </button>
+                            <button type="button" class="year-pill" data-years="2" data-discount="0.05" aria-pressed="false">
                                 <span class="yr-num">2 años</span>
-                                <span class="yr-discount">-5%</span>
-                            </div>
-                            <div class="year-pill" data-years="3" data-discount="0.10">
+                                <span class="yr-discount">−5%</span>
+                            </button>
+                            <button type="button" class="year-pill" data-years="3" data-discount="0.10" aria-pressed="false">
                                 <span class="yr-num">3 años</span>
-                                <span class="yr-discount">-10%</span>
-                            </div>
+                                <span class="yr-discount">−10%</span>
+                            </button>
                         </div>
                     </div>
                     <div class="action-area">
@@ -356,7 +369,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="interfaz01.js?v=6" defer></script>
+    <script src="interfaz01.js?v=9" defer></script>
     <script>
         // Activar pill de nav según scroll
         (function () {
@@ -377,8 +390,17 @@
 
             sections.forEach(s => observer.observe(s));
         })();
+
+        // Mantener aria-pressed sincronizado con la clase .active de los year-pills
+        (function () {
+            const pills = document.querySelectorAll('.year-pill');
+            if (!pills.length) return;
+            const sync = () => pills.forEach(p =>
+                p.setAttribute('aria-pressed', p.classList.contains('active') ? 'true' : 'false'));
+            pills.forEach(p => p.addEventListener('click', () => setTimeout(sync, 0)));
+        })();
     </script>
 </body>
     <script src="cart.js"></script>
-    <script src="domain-searcher/script.js" defer></script>
+    <script src="domain-searcher/script.js?v=3" defer></script>
 </html>
