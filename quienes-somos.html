@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="interfaz01.css?v=41">
+    <link rel="stylesheet" href="interfaz01.css?v=46">
     <link rel="stylesheet" href="domain-searcher/styles.css">
     <script>
         (function () { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); })();
@@ -184,280 +184,349 @@
             </div>
         </section>
 
-        <!-- Sección Fundador -->
-        <section class="founder-section reveal">
-            <div class="founder-photo-stage">
-                <div class="founder-waves" aria-hidden="true">
-                    <span class="founder-wave-ring"></span>
-                    <span class="founder-wave-ring"></span>
-                    <span class="founder-wave-ring"></span>
-                </div>
-                <div class="founder-fireflies" aria-hidden="true">
-                    <span class="firefly"></span>
-                    <span class="firefly"></span>
-                    <span class="firefly"></span>
-                    <span class="firefly"></span>
-                    <span class="firefly"></span>
-                    <span class="firefly"></span>
-                    <span class="firefly"></span>
-                    <span class="firefly"></span>
-                </div>
-                <div class="founder-photo-banner">
-                    <img src="nosotros_images/yeiser.jpg" alt="Yeiser Avila, Ingeniero de Sistemas y fundador de INFALL Systems Engineering" class="founder-photo" loading="lazy">
-                    <div class="founder-photo-scrim"></div>
-                    <div class="founder-photo-sheen" aria-hidden="true"></div>
-                    <div class="founder-photo-tag">
-                        <i class="ri-graduation-cap-fill"></i>
-                        <span>Ing. de Sistemas</span>
-                    </div>
-                    <div class="founder-photo-badge">
-                        <i class="ri-user-star-line"></i>
-                        <span>Fundador &amp; Líder Técnico</span>
-                    </div>
-                </div>
+        <!-- Sección Equipo -->
+        <section class="team-section reveal">
+            <div class="section-header">
+                <span class="section-tag">Quiénes Lideran tu Proyecto</span>
+                <h2 class="section-title" style="color: var(--text-white);">El Equipo Detrás de <span class="gradient-text">INFALL</span></h2>
             </div>
+            <div class="team-grid">
+                <article class="team-card">
+                    <div class="team-photo-stage">
+                        <div class="founder-waves" aria-hidden="true">
+                            <span class="founder-wave-ring"></span>
+                            <span class="founder-wave-ring"></span>
+                            <span class="founder-wave-ring"></span>
+                        </div>
+                        <div class="founder-fireflies" aria-hidden="true">
+                            <span class="firefly"></span>
+                            <span class="firefly"></span>
+                            <span class="firefly"></span>
+                            <span class="firefly"></span>
+                        </div>
+                        <div class="team-photo-banner">
+                            <img src="nosotros_images/yeiser.jpg" alt="Yeiser Avila, Ingeniero de Sistemas y fundador de INFALL Systems Engineering" class="founder-photo" loading="lazy">
+                            <div class="founder-photo-scrim"></div>
+                            <div class="founder-photo-sheen" aria-hidden="true"></div>
+                            <div class="founder-photo-tag">
+                                <i class="ri-graduation-cap-fill"></i>
+                                <span>Ing. de Sistemas</span>
+                            </div>
+                            <div class="founder-photo-badge">
+                                <i class="ri-user-star-line"></i>
+                                <span>Fundador &amp; Líder Técnico</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Ing. Yeiser Avila</h3>
+                        <p class="team-role">Desarrollador Full Stack</p>
+                        <p class="team-bio">
+                            Más de 4 años creando soluciones digitales para negocios reales: ERP, plataformas con IA
+                            y apps web/móvil ya en producción en transporte, comercio y educación. Sin intermediarios:
+                            trabajas directo conmigo, el mismo ingeniero que construyó y mantuvo cada proyecto.
+                        </p>
+                        <ul class="team-credentials-compact">
+                            <li><i class="ri-code-s-slash-line"></i> React, Next.js, Node.js, PostgreSQL</li>
+                            <li><i class="ri-building-2-line"></i> ERP en producción casi 3 años</li>
+                            <li><i class="ri-graduation-cap-line"></i> Ingeniería de Sistemas — UPeU</li>
+                        </ul>
+                    </div>
+                </article>
 
-            <div class="founder-body">
-                <div class="founder-info-col">
-                    <span class="section-tag">Quién Lidera tu Proyecto</span>
-                    <h2 class="section-title" style="color: var(--text-white);">Ing. Yeiser Avila, <span class="gradient-text">Desarrollador Full Stack</span></h2>
-                    <p class="founder-bio">
-                        Más de 4 años creando soluciones digitales para negocios reales: sistemas de gestión,
-                        plataformas con inteligencia artificial y aplicaciones web y móvil que ya funcionan hoy en
-                        empresas de transporte, comercio e instituciones educativas. Desde 2022 lidero cada proyecto
-                        de principio a fin diseño, desarrollo y puesta en marcha y pongo esa misma dedicación en
-                        cada cliente que confía en mí. 
-                    </p>
-                    <p class="founder-trust-line">
-                        <i class="ri-shield-check-fill"></i>
-                        Sin intermediarios ni equipos genéricos: trabajas con el mismo ingeniero que construyó y
-                        mantuvo en producción un ERP completo para una empresa de transporte durante casi 3 años.
-                    </p>
+                <!-- ===== PLANTILLA SOCIO: reemplaza la foto, el nombre, la bio y las credenciales con los datos reales ===== -->
+                <article class="team-card">
+                    <div class="team-photo-stage">
+                        <div class="founder-waves" aria-hidden="true">
+                            <span class="founder-wave-ring"></span>
+                            <span class="founder-wave-ring"></span>
+                            <span class="founder-wave-ring"></span>
+                        </div>
+                        <div class="founder-fireflies" aria-hidden="true">
+                            <span class="firefly"></span>
+                            <span class="firefly"></span>
+                            <span class="firefly"></span>
+                            <span class="firefly"></span>
+                        </div>
+                        <!-- Cuando tengas la foto, reemplaza este bloque por:
+                        <img src="nosotros_images/SOCIO.jpg" alt="Nombre Apellido, Ingeniería de Sistemas y co-fundador de INFALL Systems Engineering" class="founder-photo" loading="lazy"> -->
+                        <div class="team-photo-banner team-photo-banner--placeholder">
+                            <div class="founder-photo-placeholder">
+                                <i class="ri-image-add-line"></i>
+                                <span>Agrega aquí la foto de tu socio</span>
+                            </div>
+                            <div class="founder-photo-scrim"></div>
+                            <div class="founder-photo-tag">
+                                <i class="ri-graduation-cap-fill"></i>
+                                <span>Ing. de Sistemas</span>
+                            </div>
+                            <div class="founder-photo-badge">
+                                <i class="ri-user-star-line"></i>
+                                <span>Co-Fundador</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">[Nombre Apellido]</h3>
+                        <p class="team-role">[Rol o Especialidad]</p>
+                        <p class="team-bio">
+                            [Describe aquí a tu socio en 2-3 líneas: su experiencia, qué aporta al equipo y por qué un
+                            cliente puede confiar en su trabajo.]
+                        </p>
+                        <ul class="team-credentials-compact">
+                            <li><i class="ri-code-s-slash-line"></i> [Habilidad o stack principal]</li>
+                            <li><i class="ri-graduation-cap-line"></i> Ingeniería de Sistemas — UPeU</li>
+                            <li><i class="ri-puzzle-line"></i> [Otra credencial o experiencia]</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Sección: ¿Por qué Elegirnos? -->
+        <section class="why-us-section reveal">
+            <div class="section-header">
+                <span class="section-tag">Nuestras Ventajas</span>
+                <h2 class="section-title" style="color: var(--text-white);">¿Por qué <span
+                        class="gradient-text">Elegirnos</span>?</h2>
+            </div>
+            <div class="why-us-grid">
+                <!-- Card 1 -->
+                <div class="why-us-card reveal-left">
+                    <div class="why-us-card-inner">
+                        <div class="why-us-card-front">
+                            <span class="why-us-card-num">01</span>
+                            <!-- Clean Code Terminal Illustration -->
+                            <svg class="why-us-illustration" viewBox="0 0 200 120" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <!-- IDE/Terminal Frame -->
+                                <rect x="10" y="10" width="180" height="100" rx="8" fill="var(--card-dark)"
+                                    stroke="rgba(255, 140, 0, 0.15)" stroke-width="1" />
+                                <!-- Header Dots -->
+                                <circle cx="24" cy="22" r="3" fill="#EF4444" />
+                                <circle cx="34" cy="22" r="3" fill="#F59E0B" />
+                                <circle cx="44" cy="22" r="3" fill="#10B981" />
+                                <rect x="58" y="19" width="80" height="6" rx="3" fill="rgba(255, 255, 255, 0.1)" />
+
+                                <!-- Editor Lines -->
+                                <rect x="24" y="38" width="50" height="4" rx="2" fill="rgba(255, 255, 255, 0.15)" />
+                                <rect x="24" y="48" width="90" height="4" rx="2" fill="rgba(255, 140, 0, 0.3)" />
+                                <rect x="40" y="58" width="70" height="4" rx="2" fill="rgba(255, 255, 255, 0.15)" />
+                                <rect x="40" y="68" width="110" height="4" rx="2" fill="rgba(0, 229, 255, 0.3)" />
+                                <rect x="24" y="78" width="60" height="4" rx="2" fill="rgba(255, 255, 255, 0.15)" />
+                                <rect x="24" y="88" width="40" height="4" rx="2" fill="rgba(255, 140, 0, 0.5)" />
+
+                                <!-- Glowing Center Brackets -->
+                                <g class="bracket-glow">
+                                    <path d="M120 45 L110 60 L120 75" stroke="var(--accent-orange)" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M140 45 L150 60 L140 75" stroke="var(--accent-orange)" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <line x1="133" y1="45" x2="127" y2="75" stroke="var(--accent-cyan)" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </g>
+                            </svg>
+                            <h3>Sin Plantillas — 100% a Medida</h3>
+                            <p>Cada línea de código es escrita para tu negocio. Nada de builders lentos ni temas genéricos.
+                            </p>
+                            <span class="why-us-card-hint">Pasa el cursor →</span>
+                        </div>
+                        <div class="why-us-card-back">
+                            <div class="why-us-back-stat">3×</div>
+                            <h3>Velocidad Real</h3>
+                            <p>Nuestros sitios cargan 3 veces más rápido que cualquier WordPress o builder genérico.
+                                Lighthouse 100.</p>
+                            <a href="cotizacion.html" class="why-us-back-cta">Ver mi proyecto →</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="founder-credentials">
-                    <div class="founder-credential">
-                        <div class="founder-credential-icon">
-                            <i class="ri-code-s-slash-line"></i>
+                <!-- Card 2 -->
+                <div class="why-us-card reveal">
+                    <div class="why-us-card-inner">
+                        <div class="why-us-card-front">
+                            <span class="why-us-card-num">02</span>
+                            <!-- SSL Security Illustration -->
+                            <svg class="why-us-illustration" viewBox="0 0 200 120" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <!-- Glowing Shield Grid -->
+                                <path
+                                    d="M100 15 C130 15 160 25 160 50 C160 85 100 105 100 105 C100 105 40 85 40 50 C40 25 70 15 100 15 Z"
+                                    fill="rgba(0, 229, 255, 0.03)" stroke="rgba(0, 229, 255, 0.15)" stroke-width="1" />
+
+                                <!-- Shield Internal Pattern -->
+                                <path d="M100 25 L100 95 M50 50 L150 50" stroke="rgba(0, 229, 255, 0.08)" stroke-width="1"
+                                    stroke-dasharray="4 4" />
+
+                                <!-- Lock Graphic -->
+                                <g class="lock-graphic">
+                                    <!-- Lock Shackle -->
+                                    <path d="M85 55 V42 C85 34 91.7 28 100 28 C108.3 28 115 34 115 42 V55"
+                                        stroke="var(--accent-orange)" stroke-width="3" stroke-linecap="round" />
+                                    <!-- Lock Body -->
+                                    <rect x="75" y="52" width="50" height="38" rx="8" fill="var(--bg-dark-blue)"
+                                        stroke="var(--accent-cyan)" stroke-width="2"
+                                        style="filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.3));" />
+                                    <!-- Lock Center Core -->
+                                    <circle cx="100" cy="68" r="4" fill="var(--accent-orange)" />
+                                    <path d="M100 72 V78" stroke="var(--accent-orange)" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </g>
+
+                                <!-- Security Pulses -->
+                                <circle cx="100" cy="68" r="45" stroke="rgba(0, 229, 255, 0.2)" stroke-width="1"
+                                    stroke-dasharray="2 6" />
+                            </svg>
+                            <h3>Seguridad SSL Incluida</h3>
+                            <p>HTTPS nativo y encriptación de datos en todas nuestras entregas. Tu negocio protegido.</p>
+                            <span class="why-us-card-hint">Pasa el cursor →</span>
                         </div>
-                        <div>
-                            <h4>Full Stack Real</h4>
-                            <p>React, Next.js, Node.js, TypeScript y PostgreSQL en sistemas que ya están en producción</p>
+                        <div class="why-us-card-back">
+                            <div class="why-us-back-stat">100%</div>
+                            <h3>Cero Brechas</h3>
+                            <p>SSL/TLS, headers de seguridad HTTP, protección contra XSS e inyección de código incluidos en
+                                todo proyecto.</p>
+                            <a href="servicios.html" class="why-us-back-cta">Ver servicios →</a>
                         </div>
                     </div>
-                    <div class="founder-credential">
-                        <div class="founder-credential-icon">
-                            <i class="ri-building-2-line"></i>
+                </div>
+                <!-- Card 3 -->
+                <div class="why-us-card reveal">
+                    <div class="why-us-card-inner">
+                        <div class="why-us-card-front">
+                            <span class="why-us-card-num">03</span>
+                            <!-- SEO & Rank Graph Illustration -->
+                            <svg class="why-us-illustration" viewBox="0 0 200 120" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <!-- Grid Lines -->
+                                <line x1="20" y1="95" x2="180" y2="95" stroke="rgba(255, 255, 255, 0.08)"
+                                    stroke-width="1" />
+                                <line x1="20" y1="65" x2="180" y2="65" stroke="rgba(255, 255, 255, 0.04)"
+                                    stroke-width="1" />
+                                <line x1="20" y1="35" x2="180" y2="35" stroke="rgba(255, 255, 255, 0.04)"
+                                    stroke-width="1" />
+
+                                <!-- Search engine header -->
+                                <rect x="20" y="10" width="160" height="18" rx="4" fill="rgba(255, 255, 255, 0.03)"
+                                    stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+                                <circle cx="28" cy="19" r="2" fill="rgba(255, 255, 255, 0.2)" />
+                                <circle cx="34" cy="19" r="2" fill="rgba(255, 255, 255, 0.2)" />
+                                <rect x="44" y="16" width="90" height="6" rx="3" fill="rgba(255, 255, 255, 0.1)" />
+                                <circle cx="168" cy="19" r="3" fill="var(--accent-orange)" />
+
+                                <!-- SEO Line Chart -->
+                                <path d="M25 85 L60 78 L95 50 L130 58 L165 25" stroke="url(#seoGrad)" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    style="filter: drop-shadow(0 4px 8px rgba(255, 140, 0, 0.25));" />
+
+                                <!-- Chart fill -->
+                                <path d="M25 85 L60 78 L95 50 L130 58 L165 25 V95 H25 Z" fill="url(#seoAreaGrad)"
+                                    opacity="0.15" />
+
+                                <!-- Interactive Dots -->
+                                <circle cx="95" cy="50" r="3" fill="var(--accent-cyan)" />
+                                <circle cx="165" cy="25" r="4.5" fill="var(--accent-orange)" stroke="var(--text-white)"
+                                    stroke-width="1.5" />
+
+                                <!-- Tooltip above top dot -->
+                                <rect x="145" y="2" width="40" height="14" rx="3" fill="var(--accent-orange)"
+                                    style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));" />
+                                <text x="165" y="12" font-size="8" fill="var(--bg-dark-blue)" font-family="var(--font-tech)"
+                                    font-weight="bold" text-anchor="middle">#1</text>
+
+                                <!-- Gradients -->
+                                <defs>
+                                    <linearGradient id="seoGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="var(--accent-cyan)" />
+                                        <stop offset="100%" stop-color="var(--accent-orange)" />
+                                    </linearGradient>
+                                    <linearGradient id="seoAreaGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="var(--accent-orange)" />
+                                        <stop offset="100%" stop-color="transparent" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <h3>SEO Nativo Integrado</h3>
+                            <p>Estructura semántica y metadatos optimizados. Diseñado desde el día 1 para Google.</p>
+                            <span class="why-us-card-hint">Pasa el cursor →</span>
                         </div>
-                        <div>
-                            <h4>+4 Años en Producción</h4>
-                            <p>ERP, automatización y plataformas con IA usados activamente por empresas reales</p>
+                        <div class="why-us-card-back">
+                            <div class="why-us-back-stat">#1</div>
+                            <h3>Primera Página</h3>
+                            <p>Clientes nuestros han alcanzado la primera página de Google en menos de 60 días en su ciudad.
+                            </p>
+                            <a href="cotizacion.html" class="why-us-back-cta">Quiero posicionarme →</a>
                         </div>
                     </div>
-                    <div class="founder-credential">
-                        <div class="founder-credential-icon">
-                            <i class="ri-robot-2-line"></i>
+                </div>
+                <!-- Card 4 -->
+                <div class="why-us-card reveal-right">
+                    <div class="why-us-card-inner">
+                        <div class="why-us-card-front">
+                            <span class="why-us-card-num">04</span>
+                            <!-- Global CDN Network Illustration -->
+                            <svg class="why-us-illustration" viewBox="0 0 200 120" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <!-- Glowing Center Globe Grid -->
+                                <circle cx="100" cy="60" r="45" stroke="rgba(0, 229, 255, 0.15)" stroke-width="1" />
+
+                                <!-- Globe Latitude/Longitude Curves -->
+                                <path d="M55 60 H145" stroke="rgba(0, 229, 255, 0.15)" stroke-width="1" />
+                                <path d="M100 15 V105" stroke="rgba(0, 229, 255, 0.15)" stroke-width="1" />
+                                <path d="M68 30 C80 40 80 80 68 90" stroke="rgba(0, 229, 255, 0.1)" stroke-width="1" />
+                                <path d="M132 30 C120 40 120 80 132 90" stroke="rgba(0, 229, 255, 0.1)" stroke-width="1" />
+                                <ellipse cx="100" cy="60" rx="45" ry="18" stroke="rgba(0, 229, 255, 0.1)"
+                                    stroke-width="1" />
+                                <ellipse cx="100" cy="60" rx="45" ry="32" stroke="rgba(0, 229, 255, 0.1)"
+                                    stroke-width="1" />
+
+                                <!-- Global Ping Arcs (CDN Nodes connection) -->
+                                <path d="M60 45 C80 20 120 20 140 45" stroke="var(--accent-orange)" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-dasharray="3 5" />
+                                <path d="M70 75 C90 95 110 95 130 75" stroke="var(--accent-cyan)" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-dasharray="2 4" />
+
+                                <!-- Active CDN Nodes (Pulsing Circles) -->
+                                <!-- Perú Node (Center-leftish) -->
+                                <g class="cdn-node active">
+                                    <circle cx="70" cy="68" r="6" fill="rgba(255, 140, 0, 0.25)" />
+                                    <circle cx="70" cy="68" r="3" fill="var(--accent-orange)" />
+                                </g>
+                                <!-- US Node (Top-leftish) -->
+                                <g class="cdn-node">
+                                    <circle cx="75" cy="38" r="2" fill="var(--accent-cyan)" />
+                                </g>
+                                <!-- Europe Node (Top-rightish) -->
+                                <g class="cdn-node">
+                                    <circle cx="120" cy="35" r="2" fill="var(--accent-cyan)" />
+                                </g>
+                                <!-- Asia/Japan Node (Rightish) -->
+                                <g class="cdn-node">
+                                    <circle cx="140" cy="55" r="2" fill="var(--accent-orange)" />
+                                </g>
+                                <!-- Latam East Node -->
+                                <g class="cdn-node">
+                                    <circle cx="95" cy="85" r="2" fill="var(--accent-cyan)" />
+                                </g>
+
+                                <!-- Orbit line -->
+                                <path d="M100 10 A50 50 0 0 1 150 60" stroke="rgba(255, 140, 0, 0.2)" stroke-width="1"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <h3>Alcance Global desde Perú</h3>
+                            <p>Hosting con CDN global. Carga en &lt;1.5s desde cualquier continente.</p>
+                            <span class="why-us-card-hint">Pasa el cursor →</span>
                         </div>
-                        <div>
-                            <h4>IA en el Flujo de Desarrollo</h4>
-                            <p>Claude Code, OpenAI y herramientas modernas para construir más rápido sin perder calidad</p>
-                        </div>
-                    </div>
-                    <div class="founder-credential">
-                        <div class="founder-credential-icon">
-                            <i class="ri-graduation-cap-line"></i>
-                        </div>
-                        <div>
-                            <h4>Ingeniería de Sistemas (UPeU)</h4>
-                            <p>Último año, con investigación en machine learning aplicado a finanzas</p>
+                        <div class="why-us-card-back">
+                            <div class="why-us-back-stat">&lt;1.5s</div>
+                            <h3>Velocidad Global</h3>
+                            <p>CDN en 200+ ciudades del mundo. Tu página carga instantánea en Lima, Miami, Madrid o Tokio.
+                            </p>
+                            <a href="cotizacion.html" class="why-us-back-cta">Ir al siguiente nivel →</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Features / Beneficios (Carrusel Intermedio) -->
-        <section class="benefits-banner-section reveal">
-            <div class="benefits-carousel-wrapper">
-                <div class="benefits-track">
-                    <!-- Grupo 1 -->
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-cyan">
-                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                                <circle cx="12" cy="12" r="10" opacity="0.1" fill="currentColor"/>
-                            </svg>
-                        </div>
-                        <h4>Carga en Milisegundos</h4>
-                        <p>Infraestructura veloz optimizada para retener usuarios y el máximo rendimiento.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-blue">
-                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                                <polyline points="14 2 14 8 20 8" />
-                                <path d="M8 13h2" />
-                                <path d="M8 17h2" />
-                                <path d="M14 13h2" />
-                                <path d="M14 17h2" />
-                            </svg>
-                        </div>
-                        <h4>Ingeniería a Medida</h4>
-                        <p>Sistemas construidos desde cero adaptados exactamente a tu negocio.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-purple">
-                                <circle cx="12" cy="12" r="10" />
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                                <path d="M2 12h20" />
-                            </svg>
-                        </div>
-                        <h4>Alcance Global y SEO</h4>
-                        <p>Arquitectura pensada para dominar los motores de búsqueda y captar tráfico.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-orange">
-                                <polygon points="11 19 2 12 11 5 11 19" />
-                                <path d="M22 12A10 10 0 0 0 12 2v20a10 10 0 0 0 10-10z" />
-                            </svg>
-                        </div>
-                        <h4>Asesoría y Promoción</h4>
-                        <p>Estrategias digitales probadas para asegurar resultados y crecimiento real.</p>
-                    </div>
-
-                    <!-- Grupo 2 (Duplicado para animación infinita) -->
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-cyan">
-                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                                <circle cx="12" cy="12" r="10" opacity="0.1" fill="currentColor"/>
-                            </svg>
-                        </div>
-                        <h4>Carga en Milisegundos</h4>
-                        <p>Infraestructura veloz optimizada para retener usuarios y el máximo rendimiento.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-blue">
-                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-                                <polyline points="14 2 14 8 20 8" />
-                                <path d="M8 13h2" />
-                                <path d="M8 17h2" />
-                                <path d="M14 13h2" />
-                                <path d="M14 17h2" />
-                            </svg>
-                        </div>
-                        <h4>Ingeniería a Medida</h4>
-                        <p>Sistemas construidos desde cero adaptados exactamente a tu negocio.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-purple">
-                                <circle cx="12" cy="12" r="10" />
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                                <path d="M2 12h20" />
-                            </svg>
-                        </div>
-                        <h4>Alcance Global y SEO</h4>
-                        <p>Arquitectura pensada para dominar los motores de búsqueda y captar tráfico.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="premium-svg text-orange">
-                                <polygon points="11 19 2 12 11 5 11 19" />
-                                <path d="M22 12A10 10 0 0 0 12 2v20a10 10 0 0 0 10-10z" />
-                            </svg>
-                        </div>
-                        <h4>Asesoría y Promoción</h4>
-                        <p>Estrategias digitales probadas para asegurar resultados y crecimiento real.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== PLANTILLA SOCIO: reemplaza la foto, el nombre, la bio y las credenciales con los datos reales ===== -->
-        <section class="founder-section reveal">
-            <div class="founder-photo-stage">
-                <div class="founder-waves" aria-hidden="true">
-                    <span class="founder-wave-ring"></span>
-                    <span class="founder-wave-ring"></span>
-                    <span class="founder-wave-ring"></span>
-                </div>
-                <div class="founder-fireflies" aria-hidden="true">
-                    <span class="firefly"></span>
-                    <span class="firefly"></span>
-                    <span class="firefly"></span>
-                    <span class="firefly"></span>
-                    <span class="firefly"></span>
-                    <span class="firefly"></span>
-                    <span class="firefly"></span>
-                    <span class="firefly"></span>
-                </div>
-                <!-- Cuando tengas la foto, reemplaza este bloque por:
-                <img src="nosotros_images/SOCIO.jpg" alt="Nombre Apellido, Ingeniería de Sistemas y co-fundador de INFALL Systems Engineering" class="founder-photo" loading="lazy"> -->
-                <div class="founder-photo-banner founder-photo-banner--placeholder">
-                    <div class="founder-photo-placeholder">
-                        <i class="ri-image-add-line"></i>
-                        <span>Agrega aquí la foto de tu socio</span>
-                    </div>
-                    <div class="founder-photo-scrim"></div>
-                    <div class="founder-photo-tag">
-                        <i class="ri-graduation-cap-fill"></i>
-                        <span>Ing. de Sistemas</span>
-                    </div>
-                    <div class="founder-photo-badge">
-                        <i class="ri-user-star-line"></i>
-                        <span>Co-Fundador</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="founder-body">
-                <div class="founder-info-col">
-                    <span class="section-tag">Parte del Equipo</span>
-                    <h2 class="section-title" style="color: var(--text-white);">[Nombre Apellido], <span class="gradient-text">[Rol o Especialidad]</span></h2>
-                    <p class="founder-bio">
-                        [Describe aquí a tu socio en 3-4 líneas: su experiencia, qué aporta al equipo y por qué un
-                        cliente puede confiar en su trabajo. Usa un lenguaje simple, como en la bio de arriba.]
-                    </p>
-                    <p class="founder-trust-line">
-                        <i class="ri-shield-check-fill"></i>
-                        [Frase corta que genere confianza: un logro, un proyecto destacado o un compromiso con el cliente.]
-                    </p>
-                </div>
-                <div class="founder-credentials">
-                    <div class="founder-credential">
-                        <div class="founder-credential-icon">
-                            <i class="ri-code-s-slash-line"></i>
-                        </div>
-                        <div>
-                            <h4>[Habilidad o Stack Principal]</h4>
-                            <p>[Detalle breve de esa habilidad o tecnología]</p>
-                        </div>
-                    </div>
-                    <div class="founder-credential">
-                        <div class="founder-credential-icon">
-                            <i class="ri-graduation-cap-line"></i>
-                        </div>
-                        <div>
-                            <h4>Ingeniería de Sistemas (UPeU)</h4>
-                            <p>[Año que cursa / línea de investigación o especialización]</p>
-                        </div>
-                    </div>
-                    <div class="founder-credential">
-                        <div class="founder-credential-icon">
-                            <i class="ri-puzzle-line"></i>
-                        </div>
-                        <div>
-                            <h4>[Otra Credencial]</h4>
-                            <p>[Detalle breve de esa credencial o experiencia]</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
 
     </main>
 
@@ -733,8 +802,8 @@
             }
         })();
     </script>
-    <script src="cart.js"></script>
-    <script src="interfaz01.js?v=9" defer></script>
+    <script src="cart.js?v=4"></script>
+    <script src="interfaz01.js?v=12" defer></script>
 </body>
 
 </html>

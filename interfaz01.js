@@ -404,8 +404,7 @@ window.addEventListener('load', () => {
 
     if (!carousel || !wrapper) return;
 
-    // Desactivar partículas en mobile para mejor rendimiento
-    const isMobile = window.innerWidth <= 768;
+    let isMobile = window.innerWidth <= 768;
 
     // Clonar items para marquee infinito (duplicar set completo)
     const originalItems = Array.from(carousel.querySelectorAll('.tech-item'));
@@ -419,8 +418,8 @@ window.addEventListener('load', () => {
         wrapper.addEventListener('mouseleave', () => carousel.classList.remove('paused'));
     }
 
-    // Sistema de partículas — desactivado en mobile
-    if (!canvas || prefersReducedMotion || isMobile) {
+    // Sistema de partículas — activo en mobile también (densidad reducida)
+    if (!canvas || prefersReducedMotion) {
         if (canvas) canvas.style.display = 'none';
         return;
     }
@@ -445,15 +444,15 @@ window.addEventListener('load', () => {
 
     function createParticles() {
         particles = [];
-        const count = Math.floor(canvasWidth / 80);
+        const count = Math.floor(canvasWidth / (isMobile ? 90 : 60));
         for (let i = 0; i < count; i++) {
             particles.push({
                 x: Math.random() * canvasWidth,
                 y: Math.random() * canvasHeight,
-                size: Math.random() * 1.5 + 0.5,
+                size: Math.random() * 2 + 0.8,
                 speedX: (Math.random() - 0.5) * 0.3,
                 speedY: (Math.random() - 0.5) * 0.15,
-                opacity: Math.random() * 0.3 + 0.05,
+                opacity: Math.random() * 0.2 + 0.125,
                 pulse: Math.random() * Math.PI * 2
             });
         }
@@ -519,6 +518,7 @@ window.addEventListener('load', () => {
     observer.observe(wrapper);
 
     window.addEventListener('resize', () => {
+        isMobile = window.innerWidth <= 768;
         resizeCanvas();
         createParticles();
     });
@@ -531,9 +531,9 @@ window.addEventListener('load', () => {
     const canvas = document.getElementById('page-particles-canvas');
     if (!canvas) return;
 
-    const isMobile = window.innerWidth <= 768;
+    let isMobile = window.innerWidth <= 768;
 
-    if (prefersReducedMotion || isMobile) {
+    if (prefersReducedMotion) {
         canvas.style.display = 'none';
         return;
     }
@@ -558,15 +558,17 @@ window.addEventListener('load', () => {
 
     function createParticles() {
         particles = [];
-        const count = Math.min(90, Math.floor((canvasWidth * canvasHeight) / 32000));
+        const maxCount = isMobile ? 55 : 140;
+        const divisor = isMobile ? 14000 : 20000;
+        const count = Math.min(maxCount, Math.floor((canvasWidth * canvasHeight) / divisor));
         for (let i = 0; i < count; i++) {
             particles.push({
                 x: Math.random() * canvasWidth,
                 y: Math.random() * canvasHeight,
-                size: Math.random() * 1.4 + 0.5,
-                speedX: (Math.random() - 0.5) * 0.15,
-                speedY: (Math.random() - 0.5) * 0.1,
-                opacity: Math.random() * 0.25 + 0.05,
+                size: Math.random() * 2.2 + 1.1,
+                speedX: (Math.random() - 0.5) * 0.18,
+                speedY: (Math.random() - 0.5) * 0.12,
+                opacity: Math.random() * 0.225 + 0.15,
                 pulse: Math.random() * Math.PI * 2,
                 color: Math.random() < 0.35 ? '0, 229, 255' : '255, 140, 0'
             });
@@ -591,9 +593,12 @@ window.addEventListener('load', () => {
             const currentOpacity = p.opacity * (0.7 + Math.sin(p.pulse) * 0.3);
 
             ctx.beginPath();
+            ctx.shadowBlur = p.size * 2.5;
+            ctx.shadowColor = `rgba(${p.color}, ${currentOpacity * 0.8})`;
             ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(${p.color}, ${currentOpacity})`;
             ctx.fill();
+            ctx.shadowBlur = 0;
 
             for (let j = i + 1; j < particles.length; j++) {
                 const p2 = particles[j];
@@ -601,12 +606,12 @@ window.addEventListener('load', () => {
                 const dy = p.y - p2.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
-                if (dist < 110) {
+                if (dist < 130) {
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(p2.x, p2.y);
-                    ctx.strokeStyle = `rgba(255, 140, 0, ${0.035 * (1 - dist / 110)})`;
-                    ctx.lineWidth = 0.5;
+                    ctx.strokeStyle = `rgba(255, 140, 0, ${0.045 * (1 - dist / 130)})`;
+                    ctx.lineWidth = 0.6;
                     ctx.stroke();
                 }
             }
@@ -631,6 +636,7 @@ window.addEventListener('load', () => {
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
+            isMobile = window.innerWidth <= 768;
             resizeCanvas();
             createParticles();
         }, 200);
@@ -646,9 +652,9 @@ window.addEventListener('load', () => {
 
     if (!section || !canvas) return;
 
-    const isMobile = window.innerWidth <= 768;
+    let isMobile = window.innerWidth <= 768;
 
-    if (prefersReducedMotion || isMobile) {
+    if (prefersReducedMotion) {
         canvas.style.display = 'none';
         return;
     }
@@ -674,7 +680,7 @@ window.addEventListener('load', () => {
 
     function createParticles() {
         particles = [];
-        const count = Math.min(80, Math.floor((canvasWidth * canvasHeight) / 15000));
+        const count = Math.min(isMobile ? 32 : 80, Math.floor((canvasWidth * canvasHeight) / 15000));
         for (let i = 0; i < count; i++) {
             particles.push({
                 x: Math.random() * canvasWidth,
@@ -747,6 +753,7 @@ window.addEventListener('load', () => {
     observer.observe(section);
 
     window.addEventListener('resize', () => {
+        isMobile = window.innerWidth <= 768;
         resizeCanvas();
         createParticles();
     });
