@@ -1,4 +1,4 @@
-﻿/**
+/**
  * INFALL Cart Module with UI Drawer
  * Persists plan & domain selections across pages using localStorage.
  */
@@ -186,15 +186,22 @@
     window.InfallCart = {
         get: getCart, count: getItemCount, total: getTotal, WHATSAPP: WHATSAPP_NUMBER,
 
-        setPlan(name, price) { const c = getCart(); c.plan = { name, price: parseInt(price) }; saveCart(c); },
+        setPlan(name, price, extra = null) { const c = getCart(); c.plan = { name, price: parseInt(price), extra }; saveCart(c); },
         setDomain(name, years, price) { const c = getCart(); c.domain = { name, years: parseInt(years), price: parseInt(price) }; saveCart(c); },
         removePlan() { const c = getCart(); c.plan = null; saveCart(c); },
         removeDomain() { const c = getCart(); c.domain = null; saveCart(c); },
+        open() { toggleDrawer(true); },
 
         buildMessage() {
             const c = getCart();
             let msg = "Hola INFALL, me interesa lo siguiente:\n";
-            if (c.plan) msg += "\n*Plan Web:* " + c.plan.name + " - S/ " + c.plan.price;
+            if (c.plan) {
+                msg += "\n*Plan Web:* " + c.plan.name + " - S/ " + c.plan.price;
+                if (c.plan.extra) {
+                    if (c.plan.extra.nombre) msg += "\n*Nombre:* " + c.plan.extra.nombre;
+                    if (c.plan.extra.proyecto) msg += "\n*Proyecto:* " + c.plan.extra.proyecto;
+                }
+            }
             if (c.domain) msg += "\n*Dominio:* " + c.domain.name + " por " + c.domain.years + " año(s) - S/ " + c.domain.price;
             if (c.plan || c.domain) msg += "\n\n*Total estimado: S/ " + getTotal() + "*\n\nPor favor, quiero confirmar mi pedido.";
             return msg;

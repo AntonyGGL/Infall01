@@ -10117,7 +10117,7 @@ html.acc-focus-highlight *:focus {
 /* ==========================================================================
    Golden Ratio Modal
    ========================================================================== */
-.golden-modal {
+.modal-content.golden-modal {
     max-width: 800px;
     padding: 0;
     display: grid;
@@ -10274,7 +10274,7 @@ html.acc-focus-highlight *:focus {
 
 /* Mobile responsive for Golden layout */
 @media (max-width: 768px) {
-    .golden-modal {
+    .modal-content.golden-modal {
         grid-template-columns: 1fr;
         max-width: 90%;
         max-height: 90vh;
