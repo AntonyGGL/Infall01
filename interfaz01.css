@@ -463,6 +463,11 @@ body.page-home #main-header:not(.scrolled) .menu-toggle span {
     z-index: 1300;
 }
 
+/* Footer del drawer móvil: solo visible dentro del menú lateral */
+.nav-drawer-footer {
+    display: none;
+}
+
 .menu-toggle span {
     width: 100%;
     height: 2.5px;
@@ -696,7 +701,7 @@ nav a:hover::after, nav a.active::after {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: brightness(0.78) contrast(1.02) saturate(1.05);
+    filter: brightness(0.62) contrast(1.06) saturate(1.02);
     transform: scale(1.08);
     transition: transform 8s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.4s ease;
 }
@@ -710,8 +715,8 @@ nav a:hover::after, nav a.active::after {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(90deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.22) 45%, rgba(0, 0, 0, 0.08) 100%),
-        linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.18) 18%, rgba(0, 0, 0, 0.02) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.66) 0%, rgba(0, 0, 0, 0.38) 45%, rgba(0, 0, 0, 0.16) 100%),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.38) 26%, rgba(0, 0, 0, 0.04) 60%),
         linear-gradient(180deg, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.2) 6%, rgba(15, 23, 42, 0) 16%);
 }
 
@@ -1338,6 +1343,13 @@ h1 {
     align-items: flex-end;
     gap: 12px;
     pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+/* Ocultar el widget flotante mientras el menú lateral está abierto */
+body:has(#nav-menu.open) .whatsapp-widget {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .whatsapp-toast {
@@ -7002,6 +7014,7 @@ footer {
 
 /* ===================== MOCKUPS VISUALES ===================== */
 .srv-detail-visual {
+    flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7702,6 +7715,7 @@ footer {
     }
 
     .srv-detail-visual {
+    flex-direction: column;
         order: -1;
     }
 
@@ -11871,6 +11885,7 @@ html.acc-focus-highlight *:focus {
         padding: 20px 0 !important;
         width: 100% !important;
         text-align: left !important;
+        justify-content: flex-start !important;
         opacity: 0.65 !important;
         border-bottom: 1px solid rgba(255,255,255,0.06) !important;
         color: #f8fafc !important;
@@ -11906,6 +11921,104 @@ html.acc-focus-highlight *:focus {
         color: var(--accent-orange) !important;
         padding-left: 8px !important;
     }
+
+    /* Footer del drawer: CTA + WhatsApp anclados al fondo */
+    #nav-menu .nav-drawer-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        margin-top: auto;
+        padding-top: 28px;
+    }
+
+    #nav-menu .nav-drawer-footer a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border-bottom: none !important;
+        opacity: 1 !important;
+        text-align: center !important;
+    }
+
+    #nav-menu .nav-drawer-footer a:hover {
+        padding-left: 0 !important;
+    }
+
+    #nav-menu .drawer-cta {
+        padding: 15px 20px !important;
+        border-radius: 12px !important;
+        background: linear-gradient(135deg, var(--accent-orange), #FBBF24) !important;
+        color: #0b1120 !important;
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        box-shadow: 0 10px 26px -10px rgba(255, 140, 0, 0.55);
+    }
+
+    #nav-menu .drawer-cta:hover {
+        color: #0b1120 !important;
+        filter: brightness(1.06);
+    }
+
+    #nav-menu .drawer-wa {
+        padding: 12px 20px !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(255, 255, 255, 0.14) !important;
+        background: rgba(255, 255, 255, 0.04) !important;
+        color: #f8fafc !important;
+        font-size: 14px !important;
+        font-weight: 500 !important;
+    }
+
+    #nav-menu .drawer-wa i {
+        font-size: 18px;
+        color: #25D366;
+    }
+
+    #nav-menu .drawer-wa:hover {
+        border-color: rgba(37, 211, 102, 0.45) !important;
+        color: #f8fafc !important;
+    }
+}
+
+/* --- FIX DRAWER MOBILE: el transform/backdrop-filter del header capturaba
+       al menú fixed y lo desplazaba (franja vacía al lado derecho).
+       La píldora se mantiene, pero centrada con left/right (sin transform)
+       y con el blur en un ::before, que no crea containing block. --- */
+@media (max-width: 968px) {
+    #main-header {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    #main-header.scrolled {
+        top: 12px !important;
+        left: 24px !important;
+        right: 24px !important;
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        transform: none !important;
+    }
+
+    #main-header::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: inherit;
+        backdrop-filter: blur(18px) saturate(160%);
+        -webkit-backdrop-filter: blur(18px) saturate(160%);
+    }
+
+    /* En el home el header arranca transparente: sin blur hasta scrollear */
+    body.page-home #main-header:not(.scrolled)::before {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
 }
 
 /* --- MEJORAS DEL SLIDER MOBILE --- */
@@ -11932,3 +12045,827 @@ html.acc-focus-highlight *:focus {
         transform: translateY(-50%) !important;
     }
 }
+/* ========================================================================= */
+/* --- RESTORED CSS FOR SERVICES REDESIGN --- */
+/* ========================================================================= */
+
+.landing-bg-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+    opacity: 0.5;
+    pointer-events: none;
+}
+.landing-bg-glow.glow-1 { top: -10%; left: -10%; background: var(--accent-orange); }
+.landing-bg-glow.glow-2 { bottom: -10%; right: -10%; background: var(--accent-cyan); }
+.landing-bg-glow.glow-3 { top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255, 255, 255, 0.1); }
+
+.landing-browser-window {
+    position: relative;
+    z-index: 5;
+    background: #090e17;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.browser-header {
+    background: #151e2d;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.browser-dots {
+    display: flex;
+    gap: 6px;
+}
+.b-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.b-dot.dot-red, .b-dot.red { background: #ff5f56; }
+.b-dot.dot-yellow, .b-dot.yellow { background: #ffbd2e; }
+.b-dot.dot-green, .b-dot.green { background: #27c93f; }
+
+.browser-address {
+    flex: 1;
+    text-align: center;
+    background: #090e17;
+    margin: 0 24px;
+    padding: 4px 0;
+    border-radius: 6px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: var(--font-tech);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.browser-body {
+    padding: 0;
+    background: #090e17;
+    height: 420px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.browser-body::-webkit-scrollbar { width: 8px; }
+.browser-body::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); border-radius: 0 0 16px 0; }
+.browser-body::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 10px; }
+.browser-body::-webkit-scrollbar-thumb:hover { background: rgba(var(--accent-orange-rgb), 0.5); }
+
+.scrollable-mockup-img {
+    width: 100%;
+    margin: 0;
+    height: auto;
+    display: block;
+}
+
+.scrollable-mockup-img.img-zoom {
+    width: 112%;
+    margin-left: -6%;
+    margin-top: -6%;
+}
+
+.offer-sticker {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background: linear-gradient(135deg, #ff9900, #ff5500);
+    border-radius: 16px;
+    padding: 12px 20px;
+    z-index: 20;
+    transform: rotate(6deg);
+    box-shadow: 0 10px 20px rgba(255, 100, 0, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.3);
+    border: 2px solid #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.offer-sticker:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.os-old-price {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    text-decoration: line-through;
+    font-weight: 600;
+    margin-bottom: -4px;
+}
+
+.os-main-box {
+    display: flex;
+    align-items: flex-start;
+    color: #fff;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.os-currency {
+    font-size: 20px;
+    margin-top: 4px;
+    margin-right: 2px;
+}
+
+.os-price {
+    font-size: 42px;
+}
+
+.os-badge {
+    background: #ffe600;
+    color: #000;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+.srv-features-box {
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.srv-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.srv-f-icon-box {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: rgba(var(--accent-orange-rgb), 0.15);
+    color: var(--accent-orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.srv-f-text {
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+}
+
+.srv-metrics-bar {
+    display: flex;
+    background: #0f172a;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 16px 20px;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.metric-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.metric-icon {
+    font-size: 20px;
+    color: var(--accent-cyan);
+}
+
+.metric-data {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-data strong {
+    font-size: 15px;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.metric-data span {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* Mockup Switcher para Web Apps */
+.mockup-switcher {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 24px auto 0;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 6px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    width: max-content;
+}
+
+.switcher-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 6px 16px;
+    font-size: 13px;
+    font-family: var(--font-tech);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.switcher-btn:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.05);
+}
+
+.switcher-btn.active {
+    background: var(--accent-orange);
+    color: #000;
+    font-weight: 800;
+}
+
+.mockup-slides-container {
+    position: relative;
+    width: 100%;
+}
+
+.mockup-slide {
+    display: none;
+    width: 100%;
+}
+
+.mockup-slide.active {
+    display: block;
+    animation: fadeInSlide 0.4s ease forwards;
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* CTA Buttons Full Width */
+.srv-btn-solid, .srv-cta-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 28px;
+    position: relative;
+    box-shadow: 0 12px 35px -5px rgba(255, 140, 0, 0.4);
+    gap: 8px;
+}
+
+.srv-btn-solid i, .srv-cta-btn i, .srv-btn-solid svg, .srv-cta-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.srv-btn-solid:hover i, .srv-cta-btn:hover i, .srv-btn-solid:hover svg, .srv-cta-btn:hover svg {
+    transform: translateX(4px);
+}
+
+
+
+/* FIX METRICS BAR STYLING */
+.srv-m-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.srv-m-icon, .srv-m-item i {
+    font-size: 22px;
+    color: var(--accent-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 229, 255, 0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.srv-m-data, .srv-m-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.srv-m-num, .srv-m-val {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 800;
+    line-height: 1.2;
+    font-family: var(--font-display);
+}
+
+.srv-m-label, .srv-m-lbl {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.3;
+    margin-top: 2px;
+}
+
+.srv-m-divider {
+    width: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    height: auto;
+    align-self: stretch;
+}
+
+/* Ajustes especficos para las 3 opciones de Web Apps a Medida */
+.opt1-img {
+    width: 108%;
+    margin-left: -4%;
+    margin-top: -4%;
+}
+.opt2-img {
+    width: 114%;
+    margin-left: -7%;
+    margin-top: -7%;
+}
+.opt3-img {
+    width: 100%;
+    margin: 0;
+}
+
+/* Reset de imagenes de opciones para evitar recortes y espacios negros */
+#web-apps .browser-body {
+    height: auto !important;
+    overflow: hidden;
+    padding: 0;
+}
+
+.opt1-img, .opt2-img, .opt3-img {
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    display: block !important;
+    object-fit: contain;
+}
+
+/* UPGRADE PREMIUM METRICS BAR */
+.srv-metrics-bar {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+    border-radius: 16px !important;
+    padding: 24px 28px !important;
+    gap: 20px !important;
+}
+
+.srv-m-item {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: default;
+}
+
+.srv-m-item:hover {
+    transform: translateY(-4px) !important;
+}
+
+.srv-m-icon, .srv-m-item i {
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.2) 0%, rgba(0, 229, 255, 0.02) 100%) !important;
+    border: 1px solid rgba(0, 229, 255, 0.3) !important;
+    color: #00E5FF !important;
+    text-shadow: 0 0 15px rgba(0, 229, 255, 0.6) !important;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 14px !important;
+    font-size: 24px !important;
+    box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.1), 0 4px 15px rgba(0, 229, 255, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+.srv-m-item:hover .srv-m-icon, .srv-m-item:hover i {
+    background: rgba(0, 229, 255, 0.3) !important;
+    box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.2), 0 8px 25px rgba(0, 229, 255, 0.3) !important;
+    transform: scale(1.05) !important;
+}
+
+.srv-m-num, .srv-m-val {
+    font-size: 20px !important;
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.5px !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2) !important;
+}
+
+.srv-m-label, .srv-m-lbl {
+    font-size: 13px !important;
+    color: #94a3b8 !important;
+    font-weight: 500 !important;
+    margin-top: 4px !important;
+    letter-spacing: 0.2px !important;
+}
+
+.srv-m-divider {
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.15), transparent) !important;
+    width: 1px !important;
+    height: 48px !important;
+    align-self: center !important;
+}
+
+/* DISEO BENTO BOX PARA METRICAS */
+.srv-metrics-bar {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 16px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-top: 24px !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.srv-m-item {
+    background: rgba(15, 23, 42, 0.4) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 16px !important;
+    padding: 20px 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative;
+    overflow: hidden;
+    transform: none !important;
+}
+
+.srv-m-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.srv-m-item:hover {
+    transform: translateY(-5px) !important;
+    background: rgba(15, 23, 42, 0.8) !important;
+    border-color: rgba(255, 140, 0, 0.3) !important;
+    box-shadow: 0 15px 35px -10px rgba(255, 140, 0, 0.15) !important;
+}
+
+.srv-m-item:hover::before {
+    opacity: 1;
+}
+
+.srv-m-icon, .srv-m-item i {
+    width: 40px !important;
+    height: 40px !important;
+    background: rgba(0, 229, 255, 0.08) !important;
+    border: 1px solid rgba(0, 229, 255, 0.1) !important;
+    box-shadow: none !important;
+    color: var(--accent-cyan) !important;
+    border-radius: 12px !important;
+    font-size: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 12px !important;
+    text-shadow: none !important;
+    transform: none !important;
+}
+
+.srv-m-item:hover .srv-m-icon, .srv-m-item:hover i {
+    background: rgba(255, 140, 0, 0.1) !important;
+    border-color: rgba(255, 140, 0, 0.3) !important;
+    color: var(--accent-orange) !important;
+}
+
+.srv-m-data, .srv-m-info {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+}
+
+.srv-m-num, .srv-m-val {
+    font-size: 24px !important;
+    color: #fff !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    margin-bottom: 4px !important;
+    text-shadow: none !important;
+    letter-spacing: -0.5px !important;
+}
+
+.srv-m-label, .srv-m-lbl {
+    font-size: 13px !important;
+    color: #94a3b8 !important;
+    font-weight: 400 !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    letter-spacing: 0 !important;
+}
+
+.srv-m-divider {
+    display: none !important;
+}
+
+/* REDUCIR TAMAO DEL BENTO BOX */
+.srv-metrics-bar {
+    gap: 12px !important;
+    margin-top: 20px !important;
+}
+
+.srv-m-item {
+    padding: 14px 12px !important;
+    border-radius: 12px !important;
+}
+
+.srv-m-icon, .srv-m-item i {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    margin-bottom: 8px !important;
+}
+
+.srv-m-num, .srv-m-val {
+    font-size: 18px !important;
+    margin-bottom: 2px !important;
+}
+
+.srv-m-label, .srv-m-lbl {
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+}
+
+/* DISEO FLOATING PILLS (PLDORAS DE CRISTAL) */
+.srv-metrics-bar {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-top: 32px !important;
+    margin-bottom: 32px !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.srv-m-item {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 14px !important;
+    padding: 10px 24px 10px 10px !important;
+    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 100px !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative !important;
+    overflow: visible !important;
+    transform: none !important;
+}
+
+.srv-m-item::before { display: none !important; }
+
+.srv-m-item:hover {
+    background: rgba(15, 23, 42, 0.8) !important;
+    border-color: rgba(0, 229, 255, 0.4) !important;
+    transform: translateY(-5px) !important;
+    box-shadow: 0 12px 30px rgba(0, 229, 255, 0.15) !important;
+}
+
+.srv-m-icon, .srv-m-item i {
+    width: 48px !important;
+    height: 48px !important;
+    background: #090e17 !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #fff !important;
+    font-size: 20px !important;
+    margin: 0 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important;
+    text-shadow: none !important;
+}
+
+.srv-m-item:hover .srv-m-icon, .srv-m-item:hover i {
+    border-color: #00E5FF !important;
+    color: #00E5FF !important;
+    box-shadow: 0 0 20px rgba(0,229,255,0.4), inset 0 0 10px rgba(0,229,255,0.2) !important;
+    transform: rotate(5deg) scale(1.05) !important;
+}
+
+.srv-m-data, .srv-m-info {
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: left !important;
+}
+
+.srv-m-num, .srv-m-val {
+    font-size: 18px !important;
+    color: #fff !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    margin-bottom: 2px !important;
+    letter-spacing: -0.5px !important;
+}
+
+.srv-m-label, .srv-m-lbl {
+    font-size: 12px !important;
+    color: #94a3b8 !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0 !important;
+}
+
+.srv-m-divider {
+    display: none !important;
+}
+
+/* Indicador luminoso lateral */
+.srv-m-item::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.srv-m-item:hover::after {
+    background: #00E5FF;
+    box-shadow: 0 0 10px #00E5FF;
+}
+
+/* MEJORA LNEAS SEPARADORAS DIFUMINADAS */
+.srv-alt-bg {
+    border-top: 1px solid transparent !important;
+    border-bottom: 1px solid transparent !important;
+    border-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15), transparent) 1 !important;
+}
+
+[data-theme="light"] .srv-alt-bg {
+    border-image: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15), transparent) 1 !important;
+}
+
+/* ELIMINAR COMPLETAMENTE LAS LNEAS SEPARADORAS */
+.srv-alt-bg {
+    border-top: none !important;
+    border-bottom: none !important;
+    border-image: none !important;
+    box-shadow: none !important;
+}
+
+[data-theme="light"] .srv-alt-bg {
+    border-top: none !important;
+    border-bottom: none !important;
+    border-image: none !important;
+    box-shadow: none !important;
+}
+
+/* DIFUMINAR EL FONDO DE LAS SECCIONES ALTERNAS */
+.srv-alt-bg {
+    background: linear-gradient(
+        to bottom, 
+        transparent 0%, 
+        rgba(var(--rgb-card), 0.25) 15%, 
+        rgba(var(--rgb-card), 0.25) 85%, 
+        transparent 100%
+    ) !important;
+    border: none !important;
+}
+
+[data-theme="light"] .srv-alt-bg {
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.02) 15%,
+        rgba(0, 0, 0, 0.02) 85%,
+        transparent 100%
+    ) !important;
+    border: none !important;
+}
+
+/* ============================================================
+   FIX VISTA MÓVIL — SECCIONES DE SERVICIOS (mockups + métricas)
+   Va al final del archivo para ganar a las capas con !important
+   ============================================================ */
+@media (max-width: 640px) {
+    /* Contener desbordes horizontales de la sección */
+    .srv-detail-section {
+        overflow-x: clip;
+        padding: 60px 16px !important;
+    }
+    .srv-detail-container,
+    .srv-detail-content,
+    .srv-detail-visual {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    /* Métricas: píldoras apiladas en vertical (la fila forzada no cabe) */
+    .srv-metrics-bar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+        margin-top: 22px !important;
+        margin-bottom: 22px !important;
+    }
+    .srv-m-item {
+        width: 100% !important;
+        padding: 8px 18px 8px 8px !important;
+    }
+    .srv-m-icon, .srv-m-item i {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 17px !important;
+        flex: 0 0 40px !important;
+    }
+    .srv-m-num, .srv-m-val { font-size: 16px !important; }
+    .srv-m-label, .srv-m-lbl { font-size: 11.5px !important; }
+
+    /* Sticker de precio: dentro del viewport y más compacto */
+    .offer-sticker {
+        top: -12px !important;
+        right: 4px !important;
+        padding: 8px 14px !important;
+        transform: rotate(4deg) !important;
+    }
+    .offer-sticker .os-price { font-size: 26px !important; }
+    .offer-sticker .os-currency { font-size: 15px !important; }
+    .offer-sticker .os-old-price { font-size: 12px !important; }
+    .offer-sticker .os-badge { font-size: 8.5px !important; }
+
+    /* Ventana del navegador: menos alto para no dominar la pantalla */
+    .browser-body { height: 330px; }
+
+    /* Switcher de opciones a ancho completo */
+    .mockup-switcher {
+        width: 100% !important;
+        max-width: 340px;
+        justify-content: space-between;
+        margin-top: 18px;
+    }
+    .switcher-btn {
+        flex: 1;
+        padding: 7px 6px;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    /* Glows de fondo más contenidos */
+    .landing-bg-glow {
+        max-width: 70vw;
+        filter: blur(60px);
+    }
+}
+
+

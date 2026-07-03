@@ -1,0 +1,112 @@
+/* DISEÑO FLOATING PILLS (PÍLDORAS DE CRISTAL) */
+.srv-metrics-bar {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-top: 32px !important;
+    margin-bottom: 32px !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.srv-m-item {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 14px !important;
+    padding: 10px 24px 10px 10px !important;
+    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 100px !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative !important;
+    overflow: visible !important;
+    transform: none !important;
+}
+
+.srv-m-item::before { display: none !important; }
+
+.srv-m-item:hover {
+    background: rgba(15, 23, 42, 0.8) !important;
+    border-color: rgba(0, 229, 255, 0.4) !important;
+    transform: translateY(-5px) !important;
+    box-shadow: 0 12px 30px rgba(0, 229, 255, 0.15) !important;
+}
+
+.srv-m-icon, .srv-m-item i {
+    width: 48px !important;
+    height: 48px !important;
+    background: #090e17 !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #fff !important;
+    font-size: 20px !important;
+    margin: 0 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important;
+    text-shadow: none !important;
+}
+
+.srv-m-item:hover .srv-m-icon, .srv-m-item:hover i {
+    border-color: #00E5FF !important;
+    color: #00E5FF !important;
+    box-shadow: 0 0 20px rgba(0,229,255,0.4), inset 0 0 10px rgba(0,229,255,0.2) !important;
+    transform: rotate(5deg) scale(1.05) !important;
+}
+
+.srv-m-data, .srv-m-info {
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: left !important;
+}
+
+.srv-m-num, .srv-m-val {
+    font-size: 18px !important;
+    color: #fff !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    margin-bottom: 2px !important;
+    letter-spacing: -0.5px !important;
+}
+
+.srv-m-label, .srv-m-lbl {
+    font-size: 12px !important;
+    color: #94a3b8 !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0 !important;
+}
+
+.srv-m-divider {
+    display: none !important;
+}
+
+/* Indicador luminoso lateral */
+.srv-m-item::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.srv-m-item:hover::after {
+    background: #00E5FF;
+    box-shadow: 0 0 10px #00E5FF;
+}

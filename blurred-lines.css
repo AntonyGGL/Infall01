@@ -1,0 +1,10 @@
+/* MEJORA LÍNEAS SEPARADORAS DIFUMINADAS */
+.srv-alt-bg {
+    border-top: 1px solid transparent !important;
+    border-bottom: 1px solid transparent !important;
+    border-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15), transparent) 1 !important;
+}
+
+[data-theme="light"] .srv-alt-bg {
+    border-image: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15), transparent) 1 !important;
+}

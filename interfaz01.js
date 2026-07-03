@@ -45,7 +45,7 @@ menuToggleBtn.addEventListener('click', () => {
     }
 });
 
-const navLinks = navMenu.querySelectorAll('a');
+const navLinks = navMenu.querySelectorAll('a:not(.dropdown-trigger)');
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('open');
@@ -398,130 +398,114 @@ window.addEventListener('load', () => {
 // 8. Tech Stack Marquee Dinámico + Partículas
 // ============================================================
 (function () {
-    const carousel = document.getElementById('tech-carousel');
     const wrapper = document.getElementById('tech-carousel-wrapper');
-    const canvas = document.getElementById('tech-particles-canvas');
+    const carousel = document.getElementById('tech-carousel');
+    const prevBtn = document.getElementById('tech-prev');
+    const nextBtn = document.getElementById('tech-next');
+    const pagination = document.getElementById('tech-pagination');
+    const container = document.getElementById('tech-swiper');
+    
+    if (!wrapper || !carousel) return;
+    
+    // Duplicate items for infinite scroll
+    const originalItems = Array.from(carousel.querySelectorAll('.tech-item'));
+    originalItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        carousel.appendChild(clone);
+    });
+    originalItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        carousel.appendChild(clone);
+    });
 
+    const items = Array.from(carousel.querySelectorAll('.tech-item'));
+    if (items.length === 0) return;
+    
+    const itemWidth = items[0].offsetWidth + 20; // width + gap
+    
+    // Create pagination dots based on original items
+    if (pagination) {
+        pagination.innerHTML = ''; // clear existing
+        const numDots = Math.ceil(originalItems.length / 2);
+        for (let i = 0; i < numDots; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'tech-dot';
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                isAutoScrolling = false;
+                wrapper.scrollTo({ left: i * itemWidth * 2, behavior: 'smooth' });
+                setTimeout(() => { isAutoScrolling = true; }, 3000);
+            });
+            pagination.appendChild(dot);
+        }
+        
+        const dots = Array.from(pagination.querySelectorAll('.tech-dot'));
+        wrapper.addEventListener('scroll', () => {
+            const scrollLeft = wrapper.scrollLeft;
+            const index = Math.round(scrollLeft / (itemWidth * 2)) % numDots;
+            dots.forEach((dot, i) => {
+                if (i === index) dot.classList.add('active');
+                else dot.classList.remove('active');
+            });
+        });
+    }
+    
+    let isAutoScrolling = true;
+    let scrollSpeed = 1; 
+
+    function animateScroll() {
+        if (isAutoScrolling) {
+            wrapper.scrollLeft += scrollSpeed;
+            // Infinite loop logic
+            if (wrapper.scrollLeft >= wrapper.scrollWidth / 2) {
+                wrapper.scrollLeft -= wrapper.scrollWidth / 3; // Reset to the first cloned set
+            }
+        }
+        requestAnimationFrame(animateScroll);
+    }
+    requestAnimationFrame(animateScroll);
+    
+    if (container) {
+        container.addEventListener('mouseenter', () => isAutoScrolling = false);
+        container.addEventListener('mouseleave', () => isAutoScrolling = true);
+    }
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            isAutoScrolling = false;
+            wrapper.scrollBy({ left: -itemWidth * 2, behavior: 'smooth' });
+            setTimeout(() => { isAutoScrolling = true; }, 3000);
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            isAutoScrolling = false;
+            wrapper.scrollBy({ left: itemWidth * 2, behavior: 'smooth' });
+            setTimeout(() => { isAutoScrolling = true; }, 3000);
+        });
+    }
+})();
+
+// ============================================================
+// 8b. Testimonios — Marquee Infinito
+// ============================================================
+(function () {
+    const carousel = document.getElementById('testimonials-carousel');
+    const wrapper = document.getElementById('testimonials-carousel-wrapper');
     if (!carousel || !wrapper) return;
 
-    let isMobile = window.innerWidth <= 768;
+    const originalCards = Array.from(carousel.querySelectorAll('.testimonial-card'));
+    originalCards.forEach(card => carousel.appendChild(card.cloneNode(true)));
 
-    // Clonar items para marquee infinito (duplicar set completo)
-    const originalItems = Array.from(carousel.querySelectorAll('.tech-item'));
-    originalItems.forEach(item => carousel.appendChild(item.cloneNode(true)));
-    originalItems.forEach(item => carousel.appendChild(item.cloneNode(true)));
-
-    // Pausar marquee en hover
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!prefersReducedMotion && !isMobile) {
-        wrapper.addEventListener('mouseenter', () => carousel.classList.add('paused'));
-        wrapper.addEventListener('mouseleave', () => carousel.classList.remove('paused'));
-    }
-
-    // Sistema de partículas — activo en mobile también (densidad reducida)
-    if (!canvas || prefersReducedMotion) {
-        if (canvas) canvas.style.display = 'none';
+    if (prefersReducedMotion) {
+        carousel.classList.add('paused');
         return;
     }
 
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let animationId;
-    let canvasWidth = 0;
-    let canvasHeight = 0;
-    let isVisible = false;
-
-    function resizeCanvas() {
-        const rect = wrapper.getBoundingClientRect();
-        canvasWidth = rect.width;
-        canvasHeight = rect.height;
-        canvas.width = rect.width * window.devicePixelRatio;
-        canvas.height = rect.height * window.devicePixelRatio;
-        canvas.style.width = rect.width + 'px';
-        canvas.style.height = rect.height + 'px';
-        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-    }
-
-    function createParticles() {
-        particles = [];
-        const count = Math.floor(canvasWidth / (isMobile ? 90 : 60));
-        for (let i = 0; i < count; i++) {
-            particles.push({
-                x: Math.random() * canvasWidth,
-                y: Math.random() * canvasHeight,
-                size: Math.random() * 2 + 0.8,
-                speedX: (Math.random() - 0.5) * 0.3,
-                speedY: (Math.random() - 0.5) * 0.15,
-                opacity: Math.random() * 0.2 + 0.125,
-                pulse: Math.random() * Math.PI * 2
-            });
-        }
-    }
-
-    function drawParticles() {
-        if (!isVisible) return; // Pause drawing if not visible
-
-        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-
-        particles.forEach((p, i) => {
-            p.x += p.speedX;
-            p.y += p.speedY;
-            p.pulse += 0.02;
-
-            if (p.x < 0) p.x = canvasWidth;
-            if (p.x > canvasWidth) p.x = 0;
-            if (p.y < 0) p.y = canvasHeight;
-            if (p.y > canvasHeight) p.y = 0;
-
-            const currentOpacity = p.opacity * (0.7 + Math.sin(p.pulse) * 0.3);
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 140, 0, ${currentOpacity})`;
-            ctx.fill();
-
-            // Líneas de conexión entre partículas cercanas
-            for (let j = i + 1; j < particles.length; j++) {
-                const p2 = particles[j];
-                const dx = p.x - p2.x;
-                const dy = p.y - p2.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-
-                if (dist < 100) {
-                    ctx.beginPath();
-                    ctx.moveTo(p.x, p.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    ctx.strokeStyle = `rgba(255, 140, 0, ${0.04 * (1 - dist / 100)})`;
-                    ctx.lineWidth = 0.5;
-                    ctx.stroke();
-                }
-            }
-        });
-
-        animationId = requestAnimationFrame(drawParticles);
-    }
-
-    resizeCanvas();
-    createParticles();
-
-    // IntersectionObserver to pause/resume animation based on visibility
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            isVisible = entry.isIntersecting;
-            if (isVisible) {
-                cancelAnimationFrame(animationId);
-                drawParticles();
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    observer.observe(wrapper);
-
-    window.addEventListener('resize', () => {
-        isMobile = window.innerWidth <= 768;
-        resizeCanvas();
-        createParticles();
-    });
+    wrapper.addEventListener('mouseenter', () => carousel.classList.add('paused'));
+    wrapper.addEventListener('mouseleave', () => carousel.classList.remove('paused'));
 })();
 
 // ============================================================
