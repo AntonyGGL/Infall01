@@ -41,6 +41,7 @@
        de modo que el buscador quede a la vista sin hacer scroll. */
     padding: clamp(7rem, 13vh, 9.5rem) 1.25rem clamp(3rem, 6vh, 5rem);
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     position: relative;

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Libro de reclamaciones | INFALL Systems Engineering</title>
+    <meta name="description" content="Libro de Reclamaciones virtual de INFALL Systems Engineering. Registra tu reclamo o queja; respondemos en un máximo de 15 días hábiles.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://infallconsulting.com/libro-reclamaciones.html">
+    <meta name="theme-color" content="#0C0B0A">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/infall.css?v=1">
+    <link rel="stylesheet" href="assets/legal.css?v=1">
+
+    <script>
+        (function () { try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) { } })();
+    </script>
+</head>
+
+<body>
+    <a href="#contenido" class="skip-link">Saltar al contenido</a>
+
+    <canvas class="page-particles" id="page-particles" aria-hidden="true"></canvas>
+
+    <!-- ============ NAVEGACIÓN ============ -->
+    <header class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="brand" aria-label="INFALL Systems Engineering, inicio">
+                <span class="brand__mark">INFALL<span class="brand__dot" aria-hidden="true"></span></span>
+                <span class="brand__sub">Systems Engineering</span>
+            </a>
+
+            <nav class="nav__links" id="nav-links" aria-label="Navegación principal">
+                <a href="index.html" class="nav__link">Inicio</a>
+                <a href="quienes-somos.html" class="nav__link">Quiénes somos</a>
+                <a href="servicios.html" class="nav__link">Servicios</a>
+                <a href="dominios.html" class="nav__link">Dominios</a>
+                <a href="portfolio.html" class="nav__link">Portafolio</a>
+                <div class="nav__drawer-cta">
+                    <a href="cotizacion.html" class="btn btn--primary btn--block">Cotizar proyecto</a>
+                    <a href="https://wa.me/51908536493" target="_blank" rel="noopener"
+                        class="btn btn--wa btn--block"><i class="ri-whatsapp-line"></i> +51 908 536 493</a>
+                </div>
+            </nav>
+
+            <div class="nav__actions">
+                <button class="icon-btn theme-toggle" id="theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+                    <svg class="i-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round">
+                        <circle cx="12" cy="12" r="4.5" />
+                        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+                    </svg>
+                    <svg class="i-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                </button>
+
+                <button class="icon-btn" id="navCartBtn" aria-label="Ver carrito">
+                    <i class="ri-shopping-cart-2-line"></i>
+                    <span class="cart-badge hidden" id="navCartBadge">0</span>
+                </button>
+
+                <a href="cotizacion.html" class="btn btn--primary nav__cta nav__cta--desktop">Cotizar proyecto</a>
+
+                <button class="nav__burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false"
+                    aria-controls="nav-links">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="nav-scrim" id="nav-scrim"></div>
+
+    <main id="contenido">
+        <section class="section legal">
+            <div class="shell">
+                <div class="legal__head">
+                    <p class="eyebrow">Indecopi</p>
+                    <h1 class="display-lg legal__title">Libro de reclamaciones</h1>
+                    <p class="legal__meta">Conforme a la Ley 29571 · Respuesta en máximo 15 días hábiles</p>
+                </div>
+
+                <div class="claim">
+                    <div>
+                        <p class="lead">Si algo no salió como esperabas, cuéntanoslo aquí. Registramos tu caso con un
+                            número de hoja y te respondemos por correo dentro del plazo de ley.</p>
+
+                        <div class="legal__body" style="margin-top:2rem">
+                            <h3>La diferencia entre reclamo y queja</h3>
+                            <ul>
+                                <li><strong>Reclamo:</strong> tu disconformidad con el servicio contratado.</li>
+                                <li><strong>Queja:</strong> tu malestar con la atención recibida, sin relación con el
+                                    servicio en sí.</li>
+                            </ul>
+                            <p style="margin-top:1.2rem">Presentar un reclamo aquí no impide que acudas a Indecopi ni a
+                                otra vía legal.</p>
+                        </div>
+
+                        <div class="legal__note" style="margin-top:2rem">
+                            <strong>Datos del proveedor:</strong> <mark>[RAZÓN SOCIAL]</mark>, RUC
+                            <mark>[RUC]</mark>, <mark>[DIRECCIÓN FISCAL]</mark>.
+                        </div>
+                    </div>
+
+                    <form class="claim__form" id="claim-form" novalidate>
+                        <span class="claim__legend">1 · Identificación del consumidor</span>
+
+                        <div class="claim__row">
+                            <div class="field">
+                                <label for="cl-nombre">Nombres y apellidos</label>
+                                <input type="text" id="cl-nombre" name="nombre" autocomplete="name" required>
+                            </div>
+                            <div class="field">
+                                <label for="cl-doc">DNI o carné de extranjería</label>
+                                <input type="text" id="cl-doc" name="documento" inputmode="numeric" required>
+                            </div>
+                        </div>
+
+                        <div class="claim__row">
+                            <div class="field">
+                                <label for="cl-email">Correo electrónico</label>
+                                <input type="text" id="cl-email" name="correo" autocomplete="email" required>
+                            </div>
+                            <div class="field">
+                                <label for="cl-tel">Teléfono</label>
+                                <input type="text" id="cl-tel" name="telefono" autocomplete="tel" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="cl-dir">Domicilio</label>
+                            <input type="text" id="cl-dir" name="domicilio" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="cl-tutor">Si eres menor de edad, nombre del padre o tutor</label>
+                            <input type="text" id="cl-tutor" name="tutor">
+                        </div>
+
+                        <span class="claim__legend" style="margin-top:2rem">2 · Bien contratado</span>
+
+                        <div class="claim__row">
+                            <div class="field">
+                                <label for="cl-tipo-bien">Tipo</label>
+                                <select id="cl-tipo-bien" name="tipo_bien">
+                                    <option value="servicio">Servicio</option>
+                                    <option value="producto">Producto</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="cl-monto">Monto reclamado (S/)</label>
+                                <input type="text" id="cl-monto" name="monto" inputmode="decimal">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="cl-desc-bien">Descripción del servicio o producto</label>
+                            <textarea id="cl-desc-bien" name="descripcion_bien" rows="2" required></textarea>
+                        </div>
+
+                        <span class="claim__legend" style="margin-top:2rem">3 · Detalle</span>
+
+                        <div class="field">
+                            <label for="cl-tipo">Tipo de solicitud</label>
+                            <select id="cl-tipo" name="tipo" required>
+                                <option value="reclamo">Reclamo — disconformidad con el servicio</option>
+                                <option value="queja">Queja — disconformidad con la atención</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="cl-detalle">Detalle de lo ocurrido</label>
+                            <textarea id="cl-detalle" name="detalle" rows="4" required></textarea>
+                        </div>
+
+                        <div class="field">
+                            <label for="cl-pedido">Qué esperas de nosotros</label>
+                            <textarea id="cl-pedido" name="pedido" rows="3" required></textarea>
+                        </div>
+
+                        <div class="field field--check">
+                            <input type="checkbox" id="cl-acepta" name="acepta" required>
+                            <label for="cl-acepta">Autorizo el tratamiento de mis datos para atender esta solicitud,
+                                según la <a href="privacidad.html">política de privacidad</a>.</label>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--block" id="cl-enviar">
+                            Registrar mi solicitud
+                        </button>
+
+                        <div class="claim__msg" id="cl-msg" role="status"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ PIE ============ -->
+    <footer class="foot" id="contacto">
+        <div class="shell">
+            <div class="foot__grid">
+                <div>
+                    <a href="index.html" class="brand">
+                        <span class="brand__mark">INFALL<span class="brand__dot" aria-hidden="true"></span></span>
+                        <span class="brand__sub">Systems Engineering</span>
+                    </a>
+                    <p class="foot__about">Diseño y desarrollo de páginas web para MYPEs y emprendedores del Perú.
+                        Rápidas, seguras y hechas para que te encuentren en Google.</p>
+                </div>
+
+                <div>
+                    <h4 class="foot__h">Navegación</h4>
+                    <div class="foot__links">
+                        <a href="index.html">Inicio</a>
+                        <a href="quienes-somos.html">Quiénes somos</a>
+                        <a href="servicios.html">Servicios</a>
+                        <a href="portfolio.html">Portafolio</a>
+                        <a href="dominios.html">Dominios</a>
+                    </div>
+                </div>
+
+                <div id="cotizar">
+                    <h4 class="foot__h">Contacto directo</h4>
+                    <div class="foot__links foot__contact">
+                        <a href="mailto:infallcm@gmail.com">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            infallcm@gmail.com
+                        </a>
+                        <a href="https://wa.me/51908536493?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web"
+                            target="_blank" rel="noopener">
+                            <i class="ri-whatsapp-line"></i> +51 908 536 493
+                        </a>
+                        <a href="https://wa.me/51922996170?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web"
+                            target="_blank" rel="noopener">
+                            <i class="ri-whatsapp-line"></i> +51 922 996 170
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="foot__h">Legal</h4>
+                    <div class="foot__links">
+                        <a href="terminos.html">Términos y condiciones</a>
+                        <a href="privacidad.html">Política de privacidad</a>
+                        <a href="libro-reclamaciones.html">Libro de reclamaciones</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="foot__bottom">
+                <span>© 2026 INFALL Systems Engineering</span>
+                <span>Lima, Perú · Trabajo 100% remoto</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <a class="wa-float" href="https://wa.me/51908536493?text=Hola%20INFALL%2C%20tengo%20una%20consulta."
+        target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+        <i class="ri-whatsapp-line"></i>
+    </a>
+
+    <script src="cart.js" defer></script>
+    <script src="assets/infall.js?v=1" defer></script>
+    <script src="assets/analytics.js?v=1" defer></script>
+    <script src="assets/reclamaciones.js?v=1" defer></script>
+</body>
+
+</html>

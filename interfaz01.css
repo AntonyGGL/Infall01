@@ -108,6 +108,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     z-index: -2;
     background-image:
         radial-gradient(ellipse 55% 45% at 12% 8%, rgba(var(--accent-orange-rgb), 0.10) 0%, transparent 65%),
@@ -125,6 +126,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     z-index: -1;
     pointer-events: none;
     opacity: 0.48;
@@ -6293,6 +6295,7 @@ footer {
         right: -100%;
         width: 75%;
         height: 100vh;
+    height: 100dvh;
         background-color: rgba(var(--rgb-deep), 0.95);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
@@ -6748,6 +6751,7 @@ footer {
 /* --- HERO DE SERVICIOS --- */
 .srv-hero {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10102,6 +10106,7 @@ footer {
     left: 0;
     width: 380px;
     height: 100vh;
+    height: 100dvh;
     background: #121212;
     background: rgba(18, 18, 18, 0.98);
     backdrop-filter: blur(20px);
@@ -10399,6 +10404,7 @@ html.acc-focus-highlight *:focus {
     left: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     pointer-events: none;
     z-index: 99999;
     display: none;

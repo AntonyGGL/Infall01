@@ -1,0 +1,964 @@
+/* ============================================================
+   INFALL — Puente hacia las páginas heredadas
+   Carga DESPUÉS de interfaz01.css. No toca el marcado ni el JS:
+   traduce los tokens y componentes viejos al sistema nuevo.
+   ============================================================ */
+
+/* ---------- 1. Tokens: la paleta y las fuentes nuevas ---------- */
+:root {
+    /* Superficies (grafito cálido) */
+    --bg-dark-blue: #0C0B0A;
+    --bg-nav: rgba(12, 11, 10, 0.86);
+    --card-dark: #191714;
+    --card-light: #191714;
+    --card-light-text: #EFEAE1;
+    --clr-footer: #0A0908;
+    --clr-inverse: #0C0B0A;
+
+    /* Acento ámbar refinado; el cian se retira hacia el ámbar claro */
+    --accent-orange: #E39B3D;
+    --accent-orange-rgb: 227, 155, 61;
+    --accent-hover: #F2C68C;
+    --accent-cyan: #F2C68C;
+    --accent-cyan-rgb: 242, 198, 140;
+    --glow-orange: rgba(227, 155, 61, 0.10);
+    --glow-cyan: rgba(242, 198, 140, 0.06);
+
+    /* Tinta */
+    --text-white: #EFEAE1;
+    --text-muted: #918A7F;
+
+    --rgb-deep: 12, 11, 10;
+    --rgb-card: 25, 23, 20;
+    --rgb-card-alt: 20, 19, 17;
+    --rgb-contrast: 239, 234, 225;
+    --rgb-white: 239, 234, 225;
+    --rgb-white-soft: 246, 242, 234;
+
+    /* Tipografía del sistema nuevo */
+    --font-main: 'Archivo', system-ui, -apple-system, sans-serif;
+    --font-display: 'Bricolage Grotesque', Georgia, serif;
+    --font-tech: 'JetBrains Mono', ui-monospace, monospace;
+
+    /* Formas editoriales: radios contenidos */
+    --radius-sm: 5px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 10px;
+    --radius-2xl: 14px;
+
+    /* Reglas capilares del sistema nuevo */
+    --rule: rgba(239, 234, 225, 0.11);
+    --rule-soft: rgba(239, 234, 225, 0.06);
+    --rule-hard: rgba(239, 234, 225, 0.20);
+    --bone: #EFEAE1;
+    --bone-soft: #C6BFB4;
+    --bone-dim: #918A7F;
+    --ink-card: #191714;
+    --ink-raise: #141311;
+    --amber: #E39B3D;
+    --amber-rgb: 227, 155, 61;
+    --amber-soft: #F2C68C;
+}
+
+[data-theme="light"] {
+    --bg-dark-blue: #F6F3EE;
+    --bg-nav: rgba(246, 243, 238, 0.92);
+    --card-dark: #FFFFFF;
+    --card-light: #FFFFFF;
+    --card-light-text: #17150F;
+    --clr-footer: #EFEAE2;
+    --clr-inverse: #F6F3EE;
+
+    --accent-orange: #A9660F;
+    --accent-orange-rgb: 169, 102, 15;
+    --accent-hover: #7A480A;
+    --accent-cyan: #C98A2E;
+    --accent-cyan-rgb: 201, 138, 46;
+    --glow-orange: rgba(169, 102, 15, 0.08);
+    --glow-cyan: rgba(201, 138, 46, 0.05);
+
+    --text-white: #17150F;
+    --text-muted: #6E675C;
+
+    --rgb-deep: 246, 243, 238;
+    --rgb-card: 255, 255, 255;
+    --rgb-card-alt: 246, 243, 238;
+    --rgb-contrast: 23, 21, 15;
+    --rgb-white: 255, 255, 255;
+    --rgb-white-soft: 250, 249, 246;
+
+    --rule: rgba(23, 21, 15, 0.13);
+    --rule-soft: rgba(23, 21, 15, 0.07);
+    --rule-hard: rgba(23, 21, 15, 0.24);
+    --bone: #17150F;
+    --bone-soft: #4A453C;
+    --bone-dim: #6E675C;
+    --ink-card: #FFFFFF;
+    --ink-raise: #FFFFFF;
+    --amber: #A9660F;
+    --amber-rgb: 169, 102, 15;
+    --amber-soft: #C98A2E;
+}
+
+/* ---------- 2. Base tipográfica ---------- */
+body {
+    font-family: var(--font-main);
+    letter-spacing: -0.003em;
+    line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+    font-optical-sizing: auto;
+}
+
+/* El degradado de dos tonos se cambia por ámbar sólido: más limpio */
+.gradient-text,
+.text-gradient-orange {
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: currentColor;
+    color: var(--amber);
+}
+
+/* Etiqueta de sección con el lenguaje mono del sistema */
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: none;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: var(--font-tech);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    box-shadow: none;
+}
+.section-tag::before {
+    content: '';
+    width: 1.6rem;
+    height: 1px;
+    background: var(--amber);
+    flex: none;
+}
+
+.section-title { letter-spacing: -0.035em; line-height: 1.04; }
+.section-subtitle { color: var(--bone-dim); }
+
+/* ---------- 3. Atmósfera ---------- */
+.glow-orb {
+    background: radial-gradient(circle, rgba(var(--amber-rgb), 0.16), transparent 68%);
+    filter: blur(70px);
+    opacity: 0.55;
+}
+.cyber-grid, .landing-bg-glow { opacity: 0.35; }
+.page-particles-canvas { opacity: 0.5; }
+[data-theme="light"] .page-particles-canvas { opacity: 0.3; }
+
+/* Las luciérnagas de las fotos de equipo, en ámbar */
+.firefly,
+.firefly:nth-child(2n) {
+    background: var(--amber);
+    box-shadow: 0 0 8px 2px rgba(var(--amber-rgb), 0.8);
+}
+
+/* ---------- 4. Navegación en píldora ---------- */
+#main-header {
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 0;
+    transition: none;
+}
+#main-header .nav-container {
+    max-width: 1240px;
+    height: 76px;
+    padding: 0;
+    transition: max-width 320ms cubic-bezier(0.22, 1, 0.36, 1),
+                height 320ms cubic-bezier(0.22, 1, 0.36, 1),
+                margin-top 320ms cubic-bezier(0.22, 1, 0.36, 1),
+                padding 320ms cubic-bezier(0.22, 1, 0.36, 1),
+                border-radius 320ms cubic-bezier(0.22, 1, 0.36, 1),
+                background 320ms cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 320ms cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1);
+    border: 1px solid transparent;
+    border-radius: 0;
+}
+
+#main-header.scrolled {
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+}
+#main-header.scrolled .nav-container {
+    position: relative;
+    max-width: fit-content;
+    min-width: min(680px, calc(100% - 3rem));
+    height: 58px;
+    margin-top: 12px;
+    padding: 0 1.35rem;
+    border-radius: 999px;
+    border-color: transparent;
+}
+
+/* La superficie va en el pseudo-elemento: con backdrop-filter en el
+   contenedor, el menú lateral (position: fixed) quedaría atrapado dentro
+   de la píldora en vez de referenciar al viewport. */
+#main-header.scrolled .nav-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border: 1px solid var(--rule);
+    border-radius: inherit;
+    background: color-mix(in srgb, var(--bg-dark-blue) 88%, transparent);
+    backdrop-filter: blur(26px) saturate(190%);
+    -webkit-backdrop-filter: blur(26px) saturate(190%);
+    box-shadow:
+        0 18px 40px -22px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(var(--amber-rgb), 0.05);
+}
+[data-theme="light"] #main-header.scrolled .nav-container::after {
+    background: color-mix(in srgb, var(--bg-dark-blue) 93%, transparent);
+    box-shadow:
+        0 16px 34px -22px rgba(23, 21, 15, 0.3),
+        0 0 0 1px rgba(var(--amber-rgb), 0.08);
+}
+#main-header.scrolled .sub { display: none; }
+
+.logo-text {
+    font-family: var(--font-display);
+    font-size: 1.28rem;
+    font-weight: 800;
+    letter-spacing: -0.045em;
+}
+#main-header.scrolled .logo-text { font-size: 1.12rem; letter-spacing: -0.045em; }
+.logo .sub {
+    font-family: var(--font-tech);
+    font-size: 0.545rem;
+    letter-spacing: 0.28em;
+    color: var(--bone-dim);
+}
+.logo-dot { background: var(--amber); box-shadow: none; }
+
+#main-header nav a,
+#nav-menu > a,
+.dropdown-trigger {
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--bone-soft);
+    text-shadow: none;
+}
+#main-header nav a:hover,
+#main-header nav a.active { color: var(--bone); }
+
+.theme-toggle, .cart-toggle {
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-md);
+    color: var(--bone-soft);
+    width: 38px;
+    height: 38px;
+}
+#main-header.scrolled .theme-toggle,
+#main-header.scrolled .cart-toggle { width: 34px; height: 34px; border-radius: 50%; }
+.theme-toggle:hover, .cart-toggle:hover {
+    background: rgba(var(--amber-rgb), 0.08);
+    border-color: var(--amber);
+    color: var(--amber);
+}
+.cart-badge {
+    background: var(--amber);
+    color: #17120A;
+    font-family: var(--font-tech);
+    font-weight: 700;
+}
+
+.dropdown-menu {
+    background: var(--ink-card);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 30px 60px -35px rgba(0, 0, 0, 0.8);
+}
+.dropdown-item { color: var(--bone-soft); border-radius: var(--radius-sm); }
+.dropdown-item:hover { background: rgba(var(--amber-rgb), 0.1); color: var(--amber); }
+
+.menu-toggle span { background-color: var(--bone); }
+
+/* ---------- 5. Botones ---------- */
+.btn-primary,
+.btn-nav,
+.btn-visitar,
+.btn-asesoria,
+.btn-slide-cta,
+.btn-pricing-primary {
+    font-family: var(--font-main);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    border-radius: var(--radius-md);
+    background: var(--amber);
+    color: #17120A;
+    border: 1px solid var(--amber);
+    box-shadow: none;
+    text-shadow: none;
+}
+.btn-primary:hover,
+.btn-nav:hover,
+.btn-visitar:hover,
+.btn-asesoria:hover,
+.btn-slide-cta:hover,
+.btn-pricing-primary:hover {
+    background: var(--amber-soft);
+    border-color: var(--amber-soft);
+    color: #17120A;
+    box-shadow: none;
+    transform: translateY(-2px);
+}
+#main-header.scrolled .btn-nav { border-radius: 999px; padding: 0.55rem 1rem; font-size: 0.84rem; }
+
+.btn-outline,
+.btn-ghost,
+.btn-slide-ghost,
+.btn-pricing-outline {
+    font-family: var(--font-main);
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    background: transparent;
+    border: 1px solid var(--rule-hard);
+    color: var(--bone);
+    box-shadow: none;
+}
+.btn-outline:hover,
+.btn-ghost:hover,
+.btn-slide-ghost:hover,
+.btn-pricing-outline:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: transparent;
+    transform: translateY(-2px);
+}
+
+/* ---------- 6. Tarjetas y superficies ---------- */
+.why-us-card,
+.why-us-card-front,
+.why-us-card-back,
+.pricing-card,
+.portfolio-card,
+.team-card,
+.service-card,
+.srv-card,
+.value-card,
+.stat-card,
+.form-card,
+.domain-card,
+.cotiza-card {
+    background: var(--ink-card);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-2xl);
+    box-shadow: none;
+}
+.why-us-card:hover,
+.pricing-card:hover,
+.portfolio-card:hover,
+.team-card:hover,
+.service-card:hover,
+.srv-card:hover {
+    border-color: var(--rule-hard);
+    box-shadow: 0 30px 60px -38px rgba(0, 0, 0, 0.8);
+}
+.pricing-card.featured {
+    border-color: rgba(var(--amber-rgb), 0.5);
+    background: var(--ink-raise);
+}
+.pricing-featured-badge,
+.portfolio-card-badge,
+.pricing-custom-badge {
+    background: rgba(var(--amber-rgb), 0.12);
+    border: 1px solid rgba(var(--amber-rgb), 0.4);
+    color: var(--amber);
+    font-family: var(--font-tech);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    box-shadow: none;
+}
+
+/* Cifras y precios en mono, como en la home */
+.pricing-price,
+.pricing-amount,
+.stat-number,
+.srv-m-val,
+.metric-value,
+.counter-current,
+.counter-total {
+    font-family: var(--font-tech);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+}
+
+/* ---------- 7. Formularios ---------- */
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"],
+input[type="search"], select, textarea {
+    font-family: var(--font-main);
+    background: var(--bg-dark-blue);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-md);
+    color: var(--bone);
+}
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--amber);
+    box-shadow: none;
+}
+label {
+    font-family: var(--font-tech);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+}
+
+/* ---------- 8. Pie ---------- */
+footer {
+    background: var(--clr-footer);
+    border-top: 1px solid var(--rule);
+}
+.footer-title,
+.footer-legal-title {
+    font-family: var(--font-tech);
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+}
+.footer-links a,
+.contact-item,
+.footer-legal-links a {
+    font-family: var(--font-main);
+    color: var(--bone-soft);
+}
+.footer-links a:hover,
+.contact-item:hover,
+.footer-legal-links a:hover { color: var(--amber); }
+.footer-bottom { font-family: var(--font-tech); font-size: 0.66rem; letter-spacing: 0.06em; }
+
+/* ---------- 9. Modales y carrito ---------- */
+.modal-content,
+.golden-modal {
+    background: var(--ink-card);
+    border: 1px solid var(--rule-hard);
+    border-radius: var(--radius-2xl);
+}
+.golden-title, .modal-title { font-family: var(--font-display); letter-spacing: -0.035em; }
+
+/* ---------- 10. Foco visible en todo el sitio ---------- */
+:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
+}
+
+/* ---------- 11. Ajustes finos por página ---------- */
+
+/* Cotización: el envío usa el botón plano del sistema, sin degradado ni halo */
+.btn-submit {
+    font-family: var(--font-main);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    background: var(--amber);
+    border: 1px solid var(--amber);
+    border-radius: var(--radius-md);
+    color: #17120A;
+    box-shadow: none;
+    text-shadow: none;
+}
+.btn-submit:hover {
+    background: var(--amber-soft);
+    border-color: var(--amber-soft);
+    color: #17120A;
+    box-shadow: none;
+    transform: translateY(-2px);
+}
+
+/* Dominios: la banda inmersiva se templa hacia el grafito cálido de la marca */
+.domain-search-section {
+    --bg: #0A0908;
+    --surface: rgba(25, 23, 20, 0.6);
+    --surface-solid: #141311;
+    --border: rgba(239, 234, 225, 0.14);
+    --border-strong: rgba(239, 234, 225, 0.26);
+    --text: #EFEAE1;
+    --muted: #A69E93;
+    background-color: #0A0908;
+    background-image:
+        linear-gradient(to bottom, rgba(12, 11, 10, 0.78), rgba(10, 9, 8, 0.92)),
+        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
+}
+/* La foto azulada se lleva al ámbar sin perder la textura */
+.domain-search-section { filter: saturate(0.85); }
+.domain-search-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(60rem 40rem at 50% 30%, rgba(var(--amber-rgb), 0.14), transparent 65%),
+        linear-gradient(to bottom, rgba(227, 155, 61, 0.05), transparent 45%);
+    mix-blend-mode: screen;
+}
+.ds-title, .domain-search-section h1, .domain-search-section h2 {
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: currentColor;
+    color: var(--text);
+}
+
+/* El widget lateral de cotización, en la pastilla del sistema */
+.sw-tab, .sw-panel {
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--rule);
+    background: var(--ink-card);
+    box-shadow: 0 30px 60px -35px rgba(0, 0, 0, 0.8);
+}
+.sw-tab { background: var(--amber); color: #17120A; border-color: var(--amber); }
+.sw-panel-title { font-family: var(--font-display); letter-spacing: -0.03em; }
+
+/* Filtros del portafolio: pastillas discretas */
+.switcher-btn, .filter-btn {
+    font-family: var(--font-main);
+    border-radius: 999px;
+    border: 1px solid var(--rule);
+    background: transparent;
+    color: var(--bone-soft);
+    box-shadow: none;
+}
+.switcher-btn.active, .filter-btn.active {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: #17120A;
+}
+
+/* Etiquetas técnicas (HTML, CSS, React…) en mono */
+.portfolio-card-tags span,
+.tech-tag,
+.srv-f-text small {
+    font-family: var(--font-tech);
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--rule);
+    background: transparent;
+    color: var(--bone-dim);
+}
+
+/* Cifras de las tarjetas de estadísticas, en mono como en la home */
+.stat-card .stat-value,
+.stat-value,
+.about-stat-num,
+.team-stat-num {
+    font-family: var(--font-tech);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+}
+
+/* ---------- 12. Correcciones de tema claro ---------- */
+
+/* El degradado de dos tonos también se retira en claro */
+[data-theme="light"] .gradient-text,
+[data-theme="light"] .text-gradient-orange {
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: currentColor;
+    color: var(--amber);
+}
+
+/* Sobre ámbar oscuro, el texto va en claro: mejor contraste */
+[data-theme="light"] .btn-primary,
+[data-theme="light"] .btn-nav,
+[data-theme="light"] .btn-visitar,
+[data-theme="light"] .btn-asesoria,
+[data-theme="light"] .btn-slide-cta,
+[data-theme="light"] .btn-pricing-primary,
+[data-theme="light"] .btn-submit,
+[data-theme="light"] .switcher-btn.active,
+[data-theme="light"] .filter-btn.active,
+[data-theme="light"] .sw-tab {
+    color: #FFF8EE;
+}
+[data-theme="light"] .btn-primary:hover,
+[data-theme="light"] .btn-nav:hover,
+[data-theme="light"] .btn-visitar:hover,
+[data-theme="light"] .btn-asesoria:hover,
+[data-theme="light"] .btn-slide-cta:hover,
+[data-theme="light"] .btn-pricing-primary:hover,
+[data-theme="light"] .btn-submit:hover { color: #17120A; }
+
+/* La barra de enlaces no pinta fondo propio en escritorio */
+@media (min-width: 969px) {
+    #nav-menu {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+}
+
+/* El indicador del desplegable no debe sobresalir de la píldora */
+#main-header.scrolled .nav-dropdown::after,
+#main-header.scrolled .dropdown-trigger::after { display: none; }
+
+/* El velo radial heredado se atenúa en claro: dejaba una banda visible */
+[data-theme="light"] body::before { opacity: 0.45; }
+
+/* ============================================================
+   13. Móvil en las páginas heredadas
+   Mismos criterios que el sistema nuevo: 44×44 px de toque,
+   12 px de texto mínimo y 16 px en campos.
+   ============================================================ */
+
+a, button, input, select, textarea, label, [role="button"] {
+    touch-action: manipulation;
+}
+
+@media (max-width: 768px) {
+    /* --- Navegación --- */
+    #main-header nav a,
+    #nav-menu > a,
+    .dropdown-trigger,
+    .dropdown-item {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+    }
+    .theme-toggle, .cart-toggle, .menu-toggle { width: 44px; height: 44px; }
+    #main-header.scrolled .theme-toggle,
+    #main-header.scrolled .cart-toggle { width: 40px; height: 40px; }
+    .btn-nav { min-height: 44px; }
+
+    /* --- Pie --- */
+    .footer-links a,
+    .contact-item,
+    .footer-legal-links a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    /* --- Controles de filtro y carrusel --- */
+    .filter-btn, .switcher-btn, .srv-pill, .btn-visitar,
+    .portfolio-overlay-btn, .why-us-back-cta, .btn-visitar-project {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .filter-btn + .filter-btn,
+    .switcher-btn + .switcher-btn { margin-left: 8px; }
+
+    /* Los puntos indicadores conservan su aspecto y ganan zona de toque */
+    .why-us-dot, .carousel-dot, .slider-dot, .projects-carousel-dots button {
+        min-width: 44px;
+        min-height: 44px;
+        background-clip: content-box;
+        padding: 18px;
+    }
+
+    /* --- Campos: 16 px evita el zoom automático de iOS --- */
+    input[type="text"], input[type="email"], input[type="tel"],
+    input[type="number"], input[type="search"], select, textarea {
+        font-size: 16px;
+        min-height: 48px;
+    }
+    textarea { min-height: 110px; }
+
+    /* --- Texto mínimo legible --- */
+    .section-tag,
+    .logo .sub,
+    .footer-title,
+    .footer-legal-title,
+    .footer-bottom,
+    .srv-m-lbl,
+    .tm-cat,
+    .pf-icon,
+    .portfolio-card-tags span,
+    .tech-tag,
+    small {
+        font-size: 0.75rem;
+    }
+    .logo .sub { font-size: 0.62rem; letter-spacing: 0.24em; }
+
+    /* --- Los flotantes no deben solaparse entre sí --- */
+    .acc-trigger, .accessibility-fab { bottom: 88px; left: 16px; }
+    .sidebar-widget { bottom: 88px; }
+}
+
+@media (max-width: 420px) {
+    .logo .sub { display: none; }
+}
+
+/* Tabletas: medida de línea contenida */
+@media (min-width: 700px) and (max-width: 900px) {
+    .section-subtitle, .srv-detail-desc, .srv-cta-desc, .about-text p {
+        max-width: 52ch;
+        margin-inline: auto;
+    }
+}
+
+/* --- Segunda pasada móvil --- */
+@media (max-width: 768px) {
+    /* Campos dentro de los grupos del formulario heredado */
+    .form-group input,
+    .form-group select,
+    .form-group textarea,
+    .pbf-group input,
+    .pbf-group select,
+    .pbf-group textarea,
+    .sw-group input,
+    .sw-group select,
+    .sw-group textarea {
+        font-size: 16px;
+        min-height: 48px;
+    }
+    .form-group textarea, .pbf-group textarea { min-height: 110px; }
+
+    /* Etiquetas mono por debajo de 12 px */
+    .srv-m-label, .srv-m-lbl, .stat-label, .why-us-card-hint,
+    .portfolio-card-badge, .visually-hidden + span, .tm-name {
+        font-size: 0.75rem;
+    }
+
+    /* El logotipo es un enlace */
+    .logo { min-height: 44px; }
+
+    /* Separación mínima entre controles contiguos */
+    .why-us-dots, .projects-carousel-dots, .slider-dots,
+    .portfolio-filters, .srv-switcher { gap: 8px; }
+
+    /* El botón flotante de WhatsApp no debe rozar los controles */
+    .whatsapp-button, #whatsapp-button { margin-bottom: 8px; }
+}
+
+/* Las imágenes remotas del stack reservan su espacio */
+.tm-ico img, .whatsapp-img { aspect-ratio: 1 / 1; }
+
+/* --- Tercera pasada móvil --- */
+@media (max-width: 768px) {
+    .logo .sub { font-size: 0.75rem; letter-spacing: 0.16em; }
+    .footer-reclamaciones-block span,
+    .scroll-indicator span,
+    .scroll-text { font-size: 0.75rem; }
+
+    /* El carrito mantiene 44 px incluso dentro de la píldora */
+    #main-header.scrolled .theme-toggle,
+    #main-header.scrolled .cart-toggle { width: 44px; height: 44px; }
+
+    /* Enlaces del pie a todo el ancho de la columna */
+    .footer-links a, .footer-legal-links a { width: 100%; }
+
+    /* Botón de la cara trasera de las tarjetas */
+    .why-us-card-back .why-us-back-cta {
+        min-height: 44px;
+        padding-block: 0.7rem;
+    }
+
+    /* Separación entre los puntos indicadores, sea cual sea su contenedor */
+    .why-us-dot, .carousel-dot, .slider-dot { margin: 0 4px; }
+
+    /* Nada queda debajo del botón flotante */
+    .footer-bottom { padding-bottom: 4.5rem; }
+}
+
+@media (min-width: 700px) and (max-width: 900px) {
+    .team-bio, .footer-bottom p, .footer-brand p { max-width: 54ch; }
+}
+
+/* --- Cuarta pasada: reglas que perdían por especificidad --- */
+@media (max-width: 768px) {
+    .nav-actions .theme-toggle,
+    .nav-actions .cart-toggle,
+    #main-header .nav-actions .cart-toggle,
+    #main-header .nav-actions .theme-toggle { width: 44px; height: 44px; }
+
+    .why-us-card .why-us-card-back .why-us-back-cta {
+        min-height: 44px;
+        padding-block: 0.75rem;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .srv-m-info .srv-m-lbl,
+    .srv-m-info .srv-m-label,
+    .srv-metrics .srv-m-lbl,
+    .srv-metrics .srv-m-label { font-size: 0.75rem; }
+
+    .scroll-indicator span, .hero-scroll span, .scroll-hint span { font-size: 0.75rem; }
+}
+
+@media (min-width: 700px) and (max-width: 900px) {
+    .team-bio { max-width: 52ch; }
+}
+
+/* --- Quinta pasada: selectores que necesitaban más peso --- */
+@media (max-width: 768px) {
+    /* interfaz01.css reduce este botón dentro de su propia media query */
+    .why-us-card .why-us-card-inner .why-us-card-back .why-us-back-cta {
+        font-size: 0.82rem;
+        padding: 0.8rem 1.1rem;
+        min-height: 44px;
+    }
+
+    .srv-hero-scroll span,
+    .srv-hero-scroll,
+    .srv-m-label,
+    .srv-m-lbl { font-size: 0.75rem; }
+
+    /* Espacio final para que nada quede bajo el botón flotante */
+    body { padding-bottom: 3.5rem; }
+}
+
+/* --- Cierre: el CSS heredado usa !important, aquí hace falta responder igual --- */
+@media (max-width: 768px) {
+    .srv-m-label,
+    .srv-m-lbl,
+    .srv-metrics-bar .srv-m-label,
+    .srv-metrics-bar .srv-m-lbl {
+        font-size: 12.5px !important;
+        line-height: 1.35 !important;
+    }
+
+    .why-us-back-cta,
+    .why-us-card-back .why-us-back-cta {
+        display: inline-flex !important;
+        align-items: center !important;
+        min-height: 44px !important;
+        padding: 0.8rem 1.1rem !important;
+        font-size: 13px !important;
+    }
+
+    /* El último enlace del pie no debe rozar el botón flotante */
+    .footer-contact-info .contact-item:last-child { margin-bottom: 3.5rem; }
+}
+
+/* Tabletas: ningún párrafo supera la medida cómoda de lectura */
+@media (min-width: 700px) and (max-width: 900px) {
+    .footer-brand p,
+    .footer-bottom p,
+    .team-bio,
+    .about-text p,
+    form p { max-width: 52ch; }
+}
+
+/* --- Corrección detectada en el mural de dispositivos --- */
+@media (max-width: 968px) {
+    /* La barra necesita respirar: sin esto el contenido toca el borde */
+    #main-header .nav-container { padding: 0 18px; }
+    #main-header.scrolled .nav-container { padding: 0 14px; }
+
+    /* El botón conserva 44 px de zona táctil, pero las barras son cortas */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 0;
+        flex: none;
+        /* Mismo tratamiento que el resto de botones de icono */
+        border: 1px solid var(--rule);
+        border-radius: var(--radius-md);
+        background: transparent;
+    }
+    .menu-toggle span { width: 20px; height: 2px; }
+}
+
+/* --- Cajón de navegación móvil con la paleta nueva --- */
+@media (max-width: 968px) {
+    #nav-menu {
+        width: min(340px, 86vw) !important;
+        background-color: var(--ink-raise) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        padding: 5.5rem calc(1.5rem + env(safe-area-inset-right)) calc(2rem + env(safe-area-inset-bottom)) 1.5rem !important;
+        border-left: 1px solid var(--rule) !important;
+        box-shadow: -24px 0 60px -30px rgba(0, 0, 0, 0.8) !important;
+        overscroll-behavior: contain;
+    }
+    [data-theme="light"] #nav-menu { background-color: var(--ink-card) !important; }
+
+    #nav-menu.open {
+        box-shadow: -100vw 0 0 100vw rgba(7, 7, 6, 0.68), -24px 0 60px -30px rgba(0, 0, 0, 0.8) !important;
+    }
+
+    #nav-menu a {
+        font-size: 1.05rem !important;
+        font-weight: 500 !important;
+        padding: 1.05rem 0 !important;
+        opacity: 1 !important;
+        color: var(--bone-soft) !important;
+        border-bottom: 1px solid var(--rule-soft) !important;
+    }
+    #nav-menu a.active { color: var(--bone) !important; }
+
+    /* Los botones del cajón caben dentro sin desbordar */
+    .nav-drawer-footer {
+        width: 100%;
+        display: grid;
+        gap: 0.7rem;
+        margin-top: 1.6rem;
+    }
+    .nav-drawer-footer .drawer-cta,
+    .nav-drawer-footer .drawer-wa {
+        width: 100%;
+        justify-content: center;
+        min-height: 48px;
+        border-bottom: 0 !important;
+    }
+
+    /* El botón de menú queda por encima del cajón y sirve para cerrarlo */
+    .menu-toggle {
+        z-index: 1300;
+        position: relative;
+    }
+    /* El JS heredado no marca clase: usa aria-expanded, y aplica el giro
+       de las barras con estilos en línea, por eso hace falta !important. */
+    .menu-toggle[aria-expanded="true"] {
+        position: fixed;
+        top: 14px;
+        right: calc(14px + env(safe-area-inset-right));
+        border: 1px solid var(--rule-hard);
+        border-radius: var(--radius-md);
+        background: var(--ink-raise);
+    }
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg) !important;
+    }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0 !important; }
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg) !important;
+    }
+}

@@ -6,7 +6,7 @@ const CONFIG = {
         number: '51908536493',
         message: 'Hola INFALL, estoy interesado en una consulta gratis para un proyecto web profesional.'
     },
-    email: 'ghtoxis@gmail.com'
+    email: 'infallcm@gmail.com'
 };
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -554,7 +554,7 @@ window.addEventListener('load', () => {
                 speedY: (Math.random() - 0.5) * 0.12,
                 opacity: Math.random() * 0.225 + 0.15,
                 pulse: Math.random() * Math.PI * 2,
-                color: Math.random() < 0.35 ? '0, 229, 255' : '255, 140, 0'
+                color: Math.random() < 0.3 ? '242, 198, 140' : '227, 155, 61'
             });
         }
     }
@@ -594,7 +594,7 @@ window.addEventListener('load', () => {
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(p2.x, p2.y);
-                    ctx.strokeStyle = `rgba(255, 140, 0, ${0.045 * (1 - dist / 130)})`;
+                    ctx.strokeStyle = `rgba(227, 155, 61, ${0.05 * (1 - dist / 130)})`;
                     ctx.lineWidth = 0.6;
                     ctx.stroke();
                 }
@@ -674,7 +674,7 @@ window.addEventListener('load', () => {
                 speedY: (Math.random() - 0.5) * 0.12,
                 opacity: Math.random() * 0.35 + 0.08,
                 pulse: Math.random() * Math.PI * 2,
-                color: Math.random() < 0.3 ? '34, 211, 238' : '255, 140, 0'
+                color: Math.random() < 0.3 ? '242, 198, 140' : '227, 155, 61'
             });
         }
     }
@@ -711,7 +711,7 @@ window.addEventListener('load', () => {
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(p2.x, p2.y);
-                    ctx.strokeStyle = `rgba(255, 140, 0, ${0.05 * (1 - dist / 110)})`;
+                    ctx.strokeStyle = `rgba(227, 155, 61, ${0.05 * (1 - dist / 110)})`;
                     ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }
@@ -946,7 +946,7 @@ document.querySelectorAll('.flip-card').forEach(card => {
 
             if (data.success === 'true' || data.success === true || isActivationPending) {
                 if (isActivationPending) {
-                    showMessage('📧 ¡Casi listo! Por favor revisa tu bandeja de entrada en ghtoxis@gmail.com y haz clic en "Activate Form" para activar el envío de correos.', 'success');
+                    showMessage('📧 ¡Casi listo! Por favor revisa la bandeja de entrada de infallcm@gmail.com y haz clic en "Activate Form" para activar el envío de correos.', 'success');
                 } else {
                     showMessage('✅ Cotización enviada con éxito. Te contactaremos en menos de 24 horas.', 'success');
                 }

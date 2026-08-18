@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /index.legacy.html
 
 Sitemap: https://infallconsulting.com/sitemap.xml

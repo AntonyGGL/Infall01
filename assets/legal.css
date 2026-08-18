@@ -1,0 +1,132 @@
+/* Páginas de texto legal: una columna, jerarquía clara, lectura cómoda */
+.legal { padding-top: clamp(7.5rem, 13vh, 10rem); padding-bottom: var(--section-y); }
+.legal__head { max-width: 46rem; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+.legal__title { margin-top: 1.2rem; }
+.legal__meta {
+    margin-top: 1.2rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+}
+.legal__body { max-width: 46rem; }
+.legal__body h2 {
+    margin-top: 2.8rem;
+    margin-bottom: 0.9rem;
+    font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem);
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--rule-soft);
+}
+.legal__body h2:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+.legal__body h3 { margin-top: 1.6rem; margin-bottom: 0.5rem; font-size: 1.02rem; }
+.legal__body p, .legal__body li { color: var(--bone-soft); line-height: 1.7; }
+.legal__body p + p { margin-top: 0.9rem; }
+.legal__body ul { margin: 0.9rem 0; display: grid; gap: 0.5rem; }
+.legal__body li { padding-left: 1.2rem; position: relative; }
+.legal__body li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--amber);
+}
+.legal__body strong { color: var(--bone); font-weight: 600; }
+.legal__body a { color: var(--amber); border-bottom: 1px solid transparent; }
+.legal__body a:hover { border-bottom-color: var(--amber); }
+
+/* Dato que la empresa debe completar antes de publicar */
+.legal mark {
+    background: rgba(var(--amber-rgb), 0.16);
+    color: var(--amber);
+    padding: 0.1em 0.4em;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 0.86em;
+}
+
+.legal__note {
+    margin-top: 2.5rem;
+    padding: 1.25rem 1.4rem;
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--amber);
+    border-radius: var(--r-md);
+    background: var(--ink-card);
+    font-size: 0.92rem;
+    color: var(--bone-dim);
+}
+
+/* Libro de reclamaciones: formulario oficial */
+.claim { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+@media (max-width: 900px) { .claim { grid-template-columns: 1fr; } }
+.claim__form {
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+    background: var(--ink-card);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-md);
+}
+.claim__legend {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    padding-bottom: 0.7rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid var(--rule-soft);
+    display: block;
+}
+.claim__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 560px) { .claim__row { grid-template-columns: 1fr; } }
+.field select {
+    width: 100%;
+    padding: 0.8rem 0.9rem;
+    background: var(--ink);
+    color: var(--bone);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-sm);
+    font-family: var(--font-body);
+    font-size: 0.94rem;
+}
+.field--check { display: flex; align-items: flex-start; gap: 0.6rem; }
+.field--check input { margin-top: 0.28rem; accent-color: var(--amber); }
+.field--check label {
+    font-family: var(--font-body);
+    font-size: 0.86rem;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--bone-dim);
+    line-height: 1.5;
+}
+.claim__msg {
+    margin-top: 1rem;
+    padding: 0.9rem 1rem;
+    border-radius: var(--r-sm);
+    font-size: 0.9rem;
+    display: none;
+}
+.claim__msg.ok { display: block; background: rgba(95, 191, 139, 0.12); border: 1px solid rgba(95, 191, 139, 0.4); color: #8FD9B4; }
+.claim__msg.err { display: block; background: rgba(248, 113, 113, 0.12); border: 1px solid rgba(248, 113, 113, 0.4); color: #F8A5A5; }
+
+/* Móvil: 16 px en los campos evita que iOS haga zoom al enfocar.
+   Va en esta hoja porque carga después del sistema y debe ganar. */
+@media (max-width: 768px) {
+    .field input[type="text"],
+    .field textarea,
+    .field select {
+        font-size: 16px;
+        min-height: 48px;
+    }
+    .field textarea { min-height: 96px; }
+    .field--check input { width: 24px; height: 24px; margin-top: 0.1rem; }
+    .claim__legend { font-size: 0.75rem; }
+    .legal__body p, .legal__body li { font-size: 1rem; }
+}
+
+@media (max-width: 768px) {
+    .legal__meta { font-size: 0.75rem; }
+    .legal__body p, .legal__body li { max-width: 52ch; }
+}

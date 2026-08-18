@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>INFALL · Auditoría responsive</title>
+    <style>
+        body { margin: 0; background: #0C0B0A; color: #EFEAE1; font: 14px/1.5 ui-monospace, monospace; }
+        #estado { padding: 16px 20px; border-bottom: 1px solid rgba(239,234,225,.14); }
+        #salida { padding: 20px; white-space: pre-wrap; font-size: 12px; }
+        iframe { position: absolute; left: -20000px; top: 0; border: 0; }
+    </style>
+</head>
+
+<body>
+    <div id="estado">Iniciando…</div>
+    <pre id="salida"></pre>
+
+    <script>
+        /* ============================================================
+           Banco de pruebas responsive.
+           Chrome headless no permite ventanas menores a ~500px, así que
+           cada página se carga en un iframe del ancho exacto a probar:
+           dentro del iframe el viewport SÍ es real.
+           ============================================================ */
+
+        var PAGINAS = [
+            'index.html', 'quienes-somos.html', 'servicios.html', 'dominios.html',
+            'portfolio.html', 'cotizacion.html', 'terminos.html', 'privacidad.html',
+            'libro-reclamaciones.html'
+        ];
+
+        var VIEWPORTS = [
+            { nombre: 'Android chico', ancho: 360, alto: 740 },
+            { nombre: 'iPhone SE', ancho: 375, alto: 667 },
+            { nombre: 'iPhone 14', ancho: 390, alto: 844 },
+            { nombre: 'iPhone Pro Max', ancho: 430, alto: 932 },
+            { nombre: 'iPad vertical', ancho: 768, alto: 1024 }
+        ];
+
+        var estado = document.getElementById('estado');
+        var salida = document.getElementById('salida');
+        var resultados = [];
+
+        function probar(pagina, vp) {
+            return new Promise(function (resolve) {
+                var f = document.createElement('iframe');
+                f.width = vp.ancho;
+                f.height = vp.alto;
+                f.src = '../' + pagina + '?audit=1';
+                document.body.appendChild(f);
+
+                var listo = false;
+                var limite = setTimeout(function () { terminar({ error: 'timeout' }); }, 15000);
+
+                function terminar(extra) {
+                    if (listo) return;
+                    listo = true;
+                    clearTimeout(limite);
+                    var r = extra || {};
+                    r.pagina = pagina;
+                    r.viewport = vp.nombre + ' (' + vp.ancho + 'px)';
+                    resultados.push(r);
+                    f.remove();
+                    resolve();
+                }
+
+                f.onload = function () {
+                    // Se deja respirar al layout y a las fuentes antes de medir
+                    setTimeout(function () {
+                        try {
+                            var doc = f.contentDocument;
+                            var s = doc.createElement('script');
+                            s.src = '../tools/audit.js';
+                            s.onload = function () {
+                                try {
+                                    var r = f.contentWindow.__infallAudit();
+                                    terminar(r);
+                                } catch (e) {
+                                    terminar({ error: String(e) });
+                                }
+                            };
+                            s.onerror = function () { terminar({ error: 'no se pudo cargar audit.js' }); };
+                            doc.head.appendChild(s);
+                        } catch (e) {
+                            terminar({ error: String(e) });
+                        }
+                    }, 900);
+                };
+            });
+        }
+
+        (async function () {
+            for (var i = 0; i < PAGINAS.length; i++) {
+                for (var j = 0; j < VIEWPORTS.length; j++) {
+                    estado.textContent = 'Analizando ' + PAGINAS[i] + ' @ ' + VIEWPORTS[j].ancho + 'px … (' +
+                        (i * VIEWPORTS.length + j + 1) + '/' + (PAGINAS.length * VIEWPORTS.length) + ')';
+                    await probar(PAGINAS[i], VIEWPORTS[j]);
+                }
+            }
+            estado.textContent = 'LISTO';
+            salida.id = 'salida';
+            salida.textContent = JSON.stringify(resultados);
+            document.title = 'AUDIT-OK';
+        })();
+    </script>
+</body>
+
+</html>

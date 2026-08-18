@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>INFALL · Mural de dispositivos</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 26px;
+            background: #131311;
+            color: #EFEAE1;
+            font: 13px/1.4 ui-monospace, 'JetBrains Mono', monospace;
+        }
+        h1 {
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #E39B3D;
+            margin: 0 0 22px;
+        }
+        h1 small { color: #918A7F; letter-spacing: 0.08em; margin-left: 12px; }
+        .fila { display: flex; gap: 22px; align-items: flex-start; }
+        .disp { flex: none; }
+        .etiqueta {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2px 7px;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #918A7F;
+        }
+        .etiqueta b { color: #EFEAE1; font-weight: 500; }
+        .marco {
+            border: 1px solid rgba(239, 234, 225, 0.16);
+            border-radius: 12px;
+            overflow: hidden;
+            background: #0C0B0A;
+            box-shadow: 0 24px 50px -30px rgba(0, 0, 0, 0.9);
+        }
+        iframe { display: block; border: 0; }
+    </style>
+</head>
+
+<body>
+    <h1 id="titulo">Cargando…</h1>
+    <div class="fila" id="fila"></div>
+
+    <script>
+        /* Muestra una misma página en varios anchos reales, uno al lado del otro.
+           Uso: device-wall.html?p=index.html&alto=1400 */
+        var params = new URLSearchParams(location.search);
+        var pagina = params.get('p') || 'index.html';
+        var alto = Number(params.get('alto') || 1200);
+
+        var VIEWPORTS = [
+            { nombre: 'Android chico', ancho: 360 },
+            { nombre: 'iPhone SE', ancho: 375 },
+            { nombre: 'iPhone 14', ancho: 390 },
+            { nombre: 'iPhone Pro Max', ancho: 430 },
+            { nombre: 'iPad', ancho: 768 }
+        ];
+
+        document.getElementById('titulo').innerHTML =
+            pagina + ' <small>' + VIEWPORTS.map(function (v) { return v.ancho; }).join(' · ') + ' px</small>';
+
+        var fila = document.getElementById('fila');
+        VIEWPORTS.forEach(function (v) {
+            var caja = document.createElement('div');
+            caja.className = 'disp';
+            caja.style.width = v.ancho + 'px';
+            caja.innerHTML =
+                '<div class="etiqueta"><span>' + v.nombre + '</span><b>' + v.ancho + '</b></div>' +
+                '<div class="marco"><iframe src="../' + pagina + '" width="' + v.ancho +
+                '" height="' + alto + '" loading="eager"></iframe></div>';
+            fila.appendChild(caja);
+        });
+    </script>
+</body>
+
+</html>

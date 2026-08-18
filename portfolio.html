@@ -7,6 +7,23 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 
     <title>Portafolio | INFALL Systems Engineering - Proyectos que Generan Resultados</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Portafolio de proyectos web | INFALL">
+    <meta property="og:description" content="Páginas web, catálogos y tiendas virtuales entregadas a negocios peruanos. Mira los proyectos funcionando.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://infallconsulting.com/portfolio.html">
+    <meta property="og:site_name" content="INFALL Systems Engineering">
+    <meta property="og:image" content="https://infallconsulting.com/assets/og-infall.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="es_PE">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portafolio de proyectos web | INFALL">
+    <meta name="twitter:description" content="Páginas web, catálogos y tiendas virtuales entregadas a negocios peruanos. Mira los proyectos funcionando.">
+    <meta name="twitter:image" content="https://infallconsulting.com/assets/og-infall.jpg">
     <meta name="description"
         content="Conoce nuestros proyectos de desarrollo web: landing pages, e-commerce, web corporativa y aplicaciones a medida. Cada proyecto diseñado para maximizar velocidad y conversión.">
 
@@ -18,8 +35,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="interfaz01.css?v=46">
+    <link rel="stylesheet" href="assets/legacy-bridge.css?v=1">
     <link rel="stylesheet" href="domain-searcher/styles.css">
     <script>
         (function () { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); })();
@@ -135,7 +155,7 @@
                 <div class="portfolio-card" data-category="landing">
                     <div class="portfolio-card-img">
                         <img src="portfolio-images/osaka.webp" alt="Osaka - Restaurante Japonés"
-                            loading="lazy">
+                            loading="lazy" width="1818" height="914">
                         <span class="portfolio-card-badge">Landing Page</span>
                         <div class="portfolio-card-overlay">
                             <span class="portfolio-overlay-label">Osaka</span>
@@ -164,7 +184,7 @@
                 <div class="portfolio-card" data-category="landing">
                     <div class="portfolio-card-img">
                         <img src="portfolio-images/Screen.webp" alt="ScreenScape - Landing Page"
-                            loading="lazy">
+                            loading="lazy" width="1833" height="998">
                         <span class="portfolio-card-badge">Landing Page</span>
                         <div class="portfolio-card-overlay">
                             <span class="portfolio-overlay-label">ScreenScape</span>
@@ -193,7 +213,7 @@
                 <div class="portfolio-card" data-category="landing">
                     <div class="portfolio-card-img">
                         <img src="portfolio-images/brasadepiedra.webp" alt="Brasadepiedra - Landing Page"
-                            loading="lazy">
+                            loading="lazy" width="800" height="413">
                         <span class="portfolio-card-badge">Landing Page</span>
                         <div class="portfolio-card-overlay">
                             <span class="portfolio-overlay-label">Brasadepiedra</span>
@@ -222,7 +242,7 @@
                 <div class="portfolio-card" data-category="landing">
                     <div class="portfolio-card-img">
                         <img src="portfolio-images/imagen_impofer.webp" alt="Impofer G&M SAC - Ferreteria Industrial"
-                            loading="lazy">
+                            loading="lazy" width="1880" height="855">
                         <span class="portfolio-card-badge">Landing Page</span>
                         <div class="portfolio-card-overlay">
                             <span class="portfolio-overlay-label">Impofer G&M SAC</span>
@@ -357,7 +377,7 @@
             <div class="footer-brand">
                 <a href="index.html" class="logo">
                     <div class="logo-text">INFALL <span class="logo-dot"></span></div>
-                    <span class="sub" style="font-size: 8px;">SYSTEMS ENGINEERING</span>
+                    <span class="sub">SYSTEMS ENGINEERING</span>
                 </a>
                 <p style="margin-top: 15px;">
                     Transformamos ideas y necesidades complejas en arquitecturas y plataformas digitales de alta
@@ -413,10 +433,10 @@
             <div class="footer-legal">
                 <h4 class="footer-legal-title">Legal</h4>
                 <div class="footer-legal-links">
-                    <a href="#">Términos y Condiciones</a>
-                    <a href="#">Políticas de Privacidad</a>
+                    <a href="terminos.html">Términos y condiciones</a>
+                    <a href="privacidad.html">Política de privacidad</a>
                 </div>
-                <a href="#" class="footer-reclamaciones-block" target="_blank" rel="noopener">
+                <a href="libro-reclamaciones.html" class="footer-reclamaciones-block">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
@@ -436,6 +456,7 @@
     </footer>
     <script src="cart.js?v=4"></script>
     <script src="interfaz01.js?v=12" defer></script>
+    <script src="assets/analytics.js?v=1" defer></script>
 
     <!-- Modal ¿Desea Dominio? (Golden Ratio Design) -->
     <div id="domainPromptModal" class="modal hidden">
