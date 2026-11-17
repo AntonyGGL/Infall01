@@ -1079,3 +1079,439 @@
 @media (max-width: 850px) {
     .home--main .device-scene .studio-note { left: 0; bottom: 0.5rem; padding: 0.6rem 1.1rem; border-radius: 22px; }
 }
+
+/* Tablet y teléfono: ajustes compartidos por todas las páginas */
+.window-address { font-size: 0.75rem; }
+
+@media (min-width: 601px) and (max-width: 850px) {
+    .home .work__grid { row-gap: 2.5rem; }
+    .home .pj--7,
+    .home .pj--5 { grid-column: span 6; }
+    .home .pj__shot { aspect-ratio: 4 / 3; }
+    .home .pj__name { font-size: 1.35rem; }
+}
+
+@media (max-width: 600px) {
+    /* Botones del cierre a todo el ancho en teléfono */
+    .closer__actions .btn { flex: 1 1 100%; justify-content: center; }
+}
+
+/* ==========================================================
+   Teléfono: menos scroll en la portada
+   Testimonios, planes y proyectos pasan a carruseles deslizables.
+   ========================================================== */
+.swipe-dots { display: none; }
+
+@media (max-width: 700px) {
+    .home .quotes,
+    .home #planes .plans,
+    .home--main .work__grid {
+        display: flex;
+        align-items: stretch;
+        gap: 0.85rem;
+        max-width: none;
+        margin-inline: -1.5rem;
+        padding: 0.35rem 1.5rem 0.75rem;
+        columns: auto;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 1.5rem;
+        scrollbar-width: none;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+    .home .quotes::-webkit-scrollbar,
+    .home #planes .plans::-webkit-scrollbar,
+    .home--main .work__grid::-webkit-scrollbar { display: none; }
+
+    /* Dentro de un carrusel las tarjetas ya están a la vista: sin animación de entrada */
+    .home .quotes > .reveal,
+    .home #planes .plans > .reveal,
+    .home--main .work__grid > .reveal { opacity: 1 !important; transform: none !important; }
+
+    .home .quote {
+        flex: 0 0 84%;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        scroll-snap-align: start;
+    }
+    .home .quote__foot { margin-top: auto; }
+    .home .quote__text { padding-bottom: 1.1rem; }
+
+    .home #planes .plan { flex: 0 0 86%; scroll-snap-align: start; }
+
+    .home--main .work__grid > .pj { flex: 0 0 84%; scroll-snap-align: start; }
+    .home--main .pj__shot { aspect-ratio: 4 / 3; }
+
+    .swipe-dots {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 0.75rem;
+    }
+    .swipe-dots i {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: var(--rule-hard);
+        transition: width 250ms var(--ease), background-color 250ms ease;
+    }
+    .swipe-dots i.is-on { width: 20px; background: var(--amber); }
+}
+
+@media (max-width: 600px) {
+    /* Franja de soluciones más compacta */
+    .studio-services { gap: 0.6rem; padding: 0.9rem; }
+    .studio-services__intro { padding: 1rem 0.75rem 0.5rem; }
+    .studio-services h2 { margin-block: 0.75rem 1rem; }
+    .studio-service { padding: 1.15rem 1.2rem; border-radius: 18px; }
+    .studio-service h3 { margin-block: 0.5rem 0.4rem; font-size: 1.25rem; }
+    .studio-service p { margin-bottom: 0.9rem; font-size: 0.875rem; line-height: 1.5; }
+
+    /* El proceso en dos columnas */
+    .home .steps:not(.steps--3) { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1rem; }
+    .home .steps:not(.steps--3) .step { padding: 1.25rem 0; }
+    .home .steps:not(.steps--3) .step__d { font-size: 0.875rem; }
+}
+
+
+/* ==========================================================
+   Portafolio en la portada: carrusel 3D de ventanas de navegador
+   La ventana central al frente; las vecinas más pequeñas, en
+   perspectiva y atenuadas. Avanza solo; el punto activo muestra
+   el progreso.
+   ========================================================== */
+.home .work { overflow-x: clip; }
+
+.cf {
+    --cf-ease: cubic-bezier(0.32, 0.72, 0, 1);
+    --cf-time: 6s;
+    --cf-bar-h: 40px;
+    --cf-width: min(780px, 64%);
+    --cf-shift: 60%;
+    --cf-shrink: 0.17;
+    --cf-turn: 14deg;
+    /* Barra del navegador: tonos de Safari, oscuro por defecto */
+    --cf-chrome: #2c2c2e;
+    --cf-chrome-line: rgba(255, 255, 255, 0.08);
+    --cf-url-bg: rgba(255, 255, 255, 0.08);
+    --cf-url-fg: rgba(235, 235, 245, 0.72);
+}
+
+[data-theme="light"] .cf {
+    --cf-chrome: #ececee;
+    --cf-chrome-line: rgba(0, 0, 0, 0.08);
+    --cf-url-bg: rgba(255, 255, 255, 0.9);
+    --cf-url-fg: rgba(60, 60, 67, 0.75);
+}
+
+/* Todas las ventanas comparten la misma celda: el escenario toma la altura de una */
+.cf__stage {
+    display: grid;
+    padding-block: 0.5rem 0;
+    perspective: 1800px;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.cf__slide {
+    --off: 0;
+    --abs: 0;
+    grid-area: 1 / 1;
+    justify-self: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: var(--cf-width);
+    overflow: hidden;
+    border-radius: 16px;
+    background: var(--cf-chrome);
+    border: 1px solid var(--cf-chrome-line);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 40px 70px -34px rgba(0, 0, 0, 0.55);
+    transform:
+        translateX(calc(var(--off) * var(--cf-shift)))
+        scale(calc(1 - var(--abs) * var(--cf-shrink)))
+        rotateY(calc(var(--off) * var(--cf-turn) * -1));
+    z-index: calc(10 - var(--abs));
+    opacity: clamp(0, 2 - var(--abs), 1);
+    filter: brightness(calc(1 - var(--abs) * 0.28)) saturate(calc(1 - var(--abs) * 0.2));
+    cursor: pointer;
+    transition:
+        transform 850ms var(--cf-ease),
+        opacity 600ms var(--cf-ease),
+        filter 600ms var(--cf-ease);
+    will-change: transform;
+}
+
+.cf__slide.is-active { cursor: default; }
+
+@media (hover: hover) {
+    .cf__slide:not(.is-active):hover {
+        filter: brightness(calc(1 - var(--abs) * 0.16));
+    }
+}
+
+/* Barra del navegador */
+.cf__bar {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: var(--cf-bar-h);
+    padding: 0 14px;
+    border-bottom: 1px solid var(--cf-chrome-line);
+}
+
+.cf__dots-win {
+    display: flex;
+    flex-shrink: 0;
+    gap: 7px;
+}
+
+.cf__dots-win i {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #ff5f57;
+    box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.12);
+}
+
+.cf__dots-win i:nth-child(2) { background: #febc2e; }
+.cf__dots-win i:nth-child(3) { background: #28c840; }
+
+.cf__url {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-width: 0;
+    flex: 0 1 320px;
+    height: 26px;
+    margin-inline: auto;
+    padding: 0 12px;
+    color: var(--cf-url-fg);
+    font: 500 0.78rem / 1 var(--font-body);
+    background: var(--cf-url-bg);
+    border-radius: 8px;
+}
+
+.cf__url span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cf__url svg { flex-shrink: 0; opacity: 0.8; }
+
+/* Contrapeso de los puntos para que la dirección quede centrada */
+.cf__bar::after {
+    content: "";
+    flex: 0 0 47px;
+}
+
+.cf__view {
+    display: block;
+    aspect-ratio: 1440 / 1000;
+    overflow: hidden;
+    background: #111;
+}
+
+.cf__view img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left top;
+    pointer-events: none;
+}
+
+/* Texto del proyecto activo */
+.cf__captions {
+    display: grid;
+    margin-top: 2.25rem;
+    text-align: center;
+}
+
+.cf__cap {
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 300ms var(--cf-ease), transform 500ms var(--cf-ease);
+}
+
+.cf__cap.is-active {
+    opacity: 1;
+    transform: none;
+    transition-delay: 200ms;
+}
+
+.cf__kind {
+    color: var(--bone-soft);
+    font: 500 0.75rem / 1.3 var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.cf__name {
+    margin: 0.55rem 0 0;
+    color: var(--bone);
+    font: 700 clamp(1.6rem, 3vw, 2.4rem) / 1.1 var(--font-display);
+    letter-spacing: -0.025em;
+}
+
+.cf__desc {
+    max-width: 46ch;
+    margin: 0.65rem 0 1.4rem;
+    color: var(--bone-soft);
+    font-size: 1rem;
+    line-height: 1.55;
+}
+
+.cf__visit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.35rem;
+    color: var(--ink);
+    font: 600 0.9rem / 1 var(--font-body);
+    text-decoration: none;
+    background: var(--bone);
+    border-radius: 999px;
+    transition: transform 300ms var(--cf-ease), opacity 300ms var(--cf-ease);
+}
+
+.cf__visit:hover { transform: scale(1.04); }
+.cf__visit:active { transform: scale(0.97); }
+
+.cf__visit:focus-visible,
+.cf__arrow:focus-visible,
+.cf__dot:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
+}
+
+/* Navegación: flechas y puntos; el activo se estira y se llena */
+.cf__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.1rem;
+    margin-top: 2rem;
+}
+
+.cf__arrow {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    color: var(--bone);
+    background: transparent;
+    border: 1px solid var(--rule-hard);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 250ms var(--cf-ease), color 250ms var(--cf-ease), transform 250ms var(--cf-ease);
+}
+
+.cf__arrow:hover {
+    color: var(--ink);
+    background: var(--bone);
+    border-color: var(--bone);
+}
+
+.cf__arrow:active { transform: scale(0.92); }
+
+.cf__dots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cf__dot {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    overflow: hidden;
+    background: var(--rule-hard);
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: width 500ms var(--cf-ease), background-color 300ms var(--cf-ease);
+}
+
+/* Área táctil más generosa sin agrandar el punto */
+.cf__dot::before {
+    content: "";
+    position: absolute;
+    inset: -12px -4px;
+}
+
+.cf__dot.is-active { width: 30px; }
+
+.cf__dot i {
+    position: absolute;
+    inset: 0;
+    background: var(--bone);
+    border-radius: inherit;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.cf__dot.is-active i { transform: scaleX(1); }
+
+.cf.is-playing .cf__dot.is-active i {
+    transform: scaleX(0);
+    animation: cf-progress var(--cf-time) linear forwards;
+}
+
+.cf.is-playing:hover .cf__dot i,
+.cf.is-playing:focus-within .cf__dot i {
+    animation-play-state: paused;
+}
+
+@keyframes cf-progress {
+    to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cf__slide,
+    .cf__cap,
+    .cf__dot { transition: none; }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .cf {
+        --cf-width: 70%;
+        --cf-shift: 62%;
+        --cf-turn: 12deg;
+    }
+    .cf__url { font-size: 0.72rem; }
+}
+
+/* Teléfono: ventanas verticales con la versión móvil de cada web */
+@media (max-width: 700px) {
+    .cf {
+        --cf-bar-h: 34px;
+        --cf-width: 74%;
+        --cf-shift: 66%;
+        --cf-shrink: 0.14;
+        --cf-turn: 10deg;
+    }
+    .cf__slide { border-radius: 14px; }
+    .cf__bar { gap: 8px; padding: 0 10px; }
+    .cf__dots-win { gap: 5px; }
+    .cf__dots-win i { width: 8px; height: 8px; }
+    .cf__bar::after { flex-basis: 34px; }
+    .cf__url { height: 22px; padding: 0 8px; font-size: 0.66rem; border-radius: 6px; }
+    .cf__url svg { width: 9px; height: 9px; }
+    .cf__view { aspect-ratio: 9 / 15; }
+    .cf__captions { margin-top: 1.6rem; }
+    .cf__desc { font-size: 0.92rem; margin-bottom: 1.1rem; }
+    .cf__nav { margin-top: 1.5rem; }
+}

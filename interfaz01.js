@@ -3,7 +3,7 @@
 // ============================================================
 const CONFIG = {
     whatsapp: {
-        number: '51908536493',
+        number: '51922996170',
         message: 'Hola INFALL, estoy interesado en una consulta gratis para un proyecto web profesional.'
     },
     email: 'infallcm@gmail.com'

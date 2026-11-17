@@ -118,7 +118,7 @@
             .catch(function () {
                 avisar('Registramos tu solicitud con la hoja N° ' + hoja +
                     ', pero no pudimos enviarla automáticamente. Escríbenos a ' + CORREO +
-                    ' citando ese número, o por WhatsApp al +51 908 536 493.', 'err');
+                    ' citando ese número, o por WhatsApp al +51 922 996 170.', 'err');
             })
             .then(function () {
                 if (btn) { btn.disabled = false; btn.innerHTML = textoOriginal; }

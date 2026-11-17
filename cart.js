@@ -4,7 +4,7 @@
  */
 (function () {
     const CART_KEY = "infallCart";
-    const WHATSAPP_NUMBER = "51908536493";
+    const WHATSAPP_NUMBER = "51922996170";
 
     // CSS for Cart Drawer
     const style = document.createElement("style");

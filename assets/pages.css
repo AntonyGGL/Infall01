@@ -447,7 +447,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.65rem;
     margin-top: 1.5rem;
 }
 
@@ -831,7 +831,7 @@
 .filters {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.65rem;
     margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
@@ -937,11 +937,165 @@
 
 @media (max-width: 600px) {
     .section--panel { margin-inline: 0; border-radius: 24px; }
-    .svc__metrics { grid-template-columns: minmax(0, 1fr); }
 
     .search-box { flex-wrap: wrap; border-radius: 24px; }
     .input-wrapper { flex-basis: 100%; }
     .search-submit { flex: 1; }
 
     .action-area .btn { width: 100%; }
+}
+
+/* ==========================================================
+   iPad (601–850px): aprovechar el ancho en vez de apilar todo
+   ========================================================== */
+@media (min-width: 601px) and (max-width: 850px) {
+    .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+    .tile { padding: 1.25rem; }
+    .steps--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    /* Hero: la foto principal no ocupa media pantalla */
+    .home-example--photo .home-example__preview { aspect-ratio: 16 / 10; }
+    .home-example--photo .home-example__preview img { object-position: 50% 35%; }
+
+    /* Ventanas de servicio más contenidas y centradas */
+    .svc__visual { width: min(100%, 620px); margin-inline: auto; }
+
+    /* Portafolio: dos proyectos por fila */
+    .page--portfolio .work__grid { row-gap: 2.5rem; }
+    .page--portfolio .pj--7,
+    .page--portfolio .pj--5 { grid-column: span 6; }
+    .page--portfolio .pj__shot { aspect-ratio: 4 / 3; }
+    .page--portfolio .pj__desc { font-size: 0.88rem; }
+
+    /* Dominios: buscador a todo el ancho y vista previa más baja */
+    .domain-form,
+    .page--domains .result-card { max-width: none; }
+    .dom-preview { aspect-ratio: 16 / 7; }
+    .dom-preview__name { font-size: 2.4rem; }
+
+    /* Textos largos: líneas cómodas de leer */
+    .duo__text,
+    .duo__lead { max-width: 62ch; }
+}
+
+@media (min-width: 700px) and (max-width: 850px) {
+    .team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .member__bio { font-size: 0.92rem; }
+}
+
+/* La captura de INFALL es más ancha: anclarla a la izquierda para que se lea el titular */
+.page--portfolio .pj[data-category="corporativa"] .pj__shot img { object-position: left top; }
+
+/* ==========================================================
+   Teléfonos (≤600px): menos scroll, más fácil de usar con el pulgar
+   ========================================================== */
+@media (max-width: 600px) {
+    /* Franja superpuesta: tarjetas compactas en fila (dato/icono + texto) */
+    .studio-services--wide { gap: 0.6rem; padding: 0.9rem; }
+    .studio-services--wide .studio-services__intro { padding: 1rem 0.75rem 0.5rem; }
+    .studio-services--wide .studio-services h2,
+    .studio-services--wide h2 { margin-block: 0.75rem 1rem; }
+    .studio-services--wide .studio-service { padding: 1.1rem 1.2rem; border-radius: 18px; }
+    .studio-services--wide .studio-service h3 { margin-block: 0.45rem 0.35rem; font-size: 1.2rem; }
+    .studio-services--wide .studio-service p { margin-bottom: 0.9rem; font-size: 0.875rem; line-height: 1.5; }
+    .studio-services--wide .studio-service p:last-child { margin-bottom: 0; }
+
+    .studio-services--wide .studio-service:has(> .studio-stat),
+    .studio-services--wide .studio-service:has(> .ico-tile) {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        column-gap: 1rem;
+        align-items: center;
+    }
+    .studio-services--wide .studio-service > :not(.studio-stat):not(.ico-tile) { grid-column: 2; }
+    .studio-services--wide .studio-service > .studio-stat {
+        grid-column: 1;
+        grid-row: 1 / span 3;
+        min-width: 2.4ch;
+        margin: 0;
+        font-size: 2.3rem;
+    }
+    .studio-services--wide .studio-service > .ico-tile { grid-column: 1; grid-row: 1 / span 2; margin: 0; align-self: start; }
+    .studio-services--wide .studio-service:has(> .ico-tile) h3 { margin-top: 0; }
+
+    /* Tiles: icono a la izquierda, texto a la derecha */
+    .tiles { gap: 0.6rem; margin-top: 2rem; }
+    .tile {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 0.2rem 1rem;
+        padding: 1.1rem 1.2rem;
+        border-radius: 18px;
+    }
+    .tile .ico-tile { grid-row: span 2; }
+    .tile h3 { margin-top: 0; align-self: end; font-size: 1.05rem; }
+    .tile p { font-size: 0.875rem; }
+
+    /* Métricas de servicio: las tres en una fila */
+    .svc__metrics { gap: 0.5rem; margin-top: 1.5rem; }
+    .svc__metric { padding: 0.85rem 0.7rem; border-radius: 14px; }
+    .svc__metric b { font-size: 1.2rem; }
+    .svc__metric span { font-size: 0.75rem; line-height: 1.35; }
+
+    /* Botones de llamada a la acción a todo el ancho: más fáciles de tocar */
+    .svc__cta .btn,
+    .page .home-intro__actions .btn { flex: 1 1 100%; justify-content: center; }
+
+    /* Filtros del portafolio: una sola fila deslizable */
+    .filters {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        margin-inline: -1.5rem;
+        padding: 0.25rem 1.5rem;
+        scroll-padding-inline: 1.5rem;
+        scroll-snap-type: x proximity;
+        scrollbar-width: none;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+    .filters::-webkit-scrollbar { display: none; }
+    .filters .pill-btn { flex: none; scroll-snap-align: start; }
+
+    .pill-btn { padding-inline: 1.1rem; }
+
+    /* Equipo y razones: tarjetas un poco más compactas */
+    .member { padding: 1.35rem; border-radius: 20px; }
+    .member__bio { font-size: 0.92rem; }
+    .reason { padding: 1.35rem; }
+
+    .dom-preview { aspect-ratio: auto; min-height: 15rem; }
+
+    /* Portafolio: proyectos con menos aire entre sí */
+    .page--portfolio .work__grid { row-gap: 2.25rem; }
+}
+
+@media (max-width: 380px) {
+    .svc__metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .svc__metric:last-child { grid-column: 1 / -1; }
+}
+
+/* Teléfono: razones en carrusel y un solo botón por servicio */
+@media (max-width: 600px) {
+    .page--about .reasons {
+        display: flex;
+        gap: 0.85rem;
+        margin-inline: -1.5rem;
+        padding: 0.35rem 1.5rem 0.75rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 1.5rem;
+        scrollbar-width: none;
+        overscroll-behavior-x: contain;
+    }
+    .page--about .reasons::-webkit-scrollbar { display: none; }
+    .page--about .reasons > .reason {
+        flex: 0 0 84%;
+        scroll-snap-align: start;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .svc__cta .btn--ghost { display: none; }
+    .svc .check-list { margin-top: 1.25rem; font-size: 0.9rem; }
+    .svc__visual { padding-top: 0.5rem; }
 }

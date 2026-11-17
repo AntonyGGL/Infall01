@@ -8,7 +8,7 @@
     const $ = (sel, ctx) => (ctx || document).querySelector(sel);
     const $$ = (sel, ctx) => Array.from((ctx || document).querySelectorAll(sel));
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const WA = '51908536493';
+    const WA = '51922996170';
 
     /* ---- Tema claro / oscuro ---- */
     function initTheme() {
@@ -506,8 +506,153 @@
         sync();
     }
 
+    /* ---- Carruseles deslizables en teléfono: puntos que indican la posición ---- */
+    function initSwipers() {
+        $$('.home .quotes, .home #planes .plans, .home--main .work__grid, .page--about .reasons').forEach(track => {
+            const items = Array.from(track.children);
+            if (items.length < 2) return;
+            const dots = document.createElement('div');
+            dots.className = 'swipe-dots';
+            dots.setAttribute('aria-hidden', 'true');
+            items.forEach(() => dots.appendChild(document.createElement('i')));
+            track.after(dots);
+            const marks = Array.from(dots.children);
+            let pending = false;
+            const update = () => {
+                pending = false;
+                const start = track.getBoundingClientRect().left + parseFloat(getComputedStyle(track).paddingLeft || 0);
+                let best = 0, dist = Infinity;
+                items.forEach((it, i) => {
+                    const d = Math.abs(it.getBoundingClientRect().left - start);
+                    if (d < dist) { dist = d; best = i; }
+                });
+                marks.forEach((m, i) => m.classList.toggle('is-on', i === best));
+            };
+            track.addEventListener('scroll', () => {
+                if (!pending) { pending = true; requestAnimationFrame(update); }
+            }, { passive: true });
+            update();
+        });
+    }
+
+    /* ---- Carrusel 3D de proyectos: ventana central al frente, vecinas en perspectiva ---- */
+    function initCoverflow() {
+        $$('[data-cf]').forEach(cf => {
+            const slides = $$('.cf__slide', cf);
+            const caps = $$('.cf__cap', cf);
+            const dots = $$('.cf__dot', cf);
+            const stage = $('.cf__stage', cf);
+            const n = slides.length;
+            if (!n) return;
+            let idx = 0;
+
+            const go = i => {
+                idx = (i + n) % n;
+                slides.forEach((slide, j) => {
+                    let off = j - idx;
+                    if (off > n / 2) off -= n;
+                    if (off < -n / 2) off += n;
+                    // Si una ventana salta de un extremo al otro, se mueve sin animación (va invisible)
+                    const prev = Number(slide.dataset.off || off);
+                    if (Math.abs(off - prev) > 1) {
+                        slide.style.transition = 'none';
+                        requestAnimationFrame(() => requestAnimationFrame(() => { slide.style.transition = ''; }));
+                    }
+                    slide.dataset.off = off;
+                    slide.style.setProperty('--off', off);
+                    slide.style.setProperty('--abs', Math.abs(off));
+                    slide.classList.toggle('is-active', off === 0);
+                    if (off === 0) slide.removeAttribute('aria-hidden');
+                    else slide.setAttribute('aria-hidden', 'true');
+                });
+                caps.forEach((cap, j) => {
+                    cap.classList.toggle('is-active', j === idx);
+                    cap.inert = j !== idx;
+                });
+                dots.forEach((dot, j) => {
+                    dot.classList.toggle('is-active', j === idx);
+                    if (j === idx) dot.setAttribute('aria-current', 'true');
+                    else dot.removeAttribute('aria-current');
+                });
+            };
+
+            // Cualquier elección de la persona detiene el avance automático
+            const pick = i => {
+                cf.classList.remove('is-playing');
+                cf.dataset.manual = '1';
+                go(i);
+            };
+
+            let swiped = false;
+            slides.forEach((slide, j) => slide.addEventListener('click', () => {
+                if (swiped) { swiped = false; return; }
+                if (j !== idx) pick(j);
+            }));
+            dots.forEach((dot, j) => {
+                dot.addEventListener('click', () => pick(j));
+                const bar = $('i', dot);
+                if (bar) bar.addEventListener('animationend', () => go(idx + 1));
+            });
+            $$('.cf__arrow', cf).forEach(btn => btn.addEventListener('click', () => pick(idx + Number(btn.dataset.dir))));
+            cf.addEventListener('keydown', e => {
+                if (e.key === 'ArrowLeft') { e.preventDefault(); pick(idx - 1); }
+                else if (e.key === 'ArrowRight') { e.preventDefault(); pick(idx + 1); }
+            });
+
+            // Deslizar con el dedo o el mouse
+            let x0 = null;
+            stage.addEventListener('pointerdown', e => { x0 = e.clientX; });
+            stage.addEventListener('pointerup', e => {
+                if (x0 === null) return;
+                const dx = e.clientX - x0;
+                x0 = null;
+                if (Math.abs(dx) > 40) {
+                    swiped = true;
+                    pick(idx + (dx < 0 ? 1 : -1));
+                    setTimeout(() => { swiped = false; }, 0);
+                }
+            });
+            stage.addEventListener('pointercancel', () => { x0 = null; });
+
+            go(0);
+
+            if (reduced || !('IntersectionObserver' in window)) return;
+            new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    cf.classList.toggle('is-playing', e.isIntersecting && !cf.dataset.manual);
+                });
+            }, { threshold: 0.4 }).observe(cf);
+        });
+    }
+
+    /* ---- WhatsApp flotante: punto "en línea" y burbuja de saludo ---- */
+    function initWaFloat() {
+        const btn = $('.wa-float');
+        if (!btn) return;
+        const dot = document.createElement('span');
+        dot.className = 'wa-float__dot';
+        dot.setAttribute('aria-hidden', 'true');
+        const bubble = document.createElement('span');
+        bubble.className = 'wa-float__bubble';
+        bubble.setAttribute('aria-hidden', 'true');
+        bubble.innerHTML = '<small>INFALL · en línea</small>¿Hablamos? <b>Respondemos en minutos</b>';
+        btn.append(dot, bubble);
+
+        let visto = false;
+        try { visto = sessionStorage.getItem('wa-bubble') === '1'; } catch (e) { }
+        if (visto) return;
+        setTimeout(() => {
+            btn.classList.add('show-bubble');
+            try { sessionStorage.setItem('wa-bubble', '1'); } catch (e) { }
+            setTimeout(() => btn.classList.remove('show-bubble'), 7000);
+        }, 3500);
+    }
+
     /* ---- Arranque ---- */
     function init() {
+        initWaFloat();
+        initSwipers();
+        initCoverflow();
         initFilters();
         initMockups();
         initDomainEcho();
