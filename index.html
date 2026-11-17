@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -46,8 +46,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/infall.css?v=1">
+    <link rel="stylesheet" href="assets/home.css?v=13">
 
     <script>
         (function () { try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) { } })();
@@ -121,10 +121,8 @@
     </script>
 </head>
 
-<body>
+<body class="home home--main">
     <a href="#contenido" class="skip-link">Saltar al contenido</a>
-
-    <canvas class="page-particles" id="page-particles" aria-hidden="true"></canvas>
 
     <!-- ============ NAVEGACIÓN ============ -->
     <header class="nav" id="nav">
@@ -143,7 +141,7 @@
                 <div class="nav__drawer-cta">
                     <a href="cotizacion.html" class="btn btn--primary btn--block">Cotizar proyecto</a>
                     <a href="https://wa.me/51908536493" target="_blank" rel="noopener"
-                        class="btn btn--wa btn--block"><i class="ri-whatsapp-line"></i> +51 908 536 493</a>
+                        class="btn btn--wa btn--block"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> +51 908 536 493</a>
                 </div>
             </nav>
 
@@ -161,7 +159,7 @@
                 </button>
 
                 <button class="icon-btn" id="navCartBtn" aria-label="Ver carrito">
-                    <i class="ri-shopping-cart-2-line"></i>
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 11.6a1.8 1.8 0 0 0 1.8 1.4h8.6a1.8 1.8 0 0 0 1.8-1.4L21.5 7H6"/></svg>
                     <span class="cart-badge hidden" id="navCartBadge">0</span>
                 </button>
 
@@ -178,155 +176,65 @@
 
     <main id="contenido">
 
-        <!-- ============ HERO ============ -->
-        <section class="hero">
-            <div class="shell hero__grid">
-                <div>
-                    <p class="eyebrow eyebrow--dot eyebrow--pill rise" style="--d:60ms">Ingeniería web · Perú · 100% remoto</p>
+        <section class="home-intro" aria-labelledby="home-title">
+            <div class="shell home-intro__layout">
+                <div class="home-intro__copy">
+                    <p class="home-kicker">Diseño web para negocios peruanos</p>
+                    <h1 id="home-title">Diseño que conecta.<br><em>Webs que impulsan.</em></h1>
+                    <p class="home-intro__description">Convertimos lo que hace único a tu negocio en una web que se ve bien, funciona rápido y facilita que tus clientes te contacten.</p>
+                    <div class="home-intro__actions">
+                        <a href="cotizacion.html" class="btn btn--primary">Cotiza tu proyecto <span aria-hidden="true">↗</span></a>
+                        <a href="#trabajos" class="btn btn--ghost">Ver proyectos</a>
+                    </div>
+                    <p class="home-intro__price">Páginas desde <strong>S/ 390</strong> <a href="#planes">Ver planes</a></p>
+                </div>
 
-                    <h1 class="display-xl hero__title rise" style="--d:140ms">
-                        Páginas web que tu negocio <span class="underscore amber">puede medir</span>.
-                    </h1>
-
-                    <p class="lead hero__lead rise" style="--d:220ms">
-                        Diseñamos y programamos sitios a medida para MYPEs y emprendedores peruanos. Sin plantillas ni
-                        constructores lentos: código propio, carga en menos de 1.5 s, listo para Google y con WhatsApp
-                        integrado para que te escriban el mismo día.
-                    </p>
-
-                    <div class="hero__actions rise" style="--d:300ms">
-                        <a href="cotizacion.html" class="btn btn--primary">
-                            Cotizar mi proyecto
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                                <polyline points="12 5 19 12 12 19" />
-                            </svg>
+                <div class="studio-scene device-scene">
+                    <a class="offer-circle" href="#planes" aria-label="Páginas desde S/ 390. Ver planes">
+                        <small>Desde</small>
+                        <b>S/ 390</b>
+                        <span>Ver planes ↗</span>
+                    </a>
+                    <span class="offer-stamp" aria-label="Tu web lista y publicada en 1 día"><b>1</b>día<small>lista y publicada</small></span>
+                    <figure class="device-mac">
+                        <a class="device-mac__lid" href="https://yeiserdev.github.io/osaka/" target="_blank" rel="noopener" aria-label="Visitar el sitio del restaurante Osaka (abre en otra pestaña)">
+                            <img src="portfolio-images/osaka-escritorio.webp" width="1200" height="750" fetchpriority="high"
+                                alt="Sitio web del restaurante Osaka visto en una laptop">
                         </a>
-                        <a href="#trabajos" class="btn btn--ghost">Ver trabajos entregados</a>
-                    </div>
-
-                    <p class="hero__price rise" style="--d:380ms">
-                        <span>Desde <b>S/ 390</b></span>
-                        <span>Entrega <b>7 días</b></span>
-                        <span>Respuesta <b>&lt; 24 h</b></span>
-                    </p>
-                </div>
-
-                <!-- Firma del diseño: carrusel de proyectos + pruebas -->
-                <div class="hero__panel">
-                <span class="proof rise" style="--d:620ms">
-                    <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
-                        <path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/>
-                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/>
-                        <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"/>
-                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"/>
-                    </svg>
-                    <b class="proof__n">4.9</b>
-                    <span class="proof__stars" role="img" aria-label="4.9 de 5 estrellas">★★★★★</span>
-                    <span class="proof__c">20+ reseñas</span>
-                </span>
-
-                <div class="spec-frame rise" style="--d:460ms">
-                    <div class="spec-panel" id="hero-carousel" aria-roledescription="carrusel"
-                        aria-label="Proyectos entregados por INFALL">
-                        <div class="spec-panel__bar">
-                            <span class="spec-panel__dots" aria-hidden="true"><span></span><span></span><span></span></span>
-                            <span class="spec-panel__url">
-                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="3" y="11" width="18" height="11" rx="2" />
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                                </svg>
-                                <span id="hero-url">ferreteriaimpofer.com</span>
-                            </span>
-                        </div>
-
-                        <div class="shots">
-                            <figure class="shot is-on" data-url="ferreteriaimpofer.com"
-                                data-cliente="Impofer G&amp;M SAC" data-rubro="Ferretería · Catálogo">
-                                <img src="portfolio-images/imagen_impofer.webp"
-                                    alt="Página web de Ferretería Impofer desarrollada por INFALL" width="960"
-                                    height="600" fetchpriority="high">
-                            </figure>
-                            <figure class="shot" data-url="yeiserdev.github.io/Brasadepiedra" data-cliente="Brasa de Piedra"
-                                data-rubro="Restaurante · Carta">
-                                <img src="portfolio-images/brasadepiedra.webp"
-                                    alt="Página web de Brasa de Piedra desarrollada por INFALL" width="960" height="600"
-                                    loading="lazy">
-                            </figure>
-                            <figure class="shot" data-url="yeiserdev.github.io/osaka" data-cliente="Osaka"
-                                data-rubro="Restaurante · Reservas">
-                                <img src="portfolio-images/osaka.webp"
-                                    alt="Página web de Osaka desarrollada por INFALL" width="960" height="600"
-                                    loading="lazy">
-                            </figure>
-                            <figure class="shot" data-url="yeiserdev.github.io/ScreenScape" data-cliente="ScreenScape"
-                                data-rubro="Producto · Web app">
-                                <img src="portfolio-images/Screen.webp"
-                                    alt="Web app ScreenScape desarrollada por INFALL" width="960" height="600"
-                                    loading="lazy">
-                            </figure>
-
-                            <div class="shots__nav">
-                                <span class="shots__count"><b id="hero-count">01</b> / 04</span>
-                                <div class="shots__dots" id="hero-dots" role="tablist" aria-label="Elegir proyecto"></div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                    <ul class="pledge rise" style="--d:700ms">
-                        <li class="pledge__i">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polyline points="20 6 9 17 4 12" />
-                            </svg>
-                            Precio cerrado antes de empezar
-                        </li>
-                        <li class="pledge__i">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polyline points="20 6 9 17 4 12" />
-                            </svg>
-                            Dominio, SSL y hosting configurados
-                        </li>
-                        <li class="pledge__i">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polyline points="20 6 9 17 4 12" />
-                            </svg>
-                            Soporte incluido tras el lanzamiento
-                        </li>
-                    </ul>
+                        <span class="device-mac__base" aria-hidden="true"></span>
+                    </figure>
+                    <span class="device-ipad">
+                        <img src="portfolio-images/osaka-tablet.webp" width="640" height="854" alt="El mismo sitio visto en una tablet">
+                    </span>
+                    <span class="device-iphone">
+                        <img src="portfolio-images/osaka-movil.webp" width="390" height="844" alt="El mismo sitio visto en un celular">
+                    </span>
+                    <a class="studio-note" href="https://yeiserdev.github.io/osaka/" target="_blank" rel="noopener">
+                        <span class="studio-note__icon" aria-hidden="true">↗</span>
+                        <span>Osaka · Restaurante<strong>Se adapta a cada pantalla.</strong></span>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- ============ CREDENCIALES ============ -->
-        <section class="section section--tight" aria-label="Cifras de INFALL">
-            <div class="shell">
-                <div class="creds reveal">
-                    <div class="creds__item">
-                        <div class="creds__n">S/ 390</div>
-                        <div class="creds__l">Precio de entrada</div>
-                    </div>
-                    <div class="creds__item">
-                        <div class="creds__n">&lt; 1.5 s</div>
-                        <div class="creds__l">Tiempo de carga</div>
-                    </div>
-                    <div class="creds__item">
-                        <div class="creds__n">4.9 / 5</div>
-                        <div class="creds__l">Reseñas de clientes</div>
-                    </div>
-                    <div class="creds__item">
-                        <div class="creds__n">200+</div>
-                        <div class="creds__l">Ciudades con CDN</div>
-                    </div>
-                </div>
+        <section class="studio-services shell" aria-label="Soluciones para tu negocio">
+            <div class="studio-services__intro">
+                <p class="eyebrow">De la idea a la web</p>
+                <h2>Tu negocio.<br>Todo su potencial.</h2>
+                <a href="servicios.html" class="link-arrow">Explora los servicios ↗</a>
             </div>
+            <a class="studio-service" href="#planes">
+                <span class="studio-service__type">Presencia digital</span>
+                <h3>Que te encuentren.<br>Que te elijan.</h3>
+                <p>Landing pages y webs empresariales para presentar tu marca y recibir consultas.</p>
+                <span class="studio-service__link">Ver planes <span aria-hidden="true">↗</span></span>
+            </a>
+            <a class="studio-service studio-service--dark" href="cotizacion.html">
+                <span class="studio-service__type">Desarrollo a medida</span>
+                <h3>Tu forma de trabajar.<br>En una aplicación.</h3>
+                <p>Catálogos, paneles y herramientas pensadas para los procesos de tu negocio.</p>
+                <span class="studio-service__link">Cuéntanos tu idea <span aria-hidden="true">↗</span></span>
+            </a>
         </section>
 
         <!-- ============ TRABAJOS ============ -->
@@ -334,26 +242,24 @@
             <div class="shell">
                 <div class="section-head">
                     <div>
-                        <p class="eyebrow reveal">Trabajos entregados</p>
-                        <h2 class="display-lg section-head__title reveal" style="--d:60ms">Sitios que ya están
-                            trabajando.</h2>
+                        <p class="eyebrow reveal">Portafolio</p>
+                        <h2 class="display-lg section-head__title reveal" style="--d:60ms">Tu próximo proyecto<br>podría estar aquí.</h2>
                     </div>
                     <p class="section-head__note reveal" style="--d:120ms">
-                        Ferreterías, restaurantes, servicios. Cada proyecto se entrega en producción, con dominio,
-                        SSL y medición activa. Entra y míralos funcionando.
+                        Conoce cómo una ferretería muestra su catálogo y cómo dos restaurantes presentan su carta o reciben reservas.
                     </p>
                 </div>
 
                 <div class="work__grid">
                     <a class="pj pj--7 reveal" style="--d:0ms" href="https://ferreteriaimpofer.com/" target="_blank" rel="noopener">
                         <span class="pj__shot">
-                            <img src="portfolio-images/imagen_impofer.webp" alt="Página web de Impofer G&amp;M, ferretería en Huancayo" loading="lazy" width="1880" height="855">
+                            <img src="portfolio-images/imagen_impofer.webp" alt="Página web de Impofer G&amp;M, ferretería en Huancayo" loading="lazy" width="1880" height="855" srcset="portfolio-images/imagen_impofer-700.webp 700w, portfolio-images/imagen_impofer.webp 1400w" sizes="(max-width: 900px) 92vw, 46vw">
                         </span>
                         <span class="pj__meta">
-                            <span class="pj__idx">01</span>
+
                             <span class="pj__title">
                                 <span class="pj__name">Impofer G&amp;M</span>
-                                <span class="pj__kind">Ferretería · Catálogo</span>
+                                <span class="pj__kind">Ferretería · Catálogo digital</span>
                             </span>
                             <span class="pj__go">
                                 Visitar
@@ -370,10 +276,10 @@
                             <img src="portfolio-images/brasadepiedra.webp" alt="Página web del restaurante Brasa de Piedra" loading="lazy" width="800" height="413">
                         </span>
                         <span class="pj__meta">
-                            <span class="pj__idx">02</span>
+
                             <span class="pj__title">
                                 <span class="pj__name">Brasa de Piedra</span>
-                                <span class="pj__kind">Restaurante · Carta</span>
+                                <span class="pj__kind">Restaurante · Carta digital</span>
                             </span>
                             <span class="pj__go">
                                 Visitar
@@ -387,10 +293,10 @@
                     </a>
                     <a class="pj pj--5 reveal" style="--d:160ms" href="https://yeiserdev.github.io/osaka/" target="_blank" rel="noopener">
                         <span class="pj__shot">
-                            <img src="portfolio-images/osaka.webp" alt="Página web del restaurante Osaka" loading="lazy" width="1818" height="914">
+                            <img src="portfolio-images/osaka.webp" alt="Página web del restaurante Osaka" loading="lazy" width="1818" height="914" srcset="portfolio-images/osaka-700.webp 700w, portfolio-images/osaka.webp 1400w" sizes="(max-width: 900px) 92vw, 46vw">
                         </span>
                         <span class="pj__meta">
-                            <span class="pj__idx">03</span>
+
                             <span class="pj__title">
                                 <span class="pj__name">Osaka</span>
                                 <span class="pj__kind">Restaurante · Reservas</span>
@@ -407,13 +313,13 @@
                     </a>
                     <a class="pj pj--7 reveal" style="--d:240ms" href="https://yeiserdev.github.io/ScreenScape/" target="_blank" rel="noopener">
                         <span class="pj__shot">
-                            <img src="portfolio-images/Screen.webp" alt="Web app ScreenScape" loading="lazy" width="1833" height="998">
+                            <img src="portfolio-images/Screen.webp" alt="Web app ScreenScape" loading="lazy" width="1833" height="998" srcset="portfolio-images/Screen-700.webp 700w, portfolio-images/Screen.webp 1400w" sizes="(max-width: 900px) 92vw, 46vw">
                         </span>
                         <span class="pj__meta">
-                            <span class="pj__idx">04</span>
+
                             <span class="pj__title">
                                 <span class="pj__name">ScreenScape</span>
-                                <span class="pj__kind">Producto · Web app</span>
+                                <span class="pj__kind">Aplicación web desarrollada a medida</span>
                             </span>
                             <span class="pj__go">
                                 Visitar
@@ -437,52 +343,146 @@
                     </a>
                     <a href="https://wa.me/51908536493?text=Hola%20INFALL%2C%20quisiera%20cotizar%20un%20proyecto%20web"
                         target="_blank" rel="noopener" class="btn btn--wa">
-                        <i class="ri-whatsapp-line"></i> Cuéntanos tu proyecto
+                        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> Cuéntanos tu proyecto
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- ============ CAPACIDADES ============ -->
-        <section class="section section--ruled">
+        <!-- ============ PLANES ============ -->
+        <section class="section" id="planes">
             <div class="shell">
                 <div class="section-head">
                     <div>
-                        <p class="eyebrow reveal">Cómo construimos</p>
-                        <h2 class="display-lg section-head__title reveal" style="--d:60ms">Cuatro decisiones técnicas
-                            que se notan en las ventas.</h2>
+                        <p class="eyebrow reveal">Planes y precios</p>
+                        <h2 class="display-lg section-head__title reveal" style="--d:60ms">Una web a la altura<br>de tu próximo paso.</h2>
                     </div>
                     <p class="section-head__note reveal" style="--d:120ms">
-                        No vendemos plantillas ni constructores. Cada sitio se escribe para el negocio que lo va a
-                        usar, y cada decisión se puede verificar.
+                        Elige según lo que necesita tu negocio. Definimos contigo el alcance, el plazo y el precio final antes de empezar.
                     </p>
                 </div>
 
-                <div class="caps reveal">
-                    <article class="cap">
-                        <span class="cap__metric">3×</span>
-                        <h3 class="cap__title">Código propio, no plantillas</h3>
-                        <p class="cap__text">Cada línea se escribe para tu negocio. Los sitios cargan hasta 3 veces
-                            más rápido que un WordPress con constructor.</p>
+                <div class="plans">
+                    <!-- Landing Page -->
+                    <article class="plan reveal">
+                        <p class="plan__stage">Para empezar</p>
+                        <h3 class="plan__name">Landing Page</h3>
+                        <p class="plan__for">Presenta tu oferta en una página y lleva las consultas directamente a tu WhatsApp.</p>
+                        <div class="plan__price">
+                            <span class="plan__from">Desde</span>
+                            <span class="plan__cur">S/</span>
+                            <span class="plan__amount">390</span>
+                        </div>
+                        <ul class="plan__list">
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Diseño 100% personalizado</li>
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>SEO básico integrado</li>
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Integración con WhatsApp</li>
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Certificado SSL</li>
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Diseño responsive móvil</li>
+                            <li class="plan__li plan__li--off"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Panel de administración</li>
+                            <li class="plan__li plan__li--off"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>E-commerce integrado</li>
+                        </ul>
+                        <div class="plan__cta">
+                            <button class="btn btn--ghost btn--block js-plan-cta" data-plan-price="390"
+                                data-plan-name="Landing Page">Añadir al carrito</button>
+                        </div>
                     </article>
-                    <article class="cap">
-                        <span class="cap__metric">&lt; 1.5 s</span>
-                        <h3 class="cap__title">CDN global desde Perú</h3>
-                        <p class="cap__text">Hosting con red en más de 200 ciudades. Tu página abre igual de rápido en
-                            Lima, Miami o Madrid.</p>
+
+                    <!-- Web Profesional -->
+                    <article class="plan plan--featured reveal" style="--d:60ms">
+                        <p class="plan__stage">Para crecer</p>
+                        <h3 class="plan__name">Web Profesional</h3>
+                        <p class="plan__for">Dale a tu empresa un sitio completo para presentar servicios, mostrar productos y recibir consultas.</p>
+                        <div class="plan__price">
+                            <span class="plan__from">Desde</span>
+                            <span class="plan__cur">S/</span>
+                            <span class="plan__amount">990</span>
+                        </div>
+                        <ul class="plan__list">
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Todo lo de Landing Page</li>
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hasta 6 páginas</li>
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>SEO avanzado + analítica</li>
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Formulario de contacto</li>
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Catálogo de productos</li>
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Blog integrado</li>
+                            <li class="plan__li plan__li--off"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>E-commerce con carrito</li>
+                        </ul>
+                        <div class="plan__cta">
+                            <button class="btn btn--primary btn--block js-plan-cta" data-plan-price="990"
+                                data-plan-name="Web Profesional">Añadir al carrito</button>
+                            <p class="plan__note">Respondemos en menos de 24 h</p>
+                        </div>
                     </article>
-                    <article class="cap">
-                        <span class="cap__metric">100%</span>
-                        <h3 class="cap__title">SSL y seguridad incluidos</h3>
-                        <p class="cap__text">HTTPS nativo, cabeceras de seguridad y protección contra XSS e inyección
-                            de código en toda entrega.</p>
+
+                    <!-- Web App -->
+                    <article class="plan reveal" style="--d:120ms">
+                        <p class="plan__stage">Para escalar</p>
+                        <h3 class="plan__name">Web App a Medida</h3>
+                        <p class="plan__for">Lleva tus procesos a una aplicación con administración, usuarios y funciones a medida.</p>
+                        <div class="plan__price">
+                            <span class="plan__from">Desde</span>
+                            <span class="plan__cur">S/</span>
+                            <span class="plan__amount">2,490</span>
+                        </div>
+                        <ul class="plan__list">
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Todo lo de Web Profesional</li>
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Panel de administración</li>
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>E-commerce + pasarela de pagos</li>
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Dashboard en tiempo real</li>
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>API REST personalizada</li>
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Autenticación y roles</li>
+                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Soporte post-lanzamiento</li>
+                        </ul>
+                        <div class="plan__cta">
+                            <button class="btn btn--ghost btn--block js-plan-cta" data-plan-price="2490"
+                                data-plan-name="Web App a Medida">Añadir al carrito</button>
+                        </div>
                     </article>
-                    <article class="cap">
-                        <span class="cap__metric">SEO</span>
-                        <h3 class="cap__title">Pensado para Google desde el día 1</h3>
-                        <p class="cap__text">Estructura semántica, metadatos y datos estructurados. Hay clientes en
-                            primera página de su distrito en menos de 60 días.</p>
-                    </article>
+                </div>
+
+                <!-- Propuesta a medida -->
+                <div class="brief reveal" id="propuesta">
+                    <div>
+                        <p class="eyebrow">Propuesta a tu medida</p>
+                        <h3 class="brief__title">¿No sabes qué plan elegir?</h3>
+                        <p class="brief__text">Cuéntanos tu idea y tu presupuesto. Preparamos una propuesta con
+                            alcance y precio cerrado, y te escribimos en menos de 24 horas.</p>
+                        <p class="brief__text" style="margin-top:1.4rem">
+                            <span class="mono">Al enviar se abre WhatsApp con tu mensaje listo.</span>
+                        </p>
+                    </div>
+
+                    <form id="brief-form" novalidate>
+                        <div class="field">
+                            <label for="brief-name">Tu nombre</label>
+                            <input type="text" id="brief-name" name="nombre" placeholder="Ej: Ana García"
+                                autocomplete="name" required>
+                        </div>
+
+                        <div class="field">
+                            <div class="range-head">
+                                <label for="brief-budget">Presupuesto ideal</label>
+                                <span class="range-val" id="brief-budget-value">S/ 500</span>
+                            </div>
+                            <input type="range" id="brief-budget" name="presupuesto" min="200" max="5000" step="50"
+                                value="500">
+                            <div class="range-labels"><span>S/ 200</span><span>S/ 5,000+</span></div>
+                        </div>
+
+                        <div class="field">
+                            <label for="brief-need">¿Qué necesitas?</label>
+                            <textarea id="brief-need" name="proyecto" rows="3"
+                                placeholder="Ej: Quiero una tienda online para vender ropa..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--block">
+                            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> Enviar y hablar por WhatsApp
+                        </button>
+                        <p class="mono" style="margin-top:1rem; line-height:1.5">
+                            Al enviar aceptas nuestra <a href="privacidad.html" style="color:var(--amber)">política de
+                            privacidad</a>. Usamos tus datos solo para responderte.
+                        </p>
+                    </form>
                 </div>
             </div>
         </section>
@@ -530,77 +530,6 @@
                         <p class="step__when">Día 7 · Soporte incluido</p>
                     </li>
                 </ol>
-            </div>
-        </section>
-
-        <!-- ============ STACK ============ -->
-        <section class="section section--tight stack">
-            <div class="shell">
-                <div class="section-head">
-                    <div>
-                        <p class="eyebrow reveal">Stack tecnológico</p>
-                        <h2 class="display-lg section-head__title reveal" style="--d:60ms">La misma infraestructura de
-                            las empresas grandes.</h2>
-                    </div>
-                    <p class="section-head__note reveal" style="--d:120ms">
-                        Cloud de primer nivel, frameworks actuales e integraciones oficiales con RENIEC y SUNAT para
-                        validar DNI y RUC dentro de tu web.
-                    </p>
-                </div>
-            </div>
-
-            <div class="stack__viewport reveal" role="region" aria-label="Tecnologías de desarrollo que utilizamos">
-                <div class="stack__row" style="--dur: 52s;">
-                    <div class="stack__set">
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="" loading="lazy"><span><span class="chip__n">React</span><br><span class="chip__c">Frontend</span></span></div>
-                        <div class="chip chip--inv"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="" loading="lazy"><span><span class="chip__n">Next.js</span><br><span class="chip__c">Framework</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="" loading="lazy"><span><span class="chip__n">Node.js</span><br><span class="chip__c">Backend</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" alt="" loading="lazy"><span><span class="chip__n">Angular</span><br><span class="chip__c">Frontend</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="" loading="lazy"><span><span class="chip__n">Tailwind</span><br><span class="chip__c">Frontend</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="" loading="lazy"><span><span class="chip__n">HTML5</span><br><span class="chip__c">Frontend</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="" loading="lazy"><span><span class="chip__n">CSS3</span><br><span class="chip__c">Frontend</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" alt="" loading="lazy"><span><span class="chip__n">Figma</span><br><span class="chip__c">Diseño UI</span></span></div>
-                        <div class="chip chip--inv"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="" loading="lazy"><span><span class="chip__n">GitHub</span><br><span class="chip__c">Repositorios</span></span></div>
-                    </div>
-                    <div class="stack__set" aria-hidden="true">
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="" loading="lazy"><span><span class="chip__n">React</span><br><span class="chip__c">Frontend</span></span></div>
-                        <div class="chip chip--inv"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="" loading="lazy"><span><span class="chip__n">Next.js</span><br><span class="chip__c">Framework</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="" loading="lazy"><span><span class="chip__n">Node.js</span><br><span class="chip__c">Backend</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" alt="" loading="lazy"><span><span class="chip__n">Angular</span><br><span class="chip__c">Frontend</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="" loading="lazy"><span><span class="chip__n">Tailwind</span><br><span class="chip__c">Frontend</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="" loading="lazy"><span><span class="chip__n">HTML5</span><br><span class="chip__c">Frontend</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="" loading="lazy"><span><span class="chip__n">CSS3</span><br><span class="chip__c">Frontend</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" alt="" loading="lazy"><span><span class="chip__n">Figma</span><br><span class="chip__c">Diseño UI</span></span></div>
-                        <div class="chip chip--inv"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="" loading="lazy"><span><span class="chip__n">GitHub</span><br><span class="chip__c">Repositorios</span></span></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="stack__viewport reveal" role="region" aria-label="Cloud, bases de datos e integraciones">
-                <div class="stack__row stack__row--rev" style="--dur: 62s;">
-                    <div class="stack__set">
-                        <div class="chip chip--inv"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="" loading="lazy"><span><span class="chip__n">AWS</span><br><span class="chip__c">Cloud</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" alt="" loading="lazy"><span><span class="chip__n">Google Cloud</span><br><span class="chip__c">Cloud</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg" alt="" loading="lazy"><span><span class="chip__n">Azure</span><br><span class="chip__c">Cloud</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg" alt="" loading="lazy"><span><span class="chip__n">Supabase</span><br><span class="chip__c">BaaS</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="" loading="lazy"><span><span class="chip__n">MySQL</span><br><span class="chip__c">Base de datos</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="" loading="lazy"><span><span class="chip__n">PostgreSQL</span><br><span class="chip__c">Base de datos</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="" loading="lazy"><span><span class="chip__n">MongoDB</span><br><span class="chip__c">Base de datos</span></span></div>
-                        <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#E39B3D" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 12a4 4 0 0 1 8 0M6 12a6 6 0 0 1 12 0"/></svg><span><span class="chip__n">RENIEC API</span><br><span class="chip__c">Integración</span></span></div>
-                        <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#E39B3D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span><span class="chip__n">SUNAT API</span><br><span class="chip__c">Integración</span></span></div>
-                    </div>
-                    <div class="stack__set" aria-hidden="true">
-                        <div class="chip chip--inv"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="" loading="lazy"><span><span class="chip__n">AWS</span><br><span class="chip__c">Cloud</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" alt="" loading="lazy"><span><span class="chip__n">Google Cloud</span><br><span class="chip__c">Cloud</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg" alt="" loading="lazy"><span><span class="chip__n">Azure</span><br><span class="chip__c">Cloud</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg" alt="" loading="lazy"><span><span class="chip__n">Supabase</span><br><span class="chip__c">BaaS</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="" loading="lazy"><span><span class="chip__n">MySQL</span><br><span class="chip__c">Base de datos</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="" loading="lazy"><span><span class="chip__n">PostgreSQL</span><br><span class="chip__c">Base de datos</span></span></div>
-                        <div class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="" loading="lazy"><span><span class="chip__n">MongoDB</span><br><span class="chip__c">Base de datos</span></span></div>
-                        <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#E39B3D" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 12a4 4 0 0 1 8 0M6 12a6 6 0 0 1 12 0"/></svg><span><span class="chip__n">RENIEC API</span><br><span class="chip__c">Integración</span></span></div>
-                        <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#E39B3D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><span><span class="chip__n">SUNAT API</span><br><span class="chip__c">Integración</span></span></div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -693,146 +622,6 @@
             </div>
         </section>
 
-        <!-- ============ PLANES ============ -->
-        <section class="section" id="planes">
-            <div class="shell">
-                <div class="section-head">
-                    <div>
-                        <p class="eyebrow reveal">Planes y precios</p>
-                        <h2 class="display-lg section-head__title reveal" style="--d:60ms">Precio de partida claro,
-                            sin sorpresas.</h2>
-                    </div>
-                    <p class="section-head__note reveal" style="--d:120ms">
-                        Estos son los puntos de partida. El precio final se ajusta al alcance real de tu proyecto y se
-                        cierra antes de empezar.
-                    </p>
-                </div>
-
-                <div class="plans">
-                    <!-- Landing Page -->
-                    <article class="plan reveal">
-                        <h3 class="plan__name">Landing Page</h3>
-                        <p class="plan__for">Para negocios que buscan captar clientes y generar consultas directas.</p>
-                        <div class="plan__price">
-                            <span class="plan__from">Desde</span>
-                            <span class="plan__cur">S/</span>
-                            <span class="plan__amount">390</span>
-                        </div>
-                        <ul class="plan__list">
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Diseño 100% personalizado</li>
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>SEO básico integrado</li>
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Integración con WhatsApp</li>
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Certificado SSL</li>
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Diseño responsive móvil</li>
-                            <li class="plan__li plan__li--off"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Panel de administración</li>
-                            <li class="plan__li plan__li--off"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>E-commerce integrado</li>
-                        </ul>
-                        <div class="plan__cta">
-                            <button class="btn btn--ghost btn--block js-plan-cta" data-plan-price="390"
-                                data-plan-name="Landing Page">Añadir al carrito</button>
-                        </div>
-                    </article>
-
-                    <!-- Web Profesional -->
-                    <article class="plan plan--featured reveal" style="--d:60ms">
-                        <span class="plan__flag">Más elegido</span>
-                        <h3 class="plan__name">Web Profesional</h3>
-                        <p class="plan__for">Para empresas que necesitan una presencia sólida con varias secciones y
-                            funcionalidades.</p>
-                        <div class="plan__price">
-                            <span class="plan__from">Desde</span>
-                            <span class="plan__cur">S/</span>
-                            <span class="plan__amount">990</span>
-                        </div>
-                        <ul class="plan__list">
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Todo lo de Landing Page</li>
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hasta 6 páginas</li>
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>SEO avanzado + analítica</li>
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Formulario de contacto</li>
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Catálogo de productos</li>
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Blog integrado</li>
-                            <li class="plan__li plan__li--off"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>E-commerce con carrito</li>
-                        </ul>
-                        <div class="plan__cta">
-                            <button class="btn btn--primary btn--block js-plan-cta" data-plan-price="990"
-                                data-plan-name="Web Profesional">Añadir al carrito</button>
-                            <p class="plan__note">Respondemos en menos de 24 h</p>
-                        </div>
-                    </article>
-
-                    <!-- Web App -->
-                    <article class="plan reveal" style="--d:120ms">
-                        <h3 class="plan__name">Web App a Medida</h3>
-                        <p class="plan__for">Sistemas, paneles de control y aplicaciones web para escalar tu
-                            operación.</p>
-                        <div class="plan__price">
-                            <span class="plan__from">Desde</span>
-                            <span class="plan__cur">S/</span>
-                            <span class="plan__amount">2,490</span>
-                        </div>
-                        <ul class="plan__list">
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Todo lo de Web Profesional</li>
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Panel de administración</li>
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>E-commerce + pasarela de pagos</li>
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Dashboard en tiempo real</li>
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>API REST personalizada</li>
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Autenticación y roles</li>
-                            <li class="plan__li"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Soporte post-lanzamiento</li>
-                        </ul>
-                        <div class="plan__cta">
-                            <button class="btn btn--ghost btn--block js-plan-cta" data-plan-price="2490"
-                                data-plan-name="Web App a Medida">Añadir al carrito</button>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- Propuesta a medida -->
-                <div class="brief reveal" id="propuesta">
-                    <div>
-                        <p class="eyebrow">Propuesta a tu medida</p>
-                        <h3 class="brief__title">¿No sabes qué plan elegir?</h3>
-                        <p class="brief__text">Cuéntanos tu idea y tu presupuesto. Preparamos una propuesta con
-                            alcance y precio cerrado, y te escribimos en menos de 24 horas.</p>
-                        <p class="brief__text" style="margin-top:1.4rem">
-                            <span class="mono">Al enviar se abre WhatsApp con tu mensaje listo.</span>
-                        </p>
-                    </div>
-
-                    <form id="brief-form" novalidate>
-                        <div class="field">
-                            <label for="brief-name">Tu nombre</label>
-                            <input type="text" id="brief-name" name="nombre" placeholder="Ej: Ana García"
-                                autocomplete="name" required>
-                        </div>
-
-                        <div class="field">
-                            <div class="range-head">
-                                <label for="brief-budget">Presupuesto ideal</label>
-                                <span class="range-val" id="brief-budget-value">S/ 500</span>
-                            </div>
-                            <input type="range" id="brief-budget" name="presupuesto" min="200" max="5000" step="50"
-                                value="500">
-                            <div class="range-labels"><span>S/ 200</span><span>S/ 5,000+</span></div>
-                        </div>
-
-                        <div class="field">
-                            <label for="brief-need">¿Qué necesitas?</label>
-                            <textarea id="brief-need" name="proyecto" rows="3"
-                                placeholder="Ej: Quiero una tienda online para vender ropa..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn--primary btn--block">
-                            <i class="ri-whatsapp-line"></i> Enviar y hablar por WhatsApp
-                        </button>
-                        <p class="mono" style="margin-top:1rem; line-height:1.5">
-                            Al enviar aceptas nuestra <a href="privacidad.html" style="color:var(--amber)">política de
-                            privacidad</a>. Usamos tus datos solo para responderte.
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </section>
-
         <!-- ============ CIERRE ============ -->
         <section class="section section--tight">
             <div class="shell">
@@ -847,7 +636,7 @@
                     <div class="closer__actions">
                         <a href="https://wa.me/51908536493?text=Hola%20INFALL%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20profesional."
                             target="_blank" rel="noopener" class="btn btn--primary">
-                            <i class="ri-whatsapp-line"></i> Escribir por WhatsApp
+                            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> Escribir por WhatsApp
                         </a>
                         <a href="cotizacion.html" class="btn btn--ghost">Llenar formulario</a>
                     </div>
@@ -893,11 +682,11 @@
                         </a>
                         <a href="https://wa.me/51908536493?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web"
                             target="_blank" rel="noopener">
-                            <i class="ri-whatsapp-line"></i> +51 908 536 493
+                            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> +51 908 536 493
                         </a>
                         <a href="https://wa.me/51922996170?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web"
                             target="_blank" rel="noopener">
-                            <i class="ri-whatsapp-line"></i> +51 922 996 170
+                            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> +51 922 996 170
                         </a>
                     </div>
                 </div>
@@ -937,11 +726,11 @@
                 registrarlo contigo ahora mismo.</p>
             <div class="modal__actions">
                 <button id="btnYesDomain" class="btn btn--primary btn--block">
-                    <i class="ri-search-line"></i> Buscar mi dominio
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16" y2="16"/></svg> Buscar mi dominio
                 </button>
                 <span class="modal__or">o continuar sin dominio</span>
                 <button id="btnNoDomain" class="btn btn--wa btn--block">
-                    <i class="ri-whatsapp-line"></i> Solo quiero el diseño web
+                    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> Solo quiero el diseño web
                 </button>
             </div>
         </div>
@@ -949,7 +738,7 @@
 
     <a class="wa-float" href="https://wa.me/51908536493?text=Hola%20INFALL%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web."
         target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
-        <i class="ri-whatsapp-line"></i>
+        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
     </a>
 
     <script src="cart.js" defer></script>

@@ -611,42 +611,173 @@ ul { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 981px) { .nav__drawer-cta { display: none; } }
 
 /* ---------- 7. Hero ---------- */
-.hero {
-    padding-top: clamp(7.5rem, 13vh, 10rem);
-    padding-bottom: clamp(2.5rem, 5vh, 4rem);
-}
-.hero__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
-    gap: clamp(2.5rem, 5vw, 4.5rem);
-    align-items: center;
-}
-.hero__title { margin-top: 1.5rem; max-width: 13ch; }
-.hero__lead { margin-top: 1.6rem; }
-.hero__actions { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+/* Premisa: en vez de afirmar que las webs son medibles, esta se mide a sí
+   misma en el dispositivo de quien la visita. Los números de la banda
+   inferior son reales, leídos con la Navigation Timing API. */
 
-.hero__price {
-    margin-top: 1.9rem;
-    padding-top: 1.1rem;
-    border-top: 1px solid var(--rule-soft);
+.hero {
+    padding-top: clamp(6.5rem, 11vh, 8.5rem);
+    padding-bottom: clamp(2rem, 4vh, 3rem);
+}
+
+/* --- Cinta de expediente --- */
+.hero__ribbon {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.6rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule-soft);
     font-family: var(--font-mono);
-    font-size: 0.73rem;
-    letter-spacing: 0.08em;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--bone-dim);
 }
-.hero__price b { color: var(--bone); font-weight: 500; }
+.hero__ribbon-live { display: inline-flex; align-items: center; gap: 0.55rem; color: var(--bone-soft); }
+.hero__ribbon-mid { text-align: center; }
+.hero__ribbon-ref { color: var(--amber); }
 
-@media (max-width: 900px) {
-    .hero__grid { grid-template-columns: 1fr; }
-    .hero__title { max-width: 100%; }
+/* Punto que late: señal de medición activa */
+.hero__pulse {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex: none;
+    animation: latido 2.4s ease-in-out infinite;
+}
+@keyframes latido {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(var(--amber-rgb), 0.55); opacity: 1; }
+    70%      { box-shadow: 0 0 0 7px rgba(var(--amber-rgb), 0); opacity: 0.75; }
 }
 
-/* Columna derecha: panel + pruebas */
+/* --- Retícula asimétrica: el panel invade la columna de texto --- */
+.hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: center;
+    padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+.hero__title { max-width: 14ch; }
+.hero__lead { margin-top: 1.5rem; max-width: 44ch; }
+.hero__actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.hero__lead-col .pledge { margin-top: 2rem; }
+
+/* Acotación de plano bajo la palabra clave: el titular queda "dimensionado" */
+.dim { position: relative; white-space: nowrap; color: var(--amber); }
+.dim__line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.12em;
+    height: 0.34em;
+    pointer-events: none;
+}
+/* Línea de cota */
+.dim__line::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    background: var(--amber);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: acotar 900ms var(--ease) 900ms forwards;
+}
+/* Topes de los extremos */
+.dim__line::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-left: 2px solid var(--amber);
+    border-right: 2px solid var(--amber);
+    opacity: 0;
+    animation: topes 400ms var(--ease) 1700ms forwards;
+}
+@keyframes acotar { to { transform: scaleX(1); } }
+@keyframes topes { to { opacity: 1; } }
+
+/* --- Banda de instrumentos --- */
+.gauges {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    border-top: 1px solid var(--rule);
+}
+.gauges__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+    padding: 0.9rem 0 1.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+.gauges__title { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--bone); }
+.gauges__src { color: var(--bone-dim); }
+
+.gauges__row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 0.7fr)) minmax(0, 1.2fr);
+    border-top: 1px solid var(--rule-soft);
+}
+.gauge {
+    position: relative;
+    padding: 1.4rem 1.4rem 1.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.4rem;
+}
+.gauge + .gauge { padding-left: 1.4rem; border-left: 1px solid var(--rule-soft); }
+
+.gauge__v {
+    font-family: var(--font-mono);
+    font-size: clamp(1.7rem, 1.3rem + 1.5vw, 2.5rem);
+    font-weight: 500;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: var(--bone);
+    font-variant-numeric: tabular-nums;
+}
+.gauge__v.is-listo { color: var(--amber); }
+.gauge__u {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--bone-dim);
+}
+.gauge__l {
+    flex-basis: 100%;
+    margin-top: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+}
+
+.gauge--nota { align-items: center; }
+.gauge__nota {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--bone-dim);
+    max-width: 34ch;
+}
+.gauge__nota b { color: var(--bone-soft); font-weight: 500; }
+
+/* --- Panel del carrusel --- */
 .hero__panel { position: relative; }
+@media (min-width: 981px) {
+    /* El panel invade hacia arriba: la composición deja de ser dos columnas
+       alineadas y gana la asimetría de una maqueta editorial. */
+    .hero__panel { margin-top: clamp(-6rem, -5vw, -2.5rem); }
+}
 
 /* Prueba social, montada sobre la esquina del panel */
 .proof {
@@ -684,11 +815,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 /* Las tres promesas que cierran la duda de contratar */
-.pledge {
-    margin-top: 1.35rem;
-    display: grid;
-    gap: 0.55rem;
-}
+.pledge { display: grid; gap: 0.55rem; }
 .pledge__i {
     display: flex;
     align-items: center;
@@ -700,10 +827,22 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .pledge__i svg { color: var(--amber); flex: none; }
 
+@media (max-width: 980px) {
+    .hero__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero__title { max-width: 100%; }
+    .hero__lead { max-width: 100%; }
+    .gauges__row { grid-template-columns: repeat(2, 1fr); }
+    .gauge { padding: 1.2rem 1rem 1.3rem 0; }
+    .gauge:nth-child(odd) { padding-left: 0; border-left: 0; }
+    .gauge:nth-child(n+3) { border-top: 1px solid var(--rule-soft); }
+    .gauge--nota { grid-column: 1 / -1; padding-left: 0; border-left: 0; }
+    .gauge__nota { max-width: 46ch; }
+}
+
 @media (max-width: 620px) {
+    .hero__ribbon-mid { display: none; }
     .proof { top: -0.85rem; right: 0.5rem; padding: 0.42rem 0.8rem; gap: 0.45rem; }
     .proof__c { display: none; }
-    .pledge__i { font-size: 0.66rem; }
 }
 
 /* Marco con borde de gradiente que gira + halo difuso */
@@ -1065,7 +1204,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .cap__text { font-size: 0.92rem; color: var(--bone-dim); line-height: 1.6; }
 
 /* ---------- 11. Proceso (secuencia real) ---------- */
-.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 0; padding: 0; list-style: none; }
 .step {
     padding: 1.8rem 1.5rem 1.8rem 0;
     border-top: 2px solid var(--rule);
@@ -1669,4 +1808,44 @@ a, button, input, select, textarea, label, [role="button"], [role="tab"] {
 
 @media (max-width: 768px) {
     .foot__contact a:last-child { margin-bottom: 3.5rem; }
+}
+
+/* Iconos en línea: sustituyen a la tipografía de iconos completa */
+.ico {
+    width: 1.05em;
+    height: 1.05em;
+    flex: none;
+    display: inline-block;
+    vertical-align: -0.15em;
+}
+.wa-float .ico { width: 26px; height: 26px; }
+.icon-btn .ico { width: 19px; height: 19px; }
+
+/* Calificación del LCP según los umbrales de Core Web Vitals */
+.gauge__nota-mini {
+    display: none;
+    margin-left: 0.45rem;
+    padding: 0.12rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    letter-spacing: 0.08em;
+}
+.gauge__nota-mini.es-bueno,
+.gauge__nota-mini.es-medio,
+.gauge__nota-mini.es-lento { display: inline-block; }
+.gauge__nota-mini.es-bueno { background: rgba(95, 191, 139, 0.16); color: #7FCFA6; }
+.gauge__nota-mini.es-medio { background: rgba(var(--amber-rgb), 0.16); color: var(--amber); }
+.gauge__nota-mini.es-lento { background: rgba(248, 113, 113, 0.16); color: #F8A5A5; }
+
+/* Los rótulos del hero también respetan el mínimo legible en móvil */
+@media (max-width: 768px) {
+    .hero__ribbon,
+    .hero__ribbon-live,
+    .hero__ribbon-mid,
+    .hero__ribbon-ref,
+    .gauges__head,
+    .gauges__title,
+    .gauges__src,
+    .gauge__l { font-size: 0.75rem; }
+    .gauge__nota-mini { font-size: 0.75rem; }
 }

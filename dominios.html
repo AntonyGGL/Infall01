@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,355 +25,381 @@
     <meta name="twitter:image" content="https://infallconsulting.com/assets/og-infall.jpg">
     <meta name="description" content="Busca y registra tu dominio ideal para tu negocio en Perú y el mundo.">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.svg">
     <link rel="apple-touch-icon" href="favicon.svg">
 
+    <!-- Tipografía: Bricolage Grotesque (display) · Archivo (texto) · JetBrains Mono (datos) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="interfaz01.css?v=46">
-    <link rel="stylesheet" href="assets/legacy-bridge.css?v=1">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="domain-searcher/styles.css?v=6">
+    <link rel="stylesheet" href="assets/infall.css?v=1">
+    <link rel="stylesheet" href="assets/home.css?v=13">
+    <link rel="stylesheet" href="assets/pages.css?v=1">
+
     <script>
-        (function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+        (function () { try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) { } })();
     </script>
 </head>
-<body>
 
-    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+<body class="home page page--domains">
+    <a href="#contenido" class="skip-link">Saltar al contenido</a>
 
-    <div class="cyber-grid"></div>
-    <canvas class="page-particles-canvas" id="page-particles-canvas"></canvas>
-    <div class="cyber-glows">
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-        <div class="glow-orb orb-3"></div>
-    </div>
-
-    <header id="main-header">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <div class="logo-text">INFALL <span class="logo-dot"></span></div>
-                <span class="sub">SYSTEMS ENGINEERING</span>
+    <!-- ============ NAVEGACIÓN ============ -->
+    <header class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="brand" aria-label="INFALL Systems Engineering, inicio">
+                <span class="brand__mark">INFALL<span class="brand__dot" aria-hidden="true"></span></span>
+                <span class="brand__sub">Systems Engineering</span>
             </a>
-            <nav id="nav-menu">
-                <a href="index.html">Inicio</a>
-                <a href="quienes-somos.html">Quiénes Somos</a>
-                <div class="nav-dropdown">
-                    <a href="servicios.html" class="dropdown-trigger active" aria-current="page">Servicios</a>
-                    <div class="dropdown-menu">
-                        <a href="servicios.html#landing-pages" class="dropdown-item">
-                            <span class="service-icon"></span>
-                            <span>Landing Pages</span>
-                        </a>
-                        <a href="servicios.html#ecommerce" class="dropdown-item">
-                            <span class="service-icon"></span>
-                            <span>Catálogos y E-commerce</span>
-                        </a>
-                        <a href="servicios.html#web-apps" class="dropdown-item">
-                            <span class="service-icon"></span>
-                            <span>Web Apps a Medida</span>
-                        </a>
-                    </div>
-                </div>
-                <a href="dominios.html" class="active" aria-current="page">Dominios</a>
-                <a href="portfolio.html">Portafolio</a>
-                <div class="nav-drawer-footer">
-                    <a href="cotizacion.html" class="drawer-cta">Cotizar Proyecto
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </a>
-                    <a href="https://wa.me/51908536493" target="_blank" rel="noopener" class="drawer-wa"><i class="ri-whatsapp-line"></i> +51 908 536 493</a>
+
+            <nav class="nav__links" id="nav-links" aria-label="Navegación principal">
+                <a href="index.html" class="nav__link">Inicio</a>
+                <a href="quienes-somos.html" class="nav__link">Quiénes somos</a>
+                <a href="servicios.html" class="nav__link">Servicios</a>
+                <a href="dominios.html" class="nav__link" aria-current="page">Dominios</a>
+                <a href="portfolio.html" class="nav__link">Portafolio</a>
+                <div class="nav__drawer-cta">
+                    <a href="cotizacion.html" class="btn btn--primary btn--block">Cotizar proyecto</a>
+                    <a href="https://wa.me/51908536493" target="_blank" rel="noopener"
+                        class="btn btn--wa btn--block"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> +51 908 536 493</a>
                 </div>
             </nav>
-            <div class="nav-actions">
-                <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar modo claro/oscuro">
-                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+
+            <div class="nav__actions">
+                <button class="icon-btn theme-toggle" id="theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+                    <svg class="i-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round">
+                        <circle cx="12" cy="12" r="4.5" />
+                        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+                    </svg>
+                    <svg class="i-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
                 </button>
-                <button class="cart-toggle" id="navCartBtn" aria-label="Ver Carrito">
-                    <i class="ri-shopping-cart-2-line"></i>
+
+                <button class="icon-btn" id="navCartBtn" aria-label="Ver carrito">
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 11.6a1.8 1.8 0 0 0 1.8 1.4h8.6a1.8 1.8 0 0 0 1.8-1.4L21.5 7H6"/></svg>
                     <span class="cart-badge hidden" id="navCartBadge">0</span>
                 </button>
-                <a href="cotizacion.html" class="btn-nav">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    Cotizar Proyecto
-                </a>
+
+                <a href="cotizacion.html" class="btn btn--primary nav__cta nav__cta--desktop">Cotizar proyecto</a>
+
+                <button class="nav__burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false"
+                    aria-controls="nav-links">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
-            <button class="menu-toggle" id="menu-toggle-btn" aria-label="Abrir Menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
+    <div class="nav-scrim" id="nav-scrim"></div>
 
-    <!-- ===================== BUSCADOR DE DOMINIOS (primera pantalla) ===================== -->
-    <section class="domain-search-section srv-detail-section" id="main-content">
-        <canvas class="domain-particles-canvas" id="domain-particles-canvas"></canvas>
-        <div class="ambient-orb ambient-orb-1"></div>
-        <div class="ambient-orb ambient-orb-2"></div>
-        <div class="ambient-orb ambient-orb-3"></div>
-        <div class="container">
-            <div class="search-header reveal">
-                <span class="badge"><span class="badge-dot" aria-hidden="true"></span>Tu presencia en la web</span>
-                <h1 class="search-title">Asegura el nombre de tu negocio</h1>
-                <p class="search-subtitle">Busca, encuentra y registra tu dominio de forma rápida y segura. Extensiones .com, .pe, .net, .org y más.</p>
-            </div>
+    <main id="contenido">
 
-            <div class="search-container reveal">
-                <form id="domainSearchForm" class="search-form" novalidate>
-                    <div class="field-head">
-                        <label for="domainInput" class="field-label">Nombre del dominio</label>
-                        <span class="field-hint" id="domainHint">Solo letras, números y guiones — sin espacios</span>
+        <section class="home-intro" aria-labelledby="page-title">
+            <div class="shell home-intro__layout">
+                <div class="home-intro__copy">
+                    <p class="home-kicker">Dominios</p>
+                    <h1 id="page-title">Tu negocio,<br><em>con nombre propio.</em></h1>
+                    <p class="home-intro__description">Busca y registra tu dominio de forma rápida y segura. Extensiones .com, .pe, .net, .org y más.</p>
+
+                    <div class="search-container domain-form">
+                        <form id="domainSearchForm" class="search-form" novalidate>
+                            <div class="field-head">
+                                <label for="domainInput" class="field-label">Nombre del dominio</label>
+                                <span class="field-hint" id="domainHint">Solo letras, números y guiones, sin espacios</span>
+                            </div>
+                            <div class="search-box">
+                                <div class="input-wrapper">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5a14.5 14.5 0 0 1 0 19M12 2.5a14.5 14.5 0 0 0 0 19"/></svg>
+                                    <input type="text" id="domainInput" name="domain" class="domain-input"
+                                        placeholder="minegocio" required autocomplete="off"
+                                        autocapitalize="off" spellcheck="false" inputmode="url"
+                                        aria-describedby="domainHint">
+                                    <label for="domainExt" class="visually-hidden">Extensión del dominio</label>
+                                    <select id="domainExt" class="ext-select">
+                                        <option value=".com">.com</option>
+                                        <option value=".pe">.pe</option>
+                                        <option value=".com.pe">.com.pe</option>
+                                        <option value=".net">.net</option>
+                                        <option value=".org">.org</option>
+                                        <option value=".es">.es</option>
+                                    </select>
+                                </div>
+                                <button type="submit" id="searchBtn" class="search-submit">
+                                    <span class="btn-text">Buscar</span>
+                                    <span class="spinner hidden" id="searchSpinner" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                            <p id="errorMsg" class="error-msg hidden" role="alert" aria-live="assertive"></p>
+                        </form>
                     </div>
-                    <div class="search-box">
-                        <div class="input-wrapper">
-                            <i class="ri-global-line" aria-hidden="true"></i>
-                            <input type="text" id="domainInput" name="domain" class="domain-input"
-                                   placeholder="minegocio" required autocomplete="off"
-                                   autocapitalize="off" spellcheck="false" inputmode="url"
-                                   aria-describedby="domainHint">
-                            <label for="domainExt" class="visually-hidden">Extensión del dominio</label>
-                            <select id="domainExt" class="ext-select">
-                                <option value=".com">.com</option>
-                                <option value=".pe">.pe</option>
-                                <option value=".com.pe">.com.pe</option>
-                                <option value=".net">.net</option>
-                                <option value=".org">.org</option>
-                                <option value=".es">.es</option>
-                            </select>
-                        </div>
-                        <button type="submit" id="searchBtn" class="search-submit">
-                            <span class="btn-text">Buscar</span>
-                            <span class="spinner hidden" id="searchSpinner" aria-hidden="true"></span>
-                        </button>
-                    </div>
-                    <p id="errorMsg" class="error-msg hidden" role="alert" aria-live="assertive"></p>
-                </form>
-            </div>
 
-            <div id="resultCard" class="result-card hidden reveal">
-                <div class="result-content">
-                    <div class="domain-info-container">
+                    <div id="resultCard" class="result-card hidden" aria-live="polite">
                         <div class="domain-info">
-                            <i id="resultIcon" class="ri-check-line" aria-hidden="true"></i>
+                            <i id="resultIcon" aria-hidden="true"></i>
                             <div>
                                 <h3 id="resultDomain">midominio.com</h3>
                                 <p id="resultStatus">¡Está disponible!</p>
                             </div>
                         </div>
                         <div class="year-selector hidden" id="yearSelector" role="group" aria-label="Duración del registro del dominio">
-                            <button type="button" class="year-pill active" data-years="1" data-discount="0" aria-pressed="true">
+                            <button type="button" class="pill-btn year-pill active" data-years="1" data-discount="0" aria-pressed="true">
                                 <span class="yr-num">1 año</span>
                             </button>
-                            <button type="button" class="year-pill" data-years="2" data-discount="0.05" aria-pressed="false">
+                            <button type="button" class="pill-btn year-pill" data-years="2" data-discount="0.05" aria-pressed="false">
                                 <span class="yr-num">2 años</span>
                                 <span class="yr-discount">−5%</span>
                             </button>
-                            <button type="button" class="year-pill" data-years="3" data-discount="0.10" aria-pressed="false">
+                            <button type="button" class="pill-btn year-pill" data-years="3" data-discount="0.10" aria-pressed="false">
                                 <span class="yr-num">3 años</span>
                                 <span class="yr-discount">−10%</span>
                             </button>
                         </div>
-                    </div>
-                    <div class="action-area">
-                        <div class="price-box" id="priceBox">
-                            <span class="currency">S/</span>
-                            <span class="amount">149</span>
-                            <span class="period">/año</span>
+                        <div class="action-area">
+                            <div class="price-box" id="priceBox">
+                                <span class="currency">S/</span>
+                                <span class="amount">149</span>
+                                <span class="period">/año</span>
+                            </div>
+                            <button type="button" id="whatsappBtn" class="btn btn--primary">Continuar <span aria-hidden="true">→</span></button>
                         </div>
-                        <button id="whatsappBtn" class="whatsapp-btn">
-                            Continuar <i class="ri-arrow-right-line"></i>
-                        </button>
+                    </div>
+                </div>
+
+                <div class="studio-scene">
+                    <figure class="home-example">
+                        <div class="home-example__bar"><span class="window-controls" aria-hidden="true"><i></i><i></i><i></i></span><span class="window-address" data-domain-echo>minegocio.com</span><span class="window-toolbar-icon" aria-hidden="true">↗</span></div>
+                        <div class="dom-preview" aria-hidden="true">
+                            <span class="dom-preview__label">Tu web vive aquí</span>
+                            <span class="dom-preview__name"><span data-domain-echo="name">minegocio</span><em data-domain-echo="ext">.com</em></span>
+                            <span class="dom-preview__lines"><i></i><i></i></span>
+                            <span class="dom-preview__btn"></span>
+                        </div>
+                        <figcaption>
+                            <span><strong>Así te van a encontrar</strong><small>Escribe un nombre y míralo en la barra de direcciones</small></span>
+                            <span aria-hidden="true" class="home-example__arrow">↗</span>
+                        </figcaption>
+                    </figure>
+                    <div class="studio-mini studio-mini--chips">
+                        <span>Extensiones</span>
+                        <ul class="chips">
+                            <li>.com</li><li>.pe</li><li>.com.pe</li><li>.net</li><li>.org</li><li>.es</li>
+                        </ul>
+                    </div>
+                    <div class="studio-note">
+                        <span class="studio-note__icon" aria-hidden="true">✓</span>
+                        <span>Tu dominio<strong>Activo de inmediato.</strong></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="studio-services studio-services--wide shell" aria-label="Qué incluye tu dominio">
+            <div class="studio-services__intro">
+                <p class="eyebrow">Incluido</p>
+                <h2>Registrar es<br>solo el inicio.</h2>
+                <a href="servicios.html" class="link-arrow">Suma tu página web ↗</a>
+            </div>
+            <div class="studio-service">
+                <span class="ico-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span>
+                <h3>Protección de privacidad</h3>
+                <p>Incluida con el registro de tu dominio.</p>
+            </div>
+            <div class="studio-service">
+                <span class="ico-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+                <h3>Activación inmediata</h3>
+                <p>Tu dominio queda listo para conectarlo con tu web.</p>
+            </div>
+            <div class="studio-service studio-service--dark">
+                <span class="ico-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-6h3zM3 19a2 2 0 0 0 2 2h1v-6H3z"/></svg></span>
+                <h3>Soporte 24/7 en español</h3>
+                <p>Te acompañamos antes y después de registrar.</p>
+            </div>
+        </section>
+
+        <!-- ============ CÓMO FUNCIONA ============ -->
+        <section class="section">
+            <div class="shell">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow reveal">Cómo funciona</p>
+                        <h2 class="display-lg section-head__title reveal" style="--d:60ms">De la búsqueda<br>a tu dominio activo.</h2>
+                    </div>
+                    <p class="section-head__note reveal" style="--d:120ms">
+                        Tres pasos y lo cerramos contigo por WhatsApp. Si ya elegiste un plan web, lo sumamos al mismo pedido.
+                    </p>
+                </div>
+
+                <ol class="steps steps--3 reveal">
+                    <li class="step">
+                        <span class="step__n">01</span>
+                        <h3 class="step__t">Busca</h3>
+                        <p class="step__d">Escribe el nombre de tu negocio, elige la extensión y revisa si está disponible.</p>
+                    </li>
+                    <li class="step">
+                        <span class="step__n">02</span>
+                        <h3 class="step__t">Elige el plazo</h3>
+                        <p class="step__d">Regístralo por 1, 2 o 3 años. Con 2 años ahorras 5% y con 3 años, 10%.</p>
+                    </li>
+                    <li class="step">
+                        <span class="step__n">03</span>
+                        <h3 class="step__t">Confirma tu pedido</h3>
+                        <p class="step__d">Revisas el total, agregas tu plan web si lo necesitas y continuamos por WhatsApp.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ============ CIERRE ============ -->
+        <section class="section section--tight">
+            <div class="shell">
+                <div class="closer reveal">
+                    <div>
+                        <p class="eyebrow">Siguiente paso</p>
+                        <h2 class="display-md" style="margin-top:1rem; max-width: 20ch;">Cuéntanos qué vendes. Te
+                            decimos qué web necesitas.</h2>
+                        <p class="lead" style="margin-top:1rem; font-size:1rem;">Sin compromiso y sin tecnicismos. En
+                            la primera conversación sales con alcance, plazo y precio.</p>
+                    </div>
+                    <div class="closer__actions">
+                        <a href="https://wa.me/51908536493?text=Hola%20INFALL%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20profesional."
+                            target="_blank" rel="noopener" class="btn btn--primary">
+                            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> Escribir por WhatsApp
+                        </a>
+                        <a href="cotizacion.html" class="btn btn--ghost">Llenar formulario</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ PIE ============ -->
+    <footer class="foot" id="contacto">
+        <div class="shell">
+            <div class="foot__grid">
+                <div>
+                    <a href="index.html" class="brand">
+                        <span class="brand__mark">INFALL<span class="brand__dot" aria-hidden="true"></span></span>
+                        <span class="brand__sub">Systems Engineering</span>
+                    </a>
+                    <p class="foot__about">Diseño y desarrollo de páginas web para MYPEs y emprendedores del Perú.
+                        Rápidas, seguras y hechas para que te encuentren en Google.</p>
+                </div>
+
+                <div>
+                    <h4 class="foot__h">Navegación</h4>
+                    <div class="foot__links">
+                        <a href="index.html">Inicio</a>
+                        <a href="quienes-somos.html">Quiénes somos</a>
+                        <a href="servicios.html">Servicios</a>
+                        <a href="portfolio.html">Portafolio</a>
+                        <a href="dominios.html">Dominios</a>
+                    </div>
+                </div>
+
+                <div id="cotizar">
+                    <h4 class="foot__h">Contacto directo</h4>
+                    <div class="foot__links foot__contact">
+                        <a href="mailto:infallcm@gmail.com">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            infallcm@gmail.com
+                        </a>
+                        <a href="https://wa.me/51908536493?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web"
+                            target="_blank" rel="noopener">
+                            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> +51 908 536 493
+                        </a>
+                        <a href="https://wa.me/51922996170?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web"
+                            target="_blank" rel="noopener">
+                            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> +51 922 996 170
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="foot__h">Legal</h4>
+                    <div class="foot__links">
+                        <a href="terminos.html">Términos y condiciones</a>
+                        <a href="privacidad.html">Política de privacidad</a>
+                        <a href="libro-reclamaciones.html">Libro de reclamaciones</a>
                     </div>
                 </div>
             </div>
 
-            <div class="features reveal">
-                <div class="feature">
-                    <i class="ri-shield-check-line"></i>
-                    <span>Protección de privacidad incluida</span>
-                </div>
-                <div class="feature">
-                    <i class="ri-rocket-line"></i>
-                    <span>Activación inmediata</span>
-                </div>
-                <div class="feature">
-                    <i class="ri-customer-service-2-line"></i>
-                    <span>Soporte 24/7 en español</span>
-                </div>
+            <div class="foot__bottom">
+                <span>© 2026 INFALL Systems Engineering</span>
+                <span>Lima, Perú · Trabajo 100% remoto</span>
             </div>
-        </div>
-    </section>
-
-    <!-- ===================== CTA FINAL ===================== -->
-    <section class="srv-final-cta">
-        <div class="srv-cta-container">
-            <div class="srv-cta-glow"></div>
-            <span class="section-tag">¿Listo para comenzar?</span>
-            <h2 class="srv-cta-title">Tu próximo proyecto digital <br><span class="text-gradient-orange">empieza aquí</span></h2>
-            <p class="srv-cta-desc">Cuéntanos tu idea. En menos de 24 horas tienes una propuesta técnica y económica personalizada, sin compromisos.</p>
-            <div class="srv-cta-actions">
-                <a href="cotizacion.html" class="btn-primary">
-                    Cotizar Mi Proyecto
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
-                <a href="https://wa.me/51908536493?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web" target="_blank" class="btn-secondary srv-wa-btn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                    Hablar por WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <footer role="contentinfo">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">
-                    <div class="logo-text">INFALL <span class="logo-dot"></span></div>
-                    <span class="sub">SYSTEMS ENGINEERING</span>
-                </a>
-                <p style="margin-top: 15px;">
-                    Transformamos ideas y necesidades complejas en arquitecturas y plataformas digitales de alta velocidad, seguras y optimizadas para Google a nivel global.
-                </p>
-            </div>
-
-            <div>
-                <h4 class="footer-title">Navegación</h4>
-                <div class="footer-links">
-                    <a href="index.html">Inicio</a>
-                    <a href="quienes-somos.html">Quiénes Somos</a>
-                    <a href="servicios.html">Servicios</a>
-                    <a href="portfolio.html">Portafolio</a>
-                </div>
-            </div>
-
-            <div>
-                <h4 class="footer-title">Contacto Directo</h4>
-                <div class="footer-contact-info">
-                    <a href="mailto:infallcm@gmail.com" class="contact-item">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        infallcm@gmail.com
-                    </a>
-                    <a href="https://wa.me/51908536493?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web%20profesional" target="_blank" class="contact-item">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                        +51 908 536 493
-                    </a>
-                    <a href="https://wa.me/51922996170?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web" target="_blank" class="contact-item">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                        +51 922 996 170
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-legal">
-                <h4 class="footer-legal-title">Legal</h4>
-                <div class="footer-legal-links">
-                    <a href="terminos.html">Términos y condiciones</a>
-                    <a href="privacidad.html">Política de privacidad</a>
-                </div>
-                <a href="libro-reclamaciones.html" class="footer-reclamaciones-block">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                    </svg>
-                    <span>Libro de<br>Reclamaciones</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2026 INFALL Systems Engineering. Todos los derechos reservados a nivel global.</p>
-            <p style="font-size: 12px; color: var(--text-muted);">
-                Desarrollado con precisión arquitectónica
-            </p>
         </div>
     </footer>
 
-    <!-- Modal Carrito -->
-    <div id="cartModal" class="modal hidden">
-        <div class="modal-content">
-            <button class="modal-close" id="closeModalBtn"><i class="ri-close-line"></i></button>
-            <h3 class="modal-title">Tu carrito</h3>
-            
+    <!-- ============ MODAL: PEDIDO DE DOMINIO ============ -->
+    <div id="cartModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="cartModalTitle">
+        <div class="modal__box cart-box">
+            <button class="modal__close" id="closeModalBtn" aria-label="Cerrar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+            <p class="eyebrow">Tu pedido</p>
+            <h3 class="modal__title" id="cartModalTitle">Tu carrito</h3>
+
             <div class="cart-item">
-                <div class="cart-item-header">
-                    <h4>Dominio <span id="cartDomainName">midominio.com</span></h4>
-                </div>
+                <h4>Dominio <span id="cartDomainName">midominio.com</span></h4>
                 <div class="cart-item-details">
                     <span class="cart-pill" id="cartYearPill">1 año</span>
                     <span class="cart-price">S/ <span id="cartDomainPrice">59</span></span>
                 </div>
             </div>
 
-            <!-- Resumen del plan pre-seleccionado -->
-            <div class="cart-item hidden" id="cartPlanSummary" style="margin-top: 1rem;">
-                <div class="cart-item-header">
-                    <h4>Plan Web <span id="cartPlanSummaryName" style="color: var(--text-white);"></span></h4>
-                </div>
+            <!-- Resumen del plan elegido antes de llegar aquí -->
+            <div class="cart-item hidden" id="cartPlanSummary">
+                <h4>Plan web <span id="cartPlanSummaryName"></span></h4>
                 <div class="cart-item-details">
                     <span class="cart-price">S/ <span id="cartPlanSummaryPrice"></span></span>
                 </div>
             </div>
 
             <div class="cart-step" id="planSelectionStep">
-                <h4>Paso 2 &middot; Agrega tu plan web</h4>
+                <h4>Paso 2 · Agrega tu plan web</h4>
                 <p>Elige un plan para publicar tu sitio:</p>
-                
+
                 <div class="plan-options">
                     <label class="plan-option">
                         <input type="radio" name="webPlan" value="0" checked data-name="Ninguno (Solo Dominio)">
-                        <div class="plan-box">
-                            <div class="plan-info">
-                                <div class="plan-icon"><i class="ri-link-unlink-m"></i></div>
-                                <span class="plan-name">Solo dominio</span>
-                            </div>
+                        <span class="plan-box">
+                            <span><span class="plan-name">Solo dominio</span></span>
                             <span class="plan-price">S/ 0</span>
-                        </div>
+                        </span>
                     </label>
                     <label class="plan-option">
                         <input type="radio" name="webPlan" value="390" data-name="Landing Page">
-                        <div class="plan-box">
-                            <div class="plan-info">
-                                <div class="plan-icon"><i class="ri-pages-line"></i></div>
-                                <div class="plan-text">
-                                    <span class="plan-name">Landing Page</span>
-                                    <span class="plan-desc">Diseño 100% personalizado</span>
-                                </div>
-                            </div>
+                        <span class="plan-box">
+                            <span><span class="plan-name">Landing Page</span><span class="plan-desc">Diseño 100% personalizado</span></span>
                             <span class="plan-price">S/ 390</span>
-                        </div>
+                        </span>
                     </label>
                     <label class="plan-option">
                         <input type="radio" name="webPlan" value="990" data-name="Web Profesional">
-                        <div class="plan-box">
-                            <div class="plan-info">
-                                <div class="plan-icon"><i class="ri-layout-masonry-line"></i></div>
-                                <div class="plan-text">
-                                    <span class="plan-name">Web Profesional</span>
-                                    <span class="plan-desc">Múltiples páginas</span>
-                                </div>
-                            </div>
+                        <span class="plan-box">
+                            <span><span class="plan-name">Web Profesional</span><span class="plan-desc">Múltiples páginas</span></span>
                             <span class="plan-price">S/ 990</span>
-                        </div>
+                        </span>
                     </label>
                     <label class="plan-option">
                         <input type="radio" name="webPlan" value="2490" data-name="Web App a Medida">
-                        <div class="plan-box premium-box">
-                            <div class="plan-info">
-                                <div class="plan-icon"><i class="ri-store-2-line"></i></div>
-                                <div class="plan-text">
-                                    <span class="plan-name">Web App <i class="ri-star-fill" style="color:#FBBF24;font-size:12px;"></i></span>
-                                    <span class="plan-desc">Sistemas complejos</span>
-                                </div>
-                            </div>
+                        <span class="plan-box">
+                            <span><span class="plan-name">Web App a Medida</span><span class="plan-desc">Sistemas complejos</span></span>
                             <span class="plan-price">S/ 2,490</span>
-                        </div>
+                        </span>
                     </label>
                 </div>
             </div>
@@ -383,47 +409,20 @@
                     <span>Total</span>
                     <span class="total-price">S/ <span id="cartTotalPrice">59</span></span>
                 </div>
-                <a href="#" id="finalWhatsappBtn" class="whatsapp-btn full-width">
-                    Continuar al pedido &rarr;
-                </a>
+                <a href="#" id="finalWhatsappBtn" class="btn btn--primary btn--block">Continuar al pedido <span aria-hidden="true">→</span></a>
             </div>
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="interfaz01.js?v=12" defer></script>
-    <script src="assets/analytics.js?v=1" defer></script>
-    <script>
-        // Activar pill de nav según scroll
-        (function () {
-            const pills = document.querySelectorAll('.srv-pill');
-            const sections = document.querySelectorAll('.srv-detail-section[id]');
-            if (!pills.length || !sections.length) return;
+    <a class="wa-float" href="https://wa.me/51908536493?text=Hola%20INFALL%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web."
+        target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+    </a>
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        pills.forEach(p => p.classList.remove('active'));
-                        const id = entry.target.getAttribute('id');
-                        const activePill = document.querySelector('.srv-pill[href="#' + id + '"]');
-                        if (activePill) activePill.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.4 });
-
-            sections.forEach(s => observer.observe(s));
-        })();
-
-        // Mantener aria-pressed sincronizado con la clase .active de los year-pills
-        (function () {
-            const pills = document.querySelectorAll('.year-pill');
-            if (!pills.length) return;
-            const sync = () => pills.forEach(p =>
-                p.setAttribute('aria-pressed', p.classList.contains('active') ? 'true' : 'false'));
-            pills.forEach(p => p.addEventListener('click', () => setTimeout(sync, 0)));
-        })();
-    </script>
-</body>
-    <script src="cart.js?v=4"></script>
+    <script src="cart.js?v=4" defer></script>
     <script src="domain-searcher/script.js?v=3" defer></script>
+    <script src="assets/infall.js?v=2" defer></script>
+    <script src="assets/analytics.js?v=1" defer></script>
+</body>
+
 </html>

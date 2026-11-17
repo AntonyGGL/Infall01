@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -27,796 +27,347 @@
     <meta name="description"
         content="Ingeniería web liderada por un desarrollador Full Stack con más de 4 años de experiencia en sistemas reales en producción. Páginas web modernas, rápidas y optimizadas para motores de búsqueda desde Perú para el mundo.">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.svg">
     <link rel="apple-touch-icon" href="favicon.svg">
 
+    <!-- Tipografía: Bricolage Grotesque (display) · Archivo (texto) · JetBrains Mono (datos) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="interfaz01.css?v=46">
-    <link rel="stylesheet" href="assets/legacy-bridge.css?v=1">
-    <link rel="stylesheet" href="domain-searcher/styles.css">
+    <link rel="stylesheet" href="assets/infall.css?v=1">
+    <link rel="stylesheet" href="assets/home.css?v=13">
+    <link rel="stylesheet" href="assets/pages.css?v=1">
+
     <script>
-        (function () { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); })();
+        (function () { try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) { } })();
     </script>
 </head>
 
-<body>
+<body class="home page page--about">
+    <a href="#contenido" class="skip-link">Saltar al contenido</a>
 
-    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-
-    <div class="cyber-grid"></div>
-    <canvas class="page-particles-canvas" id="page-particles-canvas"></canvas>
-    <div class="cyber-glows">
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-        <div class="glow-orb orb-3"></div>
-    </div>
-
-    <header id="main-header">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <div class="logo-text">INFALL <span class="logo-dot"></span></div>
-                <span class="sub">SYSTEMS ENGINEERING</span>
+    <!-- ============ NAVEGACIÓN ============ -->
+    <header class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="index.html" class="brand" aria-label="INFALL Systems Engineering, inicio">
+                <span class="brand__mark">INFALL<span class="brand__dot" aria-hidden="true"></span></span>
+                <span class="brand__sub">Systems Engineering</span>
             </a>
-            <nav id="nav-menu">
-                <a href="index.html">Inicio</a>
-                <a href="quienes-somos.html" class="active" aria-current="page">Quiénes Somos</a>
-                <div class="nav-dropdown">
-                    <a href="servicios.html" class="dropdown-trigger">Servicios</a>
-                    <div class="dropdown-menu">
-                        <a href="servicios.html#landing-pages" class="dropdown-item">
-                            <span class="service-icon"></span>
-                            <span>Landing Pages</span>
-                        </a>
-                        <a href="servicios.html#ecommerce" class="dropdown-item">
-                            <span class="service-icon"></span>
-                            <span>Catálogos y E-commerce</span>
-                        </a>
-                        <a href="servicios.html#web-apps" class="dropdown-item">
-                            <span class="service-icon"></span>
-                            <span>Web Apps a Medida</span>
-                        </a>
-                    </div>
-                </div>
-                <a href="dominios.html">Dominios</a>
-                <a href="portfolio.html">Portafolio</a>
-                <div class="nav-drawer-footer">
-                    <a href="cotizacion.html" class="drawer-cta">Cotizar Proyecto
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </a>
-                    <a href="https://wa.me/51908536493" target="_blank" rel="noopener" class="drawer-wa"><i class="ri-whatsapp-line"></i> +51 908 536 493</a>
+
+            <nav class="nav__links" id="nav-links" aria-label="Navegación principal">
+                <a href="index.html" class="nav__link">Inicio</a>
+                <a href="quienes-somos.html" class="nav__link" aria-current="page">Quiénes somos</a>
+                <a href="servicios.html" class="nav__link">Servicios</a>
+                <a href="dominios.html" class="nav__link">Dominios</a>
+                <a href="portfolio.html" class="nav__link">Portafolio</a>
+                <div class="nav__drawer-cta">
+                    <a href="cotizacion.html" class="btn btn--primary btn--block">Cotizar proyecto</a>
+                    <a href="https://wa.me/51908536493" target="_blank" rel="noopener"
+                        class="btn btn--wa btn--block"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> +51 908 536 493</a>
                 </div>
             </nav>
-            <div class="nav-actions">
-                <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar modo claro/oscuro">
-                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5" />
-                        <line x1="12" y1="1" x2="12" y2="3" />
-                        <line x1="12" y1="21" x2="12" y2="23" />
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                        <line x1="1" y1="12" x2="3" y2="12" />
-                        <line x1="21" y1="12" x2="23" y2="12" />
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+
+            <div class="nav__actions">
+                <button class="icon-btn theme-toggle" id="theme-toggle" aria-label="Cambiar entre modo claro y oscuro">
+                    <svg class="i-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round">
+                        <circle cx="12" cy="12" r="4.5" />
+                        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
                     </svg>
-                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="i-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                     </svg>
                 </button>
-                <button class="cart-toggle" id="navCartBtn" aria-label="Ver Carrito">
-                    <i class="ri-shopping-cart-2-line"></i>
+
+                <button class="icon-btn" id="navCartBtn" aria-label="Ver carrito">
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 11.6a1.8 1.8 0 0 0 1.8 1.4h8.6a1.8 1.8 0 0 0 1.8-1.4L21.5 7H6"/></svg>
                     <span class="cart-badge hidden" id="navCartBadge">0</span>
                 </button>
-                <a href="cotizacion.html" class="btn-nav">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                    </svg>
-                    Cotizar Proyecto
-                </a>
+
+                <a href="cotizacion.html" class="btn btn--primary nav__cta nav__cta--desktop">Cotizar proyecto</a>
+
+                <button class="nav__burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false"
+                    aria-controls="nav-links">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
-            <button class="menu-toggle" id="menu-toggle-btn" aria-label="Abrir Menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
+    <div class="nav-scrim" id="nav-scrim"></div>
 
-    <main id="main-content" role="main">
-        <!-- Sección Quiénes Somos -->
-        <section class="about-section reveal" style="padding-top: 140px;">
-            <div class="about-container">
-                <div class="section-header">
-                    <span class="section-tag">Quiénes Somos</span>
-                    <h2 class="section-title" style="color: var(--text-white);">Ingeniería Web desde <span
-                            class="gradient-text">Lima, Perú</span></h2>
+    <main id="contenido">
+
+        <section class="home-intro" aria-labelledby="page-title">
+            <div class="shell home-intro__layout">
+                <div class="home-intro__copy">
+                    <p class="home-kicker">Quiénes somos</p>
+                    <h1 id="page-title">Ingeniería web.<br><em>Hecha en Perú.</em></h1>
+                    <p class="home-intro__description">Somos dos ingenieros de sistemas que diseñan y programan cada web desde cero. Hablas directamente con quien construye tu proyecto.</p>
+                    <div class="home-intro__actions">
+                        <a href="cotizacion.html" class="btn btn--primary">Cotiza tu proyecto <span aria-hidden="true">↗</span></a>
+                        <a href="#equipo" class="btn btn--ghost">Conoce al equipo</a>
+                    </div>
+                    <p class="home-intro__price">Desde <strong>Lima, Perú</strong> · Trabajo 100% remoto</p>
                 </div>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>En INFALL Systems Engineering somos arquitectos de soluciones digitales de alto impacto. Nuestro objetivo no es hacer páginas web comunes, sino construir plataformas robustas, escalables y orientadas a resultados tangibles para nuestros clientes.</p>
-                        <p>Rechazamos las soluciones prefabricadas y lentas. Implementamos desarrollos personalizados desde cero, utilizando stacks modernos e infraestructura sólida para posicionar tu marca y optimizar la captación de prospectos en todo el mundo.</p>
-                        <div class="about-stats">
-                            <div class="stat-item">
-                                <span class="stat-number stat-counter-num" data-target="4" data-suffix="+">4+</span>
-                                <span class="stat-label">Años de Experiencia</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number stat-counter-num" data-target="10" data-suffix="+">10+</span>
-                                <span class="stat-label">Proyectos Entregados</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number stat-counter-num" data-target="100" data-suffix="%">100%</span>
-                                <span class="stat-label">Clientes Satisfechos</span>
-                            </div>
+
+                <div class="studio-scene">
+                    <figure class="home-example home-example--photo">
+                        <div class="home-example__preview">
+                            <img src="nosotros_images/yeiser.webp" width="1280" height="960" fetchpriority="high"
+                                alt="Yeiser Avila, fundador de INFALL, exponiendo en un auditorio de Ingeniería de Sistemas">
                         </div>
-                    </div>
-                    <div class="about-badges">
-                        <div class="about-badge">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                <circle cx="12" cy="10" r="3" />
-                            </svg>
-                            <div>
-                                <h4>Lima, Perú</h4>
-                                <p>Servicio local con alcance global</p>
-                            </div>
-                        </div>
-                        <div class="about-badge">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" />
-                                <path d="M2 12h20" />
-                                <path
-                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                            </svg>
-                            <div>
-                                <h4>Atención Personalizada</h4>
-                                <p>Te atendemos directamente por WhatsApp</p>
-                            </div>
-                        </div>
-                        <div class="about-badge">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                                <polyline points="17 6 23 6 23 12" />
-                            </svg>
-                            <div>
-                                <h4>Crecimiento Real</h4>
-                                <p>Optimizamos tu web para atraer más clientes</p>
-                            </div>
-                        </div>
-                    </div>
+                        <figcaption>
+                            <span><strong>Ing. Yeiser Avila</strong><small>Fundador y líder técnico</small></span>
+                            <span aria-hidden="true" class="home-example__arrow">↗</span>
+                        </figcaption>
+                    </figure>
+                    <a class="studio-mini studio-mini--portrait" href="#equipo">
+                        <img src="nosotros_images/antony.webp" width="1122" height="1402" alt="Ing. Antony Gonzalo, cofundador de INFALL, trabajando en su laptop">
+                        <span>Ing. Antony Gonzalo <span aria-hidden="true">↓</span></span>
+                    </a>
+                    <a class="studio-note" href="#equipo">
+                        <span class="studio-note__icon" aria-hidden="true">↓</span>
+                        <span>Sin intermediarios<strong>Trato directo con el ingeniero.</strong></span>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Sección Equipo -->
-        <section class="team-section reveal">
-            <div class="section-header">
-                <span class="section-tag">Quiénes Lideran tu Proyecto</span>
-                <h2 class="section-title" style="color: var(--text-white);">El Equipo Detrás de <span class="gradient-text">INFALL</span></h2>
+        <section class="studio-services studio-services--wide shell" aria-label="INFALL en cifras">
+            <div class="studio-services__intro">
+                <p class="eyebrow">En cifras</p>
+                <h2>Experiencia real.<br>En producción.</h2>
+                <a href="portfolio.html" class="link-arrow">Ver el portafolio ↗</a>
             </div>
-            <div class="team-grid">
-                <article class="team-card">
-                    <div class="team-photo-stage">
-                        <div class="founder-waves" aria-hidden="true">
-                            <span class="founder-wave-ring"></span>
-                            <span class="founder-wave-ring"></span>
-                            <span class="founder-wave-ring"></span>
-                        </div>
-                        <div class="founder-fireflies" aria-hidden="true">
-                            <span class="firefly"></span>
-                            <span class="firefly"></span>
-                            <span class="firefly"></span>
-                            <span class="firefly"></span>
-                        </div>
-                        <div class="team-photo-banner">
-                            <img src="nosotros_images/yeiser.webp" alt="Yeiser Avila, Ingeniero de Sistemas y fundador de INFALL Systems Engineering" class="founder-photo" loading="lazy" width="1280" height="960">
-                            <div class="founder-photo-scrim"></div>
-                            <div class="founder-photo-sheen" aria-hidden="true"></div>
-                            <div class="founder-photo-tag">
-                                <i class="ri-graduation-cap-fill"></i>
-                                <span>Ing. de Sistemas</span>
-                            </div>
-                            <div class="founder-photo-badge">
-                                <i class="ri-user-star-line"></i>
-                                <span>Fundador &amp; Líder Técnico</span>
-                            </div>
-                        </div>
+            <div class="studio-service">
+                <span class="studio-service__type">Trayectoria</span>
+                <p class="studio-stat">4+</p>
+                <h3>Años de experiencia</h3>
+                <p>Construyendo sistemas que hoy siguen en uso.</p>
+            </div>
+            <div class="studio-service">
+                <span class="studio-service__type">Entregas</span>
+                <p class="studio-stat">10+</p>
+                <h3>Proyectos entregados</h3>
+                <p>Webs, catálogos y aplicaciones a medida.</p>
+            </div>
+            <div class="studio-service studio-service--dark">
+                <span class="studio-service__type">Resultado</span>
+                <p class="studio-stat">100%</p>
+                <h3>Clientes satisfechos</h3>
+                <p>Seguimos disponibles después de publicar.</p>
+            </div>
+        </section>
+
+        <!-- ============ ENFOQUE ============ -->
+        <section class="section">
+            <div class="shell">
+                <div class="duo">
+                    <div>
+                        <p class="eyebrow reveal">Nuestro enfoque</p>
+                        <p class="duo__lead reveal" style="--d:60ms; margin-top:1.1rem">No hacemos páginas comunes. <em>Construimos plataformas que dan resultados.</em></p>
                     </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Ing. Yeiser Avila</h3>
-                        <p class="team-role">Desarrollador Full Stack</p>
-                        <p class="team-bio">
-                            Más de 4 años creando soluciones digitales para negocios reales: ERP, plataformas con IA
-                            y apps web/móvil ya en producción en transporte, comercio y educación. Sin intermediarios:
-                            trabajas directo conmigo, el mismo ingeniero que construyó y mantuvo cada proyecto.
-                        </p>
-                        <ul class="team-credentials-compact">
-                            <li><i class="ri-code-s-slash-line"></i> React, Next.js, Node.js, PostgreSQL</li>
-                            <li><i class="ri-building-2-line"></i> ERP en producción casi 3 años</li>
-                            <li><i class="ri-graduation-cap-line"></i> Ingeniería de Sistemas — UPeU</li>
+                    <div class="duo__text reveal" style="--d:120ms">
+                        <p>En INFALL Systems Engineering diseñamos y programamos cada proyecto desde cero. No usamos soluciones prefabricadas ni lentas: escribimos el código pensando en tu negocio y en lo que necesitas lograr con tu web.</p>
+                        <p>Trabajamos con tecnologías modernas e infraestructura sólida para que tu marca se posicione, tu sitio cargue rápido y más visitas terminen convertidas en clientes.</p>
+                    </div>
+                </div>
+
+                <div class="tiles">
+                    <article class="tile reveal">
+                        <span class="ico-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                        <h3>Lima, Perú</h3>
+                        <p>Servicio local con alcance global.</p>
+                    </article>
+                    <article class="tile reveal" style="--d:60ms">
+                        <span class="ico-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></svg></span>
+                        <h3>Atención personalizada</h3>
+                        <p>Te atendemos directamente por WhatsApp.</p>
+                    </article>
+                    <article class="tile reveal" style="--d:120ms">
+                        <span class="ico-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+                        <h3>Crecimiento real</h3>
+                        <p>Optimizamos tu web para atraer más clientes.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ EQUIPO ============ -->
+        <section class="section section--panel" id="equipo">
+            <div class="shell">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow reveal">Quiénes lideran tu proyecto</p>
+                        <h2 class="display-lg section-head__title reveal" style="--d:60ms">El equipo detrás<br>de INFALL.</h2>
+                    </div>
+                    <p class="section-head__note reveal" style="--d:120ms">
+                        Dos ingenieros de sistemas. Uno lidera el desarrollo full stack; el otro, el backend y las bases de datos.
+                    </p>
+                </div>
+
+                <div class="team">
+                    <article class="member reveal">
+                        <div class="member__head"><span class="member__mono" aria-hidden="true">YA</span><span class="member__tag">Fundador y líder técnico</span></div>
+                        <h3 class="member__name">Ing. Yeiser Avila</h3>
+                        <p class="member__role">Desarrollador Full Stack</p>
+                        <p class="member__bio">Más de 4 años creando soluciones digitales para negocios reales: ERP, plataformas con IA y apps web y móviles ya en producción en transporte, comercio y educación. Sin intermediarios: trabajas directo conmigo, el mismo ingeniero que construyó y mantuvo cada proyecto.</p>
+                        <ul class="check-list">
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>React, Next.js, Node.js, PostgreSQL</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>ERP en producción casi 3 años</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Ingeniería de Sistemas — UPeU</li>
                         </ul>
-                    </div>
-                </article>
+                    </article>
 
-                <!-- ===== SOCIO: Antony Gonzalo ===== -->
-                <article class="team-card">
-                    <div class="team-photo-stage">
-                        <div class="founder-waves" aria-hidden="true">
-                            <span class="founder-wave-ring"></span>
-                            <span class="founder-wave-ring"></span>
-                            <span class="founder-wave-ring"></span>
-                        </div>
-                        <div class="founder-fireflies" aria-hidden="true">
-                            <span class="firefly"></span>
-                            <span class="firefly"></span>
-                            <span class="firefly"></span>
-                            <span class="firefly"></span>
-                        </div>
-                        <div class="team-photo-banner">
-                            <img src="nosotros_images/antony.webp" alt="Ing. Antony Gonzalo, Ingeniería de Sistemas y co-fundador de INFALL Systems Engineering" class="founder-photo" loading="lazy" width="1122" height="1402">
-                            <div class="founder-photo-scrim"></div>
-                            <div class="founder-photo-sheen" aria-hidden="true"></div>
-                            <div class="founder-photo-tag">
-                                <i class="ri-graduation-cap-fill"></i>
-                                <span>Ing. de Sistemas</span>
-                            </div>
-                            <div class="founder-photo-badge">
-                                <i class="ri-user-star-line"></i>
-                                <span>Co-Fundador</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Ing. Antony Gonzalo</h3>
-                        <p class="team-role">Desarrollador Backend</p>
-                        <p class="team-bio">
-                            Especialista en desarrollo backend y arquitecturas de bases de datos. Lidera la implementación de soluciones robustas, integrando tecnologías modernas para asegurar el máximo rendimiento, escalabilidad y seguridad de cada sistema.
-                        </p>
-                        <ul class="team-credentials-compact">
-                            <li><i class="ri-code-s-slash-line"></i> Laravel, Spring Boot, PostgreSQL, Integración de API</li>
-                            <li><i class="ri-graduation-cap-line"></i> Ingeniería de Sistemas — Universidad Continental</li>
-                            <li><i class="ri-puzzle-line"></i> Especialista en Arquitectura de Software</li>
+                    <article class="member reveal" style="--d:80ms">
+                        <div class="member__head"><span class="member__mono" aria-hidden="true">AG</span><span class="member__tag">Cofundador</span></div>
+                        <h3 class="member__name">Ing. Antony Gonzalo</h3>
+                        <p class="member__role">Desarrollador Backend</p>
+                        <p class="member__bio">Especialista en desarrollo backend y arquitecturas de bases de datos. Lidera la implementación de soluciones robustas, integrando tecnologías modernas para asegurar el máximo rendimiento, escalabilidad y seguridad de cada sistema.</p>
+                        <ul class="check-list">
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Laravel, Spring Boot, PostgreSQL, integración de API</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Ingeniería de Sistemas — Universidad Continental</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Especialista en arquitectura de software</li>
                         </ul>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- Sección: ¿Por qué Elegirnos? -->
-        <section class="why-us-section reveal">
-            <div class="section-header">
-                <span class="section-tag">Nuestras Ventajas</span>
-                <h2 class="section-title" style="color: var(--text-white);">¿Por qué <span
-                        class="gradient-text">Elegirnos</span>?</h2>
-            </div>
-            <div class="why-us-grid">
-                <!-- Card 1 -->
-                <div class="why-us-card reveal-left">
-                    <div class="why-us-card-inner">
-                        <div class="why-us-card-front">
-                            <span class="why-us-card-num">01</span>
-                            <!-- Clean Code Terminal Illustration -->
-                            <svg class="why-us-illustration" viewBox="0 0 200 120" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <!-- IDE/Terminal Frame -->
-                                <rect x="10" y="10" width="180" height="100" rx="8" fill="var(--card-dark)"
-                                    stroke="rgba(255, 140, 0, 0.15)" stroke-width="1" />
-                                <!-- Header Dots -->
-                                <circle cx="24" cy="22" r="3" fill="#EF4444" />
-                                <circle cx="34" cy="22" r="3" fill="#F59E0B" />
-                                <circle cx="44" cy="22" r="3" fill="#10B981" />
-                                <rect x="58" y="19" width="80" height="6" rx="3" fill="rgba(255, 255, 255, 0.1)" />
-
-                                <!-- Editor Lines -->
-                                <rect x="24" y="38" width="50" height="4" rx="2" fill="rgba(255, 255, 255, 0.15)" />
-                                <rect x="24" y="48" width="90" height="4" rx="2" fill="rgba(255, 140, 0, 0.3)" />
-                                <rect x="40" y="58" width="70" height="4" rx="2" fill="rgba(255, 255, 255, 0.15)" />
-                                <rect x="40" y="68" width="110" height="4" rx="2" fill="rgba(0, 229, 255, 0.3)" />
-                                <rect x="24" y="78" width="60" height="4" rx="2" fill="rgba(255, 255, 255, 0.15)" />
-                                <rect x="24" y="88" width="40" height="4" rx="2" fill="rgba(255, 140, 0, 0.5)" />
-
-                                <!-- Glowing Center Brackets -->
-                                <g class="bracket-glow">
-                                    <path d="M120 45 L110 60 L120 75" stroke="var(--accent-orange)" stroke-width="2.5"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M140 45 L150 60 L140 75" stroke="var(--accent-orange)" stroke-width="2.5"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <line x1="133" y1="45" x2="127" y2="75" stroke="var(--accent-cyan)" stroke-width="2"
-                                        stroke-linecap="round" />
-                                </g>
-                            </svg>
-                            <h3>Sin Plantillas — 100% a Medida</h3>
-                            <p>Cada línea de código es escrita para tu negocio. Nada de builders lentos ni temas genéricos.
-                            </p>
-                            <span class="why-us-card-hint">Pasa el cursor →</span>
-                        </div>
-                        <div class="why-us-card-back">
-                            <div class="why-us-back-stat">3×</div>
-                            <h3>Velocidad Real</h3>
-                            <p>Nuestros sitios cargan 3 veces más rápido que cualquier WordPress o builder genérico.
-                                Lighthouse 100.</p>
-                            <a href="cotizacion.html" class="why-us-back-cta">Ver mi proyecto →</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="why-us-card reveal">
-                    <div class="why-us-card-inner">
-                        <div class="why-us-card-front">
-                            <span class="why-us-card-num">02</span>
-                            <!-- SSL Security Illustration -->
-                            <svg class="why-us-illustration" viewBox="0 0 200 120" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <!-- Glowing Shield Grid -->
-                                <path
-                                    d="M100 15 C130 15 160 25 160 50 C160 85 100 105 100 105 C100 105 40 85 40 50 C40 25 70 15 100 15 Z"
-                                    fill="rgba(0, 229, 255, 0.03)" stroke="rgba(0, 229, 255, 0.15)" stroke-width="1" />
-
-                                <!-- Shield Internal Pattern -->
-                                <path d="M100 25 L100 95 M50 50 L150 50" stroke="rgba(0, 229, 255, 0.08)" stroke-width="1"
-                                    stroke-dasharray="4 4" />
-
-                                <!-- Lock Graphic -->
-                                <g class="lock-graphic">
-                                    <!-- Lock Shackle -->
-                                    <path d="M85 55 V42 C85 34 91.7 28 100 28 C108.3 28 115 34 115 42 V55"
-                                        stroke="var(--accent-orange)" stroke-width="3" stroke-linecap="round" />
-                                    <!-- Lock Body -->
-                                    <rect x="75" y="52" width="50" height="38" rx="8" fill="var(--bg-dark-blue)"
-                                        stroke="var(--accent-cyan)" stroke-width="2"
-                                        style="filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.3));" />
-                                    <!-- Lock Center Core -->
-                                    <circle cx="100" cy="68" r="4" fill="var(--accent-orange)" />
-                                    <path d="M100 72 V78" stroke="var(--accent-orange)" stroke-width="2"
-                                        stroke-linecap="round" />
-                                </g>
-
-                                <!-- Security Pulses -->
-                                <circle cx="100" cy="68" r="45" stroke="rgba(0, 229, 255, 0.2)" stroke-width="1"
-                                    stroke-dasharray="2 6" />
-                            </svg>
-                            <h3>Seguridad SSL Incluida</h3>
-                            <p>HTTPS nativo y encriptación de datos en todas nuestras entregas. Tu negocio protegido.</p>
-                            <span class="why-us-card-hint">Pasa el cursor →</span>
-                        </div>
-                        <div class="why-us-card-back">
-                            <div class="why-us-back-stat">100%</div>
-                            <h3>Cero Brechas</h3>
-                            <p>SSL/TLS, headers de seguridad HTTP, protección contra XSS e inyección de código incluidos en
-                                todo proyecto.</p>
-                            <a href="servicios.html" class="why-us-back-cta">Ver servicios →</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="why-us-card reveal">
-                    <div class="why-us-card-inner">
-                        <div class="why-us-card-front">
-                            <span class="why-us-card-num">03</span>
-                            <!-- SEO & Rank Graph Illustration -->
-                            <svg class="why-us-illustration" viewBox="0 0 200 120" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <!-- Grid Lines -->
-                                <line x1="20" y1="95" x2="180" y2="95" stroke="rgba(255, 255, 255, 0.08)"
-                                    stroke-width="1" />
-                                <line x1="20" y1="65" x2="180" y2="65" stroke="rgba(255, 255, 255, 0.04)"
-                                    stroke-width="1" />
-                                <line x1="20" y1="35" x2="180" y2="35" stroke="rgba(255, 255, 255, 0.04)"
-                                    stroke-width="1" />
-
-                                <!-- Search engine header -->
-                                <rect x="20" y="10" width="160" height="18" rx="4" fill="rgba(255, 255, 255, 0.03)"
-                                    stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
-                                <circle cx="28" cy="19" r="2" fill="rgba(255, 255, 255, 0.2)" />
-                                <circle cx="34" cy="19" r="2" fill="rgba(255, 255, 255, 0.2)" />
-                                <rect x="44" y="16" width="90" height="6" rx="3" fill="rgba(255, 255, 255, 0.1)" />
-                                <circle cx="168" cy="19" r="3" fill="var(--accent-orange)" />
-
-                                <!-- SEO Line Chart -->
-                                <path d="M25 85 L60 78 L95 50 L130 58 L165 25" stroke="url(#seoGrad)" stroke-width="3"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    style="filter: drop-shadow(0 4px 8px rgba(255, 140, 0, 0.25));" />
-
-                                <!-- Chart fill -->
-                                <path d="M25 85 L60 78 L95 50 L130 58 L165 25 V95 H25 Z" fill="url(#seoAreaGrad)"
-                                    opacity="0.15" />
-
-                                <!-- Interactive Dots -->
-                                <circle cx="95" cy="50" r="3" fill="var(--accent-cyan)" />
-                                <circle cx="165" cy="25" r="4.5" fill="var(--accent-orange)" stroke="var(--text-white)"
-                                    stroke-width="1.5" />
-
-                                <!-- Tooltip above top dot -->
-                                <rect x="145" y="2" width="40" height="14" rx="3" fill="var(--accent-orange)"
-                                    style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));" />
-                                <text x="165" y="12" font-size="8" fill="var(--bg-dark-blue)" font-family="var(--font-tech)"
-                                    font-weight="bold" text-anchor="middle">#1</text>
-
-                                <!-- Gradients -->
-                                <defs>
-                                    <linearGradient id="seoGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
-                                        <stop offset="0%" stop-color="var(--accent-cyan)" />
-                                        <stop offset="100%" stop-color="var(--accent-orange)" />
-                                    </linearGradient>
-                                    <linearGradient id="seoAreaGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
-                                        <stop offset="0%" stop-color="var(--accent-orange)" />
-                                        <stop offset="100%" stop-color="transparent" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                            <h3>SEO Nativo Integrado</h3>
-                            <p>Estructura semántica y metadatos optimizados. Diseñado desde el día 1 para Google.</p>
-                            <span class="why-us-card-hint">Pasa el cursor →</span>
-                        </div>
-                        <div class="why-us-card-back">
-                            <div class="why-us-back-stat">#1</div>
-                            <h3>Primera Página</h3>
-                            <p>Clientes nuestros han alcanzado la primera página de Google en menos de 60 días en su ciudad.
-                            </p>
-                            <a href="cotizacion.html" class="why-us-back-cta">Quiero posicionarme →</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 4 -->
-                <div class="why-us-card reveal-right">
-                    <div class="why-us-card-inner">
-                        <div class="why-us-card-front">
-                            <span class="why-us-card-num">04</span>
-                            <!-- Global CDN Network Illustration -->
-                            <svg class="why-us-illustration" viewBox="0 0 200 120" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <!-- Glowing Center Globe Grid -->
-                                <circle cx="100" cy="60" r="45" stroke="rgba(0, 229, 255, 0.15)" stroke-width="1" />
-
-                                <!-- Globe Latitude/Longitude Curves -->
-                                <path d="M55 60 H145" stroke="rgba(0, 229, 255, 0.15)" stroke-width="1" />
-                                <path d="M100 15 V105" stroke="rgba(0, 229, 255, 0.15)" stroke-width="1" />
-                                <path d="M68 30 C80 40 80 80 68 90" stroke="rgba(0, 229, 255, 0.1)" stroke-width="1" />
-                                <path d="M132 30 C120 40 120 80 132 90" stroke="rgba(0, 229, 255, 0.1)" stroke-width="1" />
-                                <ellipse cx="100" cy="60" rx="45" ry="18" stroke="rgba(0, 229, 255, 0.1)"
-                                    stroke-width="1" />
-                                <ellipse cx="100" cy="60" rx="45" ry="32" stroke="rgba(0, 229, 255, 0.1)"
-                                    stroke-width="1" />
-
-                                <!-- Global Ping Arcs (CDN Nodes connection) -->
-                                <path d="M60 45 C80 20 120 20 140 45" stroke="var(--accent-orange)" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-dasharray="3 5" />
-                                <path d="M70 75 C90 95 110 95 130 75" stroke="var(--accent-cyan)" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-dasharray="2 4" />
-
-                                <!-- Active CDN Nodes (Pulsing Circles) -->
-                                <!-- Perú Node (Center-leftish) -->
-                                <g class="cdn-node active">
-                                    <circle cx="70" cy="68" r="6" fill="rgba(255, 140, 0, 0.25)" />
-                                    <circle cx="70" cy="68" r="3" fill="var(--accent-orange)" />
-                                </g>
-                                <!-- US Node (Top-leftish) -->
-                                <g class="cdn-node">
-                                    <circle cx="75" cy="38" r="2" fill="var(--accent-cyan)" />
-                                </g>
-                                <!-- Europe Node (Top-rightish) -->
-                                <g class="cdn-node">
-                                    <circle cx="120" cy="35" r="2" fill="var(--accent-cyan)" />
-                                </g>
-                                <!-- Asia/Japan Node (Rightish) -->
-                                <g class="cdn-node">
-                                    <circle cx="140" cy="55" r="2" fill="var(--accent-orange)" />
-                                </g>
-                                <!-- Latam East Node -->
-                                <g class="cdn-node">
-                                    <circle cx="95" cy="85" r="2" fill="var(--accent-cyan)" />
-                                </g>
-
-                                <!-- Orbit line -->
-                                <path d="M100 10 A50 50 0 0 1 150 60" stroke="rgba(255, 140, 0, 0.2)" stroke-width="1"
-                                    stroke-linecap="round" />
-                            </svg>
-                            <h3>Alcance Global desde Perú</h3>
-                            <p>Hosting con CDN global. Carga en &lt;1.5s desde cualquier continente.</p>
-                            <span class="why-us-card-hint">Pasa el cursor →</span>
-                        </div>
-                        <div class="why-us-card-back">
-                            <div class="why-us-back-stat">&lt;1.5s</div>
-                            <h3>Velocidad Global</h3>
-                            <p>CDN en 200+ ciudades del mundo. Tu página carga instantánea en Lima, Miami, Madrid o Tokio.
-                            </p>
-                            <a href="cotizacion.html" class="why-us-back-cta">Ir al siguiente nivel →</a>
-                        </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
+        <!-- ============ VENTAJAS ============ -->
+        <section class="section">
+            <div class="shell">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow reveal">Nuestras ventajas</p>
+                        <h2 class="display-lg section-head__title reveal" style="--d:60ms">Cuatro razones<br>para elegirnos.</h2>
+                    </div>
+                    <p class="section-head__note reveal" style="--d:120ms">
+                        Lo que incluye cada proyecto, sin importar el plan que elijas.
+                    </p>
+                </div>
+
+                <div class="reasons">
+                    <article class="reason reason--wide reason--dark reveal">
+                        <div class="reason__top"><span class="reason__n">01</span><span class="reason__stat">3×</span></div>
+                        <h3>Sin plantillas. 100% a medida.</h3>
+                        <p>Cada línea de código se escribe para tu negocio, sin constructores lentos ni temas genéricos. Por eso nuestros sitios cargan 3 veces más rápido que un WordPress o un constructor genérico.</p>
+                    </article>
+                    <article class="reason reveal" style="--d:60ms">
+                        <div class="reason__top"><span class="reason__n">02</span><span class="reason__stat">100%</span></div>
+                        <h3>Seguridad SSL incluida</h3>
+                        <p>HTTPS, cabeceras de seguridad y protección contra XSS e inyección de código en todas nuestras entregas.</p>
+                    </article>
+                    <article class="reason reveal">
+                        <div class="reason__top"><span class="reason__n">03</span><span class="reason__stat">#1</span></div>
+                        <h3>SEO integrado desde el día 1</h3>
+                        <p>Estructura semántica y metadatos optimizados. Clientes nuestros llegaron a la primera página de Google en su ciudad en menos de 60 días.</p>
+                    </article>
+                    <article class="reason reason--wide reveal" style="--d:60ms">
+                        <div class="reason__top"><span class="reason__n">04</span><span class="reason__stat">&lt;1.5s</span></div>
+                        <h3>Alcance global desde Perú</h3>
+                        <p>Hosting con CDN en más de 200 ciudades del mundo. Tu página carga al instante en Lima, Miami, Madrid o Tokio.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CIERRE ============ -->
+        <section class="section section--tight">
+            <div class="shell">
+                <div class="closer reveal">
+                    <div>
+                        <p class="eyebrow">Siguiente paso</p>
+                        <h2 class="display-md" style="margin-top:1rem; max-width: 20ch;">Cuéntanos qué vendes. Te
+                            decimos qué web necesitas.</h2>
+                        <p class="lead" style="margin-top:1rem; font-size:1rem;">Sin compromiso y sin tecnicismos. En
+                            la primera conversación sales con alcance, plazo y precio.</p>
+                    </div>
+                    <div class="closer__actions">
+                        <a href="https://wa.me/51908536493?text=Hola%20INFALL%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20profesional."
+                            target="_blank" rel="noopener" class="btn btn--primary">
+                            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> Escribir por WhatsApp
+                        </a>
+                        <a href="cotizacion.html" class="btn btn--ghost">Llenar formulario</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer role="contentinfo">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">
-                    <div class="logo-text">INFALL <span class="logo-dot"></span></div>
-                    <span class="sub">SYSTEMS ENGINEERING</span>
-                </a>
-                <p style="margin-top: 15px;">
-                    Transformamos ideas y necesidades complejas en arquitecturas y plataformas digitales de alta
-                    velocidad, seguras y optimizadas para Google a nivel global.
-                </p>
-            </div>
+    <!-- ============ PIE ============ -->
+    <footer class="foot" id="contacto">
+        <div class="shell">
+            <div class="foot__grid">
+                <div>
+                    <a href="index.html" class="brand">
+                        <span class="brand__mark">INFALL<span class="brand__dot" aria-hidden="true"></span></span>
+                        <span class="brand__sub">Systems Engineering</span>
+                    </a>
+                    <p class="foot__about">Diseño y desarrollo de páginas web para MYPEs y emprendedores del Perú.
+                        Rápidas, seguras y hechas para que te encuentren en Google.</p>
+                </div>
 
-            <div>
-                <h4 class="footer-title">Navegación</h4>
-                <div class="footer-links">
-                    <a href="index.html">Inicio</a>
-                    <a href="quienes-somos.html">Quiénes Somos</a>
-                    <a href="servicios.html">Servicios</a>
-                    <a href="portfolio.html">Portafolio</a>
+                <div>
+                    <h4 class="foot__h">Navegación</h4>
+                    <div class="foot__links">
+                        <a href="index.html">Inicio</a>
+                        <a href="quienes-somos.html">Quiénes somos</a>
+                        <a href="servicios.html">Servicios</a>
+                        <a href="portfolio.html">Portafolio</a>
+                        <a href="dominios.html">Dominios</a>
+                    </div>
+                </div>
+
+                <div id="cotizar">
+                    <h4 class="foot__h">Contacto directo</h4>
+                    <div class="foot__links foot__contact">
+                        <a href="mailto:infallcm@gmail.com">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            infallcm@gmail.com
+                        </a>
+                        <a href="https://wa.me/51908536493?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web"
+                            target="_blank" rel="noopener">
+                            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> +51 908 536 493
+                        </a>
+                        <a href="https://wa.me/51922996170?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web"
+                            target="_blank" rel="noopener">
+                            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> +51 922 996 170
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="foot__h">Legal</h4>
+                    <div class="foot__links">
+                        <a href="terminos.html">Términos y condiciones</a>
+                        <a href="privacidad.html">Política de privacidad</a>
+                        <a href="libro-reclamaciones.html">Libro de reclamaciones</a>
+                    </div>
                 </div>
             </div>
 
-            <div>
-                <h4 class="footer-title">Contacto Directo</h4>
-                <div class="footer-contact-info">
-                    <a href="mailto:infallcm@gmail.com" class="contact-item">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                            </path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        infallcm@gmail.com
-                    </a>
-                    <a href="https://wa.me/51908536493?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web"
-                        target="_blank" class="contact-item">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
-                            </path>
-                        </svg>
-                        +51 908 536 493
-                    </a>
-                    <a href="https://wa.me/51922996170?text=Hola%20INFALL,%20quisiera%20cotizar%20un%20proyecto%20web"
-                        target="_blank" class="contact-item">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
-                            </path>
-                        </svg>
-                        +51 922 996 170
-                    </a>
-                </div>
+            <div class="foot__bottom">
+                <span>© 2026 INFALL Systems Engineering</span>
+                <span>Lima, Perú · Trabajo 100% remoto</span>
             </div>
-
-            <div class="footer-legal">
-                <h4 class="footer-legal-title">Legal</h4>
-                <div class="footer-legal-links">
-                    <a href="terminos.html">Términos y condiciones</a>
-                    <a href="privacidad.html">Política de privacidad</a>
-                </div>
-                <a href="libro-reclamaciones.html" class="footer-reclamaciones-block">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                    </svg>
-                    <span>Libro de<br>Reclamaciones</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2026 INFALL Systems Engineering. Todos los derechos reservados a nivel global.</p>
-            <p style="font-size: 12px; color: var(--text-muted);">
-                Desarrollado con precisión arquitectónica
-            </p>
         </div>
     </footer>
 
-    <!-- Modal ¿Desea Dominio? (Golden Ratio Design) -->
-    <div id="domainPromptModal" class="modal hidden">
-        <div class="modal-content golden-modal">
-            <button class="modal-close" id="closeDomainPrompt"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
-            
-            <!-- Left Side: 61.8% (Golden Ratio) -->
-            <div class="golden-left">
-                <div class="golden-icon-wrapper">
-                    <i class="ri-earth-line"></i>
-                </div>
-                <h3 class="golden-title">Complementa tu <span class="text-gradient-orange">Plan Web</span></h3>
-                <p class="golden-desc">
-                    Estás a punto de solicitar el plan <strong id="promptPlanName" style="color: #fff;"></strong>.<br>
-                    Para que tu sitio web funcione en internet, necesitas una dirección única (como <i>minegocio.com</i>).
-                </p>
-                <div class="golden-features">
-                    <span><i class="ri-check-line text-yellow"></i> Presencia profesional inmediata</span>
-                    <span><i class="ri-check-line text-yellow"></i> Integración 100% garantizada</span>
-                </div>
-            </div>
+    <a class="wa-float" href="https://wa.me/51908536493?text=Hola%20INFALL%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web."
+        target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+    </a>
 
-            <!-- Right Side: 38.2% (Golden Ratio) -->
-            <div class="golden-right">
-                <h4 class="golden-action-title">¿Deseas buscar tu dominio ahora?</h4>
-                <div class="golden-actions">
-                    <button id="btnYesDomain" class="btn-primary golden-btn-main">
-                        <i class="ri-search-line"></i> Sí, buscar mi dominio ideal
-                    </button>
-                    <div class="golden-divider"><span>O continuar sin dominio</span></div>
-                    <button id="btnNoDomain" class="btn-outline golden-btn-alt">
-                        Solo quiero el diseño web <i class="ri-whatsapp-line"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ====================================================
-         WIDGET LATERAL: PROPUESTA A TU MEDIDA
-         ==================================================== -->
-    <div class="sidebar-widget" id="sidebar-budget-widget" role="complementary" aria-label="Cotizador rápido">
-        <!-- Tab colapsado (visible en reposo) -->
-        <div class="sw-tab" id="sw-tab" aria-label="Abrir cotizador">
-            <span class="sw-tab-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                    <line x1="12" y1="17" x2="12.01" y2="17"/>
-                </svg>
-            </span>
-            <span class="sw-tab-label">Cotizar</span>
-        </div>
-
-        <!-- Panel expandido -->
-        <div class="sw-panel" id="sw-panel">
-            <div class="sw-panel-header">
-                <div class="sw-panel-title">
-                    <div class="sw-panel-dot"></div>
-                    Propuesta a tu Medida
-                </div>
-                <button class="sw-close" id="sw-close" aria-label="Cerrar">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </button>
-            </div>
-            <p class="sw-panel-desc">Cuéntanos tu idea y te contactamos en menos de 24h.</p>
-
-            <form class="sw-form" id="sw-form" novalidate>
-                <div class="sw-group">
-                    <label for="sw-nombre">Tu nombre</label>
-                    <input type="text" id="sw-nombre" placeholder="Ej: María García" autocomplete="name" required>
-                </div>
-
-                <div class="sw-group">
-                    <label for="sw-budget">Presupuesto ideal</label>
-                    <div class="sw-slider-wrap">
-                        <input type="range" id="sw-budget" min="200" max="5000" step="50" value="500" class="sw-range">
-                        <div class="sw-budget-display">
-                            <span class="sw-currency">S/</span>
-                            <span class="sw-amount" id="sw-amount-display">500</span>
-                        </div>
-                    </div>
-                    <div class="sw-range-labels"><span>S/ 200</span><span>S/ 5,000+</span></div>
-                </div>
-
-                <div class="sw-group">
-                    <label for="sw-proyecto">¿Qué necesitas?</label>
-                    <textarea id="sw-proyecto" rows="2" placeholder="Ej: Tienda online para vender ropa..." required></textarea>
-                </div>
-
-                <button type="submit" class="sw-submit" id="sw-submit">
-                    Añadir al Carrito <i class="ri-shopping-cart-2-line"></i>
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        // ============================================================
-        // SIDEBAR WIDGET: PROPUESTA A TU MEDIDA
-        // ============================================================
-        (function () {
-            const widget = document.getElementById('sidebar-budget-widget');
-            const panel = document.getElementById('sw-panel');
-            const closeBtn = document.getElementById('sw-close');
-            const swRange = document.getElementById('sw-budget');
-            const swAmount = document.getElementById('sw-amount-display');
-            const swForm = document.getElementById('sw-form');
-            if (!widget) return;
-
-            let isOpen = false;
-            let hoverTimer;
-
-            function openPanel() {
-                isOpen = true;
-                widget.classList.add('sw-open');
-            }
-            function closePanel() {
-                isOpen = false;
-                widget.classList.remove('sw-open');
-            }
-
-            widget.addEventListener('mouseenter', () => {
-                clearTimeout(hoverTimer);
-                openPanel();
-            });
-            widget.addEventListener('mouseleave', () => {
-                hoverTimer = setTimeout(() => {
-                    if (!isOpen) return;
-                    closePanel();
-                }, 300);
-            });
-
-            if (closeBtn) closeBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                closePanel();
-            });
-
-            if (swRange && swAmount) {
-                function fmt(v) { const n = parseInt(v); return n >= 5000 ? '5,000+' : n.toLocaleString('es-PE'); }
-                const initPct = ((swRange.value - swRange.min) / (swRange.max - swRange.min)) * 100;
-                swRange.style.setProperty('--range-pct', initPct + '%');
-                swRange.addEventListener('input', function () {
-                    swAmount.textContent = fmt(this.value);
-                    const pct = ((this.value - this.min) / (this.max - this.min)) * 100;
-                    this.style.setProperty('--range-pct', pct + '%');
-                });
-            }
-
-            if (swForm) {
-                swForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    const nombre = document.getElementById('sw-nombre').value.trim();
-                    const budget = swRange ? swRange.value : '500';
-                    const proyecto = document.getElementById('sw-proyecto').value.trim();
-
-                    if (!nombre || !proyecto) {
-                        const el = !nombre ? document.getElementById('sw-nombre') : document.getElementById('sw-proyecto');
-                        el.focus(); el.classList.add('pbf-error');
-                        el.addEventListener('input', () => el.classList.remove('pbf-error'), { once: true });
-                        return;
-                    }
-
-                    const btn = document.getElementById('sw-submit');
-                    btn.classList.add('pbf-sending');
-                    btn.innerHTML = 'Agregado <i class="ri-check-line"></i>';
-                    setTimeout(() => {
-                        btn.classList.remove('pbf-sending');
-                        btn.innerHTML = 'Añadir al Carrito <i class="ri-shopping-cart-2-line"></i>';
-                        swForm.reset();
-                        if (swAmount) swAmount.textContent = '500';
-                        if (swRange) { swRange.value = 500; swRange.style.setProperty('--range-pct', '15%'); }
-                        
-                        if (window.InfallCart) {
-                            window.InfallCart.setPlan("Propuesta a tu Medida", budget, { nombre, proyecto });
-                            
-                            const domainModal = document.getElementById('domainPromptModal');
-                            const promptPlanName = document.getElementById('promptPlanName');
-                            if (domainModal && promptPlanName) {
-                                promptPlanName.textContent = "Propuesta a tu Medida";
-                                domainModal.classList.remove('hidden');
-                            } else {
-                                window.InfallCart.open();
-                            }
-                        }
-                    }, 500);
-                });
-            }
-        })();
-    </script>
-    <script src="cart.js?v=4"></script>
-    <script src="interfaz01.js?v=12" defer></script>
+    <script src="cart.js?v=4" defer></script>
+    <script src="assets/infall.js?v=2" defer></script>
     <script src="assets/analytics.js?v=1" defer></script>
 </body>
 

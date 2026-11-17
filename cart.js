@@ -146,13 +146,13 @@
         <div id="infallCartOverlay"></div>
         <div id="infallCartDrawer">
             <div class="icart-header">
-                <div class="icart-title"><span class="icart-title-icon"><i class="ri-shopping-cart-2-fill"></i></span> Tu Carrito</div>
+                <div class="icart-title"><span class="icart-title-icon"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 3h3.2l2.5 12.1c.13.63.68 1.08 1.32 1.08h9.1c.64 0 1.19-.45 1.32-1.08L21.6 7H6.6l-.4-2A1.35 1.35 0 0 0 4.87 3.9L4.6 3z"/><circle cx="9.2" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg></span> Tu Carrito</div>
                 <button class="icart-close" id="icartClose">&times;</button>
             </div>
             <div class="icart-body" id="icartBody"></div>
             <div class="icart-footer">
                 <div class="icart-total-row"><span>Total:</span> <span id="icartTotal">S/ 0</span></div>
-                <button class="icart-checkout" id="icartCheckout"><i class="ri-whatsapp-line"></i> Finalizar Compra</button>
+                <button class="icart-checkout" id="icartCheckout"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> Finalizar Compra</button>
             </div>
         </div>
     `;
@@ -216,7 +216,7 @@
         if (!c.plan && !c.domain) {
             body.innerHTML = `
                 <div class="icart-empty">
-                    <i class="ri-shopping-cart-2-line"></i>
+                    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 11.6a1.8 1.8 0 0 0 1.8 1.4h8.6a1.8 1.8 0 0 0 1.8-1.4L21.5 7H6"/></svg>
                     <p>Tu carrito está vacío.</p>
                     <p style="font-size: 0.85rem; margin-top: 0.5rem;">Agrega un plan web o un dominio para comenzar.</p>
                 </div>
@@ -235,11 +235,11 @@
             html += `
                 <div class="icart-item" style="animation-delay: ${itemIndex++ * 60}ms">
                     <div class="icart-item-header">
-                        <div class="icart-item-title"><i class="ri-layout-4-fill" style="color: var(--accent-orange, #FF8C00);"></i> Plan Web</div>
+                        <div class="icart-item-title"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange, #E39B3D)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg> Plan Web</div>
                         <div class="icart-item-price">S/ ${c.plan.price}</div>
                     </div>
                     <div class="icart-item-desc">${c.plan.name}</div>
-                    <button class="icart-item-remove" onclick="InfallCart.removePlan()"><i class="ri-delete-bin-line"></i> Eliminar</button>
+                    <button class="icart-item-remove" onclick="InfallCart.removePlan()"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4.5A1.5 1.5 0 0 1 9.5 3h5A1.5 1.5 0 0 1 16 4.5V6m3 0v13.5A1.5 1.5 0 0 1 17.5 21h-11A1.5 1.5 0 0 1 5 19.5V6"/></svg> Eliminar</button>
                 </div>
             `;
         }
@@ -248,11 +248,11 @@
             html += `
                 <div class="icart-item icart-item--domain" style="animation-delay: ${itemIndex++ * 60}ms">
                     <div class="icart-item-header">
-                        <div class="icart-item-title"><i class="ri-earth-fill" style="color: var(--accent-cyan, #00E5FF);"></i> Dominio</div>
+                        <div class="icart-item-title"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan, #F2C68C)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 3.6 9A14 14 0 0 1 12 21a14 14 0 0 1-3.6-9A14 14 0 0 1 12 3z"/></svg> Dominio</div>
                         <div class="icart-item-price">S/ ${c.domain.price}</div>
                     </div>
                     <div class="icart-item-desc">${c.domain.name} (${c.domain.years} año${c.domain.years > 1 ? 's' : ''})</div>
-                    <button class="icart-item-remove" onclick="InfallCart.removeDomain()"><i class="ri-delete-bin-line"></i> Eliminar</button>
+                    <button class="icart-item-remove" onclick="InfallCart.removeDomain()"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4.5A1.5 1.5 0 0 1 9.5 3h5A1.5 1.5 0 0 1 16 4.5V6m3 0v13.5A1.5 1.5 0 0 1 17.5 21h-11A1.5 1.5 0 0 1 5 19.5V6"/></svg> Eliminar</button>
                 </div>
             `;
         }

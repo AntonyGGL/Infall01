@@ -194,6 +194,104 @@
         items.forEach(el => io.observe(el));
     }
 
+    /* ---- Banda de instrumentos: la página se mide a sí misma ----
+       Todos los valores salen del navegador de quien visita. No hay cifras
+       escritas a mano: si el sitio se pone lento, el número lo delata. */
+    function initMetricas() {
+        const banda = $('#hero-gauges');
+        if (!banda || !window.performance) return;
+
+        const nav = (performance.getEntriesByType('navigation') || [])[0];
+        const recursos = performance.getEntriesByType('resource') || [];
+
+        // LCP: el instante en que se pinta el elemento más grande. Es la métrica
+        // que Google usa en Core Web Vitals, más estable y comparable que el
+        // evento load, que se dispara con cualquier recurso rezagado.
+        let lcp = 0;
+        if ('PerformanceObserver' in window) {
+            try {
+                new PerformanceObserver(lista => {
+                    const e = lista.getEntries();
+                    if (e.length) lcp = e[e.length - 1].startTime;
+                }).observe({ type: 'largest-contentful-paint', buffered: true });
+            } catch (e) { /* navegador sin soporte */ }
+        }
+
+        function medir() {
+            const n = (performance.getEntriesByType('navigation') || [])[0] || nav;
+            if (!n) return null;
+
+            const rs = performance.getEntriesByType('resource') || recursos;
+
+            let bytes = n.transferSize || 0;
+            rs.forEach(r => { bytes += r.transferSize || 0; });
+
+            // Sin LCP disponible se recurre al primer pintado con contenido
+            let principal = lcp;
+            if (!principal) {
+                const fcp = performance.getEntriesByName('first-contentful-paint')[0];
+                principal = fcp ? fcp.startTime : (n.domContentLoadedEventEnd || 0);
+            }
+
+            return {
+                lcp: principal / 1000,
+                ttfb: Math.max(0, n.responseStart - n.requestStart),
+                peso: bytes / 1024,
+                peticiones: rs.length + 1
+            };
+        }
+
+        // Umbrales oficiales de Core Web Vitals
+        function calificar(segundos) {
+            if (segundos <= 2.5) return 'Bueno';
+            if (segundos <= 4) return 'Mejorable';
+            return 'Lento';
+        }
+
+        function pintar(el, valor, decimales) {
+            if (!el) return;
+            const destino = Number(valor) || 0;
+            const texto = v => decimales ? v.toFixed(decimales) : Math.round(v).toLocaleString('es-PE');
+
+            if (reduced) {
+                el.textContent = texto(destino);
+                el.classList.add('is-listo');
+                return;
+            }
+
+            const inicio = performance.now();
+            const DURACION = 900;
+            (function paso(t) {
+                const p = Math.min(1, (t - inicio) / DURACION);
+                const suave = 1 - Math.pow(1 - p, 3);          // ease-out
+                el.textContent = texto(destino * suave);
+                if (p < 1) requestAnimationFrame(paso);
+                else el.classList.add('is-listo');
+            })(inicio);
+        }
+
+        function mostrar() {
+            const m = medir();
+            if (!m) return;
+            pintar($('#g-lcp'), m.lcp, 2);
+            const nota = $('#g-lcp-nota');
+            if (nota) {
+                nota.textContent = calificar(m.lcp);
+                nota.className = 'gauge__nota-mini es-' + (m.lcp <= 2.5 ? 'bueno' : m.lcp <= 4 ? 'medio' : 'lento');
+            }
+            pintar($('#g-ttfb'), m.ttfb, 0);
+            pintar($('#g-peso'), m.peso, 0);
+            pintar($('#g-peticiones'), m.peticiones, 0);
+        }
+
+        // El peso real solo se conoce cuando terminaron de llegar los recursos
+        if (document.readyState === 'complete') {
+            setTimeout(mostrar, 260);
+        } else {
+            window.addEventListener('load', () => setTimeout(mostrar, 260));
+        }
+    }
+
     /* ---- Carrusel del hero: captura + ficha del proyecto ---- */
     function initHeroCarousel() {
         const root = $('#hero-carousel');
@@ -220,9 +318,26 @@
             return b;
         });
 
+        // La captura se descarga cuando va a verse, no antes
+        function cargar(n) {
+            const shot = shots[(n + shots.length) % shots.length];
+            if (!shot) return;
+            const img = shot.querySelector('img[data-src]');
+            if (img) {
+                if (img.dataset.srcset) {
+                    img.srcset = img.dataset.srcset;
+                    img.removeAttribute('data-srcset');
+                }
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+            }
+        }
+
         function show(n) {
             i = (n + shots.length) % shots.length;
             const shot = shots[i];
+            cargar(i);
+            cargar(i + 1);          // la siguiente se adelanta para que el cambio sea limpio
             shots.forEach((s, k) => s.classList.toggle('is-on', k === i));
             dots.forEach((d, k) => d.setAttribute('aria-selected', String(k === i)));
             if (url) url.textContent = shot.dataset.url || '';
@@ -327,12 +442,80 @@
         });
     }
 
+    /* ---- Portafolio: filtro por tipo de proyecto ---- */
+    function initFilters() {
+        const btns = $$('.js-filter');
+        const cards = $$('[data-category]');
+        if (!btns.length || !cards.length) return;
+
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filtro = btn.dataset.filter;
+                btns.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+                cards.forEach(card => {
+                    const visible = filtro === 'all' || card.dataset.category === filtro;
+                    card.classList.toggle('is-hidden', !visible);
+                    if (visible) card.classList.add('is-in');
+                });
+            });
+        });
+    }
+
+    /* ---- Servicios: alternar capturas dentro de cada ventana ---- */
+    function initMockups() {
+        $$('[data-mockup]').forEach(box => {
+            const btns = $$('.js-slide', box);
+            const slides = $$('.mockup-slide', box);
+            btns.forEach((btn, n) => {
+                btn.addEventListener('click', () => {
+                    btns.forEach((b, k) => b.setAttribute('aria-pressed', String(k === n)));
+                    slides.forEach((s, k) => s.classList.toggle('active', k === n));
+                });
+            });
+        });
+    }
+
+    /* ---- Dominios: la ventana de ejemplo refleja lo que se escribe ---- */
+    function initDomainEcho() {
+        // domain-searcher/script.js marca el plazo elegido con .active;
+        // aquí se refleja en aria-pressed para lectores de pantalla.
+        const plazos = $$('.year-pill');
+        plazos.forEach(p => p.addEventListener('click', () => setTimeout(() => {
+            plazos.forEach(x => x.setAttribute('aria-pressed', String(x.classList.contains('active'))));
+        }, 0)));
+
+        const input = $('#domainInput');
+        const ext = $('#domainExt');
+        const outs = $$('[data-domain-echo]');
+        if (!input || !ext || !outs.length) return;
+
+        const sync = () => {
+            const raw = input.value.trim().toLowerCase().replace(/[^a-z0-9.-]/g, '');
+            const punto = raw.indexOf('.');
+            const nombre = (punto > 0 ? raw.slice(0, punto) : raw) || 'minegocio';
+            const sufijo = punto > 0 ? raw.slice(punto) : ext.value;
+            outs.forEach(el => {
+                if (el.dataset.domainEcho === 'name') el.textContent = nombre;
+                else if (el.dataset.domainEcho === 'ext') el.textContent = sufijo;
+                else el.textContent = nombre + sufijo;
+            });
+        };
+
+        input.addEventListener('input', sync);
+        ext.addEventListener('change', sync);
+        sync();
+    }
+
     /* ---- Arranque ---- */
     function init() {
+        initFilters();
+        initMockups();
+        initDomainEcho();
         initTheme();
         initParticles();
         initNav();
         initReveal();
+        initMetricas();
         initHeroCarousel();
         initPlanModal();
         initBriefForm();

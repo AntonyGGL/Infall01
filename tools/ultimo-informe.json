@@ -4,7 +4,38 @@
   "ancho": 360,
   "alto": 740,
   "anchoDocumento": 345,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "area-tactil",
+    "gravedad": "media",
+    "detalle": "229×43px (mínimo 44×44)",
+    "elemento": "a.link-arrow «Ver el portafolio completo»"
+   },
+   {
+    "tipo": "area-tactil",
+    "gravedad": "media",
+    "detalle": "235×43px (mínimo 44×44)",
+    "elemento": "input#brief-budget"
+   },
+   {
+    "tipo": "separacion-tactil",
+    "gravedad": "baja",
+    "detalle": "7px entre a «Ver planes» y a.wa-float",
+    "elemento": ""
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «ferreteriaimpofer.com»"
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "0.0px (mínimo 12px)",
+    "elemento": "span.pj__go «Visitar»"
+   }
+  ],
   "pagina": "index.html",
   "viewport": "Android chico (360px)"
  },
@@ -13,7 +44,32 @@
   "ancho": 375,
   "alto": 667,
   "anchoDocumento": 360,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "area-tactil",
+    "gravedad": "media",
+    "detalle": "229×43px (mínimo 44×44)",
+    "elemento": "a.link-arrow «Ver el portafolio completo»"
+   },
+   {
+    "tipo": "area-tactil",
+    "gravedad": "media",
+    "detalle": "250×43px (mínimo 44×44)",
+    "elemento": "input#brief-budget"
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «ferreteriaimpofer.com»"
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "0.0px (mínimo 12px)",
+    "elemento": "span.pj__go «Visitar»"
+   }
+  ],
   "pagina": "index.html",
   "viewport": "iPhone SE (375px)"
  },
@@ -22,7 +78,32 @@
   "ancho": 390,
   "alto": 844,
   "anchoDocumento": 375,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "area-tactil",
+    "gravedad": "media",
+    "detalle": "229×43px (mínimo 44×44)",
+    "elemento": "a.link-arrow «Ver el portafolio completo»"
+   },
+   {
+    "tipo": "area-tactil",
+    "gravedad": "media",
+    "detalle": "265×43px (mínimo 44×44)",
+    "elemento": "input#brief-budget"
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «ferreteriaimpofer.com»"
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "0.0px (mínimo 12px)",
+    "elemento": "span.pj__go «Visitar»"
+   }
+  ],
   "pagina": "index.html",
   "viewport": "iPhone 14 (390px)"
  },
@@ -31,7 +112,32 @@
   "ancho": 430,
   "alto": 932,
   "anchoDocumento": 415,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "area-tactil",
+    "gravedad": "media",
+    "detalle": "229×43px (mínimo 44×44)",
+    "elemento": "a.link-arrow «Ver el portafolio completo»"
+   },
+   {
+    "tipo": "area-tactil",
+    "gravedad": "media",
+    "detalle": "304×43px (mínimo 44×44)",
+    "elemento": "input#brief-budget"
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «ferreteriaimpofer.com»"
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "0.0px (mínimo 12px)",
+    "elemento": "span.pj__go «Visitar»"
+   }
+  ],
   "pagina": "index.html",
   "viewport": "iPhone Pro Max (430px)"
  },
@@ -41,6 +147,30 @@
   "alto": 1024,
   "anchoDocumento": 753,
   "problemas": [
+   {
+    "tipo": "area-tactil",
+    "gravedad": "media",
+    "detalle": "229×43px (mínimo 44×44)",
+    "elemento": "a.link-arrow «Ver el portafolio completo»"
+   },
+   {
+    "tipo": "area-tactil",
+    "gravedad": "media",
+    "detalle": "600×43px (mínimo 44×44)",
+    "elemento": "input#brief-budget"
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «ferreteriaimpofer.com»"
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "0.0px (mínimo 12px)",
+    "elemento": "span.pj__go «Visitar»"
+   },
    {
     "tipo": "linea-larga",
     "gravedad": "baja",
@@ -55,15 +185,8 @@
   "url": "quienes-somos.html",
   "ancho": 360,
   "alto": 740,
-  "anchoDocumento": 348,
-  "problemas": [
-   {
-    "tipo": "area-tactil",
-    "gravedad": "media",
-    "detalle": "126×39px (mínimo 44×44)",
-    "elemento": "a.why-us-back-cta «Ver mi proyecto →»"
-   }
-  ],
+  "anchoDocumento": 345,
+  "problemas": [],
   "pagina": "quienes-somos.html",
   "viewport": "Android chico (360px)"
  },
@@ -71,15 +194,8 @@
   "url": "quienes-somos.html",
   "ancho": 375,
   "alto": 667,
-  "anchoDocumento": 363,
-  "problemas": [
-   {
-    "tipo": "area-tactil",
-    "gravedad": "media",
-    "detalle": "126×39px (mínimo 44×44)",
-    "elemento": "a.why-us-back-cta «Ver mi proyecto →»"
-   }
-  ],
+  "anchoDocumento": 360,
+  "problemas": [],
   "pagina": "quienes-somos.html",
   "viewport": "iPhone SE (375px)"
  },
@@ -87,15 +203,8 @@
   "url": "quienes-somos.html",
   "ancho": 390,
   "alto": 844,
-  "anchoDocumento": 378,
-  "problemas": [
-   {
-    "tipo": "area-tactil",
-    "gravedad": "media",
-    "detalle": "126×43px (mínimo 44×44)",
-    "elemento": "a.why-us-back-cta «Ver mi proyecto →»"
-   }
-  ],
+  "anchoDocumento": 375,
+  "problemas": [],
   "pagina": "quienes-somos.html",
   "viewport": "iPhone 14 (390px)"
  },
@@ -103,15 +212,8 @@
   "url": "quienes-somos.html",
   "ancho": 430,
   "alto": 932,
-  "anchoDocumento": 418,
-  "problemas": [
-   {
-    "tipo": "area-tactil",
-    "gravedad": "media",
-    "detalle": "126×43px (mínimo 44×44)",
-    "elemento": "a.why-us-back-cta «Ver mi proyecto →»"
-   }
-  ],
+  "anchoDocumento": 415,
+  "problemas": [],
   "pagina": "quienes-somos.html",
   "viewport": "iPhone Pro Max (430px)"
  },
@@ -119,13 +221,13 @@
   "url": "quienes-somos.html",
   "ancho": 768,
   "alto": 1024,
-  "anchoDocumento": 756,
+  "anchoDocumento": 753,
   "problemas": [
    {
-    "tipo": "area-tactil",
-    "gravedad": "media",
-    "detalle": "126×43px (mínimo 44×44)",
-    "elemento": "a.why-us-back-cta «Ver mi proyecto →»"
+    "tipo": "linea-larga",
+    "gravedad": "baja",
+    "detalle": "82 caracteres por línea (máximo 75)",
+    "elemento": "p «Trabajamos con tecnologías m»"
    }
   ],
   "pagina": "quienes-somos.html",
@@ -136,7 +238,26 @@
   "ancho": 360,
   "alto": 740,
   "anchoDocumento": 345,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "separacion-tactil",
+    "gravedad": "baja",
+    "detalle": "7px entre a «Ver planes» y a.wa-float",
+    "elemento": ""
+   },
+   {
+    "tipo": "separacion-tactil",
+    "gravedad": "baja",
+    "detalle": "8px entre button.pill-btn.js-slide «Opción 1» y button.pill-btn.js-slide «Opción 2»",
+    "elemento": ""
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «tunegocio.com»"
+   }
+  ],
   "pagina": "servicios.html",
   "viewport": "Android chico (360px)"
  },
@@ -145,7 +266,20 @@
   "ancho": 375,
   "alto": 667,
   "anchoDocumento": 360,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "separacion-tactil",
+    "gravedad": "baja",
+    "detalle": "8px entre button.pill-btn.js-slide «Opción 1» y button.pill-btn.js-slide «Opción 2»",
+    "elemento": ""
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «tunegocio.com»"
+   }
+  ],
   "pagina": "servicios.html",
   "viewport": "iPhone SE (375px)"
  },
@@ -154,7 +288,20 @@
   "ancho": 390,
   "alto": 844,
   "anchoDocumento": 375,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "separacion-tactil",
+    "gravedad": "baja",
+    "detalle": "8px entre button.pill-btn.js-slide «Opción 1» y button.pill-btn.js-slide «Opción 2»",
+    "elemento": ""
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «tunegocio.com»"
+   }
+  ],
   "pagina": "servicios.html",
   "viewport": "iPhone 14 (390px)"
  },
@@ -163,7 +310,20 @@
   "ancho": 430,
   "alto": 932,
   "anchoDocumento": 415,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "separacion-tactil",
+    "gravedad": "baja",
+    "detalle": "8px entre button.pill-btn.js-slide «Opción 1» y button.pill-btn.js-slide «Opción 2»",
+    "elemento": ""
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «tunegocio.com»"
+   }
+  ],
   "pagina": "servicios.html",
   "viewport": "iPhone Pro Max (430px)"
  },
@@ -172,7 +332,20 @@
   "ancho": 768,
   "alto": 1024,
   "anchoDocumento": 753,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "separacion-tactil",
+    "gravedad": "baja",
+    "detalle": "8px entre button.pill-btn.js-slide «Opción 1» y button.pill-btn.js-slide «Opción 2»",
+    "elemento": ""
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «tunegocio.com»"
+   }
+  ],
   "pagina": "servicios.html",
   "viewport": "iPad vertical (768px)"
  },
@@ -181,7 +354,14 @@
   "ancho": 360,
   "alto": 740,
   "anchoDocumento": 345,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «minegocio.com»"
+   }
+  ],
   "pagina": "dominios.html",
   "viewport": "Android chico (360px)"
  },
@@ -190,7 +370,14 @@
   "ancho": 375,
   "alto": 667,
   "anchoDocumento": 360,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «minegocio.com»"
+   }
+  ],
   "pagina": "dominios.html",
   "viewport": "iPhone SE (375px)"
  },
@@ -199,7 +386,14 @@
   "ancho": 390,
   "alto": 844,
   "anchoDocumento": 375,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «minegocio.com»"
+   }
+  ],
   "pagina": "dominios.html",
   "viewport": "iPhone 14 (390px)"
  },
@@ -208,7 +402,14 @@
   "ancho": 430,
   "alto": 932,
   "anchoDocumento": 415,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «minegocio.com»"
+   }
+  ],
   "pagina": "dominios.html",
   "viewport": "iPhone Pro Max (430px)"
  },
@@ -217,7 +418,20 @@
   "ancho": 768,
   "alto": 1024,
   "anchoDocumento": 753,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «minegocio.com»"
+   },
+   {
+    "tipo": "linea-larga",
+    "gravedad": "baja",
+    "detalle": "80 caracteres por línea (máximo 75)",
+    "elemento": "p.step__d «Escribe el nombre de tu nego»"
+   }
+  ],
   "pagina": "dominios.html",
   "viewport": "iPad vertical (768px)"
  },
@@ -226,7 +440,32 @@
   "ancho": 360,
   "alto": 740,
   "anchoDocumento": 345,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "separacion-tactil",
+    "gravedad": "baja",
+    "detalle": "7px entre a «Ver planes» y a.wa-float",
+    "elemento": ""
+   },
+   {
+    "tipo": "separacion-tactil",
+    "gravedad": "baja",
+    "detalle": "8px entre button.pill-btn.js-filter «Todos» y button.pill-btn.js-filter «Landing page»",
+    "elemento": ""
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «yeiserdev.github.io/ScreenSc»"
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "0.0px (mínimo 12px)",
+    "elemento": "span.pj__go «Visitar»"
+   }
+  ],
   "pagina": "portfolio.html",
   "viewport": "Android chico (360px)"
  },
@@ -235,7 +474,26 @@
   "ancho": 375,
   "alto": 667,
   "anchoDocumento": 360,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "separacion-tactil",
+    "gravedad": "baja",
+    "detalle": "8px entre button.pill-btn.js-filter «Todos» y button.pill-btn.js-filter «Landing page»",
+    "elemento": ""
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «yeiserdev.github.io/ScreenSc»"
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "0.0px (mínimo 12px)",
+    "elemento": "span.pj__go «Visitar»"
+   }
+  ],
   "pagina": "portfolio.html",
   "viewport": "iPhone SE (375px)"
  },
@@ -244,7 +502,26 @@
   "ancho": 390,
   "alto": 844,
   "anchoDocumento": 375,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "separacion-tactil",
+    "gravedad": "baja",
+    "detalle": "8px entre button.pill-btn.js-filter «Todos» y button.pill-btn.js-filter «Landing page»",
+    "elemento": ""
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «yeiserdev.github.io/ScreenSc»"
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "0.0px (mínimo 12px)",
+    "elemento": "span.pj__go «Visitar»"
+   }
+  ],
   "pagina": "portfolio.html",
   "viewport": "iPhone 14 (390px)"
  },
@@ -253,7 +530,26 @@
   "ancho": 430,
   "alto": 932,
   "anchoDocumento": 415,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "separacion-tactil",
+    "gravedad": "baja",
+    "detalle": "8px entre button.pill-btn.js-filter «Todos» y button.pill-btn.js-filter «Landing page»",
+    "elemento": ""
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «yeiserdev.github.io/ScreenSc»"
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "0.0px (mínimo 12px)",
+    "elemento": "span.pj__go «Visitar»"
+   }
+  ],
   "pagina": "portfolio.html",
   "viewport": "iPhone Pro Max (430px)"
  },
@@ -262,7 +558,26 @@
   "ancho": 768,
   "alto": 1024,
   "anchoDocumento": 753,
-  "problemas": [],
+  "problemas": [
+   {
+    "tipo": "separacion-tactil",
+    "gravedad": "baja",
+    "detalle": "8px entre button.pill-btn.js-filter «Todos» y button.pill-btn.js-filter «Landing page»",
+    "elemento": ""
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "11.2px (mínimo 12px)",
+    "elemento": "span.window-address «yeiserdev.github.io/ScreenSc»"
+   },
+   {
+    "tipo": "texto-pequeno",
+    "gravedad": "media",
+    "detalle": "0.0px (mínimo 12px)",
+    "elemento": "span.pj__go «Visitar»"
+   }
+  ],
   "pagina": "portfolio.html",
   "viewport": "iPad vertical (768px)"
  },

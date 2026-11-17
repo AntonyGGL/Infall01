@@ -962,3 +962,8 @@ a, button, input, select, textarea, label, [role="button"] {
         transform: translateY(-7px) rotate(-45deg) !important;
     }
 }
+
+
+/* Iconos en línea dentro del carrito y del resto de páginas */
+.ico { width: 1.05em; height: 1.05em; flex: none; display: inline-block; vertical-align: -0.15em; }
+.icart-title-icon .ico, .icart-checkout .ico { width: 1.15em; height: 1.15em; }
