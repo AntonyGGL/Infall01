@@ -1177,6 +1177,61 @@
 
 
 /* ==========================================================
+   Teléfono: hero más compacto y ordenado
+   Título que llena el ancho, botones parejos, precio solo en el
+   círculo (sobre la laptop) y la etiqueta debajo de los equipos.
+   ========================================================== */
+@media (max-width: 600px) {
+    .home-intro { padding-block: 2.5rem 4.25rem; }
+    .home-kicker { margin-bottom: 1rem; font-size: 0.68rem; letter-spacing: 0.12em; }
+    .home-intro h1 {
+        font-size: clamp(2.75rem, 13.2vw, 3.6rem);
+        line-height: 0.98;
+        letter-spacing: -0.055em;
+    }
+    .home-intro__description { margin-top: 1.25rem; font-size: 1rem; line-height: 1.55; }
+
+    .home-intro__actions {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.6rem;
+        margin-top: 1.6rem;
+    }
+    .home-intro__actions .btn { width: 100%; min-height: 52px; justify-content: center; }
+
+    /* El precio ya está en el círculo: se evita repetirlo */
+    .home-intro__price { display: none; }
+
+    .home--main .device-scene { padding: 2.75rem 0 8.75rem; }
+    .home--main .device-mac { margin: 0 5% 0 1%; }
+    .home--main .device-ipad { right: -0.25rem; bottom: 4.5rem; width: 32%; }
+    .home--main .device-iphone { right: 27%; bottom: 3.25rem; width: 16%; }
+
+    .offer-circle { top: 0.5rem; right: -0.25rem; width: 98px; height: 98px; }
+    .offer-circle small { font-size: 0.66rem; }
+    .offer-circle b { font-size: 1.4rem; }
+    .offer-circle span { display: block; margin-top: 0.2rem; padding: 0.12rem 0.45rem; font-size: 0.6rem; }
+
+    .home--main .device-scene .studio-note {
+        left: 50%;
+        right: auto;
+        bottom: 0;
+        max-width: none;
+        width: max-content;
+        translate: -50% 0;
+        gap: 0.6rem;
+        padding: 0.4rem 1.1rem 0.4rem 0.4rem;
+        border-radius: 999px;
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+    .home--main .device-scene .studio-note:hover { translate: -50% -3px; }
+    .home--main .device-scene .studio-note__icon { display: grid; width: 34px; height: 34px; font-size: 1rem; }
+    .home--main .device-scene .studio-note strong { margin-top: 0.1rem; font-size: 0.85rem; }
+}
+
+
+/* ==========================================================
    Portafolio en la portada: carrusel 3D de ventanas de navegador
    La ventana central al frente; las vecinas más pequeñas, en
    perspectiva y atenuadas. Avanza solo; el punto activo muestra
