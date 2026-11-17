@@ -536,6 +536,47 @@
     }
 
     /* ---- Carrusel 3D de proyectos: ventana central al frente, vecinas en perspectiva ---- */
+    /* ---- Línea de tiempo del proceso: se enciende al verla ---- */
+    function initTimeline() {
+        $$('[data-tl]').forEach(tl => {
+            const steps = $$('.tl__step', tl);
+            if (reduced || !('IntersectionObserver' in window)) {
+                tl.classList.add('is-on');
+                steps.forEach(s => s.classList.add('is-on'));
+                return;
+            }
+            new IntersectionObserver((entries, io) => {
+                if (!entries[0].isIntersecting) return;
+                tl.classList.add('is-on');
+                io.disconnect();
+            }, { threshold: 0.3 }).observe(tl);
+
+            // En celular cada paso aparece al llegar a él y la línea crece con el scroll
+            const stepIo = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) return;
+                    e.target.classList.add('is-on');
+                    stepIo.unobserve(e.target);
+                });
+            }, { rootMargin: '0px 0px -15% 0px' });
+            steps.forEach(s => stepIo.observe(s));
+
+            const mq = window.matchMedia('(max-width: 999.98px)');
+            let ticking = false;
+            const update = () => {
+                ticking = false;
+                if (!mq.matches) return;
+                const r = tl.getBoundingClientRect();
+                const p = (window.innerHeight * 0.7 - r.top) / r.height;
+                tl.style.setProperty('--tl-p', Math.min(1, Math.max(0, p)).toFixed(3));
+            };
+            window.addEventListener('scroll', () => {
+                if (!ticking) { ticking = true; requestAnimationFrame(update); }
+            }, { passive: true });
+            update();
+        });
+    }
+
     function initCoverflow() {
         $$('[data-cf]').forEach(cf => {
             const slides = $$('.cf__slide', cf);
@@ -653,6 +694,7 @@
         initWaFloat();
         initSwipers();
         initCoverflow();
+        initTimeline();
         initFilters();
         initMockups();
         initDomainEcho();
