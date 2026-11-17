@@ -1191,13 +1191,8 @@
     }
     .home-intro__description { margin-top: 1.25rem; font-size: 1rem; line-height: 1.55; }
 
-    .home-intro__actions {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr);
-        gap: 0.6rem;
-        margin-top: 1.6rem;
-    }
-    .home-intro__actions .btn { width: 100%; min-height: 52px; justify-content: center; }
+    /* En celular el hero va directo a los dispositivos: sin botones */
+    .home-intro__actions { display: none; }
 
     /* El precio ya está en el círculo: se evita repetirlo */
     .home-intro__price { display: none; }
