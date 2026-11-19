@@ -665,6 +665,13 @@
             if (!n) return;
             let idx = 0;
 
+            /* Cuando la página ya cargó, bajar en segundo plano las capturas del carrusel
+               para que no aparezcan en blanco al cambiar de proyecto */
+            const precargar = () => $$('img[loading="lazy"]', cf).forEach(img => { img.loading = 'eager'; });
+            const enReposo = () => ('requestIdleCallback' in window ? requestIdleCallback(precargar, { timeout: 4000 }) : setTimeout(precargar, 2000));
+            if (document.readyState === 'complete') enReposo();
+            else window.addEventListener('load', enReposo, { once: true });
+
             const go = i => {
                 idx = (i + n) % n;
                 slides.forEach((slide, j) => {
