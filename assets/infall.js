@@ -420,9 +420,17 @@
 
         const fmt = (n) => 'S/ ' + Number(n).toLocaleString('es-PE');
         if (range && out) {
-            const sync = () => { out.textContent = fmt(range.value); };
+            const quick = $$('.brief__quick [data-v]', form);
+            const sync = () => {
+                const v = Number(range.value);
+                out.textContent = fmt(v) + (v >= Number(range.max) ? '+' : '');
+                const pct = (v - range.min) / (range.max - range.min) * 100;
+                range.style.setProperty('--p', pct + '%');
+                quick.forEach(b => b.classList.toggle('is-on', Number(b.dataset.v) === v));
+            };
             sync();
             range.addEventListener('input', sync);
+            quick.forEach(b => b.addEventListener('click', () => { range.value = b.dataset.v; sync(); }));
         }
 
         form.addEventListener('submit', (e) => {
@@ -434,8 +442,10 @@
                 return;
             }
             const budget = range ? fmt(range.value) : 'a conversar';
+            const tipo = form.querySelector('input[name="tipo"]:checked');
             const msg =
                 'Hola INFALL, soy ' + name.trim() + '.\n' +
+                (tipo ? 'Tipo de proyecto: ' + tipo.value + '\n' : '') +
                 'Necesito: ' + need.trim() + '\n' +
                 'Presupuesto ideal: ' + budget;
             window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
@@ -577,6 +587,74 @@
         });
     }
 
+    /* ---- Equipo: selector de perfil y visor de certificados ---- */
+    function initCrew() {
+        $$('[data-crew]').forEach(crew => {
+            const tabs = $$('.crew__tab', crew);
+            const select = (tab, focus) => {
+                tabs.forEach(t => {
+                    const on = t === tab;
+                    t.setAttribute('aria-selected', on);
+                    t.tabIndex = on ? 0 : -1;
+                    const panel = document.getElementById(t.getAttribute('aria-controls'));
+                    if (!panel) return;
+                    panel.hidden = !on;
+                    if (on && !reduced) {
+                        panel.classList.remove('is-entering');
+                        void panel.offsetWidth;
+                        panel.classList.add('is-entering');
+                    }
+                });
+                if (focus) tab.focus();
+            };
+            tabs.forEach((t, i) => {
+                t.addEventListener('click', () => select(t));
+                t.addEventListener('keydown', e => {
+                    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+                    const n = tabs[(i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length];
+                    select(n, true);
+                });
+            });
+
+            $$('.crew__creds', crew).forEach(box => {
+                const img = $('.crew__doc-img', box);
+                const empty = $('.crew__doc-empty', box);
+                const zoom = $('.crew__zoom', box);
+                const org = $('.crew__doc-org', box);
+                const name = $('.crew__doc-name', box);
+                const items = $$('.crew__cert', box);
+                const show = (b) => {
+                    items.forEach(x => x.classList.toggle('is-on', x === b));
+                    org.textContent = b.dataset.org || '';
+                    name.textContent = b.dataset.name || '';
+                    const src = b.dataset.src;
+                    img.hidden = !src; empty.hidden = !!src; zoom.hidden = !src;
+                    if (src) { img.src = src; img.alt = b.dataset.name || ''; }
+                };
+                items.forEach(b => {
+                    if (b.dataset.src) $('.crew__thumb', b).style.backgroundImage = 'url("' + b.dataset.src + '")';
+                    b.addEventListener('click', () => show(b));
+                });
+                if (items[0]) show(items[0]);
+                const box2 = document.getElementById('crew-lightbox');
+                if (zoom && box2 && box2.showModal) {
+                    zoom.addEventListener('click', () => { $('img', box2).src = img.src; $('img', box2).alt = img.alt; box2.showModal(); });
+                }
+            });
+
+            $$('.crew__copy', crew).forEach(b => b.addEventListener('click', () => {
+                const done = () => { const t = b.textContent; b.textContent = 'Nombre copiado'; b.classList.add('is-done'); setTimeout(() => { b.textContent = t; b.classList.remove('is-done'); }, 1800); };
+                if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.copy).then(done, done); else done();
+            }));
+        });
+
+        const lb = document.getElementById('crew-lightbox');
+        if (lb) {
+            $('.crew__close', lb).addEventListener('click', () => lb.close());
+            lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });
+        }
+    }
+
     function initCoverflow() {
         $$('[data-cf]').forEach(cf => {
             const slides = $$('.cf__slide', cf);
@@ -690,11 +768,46 @@
     }
 
     /* ---- Arranque ---- */
+    /* Botón "volver arriba": aparece de la mitad de la página hacia abajo */
+    function initToTop() {
+        const foot = document.querySelector('.foot');
+        if (!foot) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'to-top';
+        btn.setAttribute('aria-label', 'Volver arriba');
+        btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+        btn.tabIndex = -1;
+        document.body.appendChild(btn);
+
+        const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        btn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: quieto ? 'auto' : 'smooth' });
+        });
+
+        const mostrar = (si) => {
+            btn.classList.toggle('is-on', si);
+            btn.tabIndex = si ? 0 : -1;
+        };
+        // Visible desde la mitad de la página hacia abajo
+        let pendiente = false;
+        const revisar = () => {
+            pendiente = false;
+            const recorrido = document.documentElement.scrollHeight - window.innerHeight;
+            mostrar(recorrido > 0 && window.scrollY >= recorrido / 2);
+        };
+        const pedir = () => { if (!pendiente) { pendiente = true; requestAnimationFrame(revisar); } };
+        window.addEventListener('scroll', pedir, { passive: true });
+        window.addEventListener('resize', pedir, { passive: true });
+        revisar();
+    }
+
     function init() {
         initWaFloat();
         initSwipers();
         initCoverflow();
         initTimeline();
+        initCrew();
         initFilters();
         initMockups();
         initDomainEcho();
@@ -706,6 +819,7 @@
         initHeroCarousel();
         initPlanModal();
         initBriefForm();
+        initToTop();
     }
 
     if (document.readyState === 'loading') {

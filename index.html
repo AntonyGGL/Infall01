@@ -46,8 +46,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="assets/infall.css?v=5">
-    <link rel="stylesheet" href="assets/home.css?v=22">
+    <link rel="stylesheet" href="assets/infall.css?v=9">
+    <link rel="stylesheet" href="assets/home.css?v=37">
 
     <script>
         (function () { try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) { } })();
@@ -129,7 +129,7 @@
         <div class="nav__inner">
             <a href="index.html" class="brand" aria-label="INFALL Systems Engineering, inicio">
                 <span class="brand__mark">INFALL<span class="brand__dot" aria-hidden="true"></span></span>
-                <span class="brand__sub">Systems Engineering</span>
+                <span class="brand__sub">Sistemas · Perú</span>
             </a>
 
             <nav class="nav__links" id="nav-links" aria-label="Navegación principal">
@@ -141,7 +141,7 @@
                 <div class="nav__drawer-cta">
                     <a href="cotizacion.html" class="btn btn--primary btn--block">Cotizar proyecto</a>
                     <a href="https://wa.me/51922996170" target="_blank" rel="noopener"
-                        class="btn btn--wa btn--block"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> +51 922 996 170</a>
+                        class="btn btn--wa btn--block"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> Escríbenos por WhatsApp</a>
                 </div>
             </nav>
 
@@ -217,23 +217,58 @@
             </div>
         </section>
 
-        <section class="studio-services shell" aria-label="Soluciones para tu negocio">
+        <section class="studio-services studio-services--art shell" aria-label="Soluciones para tu negocio">
             <div class="studio-services__intro">
                 <p class="eyebrow">De la idea a la web</p>
                 <h2>Tu negocio.<br>Todo su potencial.</h2>
                 <a href="servicios.html" class="link-arrow">Explora los servicios ↗</a>
             </div>
             <a class="studio-service" href="#planes">
-                <span class="studio-service__type">Presencia digital</span>
+                <span class="studio-service__type">Página web para tu negocio</span>
                 <h3>Que te encuentren.<br>Que te elijan.</h3>
-                <p>Landing pages y webs empresariales para presentar tu marca y recibir consultas.</p>
-                <span class="studio-service__link">Ver planes <span aria-hidden="true">↗</span></span>
+                <p class="sv-sr">Landing pages y webs empresariales para presentar tu marca y recibir consultas.</p>
+                <span class="sv-art sv-g" aria-hidden="true">
+                    <span class="sv-g__win">
+                        <span class="sv-g__bar"><i></i><i></i><i></i><span class="sv-g__url"><b class="is-search">google.com</b><b class="is-site"><svg viewBox="0 0 24 24" class="is-fill"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg>tunegocio.pe</b></span></span>
+                        <span class="sv-g__body">
+                            <span class="sv-g__search">
+                                <span class="sv-g__box"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="sv-g__type">ferretería en Huancayo</span></span>
+                                <span class="sv-g__results">
+                                    <span class="sv-g__r is-top"><small>tunegocio.pe</small><strong>Tu Negocio · Ferretería en Huancayo</strong><em><ins>★★★★★</ins> 4.9 · Abierto ahora</em></span>
+                                    <span class="sv-g__r"><s></s><s></s></span>
+                                    <span class="sv-g__r"><s></s><s></s></span>
+                                </span>
+                            </span>
+                            <span class="sv-g__site">
+                                <span class="sv-g__nav"><b>TN</b><strong>Tu Negocio</strong><s></s><s></s></span>
+                                <span class="sv-g__hero"><strong>Todo para tu obra,<br>en Huancayo</strong><u><svg viewBox="0 0 24 24" class="is-fill"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2z"/></svg>Cotizar por WhatsApp</u></span>
+                                <span class="sv-g__prods"><i></i><i></i><i></i></span>
+                            </span>
+                        </span>
+                        <span class="sv-g__cursor"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.5L10 19z"/></svg></span>
+                    </span>
+                    <span class="sv-g__toast"><svg viewBox="0 0 24 24" class="is-fill"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2z"/></svg><span><small>Nuevo cliente</small>¿Tienen stock? Quiero cotizar</span></span>
+                </span>
+                <span class="studio-service__link"><span>Ver planes <span class="sv-price">desde S/ 390</span></span> <span aria-hidden="true">↗</span></span>
             </a>
             <a class="studio-service studio-service--dark" href="cotizacion.html">
-                <span class="studio-service__type">Desarrollo a medida</span>
+                <span class="studio-service__type">Sistema a medida</span>
                 <h3>Tu forma de trabajar.<br>En una aplicación.</h3>
-                <p>Catálogos, paneles y herramientas pensadas para los procesos de tu negocio.</p>
-                <span class="studio-service__link">Cuéntanos tu idea <span aria-hidden="true">↗</span></span>
+                <p class="sv-sr">Catálogos, paneles y herramientas pensadas para los procesos de tu negocio.</p>
+                <span class="sv-art sv-map" aria-hidden="true">
+                    <span class="sv-map__badge"><i></i>Negocios vendiendo más en todo el Perú</span>
+                    <span class="sv-map__stage">
+                        <svg class="sv-map__svg" viewBox="0 0 170 230" preserveAspectRatio="none">
+                            <path class="sv-map__land" d="M22.4,44.8 L24.8,55.6 L33.2,58.0 L42.8,56.8 L45.2,46.0 L62.0,35.2 L78.8,22.0 L83.6,5.2 L94.4,14.8 L110.0,32.8 L124.4,30.4 L138.8,35.2 L146.0,54.4 L122.0,64.0 L111.2,66.4 L99.2,92.8 L107.6,112.0 L119.6,124.0 L138.8,136.0 L150.8,134.8 L161.6,154.0 L156.8,172.0 L153.2,191.2 L158.0,199.6 L150.8,211.6 L141.2,224.2 L129.2,216.4 L116.0,203.2 L98.0,193.6 L83.6,187.6 L71.6,170.8 L64.4,155.2 L59.6,146.8 L50.0,133.6 L42.8,113.2 L38.0,101.2 L27.2,85.6 L12.8,76.0 L10.0,60.4 L15.2,52.0 Z"/>
+                            <g class="sv-map__dots"><circle cx="61.6" cy="148.6" r="2.2"/><circle cx="122.4" cy="166.4" r="2.2"/><circle cx="107.0" cy="49.0" r="2.2"/></g>
+                        </svg>
+                        <span class="sv-map__pin" style="--x:10.8%;--y:28.8%;--i:0"><span class="sv-map__chip"><b>Restaurante</b><small>Piura</small><svg viewBox="0 0 40 16"><path d="M1,14 L10,11 L17,12 L25,7 L32,6 L39,1"/></svg></span></span>
+                        <span class="sv-map__pin" style="--x:22.1%;--y:44.1%;--i:1"><span class="sv-map__chip"><b>Clínica</b><small>Trujillo</small><svg viewBox="0 0 40 16"><path d="M1,14 L10,11 L17,12 L25,7 L32,6 L39,1"/></svg></span></span>
+                        <span class="sv-map__pin" style="--x:49.2%;--y:64.7%;--i:2"><span class="sv-map__chip"><b>Ferretería</b><small>Huancayo</small><svg viewBox="0 0 40 16"><path d="M1,14 L10,11 L17,12 L25,7 L32,6 L39,1"/></svg></span></span>
+                        <span class="sv-map__pin" style="--x:75.0%;--y:87.3%;--i:3"><span class="sv-map__chip"><b>Bodega</b><small>Arequipa</small><svg viewBox="0 0 40 16"><path d="M1,14 L10,11 L17,12 L25,7 L32,6 L39,1"/></svg></span></span>
+                    </span>
+                </span>
+                <span class="studio-service__link"><span>Cuéntanos tu idea <span class="sv-price">cotización gratis</span></span> <span aria-hidden="true">↗</span></span>
             </a>
         </section>
 
@@ -292,7 +327,7 @@
                                 <img src="portfolio-images/web/massimo.webp" width="1440" height="1000" srcset="portfolio-images/web/massimo-720.webp 720w, portfolio-images/web/massimo.webp 1440w" sizes="(max-width: 700px) 72vw, 780px" alt="Tienda online de Izajes y Maniobras Massimo, equipos de izaje" loading="lazy" draggable="false">
                             </picture>
                         </div>
-                        <div class="cf__slide" style="--off:-2;--abs:2" aria-hidden="true">
+                        <div class="cf__slide" style="--off:-3;--abs:3" aria-hidden="true">
                             <div class="cf__bar" aria-hidden="true">
                                 <span class="cf__dots-win"><i></i><i></i><i></i></span>
                                 <span class="cf__url"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg><span>clinicagastroenterologialima.com</span></span>
@@ -302,7 +337,7 @@
                                 <img src="portfolio-images/web/gastro.webp" width="1440" height="1000" srcset="portfolio-images/web/gastro-720.webp 720w, portfolio-images/web/gastro.webp 1440w" sizes="(max-width: 700px) 72vw, 780px" alt="Página web de la Clínica de Gastroenterología Lima" loading="lazy" draggable="false">
                             </picture>
                         </div>
-                        <div class="cf__slide" style="--off:-1;--abs:1" aria-hidden="true">
+                        <div class="cf__slide" style="--off:-2;--abs:2" aria-hidden="true">
                             <div class="cf__bar" aria-hidden="true">
                                 <span class="cf__dots-win"><i></i><i></i><i></i></span>
                                 <span class="cf__url"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg><span>clinicademamalima.com</span></span>
@@ -310,6 +345,56 @@
                             <picture class="cf__view">
                                 <source media="(max-width: 700px)" srcset="portfolio-images/web/mama-movil.webp">
                                 <img src="portfolio-images/web/mama.webp" width="1440" height="1000" srcset="portfolio-images/web/mama-720.webp 720w, portfolio-images/web/mama.webp 1440w" sizes="(max-width: 700px) 72vw, 780px" alt="Página web de la Clínica de Mamas Lima" loading="lazy" draggable="false">
+                            </picture>
+                        </div>
+                        <div class="cf__slide" style="--off:-1;--abs:1" aria-hidden="true">
+                            <div class="cf__bar" aria-hidden="true">
+                                <span class="cf__dots-win"><i></i><i></i><i></i></span>
+                                <span class="cf__url"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg><span>hamiltonsegura.com</span></span>
+                            </div>
+                            <picture class="cf__view">
+                                <source media="(max-width: 700px)" srcset="portfolio-images/web/hamilton-movil.webp">
+                                <img src="portfolio-images/web/hamilton.webp" width="1440" height="1000" srcset="portfolio-images/web/hamilton-720.webp 720w, portfolio-images/web/hamilton.webp 1440w" sizes="(max-width: 700px) 72vw, 780px" alt="Página web de Hamilton Segura Consultores, talleres de vocería y media training" loading="lazy" draggable="false">
+                            </picture>
+                        </div>
+                        <div class="cf__slide" style="--off:-1;--abs:1" aria-hidden="true">
+                            <div class="cf__bar" aria-hidden="true">
+                                <span class="cf__dots-win"><i></i><i></i><i></i></span>
+                                <span class="cf__url"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg><span>aquaiasac.com</span></span>
+                            </div>
+                            <picture class="cf__view">
+                                <source media="(max-width: 700px)" srcset="portfolio-images/web/aquaia-movil.webp">
+                                <img src="portfolio-images/web/aquaia.webp" width="1440" height="1000" srcset="portfolio-images/web/aquaia-720.webp 720w, portfolio-images/web/aquaia.webp 1440w" sizes="(max-width: 700px) 72vw, 780px" alt="Tienda online de AquaIA, equipos de tratamiento de agua" loading="lazy" draggable="false">
+                            </picture>
+                        </div>
+                        <div class="cf__slide" style="--off:-1;--abs:1" aria-hidden="true">
+                            <div class="cf__bar" aria-hidden="true">
+                                <span class="cf__dots-win"><i></i><i></i><i></i></span>
+                                <span class="cf__url"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg><span>hantofgroup.com</span></span>
+                            </div>
+                            <picture class="cf__view">
+                                <source media="(max-width: 700px)" srcset="portfolio-images/web/hantof-movil.webp">
+                                <img src="portfolio-images/web/hantof.webp" width="1440" height="1000" srcset="portfolio-images/web/hantof-720.webp 720w, portfolio-images/web/hantof.webp 1440w" sizes="(max-width: 700px) 72vw, 780px" alt="Tienda online de Hantof, repuestos y servicio técnico de aire acondicionado y refrigeración" loading="lazy" draggable="false">
+                            </picture>
+                        </div>
+                        <div class="cf__slide" style="--off:-1;--abs:1" aria-hidden="true">
+                            <div class="cf__bar" aria-hidden="true">
+                                <span class="cf__dots-win"><i></i><i></i><i></i></span>
+                                <span class="cf__url"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg><span>clinicaproctologicalima.com</span></span>
+                            </div>
+                            <picture class="cf__view">
+                                <source media="(max-width: 700px)" srcset="portfolio-images/web/procto-movil.webp">
+                                <img src="portfolio-images/web/procto.webp" width="1440" height="1000" srcset="portfolio-images/web/procto-720.webp 720w, portfolio-images/web/procto.webp 1440w" sizes="(max-width: 700px) 72vw, 780px" alt="Página web de la Clínica Proctológica Lima en San Isidro" loading="lazy" draggable="false">
+                            </picture>
+                        </div>
+                        <div class="cf__slide" style="--off:-1;--abs:1" aria-hidden="true">
+                            <div class="cf__bar" aria-hidden="true">
+                                <span class="cf__dots-win"><i></i><i></i><i></i></span>
+                                <span class="cf__url"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg><span>clinicatraumatologicalima.com</span></span>
+                            </div>
+                            <picture class="cf__view">
+                                <source media="(max-width: 700px)" srcset="portfolio-images/web/trauma-movil.webp">
+                                <img src="portfolio-images/web/trauma.webp" width="1440" height="1000" srcset="portfolio-images/web/trauma-720.webp 720w, portfolio-images/web/trauma.webp 1440w" sizes="(max-width: 700px) 72vw, 780px" alt="Página web de la Clínica Traumatológica Lima" loading="lazy" draggable="false">
                             </picture>
                         </div>
                     </div>
@@ -351,6 +436,36 @@
                             <p class="cf__desc">Especialistas en salud mamaria, con buscador de procedimientos y citas por WhatsApp.</p>
                             <a class="cf__visit" href="https://www.clinicademamalima.com/" target="_blank" rel="noopener">Visitar sitio <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
                         </div>
+                        <div class="cf__cap" inert>
+                            <span class="cf__kind">Comunicación · Media training</span>
+                            <h3 class="cf__name">Hamilton Segura Consultores</h3>
+                            <p class="cf__desc">Talleres de vocería, oratoria y cursos, con contacto directo por WhatsApp.</p>
+                            <a class="cf__visit" href="https://hamiltonsegura.com/" target="_blank" rel="noopener">Visitar sitio <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                        </div>
+                        <div class="cf__cap" inert>
+                            <span class="cf__kind">Tratamiento de agua · Tienda online</span>
+                            <h3 class="cf__name">AquaIA</h3>
+                            <p class="cf__desc">Purificadores, filtros y ósmosis, con buscador, cotización en línea y soporte técnico.</p>
+                            <a class="cf__visit" href="https://aquaiasac.com/" target="_blank" rel="noopener">Visitar sitio <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                        </div>
+                        <div class="cf__cap" inert>
+                            <span class="cf__kind">Climatización · Tienda online</span>
+                            <h3 class="cf__name">Hantof</h3>
+                            <p class="cf__desc">Repuestos de aire acondicionado y refrigeración, con carrito, envíos a todo el Perú y servicio técnico.</p>
+                            <a class="cf__visit" href="https://hantofgroup.com/" target="_blank" rel="noopener">Visitar sitio <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                        </div>
+                        <div class="cf__cap" inert>
+                            <span class="cf__kind">Salud · Proctología</span>
+                            <h3 class="cf__name">Clínica Proctológica Lima</h3>
+                            <p class="cf__desc">Especialidades y servicios explicados con claridad, con citas por WhatsApp y blog para aparecer en Google.</p>
+                            <a class="cf__visit" href="https://clinicaproctologicalima.com/" target="_blank" rel="noopener">Visitar sitio <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                        </div>
+                        <div class="cf__cap" inert>
+                            <span class="cf__kind">Salud · Traumatología</span>
+                            <h3 class="cf__name">Clínica Traumatológica Lima</h3>
+                            <p class="cf__desc">Prótesis, artroscopia y cirugía de fracturas, con servicio de ambulancia y blog para aparecer en Google.</p>
+                            <a class="cf__visit" href="https://clinicatraumatologicalima.com/" target="_blank" rel="noopener">Visitar sitio <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                        </div>
                     </div>
 
                     <div class="cf__nav">
@@ -362,6 +477,11 @@
                             <button type="button" class="cf__dot" aria-label="Ver Izajes Massimo"><i></i></button>
                             <button type="button" class="cf__dot" aria-label="Ver Clínica Gastroenterología Lima"><i></i></button>
                             <button type="button" class="cf__dot" aria-label="Ver Clínica de Mamas Lima"><i></i></button>
+                            <button type="button" class="cf__dot" aria-label="Ver Hamilton Segura Consultores"><i></i></button>
+                            <button type="button" class="cf__dot" aria-label="Ver AquaIA"><i></i></button>
+                            <button type="button" class="cf__dot" aria-label="Ver Hantof"><i></i></button>
+                            <button type="button" class="cf__dot" aria-label="Ver Clínica Proctológica Lima"><i></i></button>
+                            <button type="button" class="cf__dot" aria-label="Ver Clínica Traumatológica Lima"><i></i></button>
                         </div>
                         <button type="button" class="cf__arrow" data-dir="1" aria-label="Siguiente proyecto"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
                     </div>
@@ -475,100 +595,59 @@
                 </div>
 
                 <!-- Propuesta a medida -->
-                <div class="brief reveal" id="propuesta">
-                    <div>
+                <div class="brief brief--ios reveal" id="propuesta">
+                    <div class="brief__intro">
                         <p class="eyebrow">Propuesta a tu medida</p>
                         <h3 class="brief__title">¿No sabes qué plan elegir?</h3>
-                        <p class="brief__text">Cuéntanos tu idea y tu presupuesto. Preparamos una propuesta con
-                            alcance y precio cerrado, y te escribimos en menos de 24 horas.</p>
-                        <p class="brief__text" style="margin-top:1.4rem">
-                            <span class="mono">Al enviar se abre WhatsApp con tu mensaje listo.</span>
-                        </p>
+                        <p class="brief__text">Cuéntanos tu idea y tu presupuesto. Te armamos una propuesta clara para tu negocio.</p>
+                        <ul class="brief__perks">
+                            <li><span class="brief__ico is-orange"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><b>Respuesta en menos de 24 horas</b><small>Te escribimos el mismo día o al siguiente.</small></span></li>
+                            <li><span class="brief__ico is-blue"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></span><span><b>Alcance y precio cerrado</b><small>Todo por escrito, sin costos ocultos.</small></span></li>
+                            <li><span class="brief__ico is-green"><svg viewBox="0 0 24 24" class="is-fill"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2z"/></svg></span><span><b>Directo a WhatsApp</b><small>Al enviar se abre con tu mensaje listo.</small></span></li>
+                        </ul>
                     </div>
 
-                    <form id="brief-form" novalidate>
-                        <div class="field">
-                            <label for="brief-name">Tu nombre</label>
-                            <input type="text" id="brief-name" name="nombre" placeholder="Ej: Ana García"
-                                autocomplete="name" required>
-                        </div>
-
-                        <div class="field">
-                            <div class="range-head">
-                                <label for="brief-budget">Presupuesto ideal</label>
-                                <span class="range-val" id="brief-budget-value">S/ 500</span>
+                    <form id="brief-form" class="brief__form" novalidate>
+                        <fieldset class="brief__group">
+                            <legend class="brief__label">¿Qué necesitas?</legend>
+                            <div class="brief__seg" role="radiogroup">
+                                <label><input type="radio" name="tipo" value="Página web" checked><span>Página web</span></label>
+                                <label><input type="radio" name="tipo" value="Tienda online"><span>Tienda online</span></label>
+                                <label><input type="radio" name="tipo" value="Sistema a medida"><span>Sistema</span></label>
+                                <label><input type="radio" name="tipo" value="Otro"><span>Otro</span></label>
                             </div>
-                            <input type="range" id="brief-budget" name="presupuesto" min="200" max="5000" step="50"
-                                value="500">
-                            <div class="range-labels"><span>S/ 200</span><span>S/ 5,000+</span></div>
+                        </fieldset>
+
+                        <div class="brief__card">
+                            <label class="brief__row" for="brief-name"><span>Nombre</span><input type="text" id="brief-name" name="nombre" placeholder="Ana García" autocomplete="name" required></label>
+                            <label class="brief__row brief__row--area" for="brief-need"><span>Tu idea</span><textarea id="brief-need" name="proyecto" rows="3" placeholder="Ej: Vendo ropa y quiero que me pidan por WhatsApp…" required></textarea></label>
                         </div>
 
-                        <div class="field">
-                            <label for="brief-need">¿Qué necesitas?</label>
-                            <textarea id="brief-need" name="proyecto" rows="3"
-                                placeholder="Ej: Quiero una tienda online para vender ropa..." required></textarea>
+                        <div class="brief__card brief__budget">
+                            <div class="brief__budget-head">
+                                <label for="brief-budget">Presupuesto ideal</label>
+                                <output class="brief__budget-val" id="brief-budget-value" for="brief-budget">S/ 500</output>
+                            </div>
+                            <input type="range" id="brief-budget" name="presupuesto" min="200" max="5000" step="50" value="500">
+                            <div class="brief__quick" aria-label="Montos rápidos">
+                                <button type="button" data-v="390">S/ 390</button>
+                                <button type="button" data-v="800">S/ 800</button>
+                                <button type="button" data-v="1500">S/ 1,500</button>
+                                <button type="button" data-v="3000">S/ 3,000+</button>
+                            </div>
                         </div>
 
-                        <button type="submit" class="btn btn--primary btn--block">
-                            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> Enviar y hablar por WhatsApp
+                        <button type="submit" class="brief__send">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2z"/></svg> Enviar por WhatsApp
                         </button>
-                        <p class="mono" style="margin-top:1rem; line-height:1.5">
-                            Al enviar aceptas nuestra <a href="privacidad.html" style="color:var(--amber)">política de
-                            privacidad</a>. Usamos tus datos solo para responderte.
-                        </p>
+                        <p class="brief__legal">Al enviar aceptas nuestra <a href="privacidad.html">política de privacidad</a>. Usamos tus datos solo para responderte.</p>
                     </form>
                 </div>
             </div>
         </section>
 
-        <!-- ============ PROCESO ============ -->
-        <section class="section">
-            <div class="shell">
-                <div class="section-head">
-                    <div>
-                        <p class="eyebrow reveal">El proceso</p>
-                        <h2 class="display-lg section-head__title reveal" style="--d:60ms">De la primera llamada a tu
-                            web en línea.</h2>
-                    </div>
-                    <p class="section-head__note reveal" style="--d:120ms">
-                        Cuatro etapas, plazos claros y una sola persona de contacto. Sabes en qué punto está tu
-                        proyecto en todo momento.
-                    </p>
-                </div>
-
-                <ol class="steps reveal">
-                    <li class="step">
-                        <span class="step__n">01</span>
-                        <h3 class="step__t">Conversamos</h3>
-                        <p class="step__d">Nos cuentas qué vendes y a quién. Definimos objetivo, alcance y precio
-                            cerrado.</p>
-                        <p class="step__when">Día 1 · Sin costo</p>
-                    </li>
-                    <li class="step">
-                        <span class="step__n">02</span>
-                        <h3 class="step__t">Diseñamos</h3>
-                        <p class="step__d">Ves la propuesta visual antes de programar. Ajustamos hasta que la apruebes.
-                        </p>
-                        <p class="step__when">Días 2 – 3</p>
-                    </li>
-                    <li class="step">
-                        <span class="step__n">03</span>
-                        <h3 class="step__t">Programamos</h3>
-                        <p class="step__d">Construimos el sitio, conectamos WhatsApp, dominio, SSL y analítica.</p>
-                        <p class="step__when">Días 4 – 6</p>
-                    </li>
-                    <li class="step">
-                        <span class="step__n">04</span>
-                        <h3 class="step__t">Publicamos</h3>
-                        <p class="step__d">Sale a producción, te enseñamos a administrarla y seguimos disponibles.</p>
-                        <p class="step__when">Día 7 · Soporte incluido</p>
-                    </li>
-                </ol>
-            </div>
-        </section>
-
         <!-- ============ RESEÑAS ============ -->
-        <section class="section section--ruled reviews">
+        <section class="section section--ruled reviews reviews--ios">
             <div class="shell">
                 <div class="section-head">
                     <div>
@@ -585,73 +664,75 @@
                         </svg>
                         <span class="reviews__num">4.9</span>
                         <span class="reviews__stars" role="img" aria-label="4.9 de 5 estrellas">★★★★★</span>
-                        <span class="reviews__count">20+ reseñas</span>
+                        <span class="reviews__count">20+ reseñas en Google</span>
                     </div>
                 </div>
 
-                <div class="quotes">
-                    <figure class="quote reveal">
-                        <blockquote class="quote__text">“Pedí mi tienda online y la entregaron antes de la fecha. El
-                            panel para subir productos es facilísimo de usar. Mis clientas ahora compran por la web y
-                            pagan con Yape o tarjeta.”</blockquote>
-                        <figcaption class="quote__foot"><span class="quote__who">Rosa Quispe</span><span
-                                class="quote__what">Tienda online</span></figcaption>
-                    </figure>
-                    <figure class="quote reveal" style="--d:60ms">
-                        <blockquote class="quote__text">“INFALL superó todas nuestras expectativas. La plataforma de
-                            e-commerce que diseñaron triplicó nuestras ventas online en el primer trimestre. Su enfoque
-                            en velocidad y conversión es impresionante.”</blockquote>
-                        <figcaption class="quote__foot"><span class="quote__who">Miguel R.</span><span
-                                class="quote__what">E-commerce</span></figcaption>
-                    </figure>
-                    <figure class="quote reveal" style="--d:120ms">
-                        <blockquote class="quote__text">“Excelente trabajo con la web de la clínica. Ahora los
-                            pacientes reservan sus citas online y nos llegan las notificaciones al correo. 100%
-                            recomendados.”</blockquote>
-                        <figcaption class="quote__foot"><span class="quote__who">María Torres</span><span
-                                class="quote__what">Salud</span></figcaption>
-                    </figure>
-                    <figure class="quote reveal">
-                        <blockquote class="quote__text">“Pensé que una web era solo para empresas grandes. Me armaron
-                            un catálogo digital con precios y pedidos por WhatsApp. Mis ventas subieron desde el primer
-                            mes.”</blockquote>
-                        <figcaption class="quote__foot"><span class="quote__who">Víctor Paredes</span><span
-                                class="quote__what">Catálogo</span></figcaption>
-                    </figure>
-                    <figure class="quote reveal" style="--d:60ms">
-                        <blockquote class="quote__text">“Buscábamos una agencia que no nos vendiera plantillas
-                            genéricas. INFALL construyó nuestra web app desde cero. El nivel de detalle técnico y la
-                            arquitectura que implementaron es de clase mundial.”</blockquote>
-                        <figcaption class="quote__foot"><span class="quote__who">Carolina L.</span><span
-                                class="quote__what">Web app</span></figcaption>
-                    </figure>
-                    <figure class="quote reveal" style="--d:120ms">
-                        <blockquote class="quote__text">“Mi veterinaria por fin tiene presencia online. La web carga
-                            rapidísimo desde el celular y el botón de WhatsApp nos trae consultas todos los
-                            días.”</blockquote>
-                        <figcaption class="quote__foot"><span class="quote__who">Diana Rojas</span><span
-                                class="quote__what">Servicios</span></figcaption>
-                    </figure>
-                    <figure class="quote reveal">
-                        <blockquote class="quote__text">“Contratamos el plan corporativo y superó lo esperado. El
-                            buscador de propiedades con filtros quedó espectacular. Ya nos contactan clientes que nos
-                            encuentran en Google.”</blockquote>
-                        <figcaption class="quote__foot"><span class="quote__who">Pedro Salazar</span><span
-                                class="quote__what">Inmobiliaria</span></figcaption>
-                    </figure>
-                    <figure class="quote reveal" style="--d:60ms">
-                        <blockquote class="quote__text">“Nos construyeron el aula virtual y la web informativa. Los
-                            alumnos se matriculan online y todo queda registrado. El soporte post-entrega es de
-                            primera.”</blockquote>
-                        <figcaption class="quote__foot"><span class="quote__who">Ana Lucía Vega</span><span
-                                class="quote__what">Educación</span></figcaption>
-                    </figure>
-                    <figure class="quote reveal" style="--d:120ms">
-                        <blockquote class="quote__text">“Buen servicio y buena comunicación. Hubo un pequeño retraso
-                            con unas fotos pero el resultado final valió la pena.”</blockquote>
-                        <figcaption class="quote__foot"><span class="quote__who">Carlos Huamán</span><span
-                                class="quote__what">Servicios</span></figcaption>
-                    </figure>
+                <div class="rv reveal">
+                    <div class="rv__row">
+                        <div class="rv__track">
+                            <figure class="rv__card">
+                                <div class="tm__rate"><span class="tm__stars" style="--r:5" role="img" aria-label="5,0 de 5 estrellas"></span><span class="tm__num">5,0</span></div>
+                                <blockquote>“El resultado superó nuestras expectativas: ahora nuestros clientes pueden conocer nuestros productos y solicitar cotizaciones directamente por WhatsApp. Un servicio muy completo, con excelente atención y compromiso.”</blockquote>
+                                <figcaption class="rv__who"><img class="rv__avatar rv__avatar--img" src="portfolio-images/resenas/impofer.webp" width="120" height="120" alt="Logo de Impofer G&amp;M" loading="lazy"><span><a href="https://ferreteriaimpofer.com/" target="_blank" rel="noopener">Impofer G&amp;M</a><small>Ferretería</small></span></figcaption>
+                            </figure>
+                            <figure class="rv__card">
+                                <div class="tm__rate"><span class="tm__stars" style="--r:5" role="img" aria-label="5,0 de 5 estrellas"></span><span class="tm__num">5,0</span></div>
+                                <blockquote>“Logramos una plataforma moderna donde nuestros pacientes conocen nuestras terapias y talleres y agendan sus citas fácilmente por WhatsApp. Nos encantó el resultado y, sobre todo, la atención personalizada durante todo el proceso.”</blockquote>
+                                <figcaption class="rv__who"><img class="rv__avatar rv__avatar--img" src="portfolio-images/resenas/kja.webp" width="120" height="120" alt="Logo de KJA Centro Psicológico" loading="lazy"><span><a href="https://www.kjadmb.com/" target="_blank" rel="noopener">KJA Centro Psicológico</a><small>Salud mental</small></span></figcaption>
+                            </figure>
+                            <figure class="rv__card">
+                                <div class="tm__rate"><span class="tm__stars" style="--r:4.5" role="img" aria-label="4,5 de 5 estrellas"></span><span class="tm__num">4,5</span></div>
+                                <blockquote>“Ahora contamos con una página web moderna y profesional que facilita las solicitudes de cotización desde Ica, Chincha y Lima. Destacamos el diseño, la facilidad de navegación y el compromiso demostrado durante el desarrollo.”</blockquote>
+                                <figcaption class="rv__who"><img class="rv__avatar rv__avatar--img" src="portfolio-images/resenas/coolsecurity.webp" width="120" height="120" alt="Logo de Cool Security" loading="lazy"><span><a href="https://coolsecurityperu.com/" target="_blank" rel="noopener">Cool Security</a><small>Climatización y seguridad</small></span></figcaption>
+                            </figure>
+                            <figure class="rv__card">
+                                <div class="tm__rate"><span class="tm__stars" style="--r:4" role="img" aria-label="4,0 de 5 estrellas"></span><span class="tm__num">4,0</span></div>
+                                <blockquote>“Ahora disponemos de un catálogo organizado, buscador de productos y carrito de compras que facilita la experiencia de nuestros clientes, incluso desde provincia. Un trabajo profesional, funcional y acorde con lo que necesitábamos.”</blockquote>
+                                <figcaption class="rv__who"><img class="rv__avatar rv__avatar--img" src="portfolio-images/resenas/massimo.webp" width="120" height="120" alt="Logo de Izajes Massimo" loading="lazy"><span><a href="https://izajesmassimo.net/" target="_blank" rel="noopener">Izajes Massimo</a><small>Equipos de izaje</small></span></figcaption>
+                            </figure>
+                            <figure class="rv__card">
+                                <div class="tm__rate"><span class="tm__stars" style="--r:4.5" role="img" aria-label="4,5 de 5 estrellas"></span><span class="tm__num">4,5</span></div>
+                                <blockquote>“Buscábamos una página web que proyectara confianza y profesionalismo. Ahora nuestros pacientes pueden contactarnos directamente, y el contenido del blog fortalece nuestra presencia en Google. Muy satisfechos con el trabajo realizado.”</blockquote>
+                                <figcaption class="rv__who"><img class="rv__avatar rv__avatar--img" src="portfolio-images/resenas/gastro.webp" width="120" height="120" alt="Logo de Clínica Gastroenterología Lima" loading="lazy"><span><a href="https://clinicagastroenterologialima.com/" target="_blank" rel="noopener">Clínica Gastroenterología Lima</a><small>Salud</small></span></figcaption>
+                            </figure>
+                            <figure class="rv__card">
+                                <div class="tm__rate"><span class="tm__stars" style="--r:5" role="img" aria-label="5,0 de 5 estrellas"></span><span class="tm__num">5,0</span></div>
+                                <blockquote>“El resultado fue una plataforma moderna e intuitiva, donde nuestras pacientes conocen nuestros procedimientos y solicitan sus citas fácilmente por WhatsApp. Nos gustó mucho el diseño y la dedicación puesta en cada detalle.”</blockquote>
+                                <figcaption class="rv__who"><img class="rv__avatar rv__avatar--img" src="portfolio-images/resenas/mama.webp" width="120" height="120" alt="Logo de Clínica de Mamas Lima" loading="lazy"><span><a href="https://www.clinicademamalima.com/" target="_blank" rel="noopener">Clínica de Mamas Lima</a><small>Salud</small></span></figcaption>
+                            </figure>
+                            <figure class="rv__card" aria-hidden="true">
+                                <div class="tm__rate"><span class="tm__stars" style="--r:5" role="img" aria-label="5,0 de 5 estrellas"></span><span class="tm__num">5,0</span></div>
+                                <blockquote>“El resultado superó nuestras expectativas: ahora nuestros clientes pueden conocer nuestros productos y solicitar cotizaciones directamente por WhatsApp. Un servicio muy completo, con excelente atención y compromiso.”</blockquote>
+                                <figcaption class="rv__who"><img class="rv__avatar rv__avatar--img" src="portfolio-images/resenas/impofer.webp" width="120" height="120" alt="Logo de Impofer G&amp;M" loading="lazy"><span><a href="https://ferreteriaimpofer.com/" target="_blank" rel="noopener" tabindex="-1">Impofer G&amp;M</a><small>Ferretería</small></span></figcaption>
+                            </figure>
+                            <figure class="rv__card" aria-hidden="true">
+                                <div class="tm__rate"><span class="tm__stars" style="--r:5" role="img" aria-label="5,0 de 5 estrellas"></span><span class="tm__num">5,0</span></div>
+                                <blockquote>“Logramos una plataforma moderna donde nuestros pacientes conocen nuestras terapias y talleres y agendan sus citas fácilmente por WhatsApp. Nos encantó el resultado y, sobre todo, la atención personalizada durante todo el proceso.”</blockquote>
+                                <figcaption class="rv__who"><img class="rv__avatar rv__avatar--img" src="portfolio-images/resenas/kja.webp" width="120" height="120" alt="Logo de KJA Centro Psicológico" loading="lazy"><span><a href="https://www.kjadmb.com/" target="_blank" rel="noopener" tabindex="-1">KJA Centro Psicológico</a><small>Salud mental</small></span></figcaption>
+                            </figure>
+                            <figure class="rv__card" aria-hidden="true">
+                                <div class="tm__rate"><span class="tm__stars" style="--r:4.5" role="img" aria-label="4,5 de 5 estrellas"></span><span class="tm__num">4,5</span></div>
+                                <blockquote>“Ahora contamos con una página web moderna y profesional que facilita las solicitudes de cotización desde Ica, Chincha y Lima. Destacamos el diseño, la facilidad de navegación y el compromiso demostrado durante el desarrollo.”</blockquote>
+                                <figcaption class="rv__who"><img class="rv__avatar rv__avatar--img" src="portfolio-images/resenas/coolsecurity.webp" width="120" height="120" alt="Logo de Cool Security" loading="lazy"><span><a href="https://coolsecurityperu.com/" target="_blank" rel="noopener" tabindex="-1">Cool Security</a><small>Climatización y seguridad</small></span></figcaption>
+                            </figure>
+                            <figure class="rv__card" aria-hidden="true">
+                                <div class="tm__rate"><span class="tm__stars" style="--r:4" role="img" aria-label="4,0 de 5 estrellas"></span><span class="tm__num">4,0</span></div>
+                                <blockquote>“Ahora disponemos de un catálogo organizado, buscador de productos y carrito de compras que facilita la experiencia de nuestros clientes, incluso desde provincia. Un trabajo profesional, funcional y acorde con lo que necesitábamos.”</blockquote>
+                                <figcaption class="rv__who"><img class="rv__avatar rv__avatar--img" src="portfolio-images/resenas/massimo.webp" width="120" height="120" alt="Logo de Izajes Massimo" loading="lazy"><span><a href="https://izajesmassimo.net/" target="_blank" rel="noopener" tabindex="-1">Izajes Massimo</a><small>Equipos de izaje</small></span></figcaption>
+                            </figure>
+                            <figure class="rv__card" aria-hidden="true">
+                                <div class="tm__rate"><span class="tm__stars" style="--r:4.5" role="img" aria-label="4,5 de 5 estrellas"></span><span class="tm__num">4,5</span></div>
+                                <blockquote>“Buscábamos una página web que proyectara confianza y profesionalismo. Ahora nuestros pacientes pueden contactarnos directamente, y el contenido del blog fortalece nuestra presencia en Google. Muy satisfechos con el trabajo realizado.”</blockquote>
+                                <figcaption class="rv__who"><img class="rv__avatar rv__avatar--img" src="portfolio-images/resenas/gastro.webp" width="120" height="120" alt="Logo de Clínica Gastroenterología Lima" loading="lazy"><span><a href="https://clinicagastroenterologialima.com/" target="_blank" rel="noopener" tabindex="-1">Clínica Gastroenterología Lima</a><small>Salud</small></span></figcaption>
+                            </figure>
+                            <figure class="rv__card" aria-hidden="true">
+                                <div class="tm__rate"><span class="tm__stars" style="--r:5" role="img" aria-label="5,0 de 5 estrellas"></span><span class="tm__num">5,0</span></div>
+                                <blockquote>“El resultado fue una plataforma moderna e intuitiva, donde nuestras pacientes conocen nuestros procedimientos y solicitan sus citas fácilmente por WhatsApp. Nos gustó mucho el diseño y la dedicación puesta en cada detalle.”</blockquote>
+                                <figcaption class="rv__who"><img class="rv__avatar rv__avatar--img" src="portfolio-images/resenas/mama.webp" width="120" height="120" alt="Logo de Clínica de Mamas Lima" loading="lazy"><span><a href="https://www.clinicademamalima.com/" target="_blank" rel="noopener" tabindex="-1">Clínica de Mamas Lima</a><small>Salud</small></span></figcaption>
+                            </figure>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -660,19 +741,29 @@
         <section class="section section--tight">
             <div class="shell">
                 <div class="closer reveal">
-                    <div>
+                    <div class="closer__copy">
                         <p class="eyebrow">Siguiente paso</p>
-                        <h2 class="display-md" style="margin-top:1rem; max-width: 20ch;">Cuéntanos qué vendes. Te
-                            decimos qué web necesitas.</h2>
-                        <p class="lead" style="margin-top:1rem; font-size:1rem;">Sin compromiso y sin tecnicismos. En
-                            la primera conversación sales con alcance, plazo y precio.</p>
+                        <h2 class="display-md closer__title">Cuéntanos qué vendes. Te decimos qué web necesitas.</h2>
+                        <p class="closer__lead">Sin compromiso y sin tecnicismos. En la primera conversación sales con alcance, plazo y precio.</p>
+                        <ul class="closer__points">
+                            <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Asesoría inicial sin costo</li>
+                            <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Cotización formal por escrito</li>
+                            <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Hablas directo con quien hace tu web</li>
+                        </ul>
                     </div>
-                    <div class="closer__actions">
+                    <div class="wa-card">
+                        <div class="wa-card__head">
+                            <span class="wa-card__avatar" aria-hidden="true">I<i></i></span>
+                            <span class="wa-card__who"><b>INFALL · Sistemas Perú</b><small><span class="wa-card__dot" aria-hidden="true"></span>WhatsApp · +51 922 996 170</small></span>
+                        </div>
+                        <div class="wa-card__chat" aria-hidden="true">
+                            <p class="wa-card__bubble">Hola INFALL, quiero cotizar una página web profesional.<span>Tu primer mensaje</span></p>
+                        </div>
                         <a href="https://wa.me/51922996170?text=Hola%20INFALL%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web%20profesional."
-                            target="_blank" rel="noopener" class="btn btn--primary">
+                            target="_blank" rel="noopener" class="btn btn--primary wa-card__cta">
                             <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg> Escribir por WhatsApp
                         </a>
-                        <a href="cotizacion.html" class="btn btn--ghost">Llenar formulario</a>
+                        <a href="cotizacion.html" class="wa-card__alt">Prefiero llenar el formulario <span aria-hidden="true">→</span></a>
                     </div>
                 </div>
             </div>
@@ -686,7 +777,7 @@
                 <div>
                     <a href="index.html" class="brand">
                         <span class="brand__mark">INFALL<span class="brand__dot" aria-hidden="true"></span></span>
-                        <span class="brand__sub">Systems Engineering</span>
+                        <span class="brand__sub">Sistemas · Perú</span>
                     </a>
                     <p class="foot__about">Diseño y desarrollo de páginas web para MYPEs y emprendedores del Perú.
                         Rápidas, seguras y hechas para que te encuentren en Google.</p>
@@ -736,8 +827,8 @@
             </div>
 
             <div class="foot__bottom">
-                <span>© 2026 INFALL Systems Engineering</span>
-                <span>Lima, Perú · Trabajo 100% remoto</span>
+                <span>© 2026 INFALL · Sistemas Perú. Todos los derechos reservados.</span>
+                <span>Lima, Perú</span>
             </div>
         </div>
     </footer>
@@ -776,7 +867,7 @@
     </a>
 
     <script src="cart.js?v=5" defer></script>
-    <script src="assets/infall.js?v=9" defer></script>
+    <script src="assets/infall.js?v=12" defer></script>
     <script src="assets/analytics.js?v=1" defer></script>
 </body>
 
