@@ -11,6 +11,8 @@
        Lo obtienes en analytics.google.com → Administrar → Flujos de datos.
        Mientras esté vacío, el sitio no carga Google Analytics ni envía datos.
     ----------------------------------------------------------------------- */
+    /* GA4 ya se carga con la etiqueta de Google del <head> (GTM-P2N5VG5D →
+       G-Y2P1C2S4NZ). Deja esto vacío para no medir cada visita dos veces. */
     var GA4_ID = '';
 
     var activo = /^G-[A-Z0-9]{6,}$/i.test(GA4_ID);
@@ -38,7 +40,9 @@
         datos = datos || {};
         datos.pagina = location.pathname.split('/').pop() || 'index.html';
 
-        if (activo && window.gtag) {
+        // La etiqueta de Google (GTM-P2N5VG5D) va en el <head> de cada página
+        // y define window.gtag; los eventos llegan a GA4 por ahí.
+        if (typeof window.gtag === 'function') {
             window.gtag('event', nombre, datos);
         }
 
