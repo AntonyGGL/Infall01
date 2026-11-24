@@ -2198,3 +2198,19 @@ a, button, input, select, textarea, label, [role="button"], [role="tab"] {
 @media (min-width: 1100px) {
     html { zoom: 0.9; }
 }
+
+/* Frase junto al logo (encabezado), como en el diseño de referencia */
+.brand__tag {
+    flex: none;
+    margin-left: -0.6rem;
+    padding-left: 1.2rem;
+    border-left: 1px solid var(--rule-hard);
+    color: var(--bone-dim);
+    font-size: 0.8rem;
+    font-style: italic;
+    white-space: nowrap;
+}
+.nav.is-stuck .brand__tag { display: none; }
+@media (max-width: 1180px) { .brand__tag { display: none; } }
+.nav__link { white-space: nowrap; }
+@media (min-width: 901px) and (max-width: 1400px) { .nav__link { padding-inline: 0.6rem; } .nav__inner { gap: 1.2rem; } }

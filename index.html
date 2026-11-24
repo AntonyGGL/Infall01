@@ -53,8 +53,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="assets/infall.css?v=10">
-    <link rel="stylesheet" href="assets/home.css?v=37">
+    <link rel="stylesheet" href="assets/infall.css?v=12">
+    <link rel="stylesheet" href="assets/home.css?v=52">
 
     <script>
         (function () { try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) { } })();
@@ -150,13 +150,15 @@
                 <span class="brand__mark">INFALL<span class="brand__dot" aria-hidden="true"></span></span>
                 <span class="brand__sub">Consultoría · Perú</span>
             </a>
+            <span class="brand__tag" aria-hidden="true">Consultoría Web Estratégica</span>
 
             <nav class="nav__links" id="nav-links" aria-label="Navegación principal">
                 <a href="index.html" class="nav__link" aria-current="page">Inicio</a>
                 <a href="quienes-somos.html" class="nav__link">Quiénes somos</a>
                 <a href="servicios.html" class="nav__link">Servicios</a>
-                <a href="dominios.html" class="nav__link">Dominios</a>
+                <a href="#casos" class="nav__link">Casos de éxito</a>
                 <a href="portfolio.html" class="nav__link">Portafolio</a>
+                <a href="#contacto" class="nav__link">Contacto</a>
                 <div class="nav__drawer-cta">
                     <a href="cotizacion.html" class="btn btn--primary btn--block">Cotizar proyecto</a>
                     <a href="https://wa.me/51922996170" target="_blank" rel="noopener"
@@ -182,7 +184,7 @@
                     <span class="cart-badge hidden" id="navCartBadge">0</span>
                 </button>
 
-                <a href="cotizacion.html" class="btn btn--primary nav__cta nav__cta--desktop">Cotizar proyecto</a>
+                <a href="cotizacion.html" class="btn btn--primary nav__cta nav__cta--desktop">Cotizar proyecto <span aria-hidden="true">→</span></a>
 
                 <button class="nav__burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false"
                     aria-controls="nav-links">
@@ -198,23 +200,27 @@
         <section class="home-intro" aria-labelledby="home-title">
             <div class="shell home-intro__layout">
                 <div class="home-intro__copy">
-                    <p class="home-kicker">Diseño web para negocios peruanos</p>
-                    <h1 id="home-title">Diseño que conecta.<br><em>Webs que impulsan.</em></h1>
-                    <p class="home-intro__description">Convertimos lo que hace único a tu negocio en una web que se ve bien, funciona rápido y facilita que tus clientes te contacten.</p>
+                    <p class="hero-badge hero-badge--proof"><span class="hero-badge__logos" aria-hidden="true"><img src="portfolio-images/resenas/mama.webp" width="120" height="120" alt=""><img src="portfolio-images/resenas/coolsecurity.webp" width="120" height="120" alt=""><img src="portfolio-images/resenas/massimo.webp" width="120" height="120" alt=""></span><span class="m-off">Elegidos por <b>clínicas, ferreterías e industrias</b> en todo el Perú</span><span class="m-on">Elegidos por <b>negocios de todo el Perú</b></span></p>
+                    <h1 id="home-title" class="hero-h1">Consigue más clientes <span class="m-off">para tu negocio </span>con una <em>página web profesional y WhatsApp.</em></h1>
+                    <p class="home-intro__description"><span class="m-off">Diseñamos páginas web estratégicas, modernas y optimizadas para convertir visitas en clientes, integradas con WhatsApp y orientadas a hacer crecer tu negocio en el Perú.</span><span class="m-on">Webs rápidas, listas para Google y conectadas a tu WhatsApp.</span></p>
                     <div class="home-intro__actions">
-                        <a href="cotizacion.html" class="btn btn--primary">Cotiza tu proyecto <span aria-hidden="true">↗</span></a>
-                        <a href="#trabajos" class="btn btn--ghost">Ver proyectos</a>
+                        <a href="https://wa.me/51922996170?text=Hola%20INFALL%2C%20quiero%20cotizar%20mi%20p%C3%A1gina%20web." target="_blank" rel="noopener" class="btn btn--primary hero-wa"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2z"/></svg> Cotiza gratis por WhatsApp <span aria-hidden="true">→</span></a>
+                        <a href="#trabajos" class="btn btn--ghost hero-ghost m-off"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg> Ver trabajos reales</a>
                     </div>
-                    <p class="home-intro__price">Páginas desde <strong>S/ 390</strong> <a href="#planes">Ver planes</a></p>
+                    <ul class="hero-guarantees" aria-label="Lo que incluye trabajar con INFALL">
+                        <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Asesoría estratégica</li>
+                        <li class="m-off"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Diseño profesional (UX/UI)</li>
+                        <li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SEO local</li>
+                        <li class="m-off"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Soporte y mantenimiento</li>
+                    </ul>
                 </div>
 
                 <div class="studio-scene device-scene">
                     <a class="offer-circle" href="#planes" aria-label="Páginas desde S/ 390. Ver planes">
                         <small>Desde</small>
                         <b>S/ 390</b>
-                        <span>Ver planes ↗</span>
+                        <span>Planes a medida →</span>
                     </a>
-                    <span class="offer-stamp" aria-label="Tu web lista y publicada en 1 día"><b>1</b>día<small>lista y publicada</small></span>
                     <figure class="device-mac">
                         <a class="device-mac__lid" href="https://coolsecurityperu.com/" target="_blank" rel="noopener" aria-label="Visitar el sitio de Cool Security (abre en otra pestaña)">
                             <img src="portfolio-images/coolsecurity-escritorio.webp" width="1200" height="750" fetchpriority="high"
@@ -228,67 +234,80 @@
                     <span class="device-iphone">
                         <img src="portfolio-images/coolsecurity-movil.webp" width="390" height="844" alt="El mismo sitio visto en un celular">
                     </span>
-                    <a class="studio-note" href="https://coolsecurityperu.com/" target="_blank" rel="noopener">
-                        <span class="studio-note__icon" aria-hidden="true">↗</span>
-                        <span>Cool Security · Aire acondicionado<strong>Se adapta a cada pantalla.</strong></span>
-                    </a>
+                </div>
+            </div>
+
+            <div class="shell hero-band">
+                <dl class="hero-stats">
+                    <div class="hero-stat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5z"/><path d="m2 13 10 5 10-5"/><path d="m2 18 10 5 10-5" opacity=".5"/></svg><div><dt>Webs publicadas</dt><dd><b data-stat="proyectos">11</b><span>proyectos publicados</span><small>Webs de clientes en línea</small></dd></div></div>
+                    <div class="hero-stat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3z"/></svg><div><dt>Opiniones</dt><dd><b data-stat="opiniones">6</b><span>clientes nos recomiendan</span><small>Opiniones con nombre y web publicada</small></dd></div></div>
+                    <div class="hero-stat"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><div><dt>Rubros</dt><dd><b data-stat="rubros">8</b><span>rubros atendidos</span><small data-stat="rubros-lista">salud, industria, comercio y más</small></dd></div></div>
+                    <div class="hero-stat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13" width="4" height="6" rx="1.5"/><rect x="17.5" y="13" width="4" height="6" rx="1.5"/><path d="M19.5 19a3 3 0 0 1-3 3H13"/></svg><div><dt>Soporte</dt><dd><b class="is-text">Soporte continuo</b><span>Acompañamiento y mantenimiento</span><small>después del lanzamiento</small></dd></div></div>
+                </dl>
+                <div class="hero-logos">
+                    <p class="hero-logos__label"><b>Confían en nuestra consultoría</b><span>Empresas peruanas que ya potencian su negocio con INFALL</span></p>
+                    <div class="hero-logos__row">
+                        <a href="https://www.clinicademamalima.com/" target="_blank" rel="noopener"><img src="portfolio-images/resenas/mama.webp" width="120" height="120" alt="" loading="lazy">Clínica de Mamas</a>
+                        <a href="https://izajesmassimo.net/" target="_blank" rel="noopener"><img src="portfolio-images/resenas/massimo.webp" width="120" height="120" alt="" loading="lazy">Izajes Massimo</a>
+                        <a href="https://coolsecurityperu.com/" target="_blank" rel="noopener"><img src="portfolio-images/resenas/coolsecurity.webp" width="120" height="120" alt="" loading="lazy">Cool Security</a>
+                        <a href="https://www.kjadmb.com/" target="_blank" rel="noopener"><img src="portfolio-images/resenas/kja.webp" width="120" height="120" alt="" loading="lazy">KJA Psicología</a>
+                        <a href="https://clinicagastroenterologialima.com/" target="_blank" rel="noopener"><img src="portfolio-images/resenas/gastro.webp" width="120" height="120" alt="" loading="lazy">Gastro Lima</a>
+                        <span><img src="portfolio-images/resenas/impofer.webp" width="120" height="120" alt="" loading="lazy">Impofer</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="studio-services studio-services--art shell" aria-label="Soluciones para tu negocio">
+        <!-- ============ CASOS REALES ============ -->
+        <section class="studio-services studio-services--cases shell" id="casos" aria-labelledby="cases-title">
             <div class="studio-services__intro">
-                <p class="eyebrow">De la idea a la web</p>
-                <h2>Tu negocio.<br>Todo su potencial.</h2>
-                <a href="servicios.html" class="link-arrow">Explora los servicios ↗</a>
+                <p class="eyebrow">Casos de éxito</p>
+                <h2 id="cases-title">Resultados reales para negocios reales</h2>
+                <p class="cases__lead">Conoce cómo ayudamos a empresarios peruanos a fortalecer su presencia digital, generar más consultas y convertirlas en clientes.</p>
+                <a href="portfolio.html" class="link-arrow">Ver todo el portafolio ↗</a>
             </div>
-            <a class="studio-service" href="#planes">
-                <span class="studio-service__type">Página web para tu negocio</span>
-                <h3>Que te encuentren.<br>Que te elijan.</h3>
-                <p class="sv-sr">Landing pages y webs empresariales para presentar tu marca y recibir consultas.</p>
-                <span class="sv-art sv-g" aria-hidden="true">
-                    <span class="sv-g__win">
-                        <span class="sv-g__bar"><i></i><i></i><i></i><span class="sv-g__url"><b class="is-search">google.com</b><b class="is-site"><svg viewBox="0 0 24 24" class="is-fill"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg>tunegocio.pe</b></span></span>
-                        <span class="sv-g__body">
-                            <span class="sv-g__search">
-                                <span class="sv-g__box"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="sv-g__type">ferretería en Huancayo</span></span>
-                                <span class="sv-g__results">
-                                    <span class="sv-g__r is-top"><small>tunegocio.pe</small><strong>Tu Negocio · Ferretería en Huancayo</strong><em><ins>★★★★★</ins> 4.9 · Abierto ahora</em></span>
-                                    <span class="sv-g__r"><s></s><s></s></span>
-                                    <span class="sv-g__r"><s></s><s></s></span>
-                                </span>
-                            </span>
-                            <span class="sv-g__site">
-                                <span class="sv-g__nav"><b>TN</b><strong>Tu Negocio</strong><s></s><s></s></span>
-                                <span class="sv-g__hero"><strong>Todo para tu obra,<br>en Huancayo</strong><u><svg viewBox="0 0 24 24" class="is-fill"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2z"/></svg>Cotizar por WhatsApp</u></span>
-                                <span class="sv-g__prods"><i></i><i></i><i></i></span>
-                            </span>
-                        </span>
-                        <span class="sv-g__cursor"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.5L10 19z"/></svg></span>
-                    </span>
-                    <span class="sv-g__toast"><svg viewBox="0 0 24 24" class="is-fill"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2z"/></svg><span><small>Nuevo cliente</small>¿Tienen stock? Quiero cotizar</span></span>
-                </span>
-                <span class="studio-service__link"><span>Ver planes <span class="sv-price">desde S/ 390</span></span> <span aria-hidden="true">↗</span></span>
-            </a>
-            <a class="studio-service studio-service--dark" href="cotizacion.html">
-                <span class="studio-service__type">Sistema a medida</span>
-                <h3>Tu forma de trabajar.<br>En una aplicación.</h3>
-                <p class="sv-sr">Catálogos, paneles y herramientas pensadas para los procesos de tu negocio.</p>
-                <span class="sv-art sv-map" aria-hidden="true">
-                    <span class="sv-map__badge"><i></i>Negocios vendiendo más en todo el Perú</span>
-                    <span class="sv-map__stage">
-                        <svg class="sv-map__svg" viewBox="0 0 170 230" preserveAspectRatio="none">
-                            <path class="sv-map__land" d="M22.4,44.8 L24.8,55.6 L33.2,58.0 L42.8,56.8 L45.2,46.0 L62.0,35.2 L78.8,22.0 L83.6,5.2 L94.4,14.8 L110.0,32.8 L124.4,30.4 L138.8,35.2 L146.0,54.4 L122.0,64.0 L111.2,66.4 L99.2,92.8 L107.6,112.0 L119.6,124.0 L138.8,136.0 L150.8,134.8 L161.6,154.0 L156.8,172.0 L153.2,191.2 L158.0,199.6 L150.8,211.6 L141.2,224.2 L129.2,216.4 L116.0,203.2 L98.0,193.6 L83.6,187.6 L71.6,170.8 L64.4,155.2 L59.6,146.8 L50.0,133.6 L42.8,113.2 L38.0,101.2 L27.2,85.6 L12.8,76.0 L10.0,60.4 L15.2,52.0 Z"/>
-                            <g class="sv-map__dots"><circle cx="61.6" cy="148.6" r="2.2"/><circle cx="122.4" cy="166.4" r="2.2"/><circle cx="107.0" cy="49.0" r="2.2"/></g>
-                        </svg>
-                        <span class="sv-map__pin" style="--x:10.8%;--y:28.8%;--i:0"><span class="sv-map__chip"><b>Restaurante</b><small>Piura</small><svg viewBox="0 0 40 16"><path d="M1,14 L10,11 L17,12 L25,7 L32,6 L39,1"/></svg></span></span>
-                        <span class="sv-map__pin" style="--x:22.1%;--y:44.1%;--i:1"><span class="sv-map__chip"><b>Clínica</b><small>Trujillo</small><svg viewBox="0 0 40 16"><path d="M1,14 L10,11 L17,12 L25,7 L32,6 L39,1"/></svg></span></span>
-                        <span class="sv-map__pin" style="--x:49.2%;--y:64.7%;--i:2"><span class="sv-map__chip"><b>Ferretería</b><small>Huancayo</small><svg viewBox="0 0 40 16"><path d="M1,14 L10,11 L17,12 L25,7 L32,6 L39,1"/></svg></span></span>
-                        <span class="sv-map__pin" style="--x:75.0%;--y:87.3%;--i:3"><span class="sv-map__chip"><b>Bodega</b><small>Arequipa</small><svg viewBox="0 0 40 16"><path d="M1,14 L10,11 L17,12 L25,7 L32,6 L39,1"/></svg></span></span>
-                    </span>
-                </span>
-                <span class="studio-service__link"><span>Cuéntanos tu idea <span class="sv-price">cotización gratis</span></span> <span aria-hidden="true">↗</span></span>
-            </a>
+
+            <div class="cases__track">
+            <article class="studio-service case">
+                <span class="case__tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.5-9.3C1.2 8.5 3.3 5 6.8 5c2 0 3.6 1.1 4.2 2.6C11.6 6.1 13.2 5 15.2 5c3.5 0 5.6 3.5 4.3 6.7C19.5 16.4 12 21 12 21z"/></svg>Salud</span>
+                <h3>Clínica de Mamas Lima</h3>
+                <p class="case__sub">Página web + captación de pacientes</p>
+                <span class="case__badge"><b>5,0 ★</b><small>opinión del cliente</small></span>
+                <div class="case__body">
+                <a class="case__shot" href="https://www.clinicademamalima.com/" target="_blank" rel="noopener" aria-label="Visitar la web de Clínica de Mamas Lima (abre en otra pestaña)">
+                    <span class="case__bar" aria-hidden="true"><i></i><i></i><i></i><b>clinicademamalima.com</b></span>
+                    <img src="portfolio-images/web/mama-720.webp" width="720" height="500" alt="Página de inicio de Clínica de Mamas Lima" loading="lazy">
+                    <span class="case__phone" aria-hidden="true"><img src="portfolio-images/web/mama-movil.webp" width="640" height="1050" alt="" loading="lazy"></span>
+                </a>
+                <ul class="case__facts">
+                    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z"/></svg><span><b>Citas</b><small>por WhatsApp desde la web</small></span></li>
+                    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18 10 12l4 4 6-7"/><path d="M15 9h5v5"/></svg><span><b>SEO local</b><small>para búsquedas en Lima</small></span></li>
+                    <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4" width="13" height="10" rx="1.5"/><rect x="17" y="8" width="4.5" height="11" rx="1.2"/><path d="M6 18h6"/></svg><span><b>100% responsive</b><small>web, tablet y móvil</small></span></li>
+                </ul>
+                </div>
+                <div class="case__foot"><ul class="case__chips"><li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Estrategia</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Diseño UX/UI</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SEO local</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp</li></ul><a href="portfolio.html" class="case__more">Ver caso completo <span aria-hidden="true">→</span></a></div>
+            </article>
+
+            <article class="studio-service studio-service--dark case">
+                <span class="case__tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>Industria</span>
+                <h3>Izajes Massimo</h3>
+                <p class="case__sub">Tienda online + pedidos desde todo el Perú</p>
+                <span class="case__badge"><b>E-commerce</b><small>tienda online con carrito</small></span>
+                <div class="case__body">
+                <a class="case__shot" href="https://izajesmassimo.net/" target="_blank" rel="noopener" aria-label="Visitar la web de Izajes Massimo (abre en otra pestaña)">
+                    <span class="case__bar" aria-hidden="true"><i></i><i></i><i></i><b>izajesmassimo.net</b></span>
+                    <img src="portfolio-images/web/massimo-720.webp" width="720" height="500" alt="Tienda online de Izajes Massimo" loading="lazy">
+                    <span class="case__phone" aria-hidden="true"><img src="portfolio-images/web/massimo-movil.webp" width="640" height="1050" alt="" loading="lazy"></span>
+                </a>
+                <ul class="case__facts">
+                    <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4-4"/></svg><span><b>Buscador</b><small>por categoría de producto</small></span></li>
+                    <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.4 11.6a1.8 1.8 0 0 0 1.8 1.4h8.6a1.8 1.8 0 0 0 1.8-1.4L21.5 7H6"/></svg><span><b>Carrito</b><small>pedidos en línea</small></span></li>
+                    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6h11v10H2zM13 10h4l4 4v2h-8"/><circle cx="6" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg><span><b>Envíos</b><small>a todo el Perú</small></span></li>
+                </ul>
+                </div>
+                <div class="case__foot"><ul class="case__chips"><li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Estrategia</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>E-commerce</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SEO</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Soporte</li></ul><a href="portfolio.html" class="case__more">Ver caso completo <span aria-hidden="true">→</span></a></div>
+            </article>
+            </div>
         </section>
 
         <!-- ============ TRABAJOS ============ -->
@@ -675,15 +694,8 @@
                             su web.</h2>
                     </div>
                     <div class="reviews__score reveal" style="--d:120ms">
-                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                            <path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/>
-                            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/>
-                            <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"/>
-                            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"/>
-                        </svg>
-                        <span class="reviews__num">4.9</span>
-                        <span class="reviews__stars" role="img" aria-label="4.9 de 5 estrellas">★★★★★</span>
-                        <span class="reviews__count">20+ reseñas en Google</span>
+                        <span class="reviews__stars" aria-hidden="true">★★★★★</span>
+                        <span class="reviews__count">Opiniones reales de clientes con su web publicada. Entra a sus webs y compruébalo.</span>
                     </div>
                 </div>
 
@@ -773,7 +785,7 @@
                     <div class="wa-card">
                         <div class="wa-card__head">
                             <span class="wa-card__avatar" aria-hidden="true">I<i></i></span>
-                            <span class="wa-card__who"><b>INFALL · Sistemas Perú</b><small><span class="wa-card__dot" aria-hidden="true"></span>WhatsApp · +51 922 996 170</small></span>
+                            <span class="wa-card__who"><b>INFALL Consultoría</b><small><span class="wa-card__dot" aria-hidden="true"></span>WhatsApp · +51 922 996 170</small></span>
                         </div>
                         <div class="wa-card__chat" aria-hidden="true">
                             <p class="wa-card__bubble">Hola INFALL, quiero cotizar una página web profesional.<span>Tu primer mensaje</span></p>
@@ -887,6 +899,7 @@
 
     <script src="cart.js?v=5" defer></script>
     <script src="assets/infall.js?v=13" defer></script>
+    <script src="assets/stats.js?v=1" defer></script>
     <script src="assets/analytics.js?v=2" defer></script>
 </body>
 
