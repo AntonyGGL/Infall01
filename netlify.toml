@@ -6,3 +6,102 @@
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
+
+# Una sola URL por página: la versión sin .html redirige a la .html
+# (la .html es la canónica, la del sitemap y la de los enlaces internos).
+[[redirects]]
+  from = "/servicios"
+  to = "/servicios.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/"
+  to = "/servicios.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/portfolio"
+  to = "/portfolio.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/portfolio/"
+  to = "/portfolio.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dominios"
+  to = "/dominios.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dominios/"
+  to = "/dominios.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/quienes-somos"
+  to = "/quienes-somos.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/quienes-somos/"
+  to = "/quienes-somos.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cotizacion"
+  to = "/cotizacion.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cotizacion/"
+  to = "/cotizacion.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terminos"
+  to = "/terminos.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terminos/"
+  to = "/terminos.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacidad"
+  to = "/privacidad.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacidad/"
+  to = "/privacidad.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/libro-reclamaciones"
+  to = "/libro-reclamaciones.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/libro-reclamaciones/"
+  to = "/libro-reclamaciones.html"
+  status = 301
+  force = true
+
