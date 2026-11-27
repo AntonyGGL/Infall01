@@ -105,3 +105,15 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/paginas-web-economicas"
+  to = "/paginas-web-economicas.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/paginas-web-economicas/"
+  to = "/paginas-web-economicas.html"
+  status = 301
+  force = true
+
