@@ -7,113 +7,65 @@
   to = "/.netlify/functions/:splat"
   status = 200
 
-# Una sola URL por página: la versión sin .html redirige a la .html
-# (la .html es la canónica, la del sitemap y la de los enlaces internos).
+# Una sola URL por página: Netlify ("Pretty URLs") publica los enlaces sin .html,
+# así que esa es la canónica. La versión .html redirige a la versión sin .html.
 [[redirects]]
-  from = "/servicios"
-  to = "/servicios.html"
+  from = "/servicios.html"
+  to = "/servicios"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/servicios/"
-  to = "/servicios.html"
+  from = "/portfolio.html"
+  to = "/portfolio"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/portfolio"
-  to = "/portfolio.html"
+  from = "/dominios.html"
+  to = "/dominios"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/portfolio/"
-  to = "/portfolio.html"
+  from = "/quienes-somos.html"
+  to = "/quienes-somos"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/dominios"
-  to = "/dominios.html"
+  from = "/cotizacion.html"
+  to = "/cotizacion"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/dominios/"
-  to = "/dominios.html"
+  from = "/terminos.html"
+  to = "/terminos"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/quienes-somos"
-  to = "/quienes-somos.html"
+  from = "/privacidad.html"
+  to = "/privacidad"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/quienes-somos/"
-  to = "/quienes-somos.html"
+  from = "/libro-reclamaciones.html"
+  to = "/libro-reclamaciones"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/cotizacion"
-  to = "/cotizacion.html"
+  from = "/paginas-web-economicas.html"
+  to = "/paginas-web-economicas"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/cotizacion/"
-  to = "/cotizacion.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/terminos"
-  to = "/terminos.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/terminos/"
-  to = "/terminos.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/privacidad"
-  to = "/privacidad.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/privacidad/"
-  to = "/privacidad.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/libro-reclamaciones"
-  to = "/libro-reclamaciones.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/libro-reclamaciones/"
-  to = "/libro-reclamaciones.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/paginas-web-economicas"
-  to = "/paginas-web-economicas.html"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/paginas-web-economicas/"
-  to = "/paginas-web-economicas.html"
+  from = "/index.html"
+  to = "/"
   status = 301
   force = true
 
