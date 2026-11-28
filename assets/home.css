@@ -1359,10 +1359,10 @@
     /* El precio ya está en el círculo: se evita repetirlo */
     .home-intro__price { display: none; }
 
-    .home--main .device-scene { padding: 2.75rem 0 8.75rem; }
+    .home--main .device-scene { padding: 2.75rem 0 5.5rem; }
     .home--main .device-mac { margin: 0 5% 0 1%; }
-    .home--main .device-ipad { right: -0.25rem; bottom: 4.5rem; width: 32%; }
-    .home--main .device-iphone { right: 27%; bottom: 3.25rem; width: 16%; }
+    .home--main .device-ipad { right: -0.25rem; bottom: 1.3rem; width: 32%; }
+    .home--main .device-iphone { right: 27%; bottom: 0; width: 16%; }
 
     .offer-circle { top: 0.5rem; right: -0.25rem; width: 98px; height: 98px; }
     .offer-circle small { font-size: 0.66rem; }
@@ -3607,3 +3607,41 @@ a.clients__item:hover { transform: translateY(-2px); border-color: rgba(var(--am
 
 /* Propuesta a medida: oculta por ahora (quitar hidden en index.html para mostrarla) */
 .brief[hidden] { display: none !important; }
+
+/* Celular: el hero muestra la nota y lleva a las reseñas de abajo */
+.hrv__more, .hrv__who, .hrv__stars { display: none; }
+@media (max-width: 600px) {
+    .hero-reviews { padding: 1.15rem; }
+    .hero-reviews .hrv__track { display: none; }
+    .hero-reviews .hrv__head { gap: 0.8rem; padding: 0; border-bottom: 0; }
+    .hrv__title { font-size: 1.3rem; }
+    .hrv__sub { margin-top: -0.35rem; }
+
+    .hrv__score { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 0.25rem 0.9rem; width: auto; padding: 0.85rem 1rem; border-radius: 18px; }
+    .hrv__score > span { display: none; }
+    .hrv__score b { grid-row: 1 / span 2; padding-right: 0.9rem; border-right: 1px solid var(--rule); font-size: 2.3rem; letter-spacing: -0.04em; }
+    .hrv__score b span { font-size: 2.3rem; }
+    .hrv__stars { display: block; font-size: 1.15rem; letter-spacing: 0.1em; background: linear-gradient(90deg, #f4a20c var(--pct), var(--rule-hard) var(--pct)); -webkit-background-clip: text; background-clip: text; }
+    .hrv__score small { max-width: none; font-size: 0.8rem; }
+
+    .hrv__who { display: flex; flex-wrap: wrap; gap: 0.35rem 0.8rem; margin: 0; color: var(--bone-soft); font-size: 0.78rem; font-weight: 600; }
+    .hrv__who span { display: inline-flex; align-items: center; gap: 0.3rem; }
+    .hrv__who span:not(:last-child)::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #1fa855; }
+    .hrv__who span:last-child { color: var(--bone-dim); font-weight: 500; }
+
+    .hrv__more { display: flex; align-items: center; justify-content: space-between; min-height: 54px; margin-top: 0.1rem; padding: 0.4rem 0.45rem 0.4rem 1.3rem; border-radius: 999px; background: var(--bone); color: var(--ink-deep, #fff); font: 700 0.98rem / 1 var(--font-body); text-decoration: none; }
+    .hrv__more-ico { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--amber); color: #fff; }
+    .hrv__more-ico svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .hrv__more:active .hrv__more-ico { translate: 0 2px; }
+    .hrv__more:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+    #resenas { scroll-margin-top: 90px; }
+}
+
+/* Celular: etiqueta del proyecto que se ve en los dispositivos */
+.dev-tag { display: none; }
+@media (max-width: 600px) {
+    .home--main .device-scene .dev-tag { position: absolute; z-index: 3; left: 0.2rem; bottom: 0.6rem; display: grid; gap: 0.2rem; padding: 0.55rem 0.85rem; border: 1px solid var(--rule); border-radius: 14px; background: var(--ink-raise); box-shadow: 0 14px 26px -18px rgba(40, 20, 10, 0.55); text-decoration: none; }
+    .dev-tag small { color: var(--bone-dim); font-size: 0.66rem; }
+    .dev-tag b { color: var(--bone); font-size: 0.86rem; }
+    .dev-tag b span { color: var(--amber); }
+}

@@ -53,8 +53,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="assets/infall.css?v=12">
-    <link rel="stylesheet" href="assets/home.css?v=73">
+    <link rel="stylesheet" href="assets/infall.css?v=13">
+    <link rel="stylesheet" href="assets/home.css?v=75">
 
     <script>
         (function () { try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) { } })();
@@ -224,6 +224,7 @@
                     <span class="device-ipad">
                         <img src="portfolio-images/coolsecurity-tablet.webp" width="640" height="854" alt="El mismo sitio visto en una tablet">
                     </span>
+                    <a class="dev-tag" href="https://coolsecurityperu.com/" target="_blank" rel="noopener"><small>Web real de un cliente</small><b>Cool Security <span aria-hidden="true">↗</span></b></a>
                     <span class="device-iphone">
                         <img src="portfolio-images/coolsecurity-movil.webp" width="390" height="844" alt="El mismo sitio visto en un celular">
                     </span>
@@ -235,7 +236,9 @@
                     <div class="hrv__head">
                         <h2 class="hrv__title">Lo que dicen nuestros clientes</h2>
                         <p class="hrv__sub">Negocios peruanos que ya venden mejor con su web.</p>
-                        <p class="hrv__score"><span aria-hidden="true">★</span><b><span data-stat="promedio">4,7</span>/5</b><small>promedio de <span data-stat="opiniones">6</span> reseñas</small></p>
+                        <p class="hrv__score"><span aria-hidden="true">★</span><b><span data-stat="promedio">4,7</span>/5</b><i class="tm__stars hrv__stars" data-stars style="--r:4.7" aria-hidden="true"></i><small>promedio de <span data-stat="opiniones">6</span> reseñas</small></p>
+                        <p class="hrv__who"><span>Clínica de Mamas Lima</span><span>Cool Security</span><span>KJA</span><span>y más</span></p>
+                        <a class="hrv__more" href="#resenas">Leer las reseñas<span class="hrv__more-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span></a>
                         <a class="btn btn--primary hrv__cta" href="https://wa.me/51922996170?text=Hola%20INFALL%2C%20quiero%20cotizar%20mi%20p%C3%A1gina%20web." target="_blank" rel="noopener">Quiero mi web <span aria-hidden="true">→</span></a>
                     </div>
                     <div class="hrv__track">
@@ -662,7 +665,7 @@
         </section>
 
         <!-- ============ RESEÑAS ============ -->
-        <section class="section section--ruled reviews reviews--ios">
+        <section class="section section--ruled reviews reviews--ios" id="resenas">
             <div class="shell">
                 <div class="section-head">
                     <div>
@@ -890,7 +893,7 @@
 
     <script src="cart.js?v=5" defer></script>
     <script src="assets/infall.js?v=13" defer></script>
-    <script src="assets/stats.js?v=4" defer></script>
+    <script src="assets/stats.js?v=5" defer></script>
     <script src="assets/analytics.js?v=2" defer></script>
 </body>
 

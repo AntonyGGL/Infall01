@@ -2214,3 +2214,30 @@ a, button, input, select, textarea, label, [role="button"], [role="tab"] {
 @media (max-width: 1180px) { .brand__tag { display: none; } }
 .nav__link { white-space: nowrap; }
 @media (min-width: 901px) and (max-width: 1400px) { .nav__link { padding-inline: 0.6rem; } .nav__inner { gap: 1.2rem; } }
+
+/* ---------- Pie en celular: ordenado en bloques ---------- */
+@media (max-width: 768px) {
+    .foot .foot__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.9rem 1.2rem; padding-block: 2.4rem 1.8rem; }
+    .foot .foot__grid > :first-child { grid-column: 1 / -1; order: 0; }
+    .foot .foot__grid > :nth-child(3) { grid-column: 1 / -1; order: 1; }
+    .foot .foot__grid > :nth-child(2), .foot .foot__grid > :nth-child(4) { order: 2; }
+    .foot .foot__about { margin-top: 0.7rem; max-width: 40ch; font-size: 0.9rem; line-height: 1.55; }
+
+    .foot .foot__h { margin-bottom: 0.55rem; color: var(--bone-soft); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; }
+
+    /* Navegación y legal: listas verticales alineadas */
+    .foot .foot__links:not(.foot__contact) { display: grid; gap: 0; }
+    .foot .foot__links:not(.foot__contact) a { width: 100%; min-height: 40px; color: var(--bone-soft); font-size: 0.92rem; line-height: 1.25; }
+
+    /* Contacto: una sola tarjeta con filas */
+    .foot .foot__contact { display: grid; gap: 0; overflow: hidden; border: 1px solid var(--rule); border-radius: 18px; background: var(--ink-raise); }
+    .foot .foot__contact a,
+    .foot .foot__contact a:last-child { display: flex; align-items: center; gap: 0.8rem; width: 100%; min-height: 60px; margin: 0; padding: 0.6rem 1rem 0.6rem 0.7rem; border: 0; border-radius: 0; color: var(--bone); font-size: 0.95rem; font-weight: 600; }
+    .foot .foot__contact a + a { border-top: 1px solid var(--rule); }
+    .foot .foot__contact svg { flex: none; box-sizing: content-box; width: 18px; height: 18px; padding: 9px; border-radius: 11px; background: rgba(var(--amber-rgb), 0.12); color: var(--amber); }
+    .foot .foot__contact a[href*="wa.me"] svg { background: rgba(37, 211, 102, 0.12); color: #1fa855; }
+    .foot .foot__contact a::after { content: ""; flex: none; width: 7px; height: 7px; margin-left: auto; border: solid var(--bone-dim); border-width: 2px 2px 0 0; rotate: 45deg; }
+    .foot .foot__contact a:active { background: rgba(var(--amber-rgb), 0.06); }
+
+    .foot .foot__bottom { flex-direction: column; gap: 0.25rem; padding-top: 1.1rem; font-family: var(--font-body); font-size: 0.76rem; letter-spacing: 0; line-height: 1.45; }
+}

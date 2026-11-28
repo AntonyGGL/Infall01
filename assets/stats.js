@@ -19,4 +19,5 @@
     var prom = notas.reduce(function (a, n) { return a + n; }, 0) / notas.length;
     poner('promedio', prom.toFixed(1).replace('.', ','));
     poner('opiniones', notas.length);
+    document.querySelectorAll('[data-stars]').forEach(function (e) { e.style.setProperty('--r', prom.toFixed(2)); });
 })();
