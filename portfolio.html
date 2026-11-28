@@ -46,7 +46,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="assets/infall.css?v=12">
     <link rel="stylesheet" href="assets/home.css?v=37">
-    <link rel="stylesheet" href="assets/pages.css?v=20">
+    <link rel="stylesheet" href="assets/pages.css?v=23">
 
     <script>
         (function () { try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) { } })();
@@ -70,8 +70,7 @@
                 <a href="index.html" class="nav__link">Inicio</a>
                 <a href="quienes-somos.html" class="nav__link">Quiénes somos</a>
                 <a href="servicios.html" class="nav__link">Servicios</a>
-                <a href="index.html#casos" class="nav__link">Casos de éxito</a>
-                <a href="portfolio.html" class="nav__link" aria-current="page">Portafolio</a>
+                <a href="portfolio.html" class="nav__link" aria-current="page">Proyectos</a>
                 <a href="#contacto" class="nav__link">Contacto</a>
                 <div class="nav__drawer-cta">
                     <a href="cotizacion.html" class="btn btn--primary btn--block">Cotizar proyecto</a>
@@ -114,7 +113,7 @@
         <section class="home-intro" aria-labelledby="page-title">
             <div class="shell home-intro__layout">
                 <div class="home-intro__copy">
-                    <p class="home-kicker">Portafolio</p>
+                    <p class="home-kicker">Proyectos</p>
                     <h1 id="page-title">Proyectos reales.<br><em>Resultados visibles.</em></h1>
                     <p class="home-intro__description">Cada sitio que ves aquí está publicado y puedes visitarlo. Los diseñamos para cargar rápido, convertir y aparecer en Google.</p>
                     <div class="home-intro__actions">
@@ -180,33 +179,32 @@
                         <h2 class="display-lg section-head__title reveal" style="--d:60ms">Encuentra uno<br>parecido al tuyo.</h2>
                     </div>
                     <p class="section-head__note reveal" style="--d:120ms">
-                        11 webs publicadas. Filtra por rubro y abre cualquiera en otra pestaña para recorrerla completa.
+                        11 webs publicadas. Filtra por tipo de proyecto y abre cualquiera para recorrerla completa.
                     </p>
                 </div>
 
-                <div class="filters reveal" role="group" aria-label="Filtrar proyectos por rubro">
+                <div class="filters reveal" role="group" aria-label="Filtrar proyectos por tipo">
                     <button type="button" class="pill-btn js-filter" data-filter="all" aria-pressed="true">Todos <span class="pill-count">11</span></button>
-                    <button type="button" class="pill-btn js-filter" data-filter="salud" aria-pressed="false">Clínicas y salud <span class="pill-count">5</span></button>
-                    <button type="button" class="pill-btn js-filter" data-filter="tienda" aria-pressed="false">Tiendas online <span class="pill-count">3</span></button>
-                    <button type="button" class="pill-btn js-filter" data-filter="empresa" aria-pressed="false">Empresas y servicios <span class="pill-count">3</span></button>
+                    <button type="button" class="pill-btn js-filter" data-filter="web" aria-pressed="false">Página web <span class="pill-count">7</span></button>
+                    <button type="button" class="pill-btn js-filter" data-filter="tienda" aria-pressed="false">Tienda virtual <span class="pill-count">3</span></button>
+                    <button type="button" class="pill-btn js-filter" data-filter="landing" aria-pressed="false">Landing page <span class="pill-count">1</span></button>
                 </div>
 
                 <div class="pw-grid" id="portfolio-grid">
-                    <article class="pw pw--feat reveal" data-category="empresa">
+                    <article class="pw reveal" data-category="web">
                         <a class="pw__frame" href="https://coolsecurityperu.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="pw__bar" aria-hidden="true"><i></i><i></i><i></i><span class="pw__url"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg>coolsecurityperu.com</span></span>
                             <span class="pw__shot"><picture><source media="(max-width: 600px)" srcset="portfolio-images/web/coolsecurity-720.webp"><img src="portfolio-images/web/coolsecurity.webp" width="1440" height="1000" srcset="portfolio-images/web/coolsecurity-720.webp 720w, portfolio-images/web/coolsecurity.webp 1440w" sizes="(max-width: 900px) 92vw, 760px" alt="Página web de Cool Security Soluciones, aire acondicionado y seguridad electrónica" loading="eager"></picture></span>
                         </a>
                         <span class="pw__body">
                             <span class="pw__top"><span class="pw__num">01</span><span class="pw__kind">Aire acondicionado · Web corporativa</span></span>
-                            <span class="pw__badge">Proyecto destacado</span>
                             <span class="pw__name">Cool Security</span>
                             <span class="pw__desc">Web de servicios técnicos de climatización, electricidad y cámaras, con formulario de cotización y cobertura en Ica, Chincha y Lima.</span>
                             <span class="pw__foot"><span class="pw__tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>SEO</span></span><span class="pw__actions"><a class="pw__wa" href="https://wa.me/51922996170?text=Hola%20INFALL%2C%20quiero%20una%20p%C3%A1gina%20web%20como%20la%20de%20Cool%20Security%20%28coolsecurityperu.com%29.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank" rel="noopener" aria-label="Quiero una web como la de Cool Security (WhatsApp)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.35.99 2.52.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>Quiero una así</a><a class="pw__go" href="https://coolsecurityperu.com/" target="_blank" rel="noopener" aria-label="Visitar el sitio de Cool Security">Ver web <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a></span></span>
                         </span>
                     </article>
 
-                    <article class="pw reveal" data-category="salud">
+                    <article class="pw reveal" data-category="web">
                         <a class="pw__frame" href="https://www.kjadmb.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="pw__bar" aria-hidden="true"><i></i><i></i><i></i><span class="pw__url"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg>kjadmb.com</span></span>
                             <span class="pw__shot"><picture><source media="(max-width: 600px)" srcset="portfolio-images/web/kja-720.webp"><img src="portfolio-images/web/kja.webp" width="1440" height="1011" srcset="portfolio-images/web/kja-720.webp 720w, portfolio-images/web/kja.webp 1440w" sizes="(max-width: 900px) 92vw, 640px" alt="Página web de KJA Centro Psicológico en San Luis, Lima" loading="lazy"></picture></span>
@@ -232,7 +230,7 @@
                         </span>
                     </article>
 
-                    <article class="pw reveal" data-category="salud">
+                    <article class="pw reveal" data-category="web">
                         <a class="pw__frame" href="https://www.clinicademamalima.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="pw__bar" aria-hidden="true"><i></i><i></i><i></i><span class="pw__url"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg>clinicademamalima.com</span></span>
                             <span class="pw__shot"><picture><source media="(max-width: 600px)" srcset="portfolio-images/web/mama-720.webp"><img src="portfolio-images/web/mama.webp" width="1440" height="1000" srcset="portfolio-images/web/mama-720.webp 720w, portfolio-images/web/mama.webp 1440w" sizes="(max-width: 900px) 92vw, 640px" alt="Página web de la Clínica de Mamas Lima" loading="lazy"></picture></span>
@@ -258,7 +256,7 @@
                         </span>
                     </article>
 
-                    <article class="pw reveal" data-category="empresa">
+                    <article class="pw reveal" data-category="web">
                         <a class="pw__frame" href="https://hamiltonsegura.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="pw__bar" aria-hidden="true"><i></i><i></i><i></i><span class="pw__url"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg>hamiltonsegura.com</span></span>
                             <span class="pw__shot"><picture><source media="(max-width: 600px)" srcset="portfolio-images/web/hamilton-720.webp"><img src="portfolio-images/web/hamilton.webp" width="1440" height="1000" srcset="portfolio-images/web/hamilton-720.webp 720w, portfolio-images/web/hamilton.webp 1440w" sizes="(max-width: 900px) 92vw, 640px" alt="Página web de Hamilton Segura Consultores, talleres de vocería y media training" loading="lazy"></picture></span>
@@ -271,7 +269,7 @@
                         </span>
                     </article>
 
-                    <article class="pw reveal" data-category="salud" style="--d:90ms">
+                    <article class="pw reveal" data-category="web" style="--d:90ms">
                         <a class="pw__frame" href="https://clinicagastroenterologialima.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="pw__bar" aria-hidden="true"><i></i><i></i><i></i><span class="pw__url"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg>clinicagastroenterologialima.com</span></span>
                             <span class="pw__shot"><picture><source media="(max-width: 600px)" srcset="portfolio-images/web/gastro-720.webp"><img src="portfolio-images/web/gastro.webp" width="1440" height="1000" srcset="portfolio-images/web/gastro-720.webp 720w, portfolio-images/web/gastro.webp 1440w" sizes="(max-width: 900px) 92vw, 640px" alt="Página web de la Clínica de Gastroenterología Lima" loading="lazy"></picture></span>
@@ -297,7 +295,7 @@
                         </span>
                     </article>
 
-                    <article class="pw reveal" data-category="salud" style="--d:90ms">
+                    <article class="pw reveal" data-category="web" style="--d:90ms">
                         <a class="pw__frame" href="https://clinicaproctologicalima.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="pw__bar" aria-hidden="true"><i></i><i></i><i></i><span class="pw__url"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg>clinicaproctologicalima.com</span></span>
                             <span class="pw__shot"><picture><source media="(max-width: 600px)" srcset="portfolio-images/web/procto-720.webp"><img src="portfolio-images/web/procto.webp" width="1440" height="1000" srcset="portfolio-images/web/procto-720.webp 720w, portfolio-images/web/procto.webp 1440w" sizes="(max-width: 900px) 92vw, 640px" alt="Página web de la Clínica Proctológica Lima en San Isidro" loading="lazy"></picture></span>
@@ -310,7 +308,7 @@
                         </span>
                     </article>
 
-                    <article class="pw reveal" data-category="empresa">
+                    <article class="pw reveal" data-category="landing">
                         <a class="pw__frame" href="https://ferreteriaimpofer.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="pw__bar" aria-hidden="true"><i></i><i></i><i></i><span class="pw__url"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg>ferreteriaimpofer.com</span></span>
                             <span class="pw__shot"><picture><source media="(max-width: 600px)" srcset="portfolio-images/imagen_impofer-700.webp"><img src="portfolio-images/imagen_impofer.webp" width="1400" height="637" srcset="portfolio-images/imagen_impofer-700.webp 700w, portfolio-images/imagen_impofer.webp 1400w" sizes="(max-width: 900px) 92vw, 640px" alt="Página web de Impofer G&amp;M, ferretería industrial" loading="lazy"></picture></span>
@@ -323,7 +321,7 @@
                         </span>
                     </article>
 
-                    <article class="pw reveal" data-category="salud" style="--d:90ms">
+                    <article class="pw reveal" data-category="web" style="--d:90ms">
                         <a class="pw__frame" href="https://clinicatraumatologicalima.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
                             <span class="pw__bar" aria-hidden="true"><i></i><i></i><i></i><span class="pw__url"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10V7a5 5 0 0 0-10 0v3H5.5A1.5 1.5 0 0 0 4 11.5v9A1.5 1.5 0 0 0 5.5 22h13a1.5 1.5 0 0 0 1.5-1.5v-9a1.5 1.5 0 0 0-1.5-1.5H17zm-8 0V7a3 3 0 0 1 6 0v3H9z"/></svg>clinicatraumatologicalima.com</span></span>
                             <span class="pw__shot"><picture><source media="(max-width: 600px)" srcset="portfolio-images/web/trauma-720.webp"><img src="portfolio-images/web/trauma.webp" width="1440" height="1000" srcset="portfolio-images/web/trauma-720.webp 720w, portfolio-images/web/trauma.webp 1440w" sizes="(max-width: 900px) 92vw, 640px" alt="Página web de la Clínica Traumatológica Lima" loading="lazy"></picture></span>
@@ -391,7 +389,7 @@
                         <a href="index.html">Inicio</a>
                         <a href="quienes-somos.html">Quiénes somos</a>
                         <a href="servicios.html">Servicios</a>
-                        <a href="portfolio.html">Portafolio</a>
+                        <a href="portfolio.html">Proyectos</a>
                         <a href="dominios.html">Dominios</a>
                         <a href="paginas-web-economicas.html">Páginas web económicas</a>
                     </div>
